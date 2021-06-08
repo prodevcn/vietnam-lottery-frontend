@@ -1,0 +1,178 @@
+/*-------------------------
+Typography
+----------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700|Source+Sans+Pro:300,400,400i,600,600i,700&display=swap");
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: $body-font;
+    font-size: $body-font-size;
+    font-weight: 400;
+    line-height: $body-line-height;
+
+    overflow-x: hidden;
+
+    color: $body-color;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+    line-height: 30px;
+
+    color: #1A1200;
+}
+
+::-webkit-input-placeholder {
+    color: $body-color;
+}
+
+:-moz-placeholder {
+    color: $body-color;
+}
+
+::-moz-placeholder {
+    color: $body-color;
+}
+
+:-ms-input-placeholder {
+    color: $body-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+address,
+p,
+pre,
+blockquote,
+dl,
+dd,
+menu,
+ol,
+ul,
+table,
+caption,
+hr {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $heading-font;
+    line-height: 1.3;
+}
+
+h1,
+.h1 {
+    font-size: 48px;
+}
+
+h2,
+.h2 {
+    font-size: 30px;
+}
+
+h3,
+.h3 {
+    font-size: 22px;
+}
+
+h4,
+.h4 {
+    font-size: 20px;
+}
+
+h5,
+.h5 {
+    font-size: 18px;
+}
+
+h6,
+.h6 {
+    font-size: 16px;
+}
+
+@media #{$md-layout} {
+    h1,
+    .h1 {
+        font-size: 36px;
+    }
+    h2,
+    .h2 {
+        font-size: 26px;
+    }
+    h3,
+    .h3 {
+        font-size: 20px;
+    }
+}
+
+@media #{$sm-layout} {
+    h1,
+    .h1 {
+        font-size: 32px;
+    }
+    h2,
+    .h2 {
+        font-size: 24px;
+    }
+    h3,
+    .h3 {
+        font-size: 18px;
+    }
+}
+
+h1,
+.h1,
+h2,
+.h2 {
+    font-weight: 700;
+}
+
+h3,
+.h3,
+h4,
+.h4 {
+    font-weight: 600;
+}
+
+h5,
+.h5,
+h6,
+.h6 {
+    font-weight: 500;
+}
+
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+
+    outline: none;
+}

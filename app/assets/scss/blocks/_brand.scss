@@ -1,0 +1,58 @@
+/*-------------------
+    Brand Styles
+--------------------*/
+
+.brand__inner {
+    padding-bottom: 160px;
+    padding-top: 28px;
+    .brand__list {
+        display: flex;
+        justify-content: space-between;
+        list-style: outside none none;
+        margin: 0;
+        padding: 0;
+        li {
+            margin-top: 30px;
+            a {
+                img {
+                    transition: all 0.5s ease 0s;
+                }
+            }
+            &:hover a img {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+.dg__brand__area .space-between {
+    padding: 0 225px;
+}
+
+.owl-carousel .owl-item img {
+    width: auto;
+}
+
+.brand__list li a img {
+    margin: auto;
+}
+
+/* Responsive Css*/
+
+@media #{$xlg-layout} {
+    .dg__brand__area .space-between {
+        padding: 0 78px;
+    }
+}
+
+@media #{$xx-layout} {
+    .dg__brand__area .space-between {
+        padding: 0 78px;
+    }
+}
+
+@media #{$sm-layout} {}
+
+@media #{$xs-layout} {}
+
+@media #{$xxs-layout} {}

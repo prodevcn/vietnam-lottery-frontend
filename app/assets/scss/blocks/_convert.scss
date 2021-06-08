@@ -1,0 +1,208 @@
+/* Convert Styles*/
+
+.converter__wrapper {
+    .content {
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 70px;
+
+            margin-bottom: 28px;
+
+            text-transform: capitalize;
+
+            color: #001232;
+        }
+        p {
+            margin-bottom: 46px;
+            &.first {
+                font-size: 16px;
+                line-height: 26px;
+
+                margin-bottom: 26px;
+
+                color: #001232;
+            }
+        }
+    }
+    .bit__convert {
+        display: flex;
+
+        margin-right: -35px;
+        margin-left: -35px;
+        .single__convert {
+            margin: 0 35px;
+            select {
+                font-family: Oswald;
+                font-size: 24px;
+
+                display: block;
+
+                margin-bottom: 10px;
+                padding-right: 20px;
+
+                color: #001232;
+                border: 0 none;
+            }
+            input {
+                font-size: 36px;
+
+                width: 200px;
+                height: 45px;
+                margin-top: 25px;
+                padding-bottom: 13px;
+
+                color: #8899B7;
+                border-width: 0 0 1px;
+                border-style: none none solid;
+                border-color: currentcolor currentcolor #E6E6E6;
+                -o-border-image: none;
+                   border-image: none;
+                outline: medium none;
+
+                -moz-border-bottom-colors: none;
+                -moz-border-left-colors: none;
+                -moz-border-right-colors: none;
+                -moz-border-top-colors: none;
+            }
+            span {
+                font-size: 14px;
+
+                display: block;
+
+                margin-top: 8px;
+
+                color: #8899B7;
+            }
+        }
+    }
+    .thumb {
+        position: relative;
+        left: -69px;
+    }
+}
+
+.converter__wrapper .bit__convert .single__convert select {
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-top: 8px;
+
+    color: #001232;
+}
+
+.bit__convert .nice-select {
+    font-size: 14px;
+    line-height: inherit;
+
+    height: auto;
+    padding-right: 39px;
+    padding-left: 0;
+
+    border: 0 none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.bit__convert .nice-select::after {
+    right: 17px;
+
+    width: 9px;
+    height: 9px;
+    margin-top: -2px;
+
+    border-right: 2px solid #8899B7;
+    border-bottom: 2px solid #8899B7;
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+    .converter__wrapper .thumb {
+        left: 0;
+    }
+    .converter__wrapper .thumb img {
+        width: 100%;
+    }
+    .single__convert .nice-select {
+        float: inherit;
+    }
+    .bit__convert .nice-select::after {
+        right: 129px;
+
+        margin-top: -6px;
+    }
+    .single__convert .nice-select {
+        width: 100%;
+    }
+    .dg__converter__area.section-padding--xl {
+        padding: 117px 0 133px;
+    }
+}
+
+@media #{$md-layout} {
+    .converter__wrapper .thumb {
+        left: 0;
+    }
+    .converter__wrapper .thumb img {
+        width: 100%;
+    }
+    .dg__converter__area.section-padding--xl {
+        padding: 117px 0 133px;
+    }
+    .single__convert .nice-select {
+        float: inherit;
+    }
+    .bit__convert .nice-select::after {
+        right: 129px;
+
+        margin-top: -6px;
+    }
+    .single__convert .nice-select {
+        width: 100%;
+    }
+    .converter__wrapper .bit__convert .single__convert input {
+        width: 100%;
+    }
+}
+
+@media #{$sm-layout} {
+    .converter__wrapper .thumb {
+        left: 0;
+    }
+    .converter__wrapper .thumb img {
+        width: 100%;
+    }
+    .dg__converter__area.section-padding--xl {
+        padding: 60px 0;
+    }
+    .converter__wrapper .content h2 {
+        font-size: 29px;
+
+        margin-bottom: 8px;
+    }
+}
+
+@media #{$xs-layout} {
+    .converter__wrapper .bit__convert {
+        display: block;
+    }
+    .converter__wrapper .bit__convert .single__convert {
+        margin: 0 35px 20px;
+    }
+    .converter__wrapper .bit__convert .single__convert input {
+        width: 100%;
+    }
+}
+
+@media #{$xxs-layout} {
+}
+
+@media #{$xlg-layout} {
+    .converter__wrapper .thumb {
+        left: 0;
+    }
+    .converter__wrapper .thumb img {
+        width: 100%;
+    }
+}

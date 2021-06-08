@@ -1,0 +1,96 @@
+/*-------------------
+    Counterup Styles
+--------------------*/
+
+.counterup__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 140px 0;
+}
+
+.counterup__list {
+    text-align: center;
+    h6 {
+        font-size: 36px;
+        font-weight: 300;
+        line-height: 70px;
+
+        position: relative;
+
+        margin-bottom: 34px;
+        padding-bottom: 18px;
+
+        text-transform: capitalize;
+
+        color: #FFF;
+        &::before {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+
+            width: 60px;
+            height: 1px;
+
+            content: "";
+            transition: all 0.5s ease 0s;
+            -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);
+
+            background: #F9C34E none repeat scroll 0 0;
+        }
+    }
+    p {
+        font-family: Oswald;
+        font-size: 45px;
+        font-weight: 700;
+
+        color: #FFFFFF;
+    }
+    &:hover h6::before {
+        width: 40px;
+    }
+}
+
+#counterup__images {
+    //background: rgba(0, 0, 0, 0) url("images/bg/2.jpg") repeat scroll center center / 105% 100%;
+}
+
+#counterup__images--2 {
+    //background: rgba(0, 0, 0, 0) url("images/bg/4.jpg") repeat scroll center center / 105% 100%;
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+}
+
+@media #{$md-layout} {
+}
+
+@media #{$sm-layout} {
+    .counterup__wrapper {
+        flex-flow: wrap;
+    }
+    .counterup__list {
+        flex-basis: 50%;
+    }
+    .counterup__wrapper {
+        padding: 60px 0;
+    }
+    .counterup__list h6 {
+        font-size: 29px;
+        line-height: 40px;
+
+        margin-bottom: 20px;
+    }
+    .counterup__list p {
+        font-size: 30px;
+    }
+}
+
+@media #{$xs-layout} {
+}
+
+@media #{$xxs-layout} {
+}

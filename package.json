@@ -1,0 +1,46 @@
+{
+  "name": "lottery",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.3",
+    "@zeit/next-sass": "^1.0.1",
+    "animate.css": "^4.1.1",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "font-awesome": "^4.7.0",
+    "i18n": "^0.13.3",
+    "i18next": "^20.3.1",
+    "i18next-browser-languagedetector": "^6.1.1",
+    "i18next-http-backend": "^1.2.6",
+    "next": "10.1.3",
+    "prop-types": "^15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-dropdown": "^1.9.2",
+    "react-i18next": "^11.10.0",
+    "react-icons": "^4.2.0",
+    "react-modal-video": "^1.2.6",
+    "react-responsive-carousel": "^3.2.18",
+    "react-scroll": "^1.8.2",
+    "styled-jsx": "^3.4.4",
+    "swiper": "5.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "sass": "^1.32.11"
+  }
+}

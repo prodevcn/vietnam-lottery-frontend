@@ -1,0 +1,441 @@
+/*----------------------
+	Helper Class
+-------------------------*/
+
+.hidden {
+    display: none;
+}
+
+.visuallyhidden {
+    position: absolute;
+
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+
+    border: 0;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    position: static;
+
+    overflow: visible;
+    clip: auto;
+
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    /* 1 */
+    display: table;
+
+    content: " ";
+    /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.poss--relative {
+    position: relative;
+}
+
+a {
+    transition: 0.5s;
+}
+
+a:hover {
+    color: $theme-color;
+}
+
+/* Define Colors */
+
+.color--theme {
+    color: $theme-color;
+}
+
+.color--light {
+    color: #999999;
+}
+
+.color--dark {
+    color: #333333;
+}
+
+.color--black {
+    color: #000000;
+}
+
+.color--white {
+    color: #FFFFFF;
+}
+
+/* Background Color */
+
+.bg--theme {
+    background: $theme-color;
+}
+
+.bg--light {
+    background: #999999;
+}
+
+.bg--dark {
+    background: #333333;
+}
+
+.bg--black {
+    background: #000000;
+}
+
+.bg--white {
+    background: #FFFFFF;
+}
+
+.bg__color--1 {
+    background: #000;
+}
+
+.bg__color--2 {
+    background: #0B0801;
+}
+
+.bg__color--3 {
+    background: #F9F9F9;
+}
+
+.bg__color--4 {
+    background: #001232;
+//     .pb--140 {
+//         background: red;
+//     }
+}
+.bg__color--4.pb--140 {
+    background: #fff;
+}
+
+.bg__color--5 {
+    background: #F7A901;
+}
+
+.scroll-top {
+    font-size: 25px;
+
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+
+    visibility: hidden;
+
+    width: 45px;
+    height: 45px;
+    padding: 0;
+
+    transition: 0.5s;
+    text-align: center;
+
+    opacity: 0;
+    color: #FFF;
+    border: none;
+    border-radius: 100px;
+    background: none;
+    background: $theme-color;
+    box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.2);
+    &:hover {
+        color: $theme-color;
+        background: #F7A901;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+
+    &.show {
+        visibility: visible;
+
+        opacity: 1;
+    }
+}
+
+/* Background Image */
+
+@for $i from 1 through 20 {
+    .bg-image--#{$i} {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+@for $i from 1 through 15 {
+    .pt--#{$i * 10} {
+        padding-top: #{$i * 10}px;
+    }
+}
+
+@for $i from 2 through 15 {
+    .pb--#{$i * 10} {
+        padding-bottom: #{$i * 10}px;
+    }
+}
+
+@for $i from 2 through 15 {
+    .ptb--#{$i * 10} {
+        padding: #{$i * 10}px 0;
+    }
+}
+
+@for $i from 1 through 15 {
+    .mt--#{$i * 10} {
+        margin-top: #{$i * 10}px;
+    }
+}
+
+/* Font weights */
+
+.fw--900 {
+    font-weight: 900;
+}
+
+.fw--700 {
+    font-weight: 700;
+}
+
+.fw--600 {
+    font-weight: 600;
+}
+
+.fw--500 {
+    font-weight: 500;
+}
+
+.fw--400 {
+    font-weight: 400;
+}
+
+.fw--300 {
+    font-weight: 300;
+}
+
+/* Text specialized */
+
+.text--italic {
+    font-style: italic;
+}
+
+.text--normal {
+    font-style: normal;
+}
+
+.text--underline {
+    font-style: underline;
+}
+
+/* Font specialized */
+
+.body--font {
+    font-family: $body-font;
+}
+
+.heading--font {
+    font-family: $heading-font;
+}
+
+/* Height and width */
+
+.fullscreen {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.w--100 {
+    width: 100%;
+}
+
+.w--75 {
+    width: 75%;
+}
+
+.w--50 {
+    width: 50%;
+}
+
+.w--33 {
+    width: 33.33%;
+}
+
+.w--25 {
+    width: 25%;
+}
+
+.w--10 {
+    width: 10%;
+}
+
+.h--100 {
+    height: 100%;
+}
+
+.h--75 {
+    height: 75%;
+}
+
+.h--50 {
+    height: 50%;
+}
+
+.h--25 {
+    height: 25%;
+}
+
+.h--33 {
+    height: 33.33%;
+}
+
+.h--10 {
+    height: 10%;
+}
+
+/* Section padding */
+
+.section-padding--xlg {
+    padding: 100px 0;
+}
+
+.section-padding--xl {
+    padding: 140px 0;
+}
+
+.section-padding--lg {
+    padding: 150px 0;
+}
+
+.section-padding--md {
+    padding: 120px 0;
+}
+
+.section-padding--sm {
+    padding: 100px 0;
+}
+
+.section-padding--xs {
+    padding: 80px 0;
+}
+
+@media #{$md-layout} {
+    .section-padding--xlg {
+        padding: 100px 0;
+    }
+    .section-padding--lg {
+        padding: 100px 0;
+    }
+    .section-padding--md {
+        padding: 85px 0;
+    }
+    .section-padding--sm {
+        padding: 70px 0;
+    }
+    .section-padding--xs {
+        padding: 60px 0;
+    }
+    .md__mt--40 {
+        margin-top: 40px;
+    }
+}
+
+@media #{$sm-layout} {
+    .section-padding--xlg {
+        padding: 90px 0;
+    }
+    .section-padding--lg {
+        padding: 70px 0;
+    }
+    .section-padding--md {
+        padding: 60px 0;
+    }
+    .section-padding--sm {
+        padding: 50px 0;
+    }
+    .section-padding--xs {
+        padding: 50px 0;
+    }
+    .sm__mt--40 {
+        margin-top: 40px;
+    }
+    .section-padding--xl {
+        padding: 60px 0;
+    }
+    .dg__blog__area {
+        padding: 60px 0;
+    }
+}
+
+@media #{$xs-layout} {
+    .xs__mt--40 {
+        margin-top: 40px;
+    }
+}
+
+/* Overlay styles */
+
+[data-overlay],
+[data-black-overlay] {
+    position: relative;
+}
+
+[data-overlay] > div,
+[data-overlay] > *,
+[data-black-overlay] > div,
+[data-black-overlay] > * {
+    position: relative;
+    z-index: 2;
+}
+
+[data-overlay]:before,
+[data-black-overlay]:before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    content: "";
+}
+
+[data-overlay]:before {
+    background-color: $theme-color;
+}
+
+[data-black-overlay]:before {
+    background-color: #000000;
+}
+
+@for $i from 1 through 10 {
+    [data-overlay="#{$i}"]:before,
+    [data-black-overlay="#{$i}"]:before {
+        opacity: #{$i * 0.1};
+    }
+}

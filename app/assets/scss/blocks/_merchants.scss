@@ -1,0 +1,89 @@
+/*---------------------------
+    Merchants Styles
+--------------------------*/
+
+.merchants__list {
+    margin-top: 43px;
+    padding: 0 230px;
+    .merchants {
+        align-items: center;
+        border: 1px solid #b5d1ff;
+        display: flex;
+        height: 190px;
+        justify-content: center;
+        text-align: center;
+        width: 260px;
+    }
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+    .merchants__list .merchants .thumb a img {
+        width: 141px;
+    }
+    .merchants__list {
+        padding: 0 30px;
+    }
+    .merchants__list .merchants {
+        width: 172px;
+    }
+}
+
+@media #{$md-layout} {
+    .merchants__list {
+        padding: 0 30px;
+    }
+    .merchants__list {
+        flex-wrap: wrap;
+    }
+    .merchants__list .merchants {
+        width: 169px;
+    }
+    .merchants__list .merchants .thumb a img {
+        width: 133px;
+    }
+}
+
+@media #{$sm-layout} {
+    .merchants__list {
+        padding: 0 30px;
+    }
+    .merchants__list {
+        flex-wrap: wrap;
+    }
+    .merchants__list .merchants {
+        width: 128px;
+    }
+    .merchants__list .merchants .thumb a img {
+        width: 87px;
+    }
+    .single__merchants {
+        padding-top: 60px;
+    }
+}
+
+@media #{$xs-layout} {
+    .merchants__list .merchants {
+        flex-basis: 50%;
+        width: inherit;
+    }
+}
+
+@media #{$xlg-layout} {
+    .merchants__list {
+        padding: 0 43px;
+    }
+    .merchants__list .merchants {
+        width: 208px;
+    }
+}
+
+@media #{$xx-layout} {
+    .merchants__list {
+        padding: 0 178px;
+    }
+    .merchants__list .merchants {
+        width: 208px;
+    }
+}

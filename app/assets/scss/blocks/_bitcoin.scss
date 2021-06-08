@@ -1,0 +1,215 @@
+/*--------------------------------
+    Blog Details Styles
+---------------------------------*/
+
+.market__title {
+    margin-bottom: 50px;
+
+    text-align: center;
+    h2 {
+        font-size: 36px;
+
+        margin-bottom: 32px;
+
+        text-transform: capitalize;
+
+        color: #1855B7;
+    }
+    p {
+        line-height: 26px;
+
+        padding: 0 9%;
+
+        color: #051630;
+    }
+}
+
+.market__chart__map {
+    padding: 0 70px;
+    img {
+        width: 100%;
+    }
+}
+
+.mkt__pre__list {
+    border: 0 none;
+    thead {
+        background: #001232 none repeat scroll 0 0;
+        tr {
+            th {
+                padding: 20px 30px;
+
+                color: #FFF;
+                border-right: 1px solid #1752B4;
+            }
+            &.market-no {
+                width: 136px;
+                padding: 0 30px;
+            }
+            &.market-symbol,
+            &.market-prize,
+            &.market-volume,
+            &.market-dat {
+                width: 260px;
+                padding: 0 50px;
+            }
+        }
+    }
+    tbody {
+        td {
+            font-size: 15px;
+
+            padding: 30px 30px;
+
+            color: #001232;
+            border: 0 none;
+        }
+        tr {
+            &:nth-child(2n + 1) {
+                background: #F9F9F9 none repeat scroll 0 0;
+            }
+        }
+        &.bg__color {
+            background: #F9F9F9 none repeat scroll 0 0;
+        }
+    }
+}
+
+.market__select select {
+    font-size: 16px;
+    line-height: 57px;
+
+    height: 57px;
+    padding-right: 50px;
+    padding-left: 50px;
+
+    color: #FFF;
+    border: 0 none transparent;
+    border-radius: 0;
+    background-color: #1752B4;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 15px;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+
+    option {
+        color: #000;
+        background-color: #FFF;
+    }
+}
+
+.market__select .nice-select::after {
+    right: 60px;
+
+    height: 8px;
+
+    border-right: 2px solid #FFF;
+    border-bottom: 2px solid #FFF;
+}
+
+.market__filter {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 55px;
+    padding: 0 239px;
+
+    text-align: center;
+}
+
+.market__select .nice-select .list {
+    width: 100%;
+    margin-top: 0;
+
+    color: #333;
+    border-radius: 0;
+    background-color: #DDD;
+}
+
+.market__nav {
+    a {
+        line-height: 57px;
+
+        display: block;
+
+        height: 57px;
+        padding: 0 47px;
+
+        transition: all 0.3s ease 0s;
+
+        color: #FFFFFF;
+        border-radius: 0 !important;
+        background: #1752B4 none repeat scroll 0 0;
+        &.active {
+            color: #FFF;
+            background: #729FEC none repeat scroll 0 0 !important;
+        }
+        &:hover {
+            color: #FFF;
+            background: #729FEC none repeat scroll 0 0;
+        }
+    }
+}
+
+.sin__market__item.tab-pane:not(.active) {
+    display: none;
+}
+
+.nice-select.open .list {
+    overflow-y: visible;
+
+    max-height: 200px;
+}
+
+.nice-select {
+    overflow-y: visible;
+
+    max-height: 200px;
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+    .market__filter {
+        padding: 0 98px;
+    }
+}
+
+@media #{$md-layout} {
+    .market__filter {
+        padding: 0 15px;
+    }
+}
+
+@media #{$sm-layout} {
+    .market__filter {
+        padding: 0;
+    }
+    .market__select select {
+        margin-bottom: 30px;
+    }
+    .market__filter {
+        display: block;
+    }
+    .market__tab {
+        margin-top: 30px;
+    }
+    .market__title p {
+        padding: 0;
+    }
+    .market__chart__map {
+        padding: 0;
+    }
+}
+
+@media #{$xs-layout} {
+    .market__nav a {
+        padding: 0 29px;
+    }
+    .market__chart__map {
+        padding: 0;
+    }
+}

@@ -1,0 +1,148 @@
+/*-------------------
+    Sidebar Styles
+--------------------*/
+
+.right--sidebar {
+    padding-right: 30px;
+}
+
+.single__widget {
+    h4 {
+        color: #3e3e3e;
+        font-family: Source Sans Pro;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+    }
+    &.search {
+        margin-bottom: 46px;
+        position: relative;
+        input {
+            background: #f9f9f9 none repeat scroll 0 0;
+            border: 0 none;
+            color: #a0a0a0;
+            font-size: 16px;
+            height: 56px;
+            padding: 0 72px 0 20px;
+            width: 100%;
+            outline: none;
+        }
+        button {
+            background: #1750b1 none repeat scroll 0 0;
+            border: 0 none;
+            color: #fff;
+            font-size: 25px;
+            height: 100%;
+            padding: 0 14px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: 0.5s;
+            outline: none;
+            &:hover{
+                background: #f7a901 none repeat scroll 0 0;
+            }
+        }
+    }
+    &.sid-catrgory {
+        ul {
+            border-left: 1px solid #eeeeee;
+            border-right: 1px solid #eeeeee;
+            border-top: 1px solid #eeeeee;
+            list-style: outside none none;
+            margin: 0;
+            padding: 0;
+            li {
+                border-bottom: 1px solid #eee;
+                a {
+                    color: #3e3e3e;
+                    display: block;
+                    font-size: 16px;
+                    height: 56px;
+                    line-height: 54px;
+                    padding: 0 20px;
+                    transition: all 0.5s ease 0s;
+                    &:hover {
+                        color: #f7a901;
+                    }
+                }
+            }
+        }
+    }
+    &.recent__post {
+        margin-top: 42px;
+        ul {
+            list-style: outside none none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: flex;
+                margin-bottom: 30px;
+                .content {
+                    padding-left: 26px;
+                    h4 {
+                        color: #646464;
+                        font-size: 16px;
+                        line-height: 26px;
+                        margin-bottom: 0;
+                        font-weight: 600;
+                        padding-right: 14px;
+                        text-transform: none;
+                        a {
+                            color: #646464;
+                            transition: all 0.5s ease 0s;
+                            &:hover {
+                                color: #f7a901;
+                            }
+                        }
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    &.banner {
+        margin-top: 50px;
+    }
+    &.tag {
+        margin-top: 50px;
+        ul {
+            list-style: outside none none;
+            margin: 0 -5px;
+            padding: 0;
+            li {
+                margin: 0 5px 10px;
+                a {
+                    background: #f9f9f9 none repeat scroll 0 0;
+                    color: #1a1200;
+                    display: block;
+                    font-size: 14px;
+                    height: 25px;
+                    line-height: 25px;
+                    padding: 0 13px;
+                    font-weight: 600;
+                    transition: 0.3s;
+                    &:hover {
+                        color: #fff;
+                        background: #f7a901;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {}
+
+@media #{$md-layout} {}
+
+@media #{$sm-layout} {}
+
+@media #{$xs-layout} {}
+
+@media #{$xxs-layout} {}

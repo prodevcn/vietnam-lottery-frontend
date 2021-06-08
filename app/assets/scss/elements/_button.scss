@@ -1,0 +1,217 @@
+/*-------------------
+    Button Styles 
+---------------------*/
+
+a.dg__btn {
+    font-family: Source Sans Pro;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 50px;
+
+    display: inline-block;
+
+    height: 50px;
+    padding: 0 40px;
+
+    transition: all 0.5s ease 0s;
+    text-transform: uppercase;
+
+    color: #FFF;
+    border-radius: 4px;
+    background: #001232 none repeat scroll 0 0;
+    &:hover {
+        color: #FFF;
+        background: #F7A901 none repeat scroll 0 0;
+    }
+    &.btn--white {
+        color: #F7A901;
+        background: #FFF none repeat scroll 0 0;
+        &:hover {
+            color: #FFF;
+            background: #F7A901 none repeat scroll 0 0;
+        }
+    }
+    &.btn--green {
+        border-radius: 100px;
+        color: #fff;
+        background: #45CE30 none repeat scroll 0 0;
+        &:hover {
+            color: #FFF;
+            background: #F7A901 none repeat scroll 0 0;
+        }
+    }
+}
+
+.dg__btn.btn--trans {
+    line-height: 48px;
+
+    color: #1A1200;
+    border: 1px solid #F7A901;
+    background: transparent none repeat scroll 0 0;
+}
+
+.dg__btn.btn--trans:hover {
+    border: 1px solid #F7A901;
+    background: #F7A901 none repeat scroll 0 0;
+}
+
+// Start PAgination Area
+.dg__pagination {
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: outside none none;
+    li {
+        margin-right: 40px;
+        a {
+            font-size: 20px;
+            font-weight: 700;
+
+            transition: 0.3s;
+
+            color: #9F9F9F;
+            &.active {
+                line-height: 40px;
+                
+                display: block;
+
+                width: 40px;
+                height: 40px;
+
+                text-align: center;
+                
+                color: #333333;
+                border-radius: 100%;
+                background: #FFF none repeat scroll 0 0;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+// Slider Video Play
+.play__btn,
+.play__btn a,
+a.play__btn,
+button.play__btn {
+    img {
+        position: relative;
+
+        padding-left: 5px;
+    }
+    &:before,
+    &:after {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        content: "";
+
+        opacity: 0;
+        border: 1px solid #FFFFFF;
+        border-radius: 100%;
+        background: transparent;
+    }
+    &:before {
+        z-index: 2;
+
+        -webkit-animation: playbutton-effect 1s ease-in-out infinite;
+           -moz-animation: playbutton-effect 1s ease-in-out infinite;
+            -ms-animation: playbutton-effect 1s ease-in-out infinite;
+             -o-animation: playbutton-effect 1s ease-in-out infinite;
+                animation: playbutton-effect 1s ease-in-out infinite;
+    }
+    &:after {
+        z-index: 2;
+
+        -webkit-animation: playbutton-effect 1s ease-in-out infinite;
+           -moz-animation: playbutton-effect 1s ease-in-out infinite;
+            -ms-animation: playbutton-effect 1s ease-in-out infinite;
+             -o-animation: playbutton-effect 1s ease-in-out infinite;
+                animation: playbutton-effect 1s ease-in-out infinite;
+        -webkit-animation-delay: 0.2s;
+             -o-animation-delay: 0.2s;
+                animation-delay: 0.2s;
+    }
+    // &:hover {
+    //     transform: scale(1.1);
+    // }
+}
+
+.yu2fvl {
+    z-index: 9999;
+    top: 0;
+}
+
+.yu2fvl-iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+.yu2fvl-overlay {
+    z-index: 9998;
+
+    opacity: 0.8;
+    background: #000;
+}
+
+.yu2fvl-close {
+    line-height: 35px;
+
+    position: absolute;
+    top: 1px;
+    left: 100%;
+
+    display: inline-block;
+
+    width: 35px;
+    height: 35px;
+
+    cursor: pointer;
+    text-align: center;
+
+    color: #FFFFFF;
+    border: 0;
+    background: #F10 !important;
+    background: none;
+    background-color: #F10 !important;
+}
+
+@media #{$md-layout} {
+    .yu2fvl-close {
+        top: auto;
+        right: 0;
+        bottom: 100%;
+        left: auto;
+    }
+}
+
+@media #{$sm-layout} {
+    .yu2fvl-close {
+        top: auto;
+        right: 0;
+        bottom: 100%;
+        left: auto;
+    }
+    .video {
+        h2 {
+            font-size: 32px;
+
+            color: #FFFFFF;
+        }
+        h4 {
+            font-size: 22px;
+            line-height: 32px;
+        }
+    }
+}

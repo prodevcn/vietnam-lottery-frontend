@@ -1,0 +1,96 @@
+/*------------------
+	Banner Styles
+---------------------*/
+
+.ht__bradcaump__area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 520px;
+}
+
+.ht__bradcaump__container {
+    padding-top: 100px;
+}
+
+.ht__bradcaump__area {
+    position: relative;
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.bradcaump__inner {
+    position: relative;
+    z-index: 2;
+}
+
+.bradcaump__inner {
+    h2 {
+        font-size: 48px;
+
+        margin-bottom: 12px;
+
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+    }
+    .breadcrumb-item {
+        font-size: 14px;
+
+        transition: 0.5s;
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+        &:hover {
+            color: #F7A901;
+        }
+    }
+    .brd-separetor {
+        font-size: 14px;
+
+        margin: 0 4px;
+
+        color: #FFF;
+    }
+}
+
+/* Responsive Css*/
+
+@media #{$md-layout} {
+    .bradcaump__inner h2 {
+        font-size: 40px;
+    }
+    .ht__bradcaump__container {
+        padding-top: 0;
+        padding-bottom: 5px;
+    }
+}
+
+@media #{$sm-layout} {
+    .bradcaump__inner h2 {
+        font-size: 39px;
+    }
+    .ht__bradcaump__area {
+        height: 425px;
+    }
+    .ht__bradcaump__container {
+        padding-top: 0;
+        padding-bottom: 5px;
+    }
+}
+
+@media #{$xs-layout} {
+    .bradcaump__inner h2 {
+        font-size: 28px;
+    }
+    .ht__bradcaump__container {
+        padding-top: 0;
+    }
+}

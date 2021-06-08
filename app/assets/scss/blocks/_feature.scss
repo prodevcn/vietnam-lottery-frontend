@@ -1,0 +1,63 @@
+/*---------------------------
+    Feature Area
+--------------------------*/
+
+.dg__feature__area .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.feature {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    padding: 80px 0;
+    text-align: left;
+    .content {
+        padding-left: 25px;
+        p {
+            max-width: 226px;
+            color: #0c1d3c;
+            line-height: 26px;
+        }
+        h2 {
+            color: #1856b8;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 25px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.feature {
+    &.bg--1 {
+        background: #e3f8ff none repeat scroll 0 0;
+    }
+    &.bg--2 {
+        background: #cbf0fc none repeat scroll 0 0;
+    }
+    &.bg--3 {
+        background: #baeeff none repeat scroll 0 0;
+    }
+    &.bg--4 {
+        background: #a3e8ff none repeat scroll 0 0;
+    }
+}
+
+/* Responsive Css*/
+
+@media #{$xlg-layout} {
+    .feature .content {
+        padding-left: 6px;
+    }
+}
+
+@media #{$md-layout} {}
+
+@media #{$sm-layout} {}
+
+@media #{$xs-layout} {}
+
+@media #{$xxs-layout} {}

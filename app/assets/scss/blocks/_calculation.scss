@@ -1,0 +1,233 @@
+/*-------------------
+    Banner Styles
+--------------------*/
+
+.shape--1 {
+    position: absolute;
+    top: 50%;
+    right: 127px;
+
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+.dg__calculation {
+    h2 {
+        font-size: 36px;
+        line-height: 46px;
+
+        margin-bottom: 28px;
+        padding-right: 13%;
+    }
+    p {
+        padding-right: 10%;
+    }
+    .calculate__box {
+        margin-top: 46px;
+        p {
+            font-family: Source Sans Pro;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 30px;
+
+            margin-bottom: 13px;
+
+            text-transform: uppercase;
+
+            color: #1A1200;
+        }
+        input {
+            font-size: 16px;
+            font-weight: 700;
+
+            width: 200px;
+            height: 45px;
+            padding: 0 20px;
+
+            color: #1A1200;
+            border: 1px solid #F7A901;
+            border-radius: 4px;
+            outline: medium none;
+        }
+        span {
+            font-size: 16px;
+            font-weight: 700;
+
+            padding: 0 16px;
+
+            color: #1A1200;
+        }
+        .dg__select__option {
+            margin-top: 10px;
+            select {
+                font-weight: 700;
+
+                width: 200px;
+                padding: 0 33px;
+
+                color: #1A1200;
+                border: 0 none;
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+.dg__calculation__area.section-padding--xlg {
+    padding: 170px 0;
+}
+
+.dg__calculation .calculate__box .nice-select span {
+    padding: 0;
+}
+
+.dg__select__option .nice-select {
+    float: inherit;
+
+    width: auto;
+    padding-right: 37px;
+    padding-left: 0;
+
+    border: 0 none;
+    background-color: transparent;
+}
+
+.dg__calculation .calculate__box .dg__select__option {
+    display: flex;
+}
+
+.nice-select.space--left {
+    margin-left: 118px;
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+    .shape--1 {
+        right: 0;
+
+        width: 51%;
+    }
+    .shape--1 img {
+        width: 100%;
+    }
+    .dg__calculation__area.section-padding--xlg {
+        padding-top: 130px;
+        padding-bottom: 125px;
+    }
+}
+
+@media #{$md-layout} {
+    .shape--1 {
+        right: 0;
+
+        width: 79%;
+        margin-top: 38px;
+    }
+    .shape--1 {
+        position: inherit;
+        top: 50%;
+
+        -webkit-transform: inherit;
+                transform: inherit;
+    }
+    .shape--1 img {
+        width: 100%;
+    }
+    .dg__calculation__area.section-padding--xlg {
+        padding: 130px 0;
+        padding-bottom: 120px;
+    }
+    .dg__calculation h2 {
+        font-size: 33px;
+
+        margin-bottom: 24px;
+    }
+}
+
+@media #{$sm-layout} {
+    .shape--1 {
+        right: 0;
+
+        width: 51%;
+    }
+    .shape--1 img {
+        width: 100%;
+    }
+    .shape--1 {
+        width: 96%;
+        margin-top: 35px;
+    }
+    .shape--1 {
+        position: inherit;
+
+        -webkit-transform: inherit;
+                transform: inherit;
+    }
+    .dg__calculation__area.section-padding--xlg {
+        padding: 130px 0;
+        padding-bottom: 120px;
+    }
+    .dg__calculation__area.section-padding--xlg {
+        padding: 60px 0;
+    }
+}
+
+@media #{$xs-layout} {
+    .dg__calculation h2 {
+        font-size: 23px;
+        line-height: 36px;
+
+        margin-bottom: 9px;
+        padding-right: 0;
+    }
+    .dg__calculation p {
+        font-size: 15px;
+        line-height: 25px;
+
+        padding-right: 0;
+    }
+    .nice-select.space--left {
+        margin-left: 57px;
+    }
+    .dg__calculation .calculate__box input {
+        width: 160px;
+        padding: 0 10px;
+    }
+    .dg__calculation .calculate__box span {
+        padding: 0 7px;
+    }
+}
+
+@media #{$xxs-layout} {
+    .dg__calculation .calculate__box input {
+        width: 129px;
+    }
+    .nice-select.space--left {
+        margin-left: 24px;
+    }
+}
+
+@media #{$xlg-layout} {
+    .shape--1 {
+        right: 0;
+
+        width: 59%;
+    }
+    .shape--1 img {
+        width: 100%;
+    }
+}
+
+@media #{$xx-layout} {
+    .shape--1 {
+        right: 0;
+
+        width: 59%;
+    }
+    .shape--1 img {
+        width: 100%;
+    }
+}

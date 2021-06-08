@@ -1,0 +1,63 @@
+/*---------------------------
+    Single Service
+--------------------------*/
+
+.wallet__inner {
+    h2 {
+        color: #1750b0;
+        font-size: 24px;
+        line-height: 35px;
+        margin-bottom: 29px;
+        padding-bottom: 34px;
+        position: relative;
+        &::before {
+            background: #8899b7 none repeat scroll 0 0;
+            bottom: 0;
+            content: "";
+            height: 1px;
+            position: absolute;
+            width: 150px;
+        }
+    }
+    p {
+        margin: 0;
+        &+p {
+            margin-bottom: 42px;
+            margin-top: 28px;
+        }
+    }
+    .wallet__btn {
+        a {
+            border: 1px solid #1752b4;
+            color: #1754b6;
+            display: inline-block;
+            font-weight: 600;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 30px;
+            text-transform: uppercase;
+            transition: all 0.5s ease 0s;
+            &:hover {
+                background: #1754b6 none repeat scroll 0 0;
+                border: 1px solid #1754b6;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.wallet__thumb {
+    text-align: center;
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {}
+
+@media #{$md-layout} {}
+
+@media #{$sm-layout} {}
+
+@media #{$xs-layout} {}
+
+@media #{$xxs-layout} {}

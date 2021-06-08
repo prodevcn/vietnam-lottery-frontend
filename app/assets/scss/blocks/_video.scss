@@ -1,0 +1,83 @@
+/*-------------------
+    Video Styles
+--------------------*/
+
+.dg__video__inner {
+    padding: 130px 0 140px;
+
+    text-align: center;
+    h2 {
+        font-size: 36px;
+        font-weight: 700;
+
+        margin-bottom: 43px;
+
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+    }
+    p {
+        font-size: 16px;
+        line-height: 30px;
+
+        margin-bottom: 52px;
+        padding: 0 25%;
+
+        color: #FFFFFF;
+    }
+    .play__video {
+        display: inline-block;
+        button {
+            font-size: 16px;
+
+            text-transform: uppercase;
+
+            color: #FFFFFF;
+            border: none;
+            background: none;
+            img {
+                padding-right: 12px;
+            }
+        }
+    }
+}
+
+/* Responsive Css*/
+
+@media #{$lg-layout} {
+    .dg__video__inner p {
+        margin-bottom: 24px;
+        padding: 0 10%;
+    }
+    .dg__video__inner h2 {
+        margin-bottom: 24px;
+    }
+}
+
+@media #{$md-layout} {
+    .dg__video__inner p {
+        margin-bottom: 24px;
+        padding: 0 10%;
+    }
+    .dg__video__inner h2 {
+        margin-bottom: 27px;
+    }
+}
+
+@media #{$sm-layout} {
+    .dg__video__inner h2 {
+        font-size: 28px;
+
+        margin-bottom: 22px;
+    }
+    .dg__video__inner p {
+        margin-bottom: 28px;
+        padding: 0;
+    }
+}
+
+@media #{$xs-layout} {
+}
+
+@media #{$xxs-layout} {
+}
