@@ -24,34 +24,13 @@ Elements Styles
 /*******************
 Blocks Styles
 ********************/
+@import "blocks/button";
 @import "blocks/header";
 @import "blocks/navigation";
-@import "blocks/banner";
 @import "blocks/slider";
-@import "blocks/tickets";
-@import "blocks/service";
-@import "blocks/calculation";
-@import "blocks/counterup";
-@import "blocks/sucure";
-@import "blocks/chart";
-@import "blocks/software";
-@import "blocks/blog";
-@import "blocks/brand";
-@import "blocks/newsletter";
-@import "blocks/work";
-@import "blocks/convert";
-@import "blocks/breadcrumb";
-@import "blocks/video";
-@import "blocks/merchants";
 @import "blocks/sidebar";
-@import "blocks/blog-details";
-@import "blocks/team";
-@import "blocks/single-service";
-@import "blocks/feature";
-@import "blocks/currency-table";
-@import "blocks/contact";
-@import "blocks/bitcoin";
-@import "blocks/login";
-@import "blocks/footer";
-@import "blocks/not-found";
+@import "blocks/breadcrumb";
 @import "blocks/custom";
+@import "blocks/table";
+@import "blocks/tab";
+

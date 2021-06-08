@@ -2,101 +2,7 @@
 body {
     background-color: #000 !important;
 }
-.cal{
-    background-color: red;
-}
 
-.coin-logo {
-    width: 100%;
-}
-button:focus {
-    outline: none;
-}
-.admin-login {
-    color: white;
-}
-.logout_btn {
-    color: white;
-    background-color: transparent;
-    border: none;
-}
-.table-coin-logo {
-    width: 50%;
-}
-.list-coin-logo {
-    width: 100%;
-}
-.fullWidth {
-    width: 100%;
-}
-.invoice-logo {
-    width: 128px;
-}
-.nav {
-    background-color: aquamarine;
-}
-.loading_dlg_container{
-    width: 300px;
-    height: 200px;
-    text-align: center;
-}
-.loading_logo_area{
-    width: 100%;
-    height: 60%;
-    padding: 10%;
-    text-align: center;
-}
-.loading_logo {
-    width: 50px;
-    height: 50px;
-}
-.loading_text_area{
-    width: 100%;
-    height: 40%;
-    padding: 10%;
-}
-
-.outlined {
-    color: #ddd;
-    display: inline-block;
-    // height: 50px;
-    // padding: 0 42px;
-    padding: 0.5rem 0;
-    width: 100%;
-    background-color: transparent;
-    transition: all 0.5s ease 0s;
-    border: 1px solid rgb(255, 136, 1);
-    border-radius: 100px;
-    margin: 1rem 0;
-
-}
-.contained {
-    width: 100%;
-    color: #ddd;
-    display: inline-block;
-    padding: 0.5rem 0;
-    // height: 50px;
-    // padding: 0 42px;
-    background-image: linear-gradient(rgb(255, 136, 1), rgb(107, 57, 0) );
-    transition: all 0.5s ease 0s;
-    border: none;
-    border-radius: 100px;
-    margin: 1rem 0;
-}
-
-.betting_table {
-    width: 100%;
-    height: auto;
-    text-align: -webkit-center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background-image: linear-gradient(180deg, #42413d, #000,);
-    box-shadow: 0px 5px 5px rgba(66, 65, 61, .5);
-}
-.table_container {
-    width: 90%;
-    text-align: -webkit-center;
-}
 .slider {
     width: 100%;
     height: 300px;
@@ -106,66 +12,11 @@ button:focus {
     margin-bottom: 1rem;
     color: #ddd;
 }
-
-.date_area {
-    width: 100%;
-    border-radius: 100px;
-    border: 2px solid rgb(255, 222, 151);
-    text-align: center;
-    background-color: #222;
-    padding: 10px 0;
-    box-shadow: 5px 10px 10px #222;
-}
-.date_text {
-    color: grey;
-    margin: 0;
-}
-.result_title {
-    color:rgb(255, 136, 1);
-    text-align: left;
-    margin-top: 2rem;
-    font-size: 1rem;
-}
-
-.table_section {
-    border: none;
-    margin-top: 2rem;
-    tbody {
-        .table_row {
-            border: none;
-            td {
-                color: #ddd;
-                // width: 50%;
-                border: none;
-                border-bottom: 1px solid #555;
-            }
-            th {
-                color:rgb(255, 136, 1);
-            }
-        }
-    }
-}
 .page_description {
     width: 100%;
     color: #ddd;
     font-size: 1rem;
 }
-
-.number_button {
-    border: 1px solid #555;
-    width: 100%;
-    padding: 0.5rem;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 5px;
-    text-align: -webkit-center;
-    color: #ddd;
-    &.active {
-        background-color: #ff8801;
-        border-color: #ff8801;
-    }
-}
-
 .bet_content {
     font-size: 2rem;
     color: #ddd;
@@ -194,9 +45,7 @@ table {
     border-bottom: none;
     margin: 0;
 }
-
 .vertical-center {
-    // background-color: red;
     vertical-align: middle;
     display: flex;
     align-items: center;
@@ -215,14 +64,12 @@ input {
 .MuiTableCell-root {
     border-bottom: none !important;
 }
-
 .MuiTableCell-root::-webkit-scrollbar {
     display: none;
 }
-
 .makeStyles-container-2::-webkit-scrollbar{
-        display: none;
-    }
+    display: none;
+}
 .makeStyles-container-9::-webkit-scrollbar{
     display: none;
 }

@@ -9,6 +9,7 @@ const GamePanelLayout = props => {
                 <div className="row">
                     <div className="col-lg-8 col-xl-9 col-md-12 col-sm-12 col-12">
                         {props.children[0]}
+                        {props.children[1]}
                     </div>
                     <div className="col-lg-4 col-xl-3 col-md-12 col-sm-12 col-12 col-12">
                         {props.children[2]}

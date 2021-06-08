@@ -1,19 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import GamePanelLayout from '../../app/layouts/GamePanel'; 
-import Slider from '../../app/components/slider/Slider';
-import Advertiser from '../../app/components/advertiser/Advertiser';
+import GamePanel from '../../app/layouts/GamePanel';
+import GameTabs from '../../app/layouts/GameTabs';
+
+import Slider from '../../app/containers/Slider';
+import Advertiser from '../../app/containers/Advertiser';
 import ResultTable from '../../app/containers/ResultTable';
 import BetHistoryTable from '../../app/containers/BetHistoryTable';
-import GameTabs from './GameTabs';
+
+
+
+
 const NorthernLottery = props => {
     return (
-        <GamePanelLayout>
+        <GamePanel>
             <Slider />
             <GameTabs />
             <ResultTable title="Hanoi VIP Lottery Results" />            
             <Advertiser />
             <BetHistoryTable />
-        </GamePanelLayout>
+        </GamePanel>
     );
 };
 

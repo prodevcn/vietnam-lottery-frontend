@@ -5,7 +5,7 @@ import DefaultButton from '../app/components/buttons/DefaultButton';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Slider from '../app/components/slider/Slider';
-import Advertiser from '../app/components/advertiser/Advertiser';
+import Advertiser from '../app/containers/Advertiser';
 import ResultTable from '../app/containers/ResultTable';
 import BetContentTable from '../app/containers/BetContentTable';
 import BetHistoryTable from '../app/containers/BetHistoryTable';
