@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import _ from 'lodash';
- 
 const StyledTabs = withStyles({
   indicator: {
     display: 'flex',
@@ -38,17 +37,16 @@ const TabPanel = props => {
   const { children, value, index, ...other } = props;
 
   return (
-    <div role = 'tabpanel'
-      hidden = {value !== index}
-      id = {`scrollable-auto-tabpanel-${index}`}
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
-      {
-        value === index && (
-          {children}
-        )
-      }
+      {value === index && (
+          <div>{children}</div>
+      )}
     </div>
   );
 };
@@ -92,45 +90,19 @@ const GameTabs = props => {
         onChange={handleChange}
         aria-label="styled tabs example"
         >
-        <StyledTab label="Backpack" {...allyProps(0)} />
-        <StyledTab label="Lot Xien" {...allyProps(1)}/>
-        <StyledTab label="Source" {...allyProps(2)}/>
-        <StyledTab label="Head and Tail" {...allyProps(3)}/>
-        <StyledTab label="3 Claws" {...allyProps(4)}/>
-        <StyledTab label="4 Claws" {...allyProps(5)}/>
-        <StyledTab label="Sliding Lot" {...allyProps(6)}/>
+        {
+            props.bettingTypes?.map((item, index) => (
+                <StyledTab label={item.label} key={'TAB_KEY_' + index} {...allyProps(index)} />
+            ))
+        }
       </StyledTabs>
-      <div>
-        <h1>ssssss</h1>
-      </div>
-      {/* <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel> */}
-      {/* <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel> */}
-      {/* {
-        _.range(8).map(item => {
-          <TabPanel value={value} index={item} key={item} >
-            Tabpanel
-          </TabPanel>
-        })
-      } */}
+      {
+            props.bettingTypes?.map((item, index) => (
+                <TabPanel value={value} index={index} key={'TAB_PANEL_' + index}>
+                    {item.component}
+                </TabPanel>
+            ))
+      }
     </div>
   );
 }

@@ -8,6 +8,5 @@ module.exports = withSass({
 module.exports = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'app/assets/scss')],
-
     },
 };

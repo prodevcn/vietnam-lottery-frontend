@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DefaultButton = props => {
+const Button = props => {
     const onClick = () => {
         props.onClick();
     };
@@ -13,4 +13,4 @@ const DefaultButton = props => {
         </button>
     );
 };
-export default DefaultButton;
+export default Button;

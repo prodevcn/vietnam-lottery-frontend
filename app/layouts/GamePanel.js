@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 const GamePanelLayout = props => {
     useEffect(() => {
-        console.log(props.children);
     }, []);
     return (
         <div className="about__dgtaka about--2 section-padding--xl">
