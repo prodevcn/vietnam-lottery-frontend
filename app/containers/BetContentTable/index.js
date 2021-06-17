@@ -1,3 +1,5 @@
+import React, {useState, useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,17 +9,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import React, {useState, useEffect} from 'react';
+import { DeleteOutlined } from '@material-ui/icons';
 
-const columns = [
-    {id: 'no', label: 'No', minWidth: 170, align: 'center' },
-    {id: 'betName', label: 'Bet Name', minWidth: 100, align: 'center'},
-    {id: 'numberOfBets', label: 'Number of Bets', minWidth: 100, align: 'center'},
-    {id: 'totalBet', label: 'totalBet', align: 'center', minWidth: 100},
-    {id: 'multiple', label: 'Multiple', align: 'center', minWidth: 100},
-    {id: 'stakes', label: 'Stakes', minWidth: 100, align: 'center'},
-    {id: 'moneyWon1Time', label: 'Money won / 1 time', minWidth: 100, align: 'center'}
-];
+import Button from '../../components/Button';
 
 const createData = (no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time) => {
     return {no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time};
@@ -32,25 +26,6 @@ const StyledTableCell = withStyles((theme) => ({
 
     },
 }))(TableCell);
-
-const rows = [
-    createData('India', 'IN', 1324171354, 3287263, 10, 20, 2),
-    createData('China', 'CN', 1403500365, 9596961, 10, 20, 2),
-    createData('Italy', 'IT', 60483973, 301340, 10, 20, 2),
-    createData('United States', 'US', 327167434, 9833520, 10, 20, 2),
-    createData('Canada', 'CA', 37602103, 9984670, 10, 20, 2),
-    createData('Australia', 'AU', 25475400, 7692024, 10, 20, 2),
-    createData('Germany', 'DE', 83019200, 357578, 10, 20, 2),
-    createData('Ireland', 'IE', 4857000, 70273, 10, 20, 2),
-    createData('Mexico', 'MX', 126577691, 1972550, 10, 20, 2),
-    createData('Japan', 'JP', 126317000, 377973, 10, 20, 2),
-    createData('France', 'FR', 67022000, 640679, 10, 20, 2),
-    createData('United Kingdom', 'GB', 67545757, 242495, 10, 20, 2),
-    createData('Russia', 'RU', 146793744, 17098246, 10, 20, 2),
-    createData('Nigeria', 'NG', 200962417, 923768, 10, 20, 2),
-    createData('Brazil', 'BR', 210147125, 8515767, 10, 20, 2),
-  ];
-const rows1 = [];
 
 const useStyles = makeStyles({
     root: {
@@ -80,9 +55,39 @@ const useStyles = makeStyles({
 });
 
 const BetContentTable = props => {
+    const { t } = useTranslation();
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    
+    const columns = [
+        {id: 'no', label: t("bet_content_table.no"), minWidth: 170, align: 'center' },
+        {id: 'betName', label: t("bet_content_table.bet_name"), minWidth: 100, align: 'center'},
+        {id: 'numberOfBets', label: t("bet_content_table.number_of_bets"), minWidth: 100, align: 'center'},
+        {id: 'totalBet', label: t("bet_content_table.total_bet"), align: 'center', minWidth: 100},
+        {id: 'multiple', label: t("bet_content_table.multiple"), align: 'center', minWidth: 100},
+        {id: 'stakes', label: t("bet_content_table.stakes"), minWidth: 100, align: 'center'},
+        {id: 'moneyWon1Time', label: t("bet_content_table.money_won_time"), minWidth: 100, align: 'center'}
+    ];
+
+    const [rows, setRows] = useState([
+        createData('India', 'IN', 1324171354, 3287263, 10, 20, 2),
+        createData('China', 'CN', 1403500365, 9596961, 10, 20, 2),
+        createData('Italy', 'IT', 60483973, 301340, 10, 20, 2),
+        createData('United States', 'US', 327167434, 9833520, 10, 20, 2),
+        createData('Canada', 'CA', 37602103, 9984670, 10, 20, 2),
+        createData('Australia', 'AU', 25475400, 7692024, 10, 20, 2),
+        createData('Germany', 'DE', 83019200, 357578, 10, 20, 2),
+        createData('Ireland', 'IE', 4857000, 70273, 10, 20, 2),
+        createData('Mexico', 'MX', 126577691, 1972550, 10, 20, 2),
+        createData('Japan', 'JP', 126317000, 377973, 10, 20, 2),
+        createData('France', 'FR', 67022000, 640679, 10, 20, 2),
+        createData('United Kingdom', 'GB', 67545757, 242495, 10, 20, 2),
+        createData('Russia', 'RU', 146793744, 17098246, 10, 20, 2),
+        createData('Nigeria', 'NG', 200962417, 923768, 10, 20, 2),
+        createData('Brazil', 'BR', 210147125, 8515767, 10, 20, 2),
+      ]);
+    
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -92,9 +97,16 @@ const BetContentTable = props => {
         setPage(0);
     };
 
+    const resetBetContent = () => {
+        setRows([]);
+    }
+
     return (
         <div style={{marginTop: 50, marginBottom: 50,}}>
-            <p className="bet_content">Bet Content</p>
+            <div className="row_flex" style={{justifyContent: 'space-between'}}>
+                <p className="bet_content">{t("bet_content_table.bet_content")}</p>
+                <Button type='outlined' icon={<DeleteOutlined className="icon" />} title={t("select_num.erase")} onClick={() => {resetBetContent()}} />
+            </div>
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">

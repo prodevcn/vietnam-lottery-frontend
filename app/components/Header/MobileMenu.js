@@ -52,14 +52,7 @@ const MobileMenu = () => {
             </button>
             <div className="offcanvasWrapper">
                 <div className="offcanvasInnerContent">
-                {/* mobile search */}
-                {/* <MobileMenuSearch /> */}
-
-                {/* mobile nav menu */}
-                <MobileNavMenu />
-
-                {/* mobile widgets */}
-                {/* <MobileWidgets /> */}
+                <MobileNavMenu closeMenu={() => {closeMobileMenu()}}/>
                 </div>
             </div>
             </div>

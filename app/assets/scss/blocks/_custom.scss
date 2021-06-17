@@ -1,13 +1,8 @@
-
 body {
-    background-color: #000 !important;
+    background-image: linear-gradient(180deg, #161611, #0f0f0d);
+    cursor:  default !important;
 }
 
-.slider {
-    width: 100%;
-    height: 300px;
-    background-color: transparent;
-}
 .result_text {
     margin-bottom: 1rem;
     color: #ddd;
@@ -28,19 +23,100 @@ body {
     justify-content: space-between;
     width: 100%;
 }
-.multiple_first {
-    border: 1px solid #555;
-    border-radius: 100px;
-    background-color: transparent;
-    color: #ddd;
-    padding: 0.5rem;
-    text-align: center;
+.row_flex {
+    display: flex;
+    align-items: center;
 }
+.coming_soon_icon {
+    width: 2rem;
+    height:1.5rem;
+}
+.coming_soon_mobile {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.bet__result {
+    border-radius: 5px;
+    border: 1px solid rgb(255, 136, 1);
+    background-color: rgba(61, 65, 19, 0.1);
+    box-shadow: inset 0.5rem 0.5rem 8px 0 rgba(255, 136, 1, 0.2), inset -0.5rem -0.5rem 20px 0 rgba(255, 136, 1, 0.2);
+    padding: 1.5rem;
+    padding-top: 3rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.game_selection_box {
+    border-radius: 5px;
+    background-color: rgba(37, 37, 33, 1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-image: url('/images/gold-card.png');
+    padding: 1rem 3rem 0rem;
+    height: 100%;
+    .title__section {
+        text-align: center;
+        align-items: center;
+        .icon {
+            width: 20%;
+            aspect-ratio: 1;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        p {
+            // color: rgb(255, 136, 1);
+            color: white;
+            font-size: 1.5rem;
+        }
+    }
+    .description__section {
+        margin: 1rem 0 0;
+        p {
+            color: white;
+            text-align: center;
+        }
+    }
+    .button__section {
+        text-align: end;
+    }
+    &:hover {
+        box-shadow: inset 0.5rem 0.5rem 8px 0 rgba(255, 136, 1, 0.2), inset -0.5rem -0.5rem 20px 0 rgba(255, 136, 1, 0.2);
+    }
+}
+.margin__bottom {
+    margin-bottom: 2rem;
+}
+
+
 
 .row_center {
     text-align: -webkit-center;
 }
+
+.home__container {
+    margin: 2rem 0 0rem;
+    padding-bottom: 10rem;
+}
+
+.context {
+    background-image: url('/images/dart.png'), url('/images/gold-card-transparent.png') ;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-position: right bottom, left bottom;
+}
+
+
+
 /* customizing previous styles*/
+.game_panel_container {
+    max-width: 90%;
+    margin-top: 3rem;
+}
+
 table {
     border-bottom: none;
     margin: 0;
@@ -53,6 +129,97 @@ table {
 input {
     outline: none;
 }
+.betting_result_element {
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: rgb(34, 34, 33);
+    background: url('/images/dot.png'), linear-gradient(180deg, rgba(255, 136, 1, 0.2), rgba(15, 15, 15, 0)) ;
+    // border: 1px solid rgba(255, 136, 1, 0.5);
+    .text_area {
+        text-align: center;
+        p {
+            color: white;
+            font-size: 1rem;
+        }
+    }
+    .number_area {
+        display: flex;
+        justify-content: 'space-around';
+    }
+}
+.control__panel {
+    background-color: #0f0f0ffa;
+    padding: 2rem;
+}
+.state_text {
+    color: rgb(255, 136, 1);
+    margin: 0;
+}
+.absolute__back_left {
+    position: absolute;
+    height: inherit;;
+    left: -30px;
+}
+.absolute__back_right {
+    position: absolute;
+    height: inherit;
+    right: -30px;
+}
+
+
+.bet_types_area {
+    border-bottom: 0.5px solid #646464;
+    padding: 2rem 0,
+}
+.set_number_area {
+    border-bottom: 0.5px solid #646464;
+    padding: 2rem 0,
+    
+}
+._number__area {
+    display: flex;
+    p{
+        color: rgb(255, 136, 1);
+        margin-bottom: 0;
+    }
+}
+.bet_button_area {
+    border-bottom: 0.5px solid #646464;
+    padding: 2rem 0,
+}
+._info__area {
+    display: flex;
+    justify-content: space-around;
+    p{
+        color: rgb(255, 136, 1);
+        margin-bottom: 0;
+    }
+}
+.lot_type {
+    display: flex;
+    justify-content: space-between;
+}
+.script_area {
+    &::placeholder {
+        color: #646464
+    }
+    border: 1px solid #646464;
+    color: rgb(255, 136, 1);
+    font-size: 1.5rem;
+    background: transparent; 
+    width: 100%; 
+    padding: 1rem;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
 /* customizing material UI styles*/
 
 .MuiTable-stickyHeader {
@@ -78,4 +245,24 @@ input {
 }
 .makeStyles-container-23::-webkit-scrollbar{
     display: none;
+}
+.MuiTableContainer-root::-webkit-scrollbar {
+    display: none !important;
+}
+.MuiMenu-list {
+    background-color : rgba(66, 65, 61, 0.9);
+    color: white;
+}
+.MuiSelect-icon {
+    color: white;
+}
+.img-fluid {
+    max-width: 30%;
+}
+
+@media #{$sm-layout} {
+    .game_panel_container {
+        max-width: 100%;
+        margin-top: 0rem;
+    }
 }

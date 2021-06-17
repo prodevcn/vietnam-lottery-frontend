@@ -1,29 +1,36 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {Carousel} from 'react-responsive-carousel';
 
-const Slider = props => {
+const Slide = props => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
     return(
         <Carousel
-            showIndicators={false}
+            showIndicators={true}
             showStatus={false}
-            showThumbs={false}
+            showThumbs={false} 
+            showArrows={false}
             autoPlay={true} 
-            infiniteLoop={true} 
-            showArrows={false}>
+            infiniteLoop={true}>
             <div>
                 <img src='/images/slides/slide1.jpg' />
-                <p className="legend">Legend 1</p>
             </div>
             <div>
-                <img src='/images/slides/slide1.jpg' />
-                <p className="legend">Legend 2</p>
+                <img src='/images/slides/slide2.jpg' />
             </div>
             <div>
-                <img src='/images/slides/slide1.jpg' />
-                <p className="legend">Legend 3</p>
+                <img src='/images/slides/slide3.jpg' />
             </div>
-      </Carousel>
+            <div>
+                <img src='/images/slides/slide4.jpg' />
+            </div>
+        </Carousel>
     );
 }
 
-export default Slider;
+export default Slide;

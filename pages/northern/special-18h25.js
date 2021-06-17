@@ -1,8 +1,12 @@
+import React, {useState, useEffect} from 'react';
+
+import Layout from '../../app/layouts/Layout';
+
 const Special18h25 = props => {
     return (
-        <div>
-            <p>Special 18h25</p>
-        </div>
+        <Layout>
+
+        </Layout>
     );
 }
 

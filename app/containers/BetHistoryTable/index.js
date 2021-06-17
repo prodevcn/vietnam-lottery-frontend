@@ -1,3 +1,5 @@
+import React, {useState, useEffect} from 'react';
+import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,21 +9,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import React, {useState, useEffect} from 'react';
+import {Refresh} from '@material-ui/icons';
 
-const columns = [
-    {id: 'no', label: 'Lottery', minWidth: 170, align: 'center' },
-    {id: 'betType', label: 'Bet type', minWidth: 100, align: 'center'},
-    {id: 'buyTime', label: 'Buying time', minWidth: 100, align: 'center'},
-    {id: 'numberOfBets', label: 'Number of Bets', align: 'center', minWidth: 100},
-    {id: 'totalBet', label: 'Total bet', align: 'center', minWidth: 100},
-    {id: 'multiple', label: 'Multiple', minWidth: 100, align: 'center'},
-    {id: 'stakes', label: 'Stakes', minWidth: 100, align: 'center'},
-    {id: 'status', label: 'Status', minWidth: 100, align: 'center'}
-];
+import Button from '../../components/Button';
 
-const createData = (no, betTime, buyTime, numberOfBets, totalBet, multiple, stakes, status) => {
-    return {no, betTime, buyTime, numberOfBets, totalBet, multiple, stakes, status};
+const createData = (draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status) => {
+    return {draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status};
 }
 
 const StyledTableCell = withStyles((theme) => ({
@@ -35,23 +28,10 @@ const StyledTableCell = withStyles((theme) => ({
 }))(TableCell);
 
 const rows = [
-    createData('India', 'IN', 1324171354, 3287263, 10, 20, 2, 0),
-    createData('China', 'CN', 1403500365, 9596961, 10, 20, 2, 0),
-    createData('Italy', 'IT', 60483973, 301340, 10, 20, 2, 0),
-    createData('United States', 'US', 327167434, 9833520, 10, 20, 2, 0),
-    createData('Canada', 'CA', 37602103, 9984670, 10, 20, 2, 0),
-    createData('Australia', 'AU', 25475400, 7692024, 10, 20, 2, 0),
-    createData('Germany', 'DE', 83019200, 357578, 10, 20, 2, 0),
-    createData('Ireland', 'IE', 4857000, 70273, 10, 20, 2, 0),
-    createData('Mexico', 'MX', 126577691, 1972550, 10, 20, 2, 0),
-    createData('Japan', 'JP', 126317000, 377973, 10, 20, 2, 0),
-    createData('France', 'FR', 67022000, 640679, 10, 20, 2, 0),
-    createData('United Kingdom', 'GB', 67545757, 242495, 10, 20, 2, 0),
-    createData('Russia', 'RU', 146793744, 17098246, 10, 20, 2, 0),
-    createData('Nigeria', 'NG', 200962417, 923768, 10, 20, 2, 0),
-    createData('Brazil', 'BR', 210147125, 8515767, 10, 20, 2, 0),
+    createData('India', 'IN', 1324171354, 3287263, 10, 20, 2, 0, 10),
+    createData('China', 'CN', 1403500365, 9596961, 10, 20, 2, 0, 10),
+    createData('Italy', 'IT', 6048397312, 3013402, 10, 20, 2, 0, 10),
   ];
-const rows1 = [];
 
 const useStyles = makeStyles({
     root: {
@@ -83,10 +63,23 @@ const useStyles = makeStyles({
 const BetHistoryTable = props => {
     const classes = useStyles();
     const [page, setPage] = useState(0);
+    const { t } = useTranslation();
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
+
+    const columns = [
+        {id: 'draw', label: t("bet_history_table.draw_title"), minWidth: 170, align: 'center' },
+        {id: 'lottery', label: t("bet_history_table.lottery_title"), minWidth: 170, align: 'center' },
+        {id: 'betType', label: t("bet_history_table.bet_type"), minWidth: 100, align: 'center'},
+        {id: 'buyTime', label: t("bet_history_table.buy_time"), minWidth: 100, align: 'center'},
+        {id: 'numberOfBets', label: t("bet_history_table.number_of_bets"), align: 'center', minWidth: 100},
+        {id: 'totalBet', label: t("bet_history_table.total_bet"), align: 'center', minWidth: 100},
+        {id: 'multiple', label: t("bet_history_table.multiple"), minWidth: 100, align: 'center'},
+        {id: 'stakes', label: t("bet_history_table.bets"), minWidth: 100, align: 'center'},
+        {id: 'status', label: t("bet_history_table.status"), minWidth: 100, align: 'center'}
+    ];
 
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(+event.target.value);
@@ -95,7 +88,10 @@ const BetHistoryTable = props => {
 
     return (
         <div style={{marginTop: 50, marginBottom: 50,}}>
-            <p className="bet_content">Bet History</p>
+            <div className="row_flex" style={{justifyContent: 'space-between'}}>
+                <p className="bet_content">{t("bet_history_table.bet_history")}</p>
+                <Button type='outlined' icon={<Refresh className="icon" />} onClick={() => {}} />
+            </div>
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
@@ -113,7 +109,7 @@ const BetHistoryTable = props => {
                                 <TableBody className={classes.body}>
                                     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                                         return (
-                                            <TableRow hover role="checkbox" tabIndex={-1} key={row.no}>
+                                            <TableRow hover role="checkbox" tabIndex={-1} key={row.buyTime}>
                                                 {columns.map((column) => {
                                                     const value = row[column.id];
                                                     return (

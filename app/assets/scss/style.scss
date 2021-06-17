@@ -1,7 +1,6 @@
 /* external styles */
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~animate.css/animate.min.css";
-@import "~react-modal-video/scss/modal-video.scss";
 @import "~swiper/css/swiper.css";
 
 /* Needed Files*/
@@ -27,10 +26,14 @@ Blocks Styles
 @import "blocks/button";
 @import "blocks/header";
 @import "blocks/navigation";
-@import "blocks/slider";
 @import "blocks/sidebar";
 @import "blocks/breadcrumb";
-@import "blocks/custom";
 @import "blocks/table";
 @import "blocks/tab";
-
+@import "blocks/ctrlPanel";
+@import "blocks/homePanel";
+@import "blocks/titleBox";
+@import "blocks/dropdown";
+@import "blocks/resultBoard";
+@import "blocks/custom";
+@import "blocks/oddsTheme";

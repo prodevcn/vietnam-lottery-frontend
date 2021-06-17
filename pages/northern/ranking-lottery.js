@@ -1,8 +1,12 @@
+import React, {useState, useEffect} from 'react';
+
+import Layout from '../../app/layouts/Layout';
+
 const RankingLottery = props => {
     return (
-        <div>
-            <p>Ranking Lottery</p>
-        </div>
+        <Layout>
+            
+        </Layout>
     );
 };
 

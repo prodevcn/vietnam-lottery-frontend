@@ -10,14 +10,6 @@ const HeaderBtn = () => {
     };
     return (
         <div className="header-btn-wrapper">
-            {/* <ul className="accounts d-none d-lg-flex">
-                <li>
-                    <Link href='/login-register'>Log in</Link>
-                </li>
-                <li className="active">
-                    <Link href='/login-register'>Sign up</Link>
-                </li>
-            </ul> */}
             <div className="mobile-button-wrapper d-block d-lg-none text-right">
                 <button
                     className="mobile-aside-button"

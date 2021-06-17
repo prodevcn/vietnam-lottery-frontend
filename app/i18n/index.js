@@ -5,7 +5,7 @@ import en from './translations/en.json';
 import vn from './translations/vn.json';
 
 i18n.use(initReactI18next).init({
-    lng: 'vn',
+    lng: 'en',
     resources: {
         en: en,
         vn: vn,

@@ -1,0 +1,43 @@
+.title__container {
+    width: 100%;
+    margin: 1rem 0;
+    .title__box {
+        color: #ddd;
+        display: inline-block;
+        background-color: transparent;
+        transition: all 0.5s ease 0s;
+        border: 1px solid rgb(255, 136, 1);
+        border-radius: 100px;
+        margin: 2rem 0;
+        width: 100%;
+        display: flex;
+        &:hover {
+            box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2), 0 6px 20px 0 rgba(255, 136, 1, 0.19);
+        }
+        .title__name {
+            width: 60%;
+            padding: 0.5rem 2rem;
+            font-size: 1rem;
+        }
+        .title__date {
+            width: 40%;
+            border-radius: 100rem;
+            text-align: center;
+            font-size: 1rem;
+            background-image: linear-gradient(rgb(255, 136, 1), rgb(107, 57, 0) );
+            padding: 0.5rem 1rem;
+        }
+    }
+    .title__number {
+        display: flex;
+        justify-content: center;
+        .number__box {
+            margin: 0 0.2rem;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            background: #aaa;
+            border-radius: 5px;
+            color: black;
+        }
+    }
+}

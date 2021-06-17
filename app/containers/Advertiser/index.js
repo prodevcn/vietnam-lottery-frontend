@@ -11,16 +11,13 @@ const Advertiser = props => {
             infiniteLoop={true} 
             showArrows={false}>
             <div>
-                <img src='/images/adv/adv1.png' />
-                <p className="legend">Legend 1</p>
+                <img src='/images/ads/ad1.jpg' />
             </div>
             <div>
-                <img src='/images/adv/adv1.png' />
-                <p className="legend">Legend 2</p>
+                <img src='/images/ads/ad2.jpg' />
             </div>
             <div>
-                <img src='/images/adv/adv1.png' />
-                <p className="legend">Legend 3</p>
+                <img src='/images/ads/ad3.png' />
             </div>
       </Carousel>
     );

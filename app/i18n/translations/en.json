@@ -1,5 +1,151 @@
 {
     "translation": {
-        
+        "play_now": "Play now",
+        "coming_soon": "Coming soon",
+        "total_state": "Total state is",
+        "lottery_result": "Lottery Results",
+        "time_remaining": "Time remaining",
+        "odds": "Odds",
+        "to": "to",
+        "multiple": "Multiple",
+        "selected": "Selected",
+        "payout": "Payout",
+        "numbers": "numbers",
+        "vnd": "VND",
+        "download": "Download",
+        "select_num": {
+            "all": "All",
+            "erase": "Erase",
+            "finance": "Finance",
+            "odd": "Odd",
+            "faint": "Faint",
+            "even": "Even",
+            "dozen": "Dozen",
+            "unit": "Unit",
+            "hundred": "Hundred",
+            "thousand": "Thousand",
+            "set_script": "numbers must be separated by semi colon - e.g, 12;13 or 12&13;15&16",
+            "random": "Random",
+            "suggestions": "Suggestions",
+            "rarely_appear": "Rarely Appears"
+        },
+        "help": {
+            "backpack": {
+                "lot2": "Roll the last 2 digits of the 18 lots of the winning results. Just pay 18,000 VND for each hit point, the winnings for each point is 99,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot2_1K": "Roll the last 2 digits of the 18 lots of the winning results. Just pay 1,000 VND for each hit point, the winning for each point is 5,445 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot3": "Roll the last 3 digits of the 17 lots of the winning results. Just pay 17,000 VND for each hit point, the winning for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot4": "Roll the last 4 digits of the 16 lots of the winning results. Just pay 16,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
+            },
+            "loxian": {
+                "xien2": "Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
+                "xien3": "Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 150,000 VND.",
+                "xien4": "Choose 4 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
+            }
+        },
+        "result_board": {
+            "bet_time": "Bet time",
+            "lottery_draw": "Lottery draw",
+            "lottery_result": "Lottery results"
+        },
+        "buttons": {
+            "reset": "Reset",
+            "quick_bet": "Quick Bet",
+            "more_bet": "More Bet",
+            "feed": "Feed",
+            "place_bet": "Place bet"
+        },
+        "bet_types": {
+            "backpack": "Backpack",
+            "loxian": "Lo Xian",
+            "score": "Score",
+            "head_and_tail": "Head and Tail",
+            "3more": "3 More",
+            "4more": "4More",
+            "sliding_lot": "Sliding Lot",
+            "sub": {
+                "select": "Select Number",
+                "enter": "Enter Number",
+                "quick": "Quick number pick",
+                "odds": "Odds",
+                "lot2": "Lot2 No.",
+                "lot2_1K": "Lot2 No. 1K",
+                "lot3": "Lot3 No.",
+                "lot4": "Lot4 No."
+            }
+        },
+        "result_table":{
+            "result":"Result",
+            "red_award": "Red Award",
+            "first_prize": "First prize",
+            "second_prize": "Second prize",
+            "third_prize": "Third prize",
+            "fourth_prize": "Fourth prize",
+            "fifth_prize": "Fifth prize",
+            "sixth_prize": "Sixth prize",
+            "seventh_prize": "Seventh prize",
+            "head": "Head",
+            "tail": "Tail"
+        },
+        "bet_content_table":{
+            "bet_content": "Bet Content",
+            "no": "No",
+            "bet_name": "Bet Name",
+            "number_of_bets": "Number of Bets",
+            "total_bet": "Total Bet",
+            "multiple": "Multiple",
+            "stakes": "Stakes",
+            "money_won_time": "Money won / 1 time"
+        },
+        "bet_history_table": {
+            "bet_history": "Bet History",
+            "draw_title": "Drawsuot",
+            "lottery_title": "lottery",
+            "bet_type": "Bet Type",
+            "buy_time": "time to buy",
+            "number_of_bets": "Number of Bets",
+            "total_bet": "Total bet",
+            "multiple": "Multiple",
+            "bets": "bets",
+            "status": "status"
+        },
+        "game_types": {
+            "live_stream": "LiveStream",
+            "vip": {
+                "caption": "VIP Lottery",
+                "saigon": "Saigon VIP",
+                "hanoi": "Hanoi VIP",
+                "hochiminh": "Ho Chi Minh VIP",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            },
+            "mega": {
+                "caption": "Mega 6/45",
+                "one_second": "1 Second",
+                "one_minute": "1 Minute",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            },
+            "northern": {
+                "caption": "Northern",
+                "northern": "Northern Lottery",
+                "special": "Special 18h25",
+                "scratch": "Scratch Lottery",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            },
+            "super_speed": {
+                "caption": "Super speed",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            },
+            "south": {
+                "caption": "South",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            },
+            "central": {
+                "caption": "Central",
+                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
+            }
+        },
+        "countries": {
+            "united_states": "United States",
+            "vietnam": "Vietnam"
+        }
     }
 }

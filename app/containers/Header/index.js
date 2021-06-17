@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
 import React, {useState, useEffect} from 'react';
+
 import Logo from '../../components/Header/Logo';
 import Navigation from '../../components/Header/Navigation';
 import MobileMenu from '../../components/Header/MobileMenu';
 import HeaderBtn from '../../components/Header/HeaderBtn';
+
 
 const Header = props => {
     const [scroll, setScroll] = useState(0);

@@ -1,5 +1,147 @@
 {
     "translation": {
-        
+        "play_now": "Bắt đầu chơi",
+        "coming_soon": "Sắp có",
+        "total_state": "Tổng tiền cược ",
+        "lottery_result": "Kết quả xổ số ",
+        "time_remaining": "Thời gian còn lại",
+        "odds": "Tỉ lệ cược",
+        "to": "ăn",
+        "multiple": "Cấp Số Nhân",
+        "selected": "Đã chọn",
+        "payout": "Tiền đánh",
+        "numbers": "số",
+        "vnd": "VNĐ",
+        "download": " Tải tập tin",
+        "select_num": {
+            "all": "Tất cả",
+            "erase": "Xóa",
+            "finance": "Tài",
+            "odd": "Lẻ",
+            "faint": "Xỉu",
+            "even": "Chẵn",
+            "dozen": "Chục",
+            "unit": "Đơn vị",
+            "hundred": "Trăm",
+            "thousand": "Nghìn",
+            "set_script": "các số phải được phân tách bằng dấu chấm phẩy - ví dụ: 12;13 hoặc 12&13; 15&16",
+            "random": "Ngẫu Nhiên",
+            "suggestions": "Gợi Ý",
+            "rarely_appear": "Ít Xuất Hiện"
+        },
+        "help": {
+            "backpack": {
+                "lot2": " Đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Chỉ cần thanh toán 18,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 99,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+                "lot2_1K": "Đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 5,445 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+                "lot3": "Đánh bao lô 3 chữ số cuối trong 17 lô của kết quả mở thưởng. Chỉ cần thanh toán 17,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+                "lot4": "Đánh bao lô 4 chữ số cuối trong 16 lô của kết quả mở thưởng. Chỉ cần thanh toán 16,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
+            }
+        },
+        "result_board": {
+            "bet_time": "Thời gian đặt cược",
+            "lottery_draw": "Lượt xổ ",
+            "lottery_result": "Kết quả xổ số "
+        },        
+        "buttons": {
+            "reset": "Đặt lại",
+            "quick_bet": "Cược nhanh",
+            "more_bet": "Thêm cược",
+            "feed": "Nuôi",
+            "place_bet": "Đặt Cược"
+        },
+        "bet_types": {
+            "backpack": "Bao Lô",
+            "loxian": "Lô Xiên",
+            "score": "Đánh Đề",
+            "head_and_tail": "Đầu Đuôi",
+            "3more": "3 Càng",
+            "4more": "4 Càng",
+            "sliding_lot": "Lô Trượt",
+            "sub": {
+                "select": "Chọn Số",
+                "enter": "Nhập Số",
+                "quick": "Chọn số nhanh",
+                "odds": "Tỉ lệ cược",
+                "lot2": "Lô 2 Số",
+                "lot2_1K": "Lô 2 Số 1K",
+                "lot3": "Lô 3 Số",
+                "lot4": "Lô 4 Số"
+            }
+        },
+        "result_table":{
+            "result":"Kết quả",
+            "red_award": "Giải ĐB",
+            "first_prize": "Giải nhất",
+            "second_prize": "Giải nhì",
+            "third_prize": "Giải ba",
+            "fourth_prize": "Giải tư",
+            "fifth_prize": "Giải năm",
+            "sixth_prize": "Giải sáu",
+            "seventh_prize": "Giải bảy",
+            "head": "Đầu",
+            "tail": "Đuôi"
+        },
+        "bet_content_table":{
+            "bet_content": "Nội dung cược",
+            "no": "Stt",
+            "bet_name": "Tên cược",
+            "number_of_bets": "Số cược",
+            "total_bet": "Tổng cược",
+            "multiple": "Cấp số nhân",
+            "stakes": "Tiền cược",
+            "money_won_time": "Tiền thắng / 1 lần"
+        },
+        "bet_history_table": {
+            "bet_history": "Lịch sử cược",
+            "draw_title": "Lượt xổ",
+            "lottery_title": "Xổ số",
+            "bet_type": "Kiểu cược",
+            "buy_time": "Thời gian mua",
+            "number_of_bets": "Số cược",
+            "total_bet": "Tổng cược",
+            "multiple": "Cấp số nhân",
+            "bets": "Tiền cược",
+            "status": "Trạng thái"
+        },
+        "game_types": {
+            "live_stream": "Xổ số Livestream 2 phút",
+            "vip": {
+                "caption": "Xổ Số VIP",
+                "saigon": "Sài Gòn VIP",
+                "hanoi": "Hà Nội VIP",
+                "hochiminh": "Hồ Chí Minh VIP",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            },
+            "mega": {
+                "caption": "Mega 6/45",
+                "one_second": "1 giây",
+                "one_minute": "1 phút",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            },
+            
+            "northern": {
+                "caption": "Miền Bắc",
+                "northern": "Xổ Số Miền Bắc",
+                "special": "Đặc Biệt 18h25",
+                "scratch": "Xổ số cào",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            },
+            "super_speed": {
+                "caption": "Siêu Tốc",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            },
+            "south": {
+                "caption": "Miền Nam",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            },
+            "central": {
+                "caption": "Miền Trung",
+                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+            }
+        },
+        "countries": {
+            "united_states": "Hoa Kỳ",
+            "vietnam": "Việt Nam"
+        }
     }
 }
