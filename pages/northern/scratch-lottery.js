@@ -5,7 +5,7 @@ import Layout from '../../app/layouts/Layout';
 const RankingLottery = props => {
     return (
         <Layout>
-            
+            scratch lottery
         </Layout>
     );
 };

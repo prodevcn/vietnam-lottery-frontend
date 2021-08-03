@@ -15,11 +15,9 @@ const buttonStyle = {
   marginRight: "1rem",
 };
 
-const FourMore = (props) => {
+const Score = (props) => {
   const [state_dozen, setDozenState] = useState([false, false, false, false, false, false, false, false, false, false]);
   const [state_unit, setUnitState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [state_hundred, setHundredState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [state_thousand, setThousandState] = useState([false, false, false, false, false, false, false, false, false, false]);
   /* set numbers dozen*/
   const setDozenAll = () => {
     setDozenState([true, true, true, true, true, true, true, true, true, true]);
@@ -55,52 +53,42 @@ const FourMore = (props) => {
     });
   };
 
-  /* set numbers hundred */
-  const setHundredAll = () => {
-    setHundredState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearHundredAll = () => {
-    setHundredState([false, false, false, false, false, false, false, false, false, false]);
-  };
-  const updateHundred = (index) => {
-    setHundredState((prevUnit) => {
-      const list = prevUnit.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  /* set numbers unit */
-  const setThousandAll = () => {
-    setThousandState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearThousandAll = () => {
-    setThousandState([false, false, false, false, false, false, false, false, false, false]);
-  };
-  const updateThousand = (index) => {
-    setThousandState((prevUnit) => {
-      const list = prevUnit.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  const [digitType, setDigiType] = useState("4_special_pins");
+  const [digitType, setDigitType] = useState("first");
   const [inputType, setInputType] = useState("select");
   const [script, setScript] = useState("");
 
   const { t } = useTranslation();
   const digitTypes = [
     {
-      key: "4_special_pins",
-      title: t("bet_types.sub.4_special_pins"),
-      help: t("help.4more.4_special_pins"),
-      odds: "8,880",
+      key: "first",
+      title: t("bet_types.sub.first"),
+      help: t("help.score.first"),
+      odds: "98",
     },
+    {
+      key: "special_topics",
+      title: t("bet_types.sub.special_topics"),
+      help: t("help.score.special_topics"),
+      odds: "99",
+    },
+    {
+      key: "special_headline",
+      title: t("bet_types.sub.special_headline"),
+      help: t("help.score.special_headline"),
+      odds: "99",
+    },
+    {
+      key: "problem",
+      title: t("bet_types.sub.problem"),
+      help: t("help.score.problem"),
+      odds: "98",
+    },
+    {
+        key: "first_de",
+        title: t("bet_types.sub.first_de"),
+        help: t("help.score.first_de"),
+        odds: "98",
+      },
   ];
   const inputTypes = [
     {
@@ -120,14 +108,9 @@ const FourMore = (props) => {
   const createRndScript = (digits) => {
     let phrase = "";
     for (let i = 0; i < digits; i++) {
-      const rand = Math.floor(Math.random() * 10000);
-      if (rand < 10) {
-        phrase = phrase + '000' + rand + ";";
-      } else if (rand < 100) {
-        phrase = phrase + '00' + rand + ";";
-      } else if (rand < 1000) {
-        phrase = phrase + '0' + rand + ";";
-      } else{ phrase = phrase + rand + ";";}
+      const rand = Math.floor(Math.random() * 100);
+      if (rand < 10) phrase = phrase + 0 + rand + ";";
+      else phrase = phrase + rand + ";";
     }
     setScript(phrase);
   };
@@ -143,7 +126,7 @@ const FourMore = (props) => {
                 title={element.title}
                 innerStyle={digitType !== element.key ? buttonStyle : null}
                 onClick={() => {
-                  setDigiType(element.key);
+                  setDigitType(element.key);
                 }}
                 key={`LOT_TYPE_${index}`}
               />
@@ -180,88 +163,6 @@ const FourMore = (props) => {
       <div className="set_number_area">
         {inputType === "select" && (
           <Grid container spacing={2}>
-                <Grid item xl={7} lg={7} md={12} sm={12} xs={12}>
-                  <Grid container spacing={0} style={{ marginTop: "1rem" }}>
-                    <Grid item xl={2} lg={2} md={2} sm={2} xs={2}>
-                      <p style={{ color: "#ff8801", marginBottom: 0 }}>{t("select_num.thousand")}</p>
-                    </Grid>
-                    {_.range(10).map((index) => (
-                      <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
-                        <button
-                          className={state_thousand[index] ? "number_button active" : "number_button"}
-                          onClick={() => {
-                            updateThousand(index);
-                          }}
-                        >
-                          {index}
-                        </button>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-                <Grid item xl={5} lg={5} md={12} sm={12} xs={12}>
-                  <Button
-                    title={t("select_num.all")}
-                    type="contained"
-                    onClick={() => {
-                      setThousandAll();
-                    }}
-                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
-                  />
-                  <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
-                                    <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
-                  <Button
-                    title={t("select_num.erase")}
-                    type="contained"
-                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
-                    onClick={() => {
-                      clearThousandAll();
-                    }}
-                  />
-                </Grid>
-                <Grid item xl={7} lg={7} md={12} sm={12} xs={12}>
-                  <Grid container spacing={0} style={{ marginTop: "1rem" }}>
-                    <Grid item xl={2} lg={2} md={2} sm={2} xs={2}>
-                      <p style={{ color: "#ff8801", marginBottom: 0 }}>{t("select_num.hundred")}</p>
-                    </Grid>
-                    {_.range(10).map((index) => (
-                      <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
-                        <button
-                          className={state_hundred[index] ? "number_button active" : "number_button"}
-                          onClick={() => {
-                            updateHundred(index);
-                          }}
-                        >
-                          {index}
-                        </button>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Grid>
-                <Grid item xl={5} lg={5} md={12} sm={12} xs={12}>
-                  <Button
-                    title={t("select_num.all")}
-                    type="contained"
-                    onClick={() => {
-                      setHundredAll();
-                    }}
-                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
-                  />
-                  <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
-                                    <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
-                  <Button
-                    title={t("select_num.erase")}
-                    type="contained"
-                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
-                    onClick={() => {
-                      clearHundredAll();
-                    }}
-                  />
-                </Grid>
             <Grid item xl={7} lg={7} md={12} sm={12} xs={12}>
               <Grid container spacing={0} style={{ marginTop: "1rem" }}>
                 <Grid item xl={2} lg={2} md={2} sm={2} xs={2}>
@@ -333,6 +234,8 @@ const FourMore = (props) => {
               />
               <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
               <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+              {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
+                        <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
               <Button
                 title={t("select_num.erase")}
                 type="contained"
@@ -392,16 +295,6 @@ const FourMore = (props) => {
                   />
                 </Grid>
                 {/* <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-                        <Button type='transparent' title={t("select_num.suggestions")} />
-                    </Grid>
-                    <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-                        <Button title={"1 " + t("numbers")} type="outlined" />
-                        <Button title={"2 " + t("numbers")} type="outlined" />
-                        <Button title={"3 " + t("numbers")} type="outlined" />
-                        <Button title={"5 " + t("numbers")} type="outlined" />
-                        <Button title={"10 " + t("numbers")} type="outlined" />
-                    </Grid> */}
-                {/* <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
                   <Button type="transparent" title={t("select_num.rarely_appear")} />
                 </Grid>
                 <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
@@ -424,4 +317,4 @@ const FourMore = (props) => {
   );
 };
 
-export default FourMore;
+export default Score;

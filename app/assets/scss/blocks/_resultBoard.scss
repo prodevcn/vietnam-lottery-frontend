@@ -52,6 +52,20 @@
     }
 }
 
+.duration__circle {
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0.2rem;
+    h6 {
+        margin: 0;
+        color: rgb(255, 136, 1)
+    }
+}
+
 @media #{$sm-layout} {
     .title__area {
         border-bottom: 1px solid #646464;
@@ -64,6 +78,9 @@
 }
 @media #{$md-layout} {
     .number__circle {
+        padding: 0.5rem 0.6rem;
+    }
+    .duration__circle {
         padding: 0.5rem 0.6rem;
     }
 }

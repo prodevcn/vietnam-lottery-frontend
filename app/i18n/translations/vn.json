@@ -13,6 +13,10 @@
         "numbers": "số",
         "vnd": "VNĐ",
         "download": " Tải tập tin",
+        "auth_message": "Vui lòng đăng nhập hoặc đăng ký !",
+        "login": "đăng nhập",
+        "logout": "đăng xuất",
+        "signup": "đăng ký",
         "select_num": {
             "all": "Tất cả",
             "erase": "Xóa",
@@ -35,6 +39,35 @@
                 "lot2_1K": "Đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 5,445 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
                 "lot3": "Đánh bao lô 3 chữ số cuối trong 17 lô của kết quả mở thưởng. Chỉ cần thanh toán 17,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
                 "lot4": "Đánh bao lô 4 chữ số cuối trong 16 lô của kết quả mở thưởng. Chỉ cần thanh toán 16,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
+            },
+            "loxien": {
+                "xien2": "Chọn 2 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 2 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 16,000 VND.",
+                "xien3": "Chọn 3 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 3 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 65,000 VND.",
+                "xien4": "Chọn 4 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 180,000 VND."
+            },
+            "score": {
+                "first": "Đánh 2 chữ số đầu trong giải nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
+                "special_topics": "Đánh 2 chữ số cuối trong giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
+                "special_headline": "Đánh 2 chữ số đầu trong giải đặc biệt.. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
+                "problem": "Đánh 2 chữ số cuối trong 4 giải của Giải 7. Thanh toán 4,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
+                "first_de":"Đánh 2 chữ số cuối trong Giải Nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND."
+            },
+            "headandtail": {
+                "head": "Đánh 1 chữ số hàng chục của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND.",
+                "tail": "Đánh 1 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND."
+            },
+            "3more": {
+                "3pin": "Đánh 3 chữ số của 3 giải 6. Thanh toán 3,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND.",
+                "3pin_headandtail": "Đánh 3 chữ số cuối của 3 giải 6 và giải đặc biệt. Thanh toán 4,000 VND cho mỗi điểm. Chỉ cần 1 trong 2 : giải 6 hoặc giải đặc biệt có 3 chữ số cuối trùng với số người chơi đã chọn là thắng. Tiền thắng cho mỗi điểm là 960,000 VND.",
+                "3_special_pins": "Đánh 3 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND."
+            },
+            "4more": {
+                "4_special_pins": "Đánh 4 chữ số của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 8,880,000 VND."
+            },
+            "slide": {
+                "4slide": "Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 2,300 VND.",
+                "8slide": "Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,000 VND.",
+                "10slide": "Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 12,000 VND."
             }
         },
         "result_board": {
@@ -51,7 +84,7 @@
         },
         "bet_types": {
             "backpack": "Bao Lô",
-            "loxian": "Lô Xiên",
+            "loxien": "Lô Xiên",
             "score": "Đánh Đề",
             "head_and_tail": "Đầu Đuôi",
             "3more": "3 Càng",
@@ -65,7 +98,24 @@
                 "lot2": "Lô 2 Số",
                 "lot2_1K": "Lô 2 Số 1K",
                 "lot3": "Lô 3 Số",
-                "lot4": "Lô 4 Số"
+                "lot4": "Lô 4 Số",
+                "xien2": "Xiên 2",
+                "xien3": "Xiên 3",
+                "xien4": "Xiên 4",
+                "head": "Đầu",
+                "tail": "Đuôi",
+                "first": "Đề đầu giải nhất",
+                "special_topics": "Đề đặc biệt",
+                "special_headline": "Đề đầu đặc biệt",
+                "problem": "Đề Giải 7",
+                "first_de": "Đề Giải Nhất",
+                "3pin": "3 Càng Đầu",
+                "3pin_headandtail": "3 Càng Đầu Đuôi",
+                "3_special_pins": "3 Càng Đặc Biệt",
+                "4_special_pins": "4 Càng Đặc Biệt",
+                "4slide": "Trượt Xiên 4",
+                "8slide": "Trượt Xiên 8",
+                "10slide": "Trượt Xiên 10"
             }
         },
         "result_table":{

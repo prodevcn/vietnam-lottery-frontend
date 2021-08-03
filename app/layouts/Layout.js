@@ -22,7 +22,8 @@ const Layout = props => {
                 <Grid container spacing={3}>
                     <Grid item xl={9} lg={9} md={8} sm={12} xs={12}>
                         {/* <Slider /> */}
-                        <ResultBoard 
+                        <ResultBoard
+                            gameType={props.gameType} 
                             gameTitle={t("game_types.northern.northern")} 
                             bettingType={{type: 'backpack', digitType: '1more'}}
                             estimatedDate="2021-06-22"
@@ -49,7 +50,7 @@ const Layout = props => {
                         </Container>
                     </Grid>
                     <Grid item xl={3} lg={3} md={4} sm={12} xs={12}>
-                        <ResultTable title={t("game_types.northern.northern")} />
+                        <ResultTable gameType={props.gameType} title={t("game_types.northern.northern")} />
                         <Advertiser />
                     </Grid>
                 </Grid>

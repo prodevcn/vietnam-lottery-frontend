@@ -1,5 +1,13 @@
+html {
+    background:  #161611;
+    background-image: url('/images/dart.png'), url('/images/gold-card-transparent.png') ;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-position: right bottom, left bottom;
+}
 body {
     background-image: linear-gradient(180deg, #161611, #0f0f0d);
+    background-repeat: no-repeat;
     cursor:  default !important;
 }
 
@@ -110,7 +118,6 @@ body {
 }
 
 
-
 /* customizing previous styles*/
 .game_panel_container {
     max-width: 90%;
@@ -145,6 +152,7 @@ input {
     .number_area {
         display: flex;
         justify-content: 'space-around';
+        align-items: 'center';
     }
 }
 .control__panel {
@@ -210,6 +218,18 @@ input {
     width: 100%; 
     padding: 1rem;
     height: 100%;
+}
+.cover {
+    // position: absolute;
+    background-color: #0f0f0d;
+    width: 100%;
+    height: 100%;
+}
+.bread_crumb {
+    display: flex;
+}
+.bread_crumb_item {
+    margin: 1rem 2rem,
 }
 
 

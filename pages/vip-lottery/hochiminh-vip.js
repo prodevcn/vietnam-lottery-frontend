@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import Layout from '../../app/layouts/Layout';
-import Score from '../../app/containers/BetTypes/Rate';
+import Score from '../../app/containers/BetTypes/Score';
 import ThreeMore from '../../app/containers/BetTypes/3More';
 import FourMore from '../../app/containers/BetTypes/4More';
 import Backpack from '../../app/containers/BetTypes/Backpack';
@@ -83,7 +83,7 @@ const HochiminhVIP = props => {
           component: <Backpack />,
       },
       {
-          label: t("bet_types.loxian"),
+          label: t("bet_types.loxien"),
           component: <LotXien />,
       },
       {

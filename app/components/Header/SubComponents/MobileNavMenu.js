@@ -19,7 +19,7 @@ const MobileNavMenu = () => {
                 <li className="menuItemHasChildren">
                     <Link href='/vip-lottery/hochiminh-vip'><a>{t("game_types.vip.caption")}</a></Link>
                     <ul className="subMenu">
-                        <li>
+                        {/* <li>
                             <Link href='/vip-lottery/saigon-vip'><a>{t("game_types.vip.saigon")}</a></Link>
                         </li>
                         <li>
@@ -29,7 +29,8 @@ const MobileNavMenu = () => {
                             <Link href='/vip-lottery/hochiminh-vip'>
                                 <a>{t("game_types.vip.hochiminh")}</a>
                             </Link>
-                        </li>
+                        </li> */}
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -43,7 +44,7 @@ const MobileNavMenu = () => {
                                 <a>{t("game_types.mega.one_minute")}</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/coming-soon.png" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -57,7 +58,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/coming-soon.png" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -71,7 +72,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/coming-soon.png" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -85,7 +86,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/coming-soon.png" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -94,10 +95,14 @@ const MobileNavMenu = () => {
                         <li>
                             <Link href='/northern/northern-lottery' onClick={() => {props.closeMenu()}}><a>{t("game_types.northern.northern")}</a></Link>
                         </li>
-                        <li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        {/* <li>
                             <Link href='/northern/special-18h25'><a>{t("game_types.northern.special")}</a></Link>
-                        </li>
-                        <li><img src="/images/coming-soon.png" className="coming_soon_icon" /><a>{t("coming_soon")}</a></li>
+                        </li> */}
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        {/* <li>
+                            <Link href='/northern/scratch-lottery'><a>{t("game_types.northern.scratch")}</a></Link>
+                        </li> */}
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">

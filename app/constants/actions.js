@@ -10,6 +10,9 @@ function createRequestTypes(base) {
     return requestType;
 }
 
+export const AUTH = createRequestTypes('AUTH');
+export const UN_AUTH = createRequestTypes('UN_AUTH');
+
 export const FETCH_BET_HISTORY = createRequestTypes('FETCH_BET_HISTORY');
 export const SAVE_BET_INFO = createRequestTypes('SAVE_BET_INFO');
 
