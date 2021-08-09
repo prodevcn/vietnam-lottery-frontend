@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { Field, reduxForm } from 'redux-form';
+import {Card, CardContent} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Header from '../../app/containers/Header';
@@ -47,7 +46,7 @@ const Login = props => {
         if (authenticated) {
             router.push('/');
         }
-    }, []);
+    }, [authenticated]);
 
     return(
         <div>

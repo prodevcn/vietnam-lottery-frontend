@@ -2,7 +2,6 @@ import {FETCH_BET_HISTORY, SAVE_BET_INFO} from '../../constants/actions';
 
 const initialState = {
     fetching: false,
-    fetched: false,
     betHistory: [],
     betInfo: {},
     error: null,
@@ -13,15 +12,15 @@ const reducer = (state = initialState, action) => {
         case FETCH_BET_HISTORY.REQUEST: {
             return {
                 ...state,
+                error: null,
                 fetching: true,
-                fetched: false
             };
         }
         case FETCH_BET_HISTORY.SUCCESS: {
             return {
                 ...state,
                 fetching: false,
-                fetched: true,
+                error: null,
                 betHistory: action.payload
             };
         }
@@ -29,7 +28,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetching: false,
-                fetched: false,
                 error: action.payload
             };
         }

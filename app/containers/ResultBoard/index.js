@@ -7,7 +7,7 @@ import TimerIcon from "@material-ui/icons/Timer";
 import io from "socket.io-client";
 import _ from "lodash";
 
-import { getGameResult, getNewGameInfo } from "../../redux/actions/game";
+import { getGameLatestResult, getNewGameInfo } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
 import { API_URL } from "../../constants/config";
 
@@ -16,6 +16,7 @@ const socket = io.connect(API_URL);
 const ResultBoard = (props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const {authenticated} = useSelector(state => state.auth);
   const [result, setResult] = useState({});
   const [gameInfo, setGameInfo] = useState({});
   const [duration, setDuration] = useState({
@@ -25,7 +26,7 @@ const ResultBoard = (props) => {
   });
   let interval = null;
   const getNewResult = () => {
-    dispatch(getGameResult())
+    dispatch(getGameLatestResult())
       .then((res) => {
         if (res.length !== 0) {
           const northern_result = res.map((e) => {
@@ -53,7 +54,9 @@ const ResultBoard = (props) => {
       getNewResult();
     });
     socket.on("new game start", (data) => {
-      getNewGame();
+      if (authenticated) {
+        getNewGame();
+      }
       console.log("New game start");
     });
     
@@ -68,7 +71,7 @@ const ResultBoard = (props) => {
             minutes: Math.floor(distance % (1000 * 60 * 60) / (1000 * 60 )),
             seconds: Math.floor((distance % (1000 * 60)) / 1000) 
         });
-    }, [socket]); 
+    }, []); 
     return () => {
       setDuration({
         days: "...",

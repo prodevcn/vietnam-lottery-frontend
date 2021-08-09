@@ -1,11 +1,6 @@
 import React from 'react';
 
 const Button = props => {
-    
-    const onClick = () => {
-        props.onClick();
-    };
-
     const checkType = (value) => {
         switch(value) {
             case 'transparent':

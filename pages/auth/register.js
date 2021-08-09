@@ -48,7 +48,7 @@ const Register = props => {
         if (authenticated) {
             router.push('/');
         }
-    }, []);
+    }, [authenticated]);
 
     return(
         <div>

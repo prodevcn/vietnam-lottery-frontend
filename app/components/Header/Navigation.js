@@ -1,17 +1,24 @@
 import Link from "next/link";
 import { IoCaretDown } from "react-icons/io5";
-import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import React, { useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../redux/actions/auth";
+import { useTranslation } from "react-i18next";
+import {useRouter} from 'next/router';
 
+import { logout } from "../../redux/actions/auth";
 import { COUNTRIES } from "../../constants/countries";
+import { Button } from "@material-ui/core";
+
+import LoginIcon from '../../../public/images/svg/login.svg';
+import LogoutIcon from '../../../public/images/svg/logout.svg';
+import UserIcon from '../../../public/images/svg/user.svg';
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
+  const router = useRouter();
 
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -19,17 +26,20 @@ const Navigation = () => {
   };
 
   const { authenticated } = useSelector((state) => state.auth);
-  const [cookies] = useCookies();
 
   const getSlug = () => {
-    if (cookies.user) {
+    if (user) {
       return (
-        cookies.user.firstName.slice(0, 1) + cookies.user.lastName.slice(0, 1)
+        user.firstName.slice(0, 1) + user.lastName.slice(0, 1)
       );
     } else {
       return "user";
     }
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, []);
 
   return (
     <nav className="mainmenu__nav">
@@ -206,20 +216,16 @@ const Navigation = () => {
         </li>
         {!authenticated ? (
           <Link href="/auth/login" className="date_text">
-            <a className="date_text"> {t("login")}</a>
+            <a className="date_text"><LoginIcon /></a>
           </Link>
         ) : (
           <div style={{ display: "flex" }}>
-            <img src="/images/user.png" style={{ width: 20, height: 20 }} />
-            <p
-              className="date_text"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(logout());
-              }}
-            >
-              {t("logout")}
-            </p>
+            {/* <img src="/images/user.png" style={{ width: 20, height: 20 }} /> */}
+            <UserIcon />
+            <p className="date_text">{user?.balance}</p>
+            <Button onClick={() => {dispatch(logout(router))}}>
+              <LogoutIcon />
+            </Button>
           </div>
         )}
       </ul>

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Checked from "@material-ui/icons/Check";
 
 import { setDate } from "../../util/lib";
+
 const Dropdown = (props) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(props.data[0] || { endTime: new Date() });

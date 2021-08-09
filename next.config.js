@@ -9,4 +9,11 @@ module.exports = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'app/assets/scss')],
     },
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ["@svgr/webpack"]
+        });
+        return config;
+    }
 };

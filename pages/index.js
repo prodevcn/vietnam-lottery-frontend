@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
+import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useCookies } from "react-cookie";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {Grid, Container, Dialog, DialogContent, useMediaQuery} from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import io from "socket.io-client";
-import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
-import store from "../app/redux/store";
-import { AUTH } from "../app/constants/actions";
 import { API_URL } from "../app/constants/config";
-import { getGameResult } from "../app/redux/actions/game";
+import { getGameLatestResult } from "../app/redux/actions/game";
 import { setDate } from "../app/util/lib";
 
 import Header from "../app/containers/Header";
 import Button from "../app/components/Button";
 import Slider from "../app/containers/Slider";
-
+import { checkAuth } from "../app/redux/actions/auth";
+import { getLatestGameData } from "../app/redux/actions/auth";
 const socket = io.connect(API_URL);
 
-const App = (props) => {
+const App = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  const [cookies] = useCookies();
+  const {authenticated} = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const [resultNumber, setResultNumber] = useState("123456");
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); //for alert
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const default_results = {
@@ -48,7 +41,7 @@ const App = (props) => {
   };
 
   const getNewResults = () => {
-    dispatch(getGameResult())
+    dispatch(getGameLatestResult())
       .then((res) => {
         if (res.length !== 0) {
           const northern_result = res.map((e) => {
@@ -63,27 +56,21 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    const token = cookies.token;
-    if (token) {
-      store.dispatch({ type: AUTH.SUCCESS });
-    }
+    socket.on("new result", (data) => {
+      console.log(data);
+      getNewResults();
+    });
+  }, []);
+
+  useEffect(() => {
+    getNewResults();
+    dispatch(checkAuth());
     if (router.query?.message) {
       setOpen(true);
     }
     setTimeout(() => {
       setOpen(false);
     }, 2000);
-  }, []);
-
-  useEffect(() => {
-    socket.on("new result", (data) => {
-      console.log(data);
-      getNewResults();
-    });
-  }, [socket]);
-
-  useEffect(() => {
-    getNewResults();
   }, []);
 
   return (

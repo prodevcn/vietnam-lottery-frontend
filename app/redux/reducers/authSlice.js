@@ -1,9 +1,7 @@
-import { AUTH, UN_AUTH } from "../../constants/actions";
+import { AUTH, LOGOUT } from "../../constants/actions";
 
 const INITIAL_STATE = {
-    error: "",
-    message: "",
-    content: "",
+    error: null,
     fetching: false,
     authenticated: false
 };
@@ -14,7 +12,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
         case AUTH.REQUEST:
             return {
                 ...state,
-                fetching: true
+                fetching: true,
+                error: null,
             };
         case AUTH.FAILURE:
             return {
@@ -27,24 +26,14 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 fetching: false,
                 authenticated: true,
+                error: null,
             }
         /** cancel authentication process */
-        case UN_AUTH.REQUEST:
-            return {
-                ...state,
-                fetching: true,
-            }
-        case UN_AUTH.SUCCESS:
+        case LOGOUT:
             return {
                 ...state,
                 fetching: false,
                 authenticated: false,
-            }
-        case UN_AUTH.FAILURE:
-            return {
-                ...state,
-                fetching: false,
-                error: action.payload
             }
         default:
             return state;
