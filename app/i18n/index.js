@@ -7,8 +7,8 @@ import vn from './translations/vn.json';
 i18n.use(initReactI18next).init({
     lng: 'en',
     resources: {
-        en: en,
-        vn: vn,
+        en,
+        vn,
     },
     react: {
         useSuspense: false,

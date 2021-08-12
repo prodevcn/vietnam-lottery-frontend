@@ -17,13 +17,14 @@ export default class RootDocument extends Document {
         return {
             ...initialProps,
             styles: (
-                <React.Fragment>
+                <>
                     {sheets.getStyleElement()}
                     {flush() || null}
-                </React.Fragment>
+                </>
             ),
         };
     }
+
     render() {
         return (
             <Html lang="en">

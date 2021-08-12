@@ -1,4 +1,4 @@
-export const COUNTRIES = [
+const COUNTRIES = [
     {
         code: 'en',
         name: 'English',
@@ -10,3 +10,5 @@ export const COUNTRIES = [
         iconName: 'VN'
     }
 ];
+
+export default COUNTRIES;

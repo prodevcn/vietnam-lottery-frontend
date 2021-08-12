@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Grid from "@material-ui/core/Grid";
-
+import { useSelector, useDispatch } from 'react-redux';
 import _ from "lodash";
 
+import { setCurrentBetType, setCurrentDigitType } from "../../redux/actions/game";
 import Button from "../../components/Button";
-
 import OddsTheme from "../../components/OddsTheme";
 
 const buttonStyle = {
@@ -16,134 +16,69 @@ const buttonStyle = {
 };
 
 const Backpack = (props) => {
-  const [state_dozen, setDozenState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [state_unit, setUnitState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [state_hundred, setHundredState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [state_thousand, setThousandState] = useState([false, false, false, false, false, false, false, false, false, false]);
-  /* set numbers dozen*/
-  const setDozenAll = () => {
-    setDozenState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearDozenAll = () => {
-    setDozenState([false, false, false, false, false, false, false, false, false, false]);
-  };
-
-  const updateDozen = (index) => {
-    setDozenState((prevDozen) => {
-      const list = prevDozen.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  /* set numbers unit */
-  const setUnitAll = () => {
-    setUnitState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearUnitAll = () => {
-    setUnitState([false, false, false, false, false, false, false, false, false, false]);
-  };
-  const updateUnit = (index) => {
-    setUnitState((prevUnit) => {
-      const list = prevUnit.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  /* set numbers hundred */
-  const setHundredAll = () => {
-    setHundredState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearHundredAll = () => {
-    setHundredState([false, false, false, false, false, false, false, false, false, false]);
-  };
-  const updateHundred = (index) => {
-    setHundredState((prevUnit) => {
-      const list = prevUnit.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  /* set numbers unit */
-  const setThousandAll = () => {
-    setThousandState([true, true, true, true, true, true, true, true, true, true]);
-  };
-  const clearThousandAll = () => {
-    setThousandState([false, false, false, false, false, false, false, false, false, false]);
-  };
-  const updateThousand = (index) => {
-    setThousandState((prevUnit) => {
-      const list = prevUnit.map((e, i) => {
-        if (i == index) return !e;
-        return e;
-      });
-      return list;
-    });
-  };
-
-  const [digitType, setDigiType] = useState("lot2");
+  const dispatch = useDispatch();
+  const [digitType, setDigitType] = useState("lot2");
   const [inputType, setInputType] = useState("select");
-  const [script, setScript] = useState("");
-
-  const { t } = useTranslation();
+  const { t } = useTranslation(); 
   const digitTypes = [
     {
-      key: "lot2",
-      title: t("bet_types.sub.lot2"),
+      value: "lot2",
+      label: t("bet_types.sub.lot2"),
       help: t("help.backpack.lot2"),
       odds: "99",
     },
     {
-      key: "lot2_1K",
-      title: t("bet_types.sub.lot2_1K"),
+      value: "lot2_1K",
+      label: t("bet_types.sub.lot2_1K"),
       help: t("help.backpack.lot2_1K"),
       odds: "5.445",
     },
     {
-      key: "lot3",
-      title: t("bet_types.sub.lot3"),
+      value: "lot3",
+      label: t("bet_types.sub.lot3"),
       help: t("help.backpack.lot3"),
       odds: "960",
     },
     {
-      key: "lot4",
-      title: t("bet_types.sub.lot4"),
+      value: "lot4",
+      label: t("bet_types.sub.lot4"),
       help: t("help.backpack.lot4"),
       odds: "8,880",
     },
   ];
   const inputTypes = [
     {
-      key: "select",
-      title: t("bet_types.sub.select"),
+      value: "select",
+      label: t("bet_types.sub.select"),
     },
     {
-      key: "enter",
-      title: t("bet_types.sub.enter"),
+      value: "enter",
+      label: t("bet_types.sub.enter"),
     },
     // {
-    //     key: 'quick',
-    //     title: t("bet_types.sub.quick")
+    //     value: 'quick',
+    //     label: t("bet_types.sub.quick")
     // },
   ];
 
   const createRndScript = (digits) => {
     let phrase = "";
-    for (let i = 0; i < digits; i++) {
+    for (let i = 0; i < digits; i+= 1) {
       const rand = Math.floor(Math.random() * 100);
       if (rand < 10) phrase = phrase + 0 + rand + ";";
       else phrase = phrase + rand + ";";
     }
-    setScript(phrase);
+    props.setScript(phrase);
   };
+
+  useEffect(() => {
+    dispatch(setCurrentDigitType(digitTypes[0]));
+    dispatch(setCurrentBetType({
+      value: 'backpack',
+      label: t("bet_types.backpack"),
+    }))
+    props.clearAll();
+  }, [])
 
   return (
     <div>
@@ -152,11 +87,13 @@ const Backpack = (props) => {
           <Grid item xl={7} lg={7} md={7} sm={12} xs={12} style={{ textAlign: "center" }}>
             {digitTypes.map((element, index) => (
               <Button
-                type={digitType === element.key ? "selected" : "outlined"}
-                title={element.title}
-                innerStyle={digitType !== element.key ? buttonStyle : null}
+                type={digitType === element.value ? "selected" : "outlined"}
+                title={element.label}
+                innerStyle={digitType !== element.value ? buttonStyle : null}
                 onClick={() => {
-                  setDigiType(element.key);
+                  setDigitType(element.value);
+                  dispatch(setCurrentDigitType(element))
+                  props.clearAll();
                 }}
                 key={`LOT_TYPE_${index}`}
               />
@@ -165,11 +102,12 @@ const Backpack = (props) => {
           <Grid item xl={5} lg={5} md={5} sm={12} xs={12} style={{ textAlign: "center" }}>
             {inputTypes.map((element, index) => (
               <Button
-                type={inputType === element.key ? "selected" : "outlined"}
-                title={element.title}
-                innerStyle={inputType !== element.key ? buttonStyle : null}
+                type={inputType === element.value ? "selected" : "outlined"}
+                title={element.label}
+                innerStyle={inputType !== element.value ? buttonStyle : null}
                 onClick={() => {
-                  setInputType(element.key);
+                  setInputType(element.value);
+                  props.clearAll();
                 }}
                 key={`INPUT_TYPES_${index}`}
               />
@@ -178,7 +116,7 @@ const Backpack = (props) => {
           <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
             {digitTypes.map(
               (element, index) =>
-                digitType === element.key && (
+                digitType === element.value && (
                   <p className="date_text" key={`LOT_HELP_${index}`}>
                     {element.help}
                   </p>
@@ -186,7 +124,7 @@ const Backpack = (props) => {
             )}
           </Grid>
           <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-            {digitTypes.map((element, index) => digitType === element.key && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />)}
+            {digitTypes.map((element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />)}
           </Grid>
         </Grid>
       </div>
@@ -203,9 +141,10 @@ const Backpack = (props) => {
                     {_.range(10).map((index) => (
                       <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
                         <button
-                          className={state_thousand[index] ? "number_button active" : "number_button"}
+                          type="button"
+                          className={props.thousands[index] ? "number_button active" : "number_button"}
                           onClick={() => {
-                            updateThousand(index);
+                            props.updateDigits('thousand', index);
                           }}
                         >
                           {index}
@@ -219,7 +158,7 @@ const Backpack = (props) => {
                     title={t("select_num.all")}
                     type="contained"
                     onClick={() => {
-                      setThousandAll();
+                      props.setDigitAll('thousand');
                     }}
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                   />
@@ -232,7 +171,7 @@ const Backpack = (props) => {
                     type="contained"
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     onClick={() => {
-                      clearThousandAll();
+                      props.clearDigitAll('thousand');
                     }}
                   />
                 </Grid>
@@ -248,9 +187,10 @@ const Backpack = (props) => {
                     {_.range(10).map((index) => (
                       <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
                         <button
-                          className={state_hundred[index] ? "number_button active" : "number_button"}
+                          type="button"
+                          className={props.hundreds[index] ? "number_button active" : "number_button"}
                           onClick={() => {
-                            updateHundred(index);
+                            props.updateDigits('hundred', index);
                           }}
                         >
                           {index}
@@ -264,7 +204,7 @@ const Backpack = (props) => {
                     title={t("select_num.all")}
                     type="contained"
                     onClick={() => {
-                      setHundredAll();
+                      props.setDigitAll('hundred');
                     }}
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                   />
@@ -277,7 +217,7 @@ const Backpack = (props) => {
                     type="contained"
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     onClick={() => {
-                      clearHundredAll();
+                      props.clearDigitAll('hundred');
                     }}
                   />
                 </Grid>
@@ -291,9 +231,10 @@ const Backpack = (props) => {
                 {_.range(10).map((index) => (
                   <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
                     <button
-                      className={state_dozen[index] ? "number_button active" : "number_button"}
+                      type="button"
+                      className={props.tens[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        updateDozen(index);
+                        props.updateDigits('ten', index);
                       }}
                     >
                       {index}
@@ -307,7 +248,7 @@ const Backpack = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  setDozenAll();
+                  props.setDigitAll('ten');
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
@@ -319,7 +260,7 @@ const Backpack = (props) => {
                 title={t("select_num.erase")}
                 type="contained"
                 onClick={() => {
-                  clearDozenAll();
+                  props.clearDigitAll('ten');
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
@@ -332,9 +273,10 @@ const Backpack = (props) => {
                 {_.range(10).map((index) => (
                   <Grid item xl={1} lg={1} md={1} sm={1} xs={1} className="bet_button" key={index}>
                     <button
-                      className={state_unit[index] ? "number_button active" : "number_button"}
+                      type="button"
+                      className={props.units[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        updateUnit(index);
+                        props.updateDigits('unit', index);
                       }}
                     >
                       {index}
@@ -348,7 +290,7 @@ const Backpack = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  setUnitAll();
+                  props.setDigitAll('unit');
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
@@ -361,16 +303,16 @@ const Backpack = (props) => {
                 type="contained"
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                 onClick={() => {
-                  clearUnitAll();
+                  props.clearDigitAll('unit');
                 }}
               />
             </Grid>
           </Grid>
         )}
-        {inputType == "enter" && (
+        {inputType === "enter" && (
           <Grid container spacing={2}>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-              <textarea placeholder={t("select_num.set_script")} className="script_area" value={script} onChange={(e) => {setScript(e.target.value)}} />
+              <textarea placeholder={t("select_num.set_script")} className="script_area" value={props.script} onChange={(e) => {props.setScript(e.target.value)}} />
             </Grid>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
               <Grid container spacing={1}>
@@ -436,8 +378,8 @@ const Backpack = (props) => {
                 </Grid> */}
               </Grid>
               <div className="row_flex" style={{ justifyContent: "space-around" }}>
-                <Button title={t("download")} type="success" />
-                <Button title={t("select_num.erase")} type="disabled" />
+                {/* <Button title={t("download")} type="success" /> */}
+                <Button title={t("select_num.erase")} type="disabled" onClick={() => props.clearAll()} />
               </div>
             </Grid>
           </Grid>

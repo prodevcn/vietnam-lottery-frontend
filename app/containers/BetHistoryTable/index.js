@@ -1,23 +1,20 @@
+/* eslint-disable no-underscore-dangle */
 import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TablePagination,TableRow} from '@material-ui/core';
 import {Refresh} from '@material-ui/icons';
-
+import { useSelector, useDispatch } from 'react-redux';
+import io from "socket.io-client";
+import { API_URL } from "../../constants/config";
+import { getAllOrders } from '../../redux/actions/game';
 import Button from '../../components/Button';
 
-const createData = (draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status) => {
-    return {draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status};
-}
+const socket = io.connect(API_URL);
+const createData = (draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status) => ({draw, lottery, betType, buyTime, numberOfBets, totalBet, multiple, stakes, status})
 
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(() => ({
     head: {
         background: 'linear-gradient(to bottom, #430089, #82ffa1',
         color: '#ddd',
@@ -26,12 +23,6 @@ const StyledTableCell = withStyles((theme) => ({
 
     },
 }))(TableCell);
-
-const rows = [
-    createData('India', 'IN', 1324171354, 3287263, 10, 20, 2, 0, 10),
-    createData('China', 'CN', 1403500365, 9596961, 10, 20, 2, 0, 10),
-    createData('Italy', 'IT', 6048397312, 3013402, 10, 20, 2, 0, 10),
-  ];
 
 const useStyles = makeStyles({
     root: {
@@ -44,6 +35,7 @@ const useStyles = makeStyles({
     container: {
         maxHeight: 440,
         scrollbarColor: 'transparent',
+        backgroundColor: 'rgba(0, 0, 0, .8)',
         overflow: 'auto',
     },
     table_row: {
@@ -65,6 +57,11 @@ const BetHistoryTable = props => {
     const [page, setPage] = useState(0);
     const { t } = useTranslation();
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const {user} = useSelector(state => state.user);
+    // const {authenticated} = useSelector(state => state.auth);
+    const [rows, setRows] = useState([]);
+    const dispatch = useDispatch();
+    const {currentGameType, gameResults} = useSelector(state => state.game);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -74,7 +71,7 @@ const BetHistoryTable = props => {
         {id: 'lottery', label: t("bet_history_table.lottery_title"), minWidth: 170, align: 'center' },
         {id: 'betType', label: t("bet_history_table.bet_type"), minWidth: 100, align: 'center'},
         {id: 'buyTime', label: t("bet_history_table.buy_time"), minWidth: 100, align: 'center'},
-        {id: 'numberOfBets', label: t("bet_history_table.number_of_bets"), align: 'center', minWidth: 100},
+        {id: 'numberOfBets', label: t("bet_history_table.number_of_bets"), align: 'center', maxWidth: 300, minWidth: 100},
         {id: 'totalBet', label: t("bet_history_table.total_bet"), align: 'center', minWidth: 100},
         {id: 'multiple', label: t("bet_history_table.multiple"), minWidth: 100, align: 'center'},
         {id: 'stakes', label: t("bet_history_table.bets"), minWidth: 100, align: 'center'},
@@ -86,11 +83,49 @@ const BetHistoryTable = props => {
         setPage(0);
     };
 
+    const onRefresh = () => {
+        dispatch(getAllOrders(user?._id))
+            .then(res => {
+                if (res) {
+                    const data = res.map((item) => createData(item.createdAt.substr(0, 10), item.gameType, item.betType, item.createdAt.substr(5, 21), item.numbers.substr(0, 20) + '...', item.numbers.split(';').length - 1, item.multiple, item.betAmount, item.status));
+                    setRows(data);
+                }
+            });
+    };
+
+    useEffect(() => {
+        dispatch(getAllOrders(user?._id))
+            .then(res => {
+                if (res) {
+                    const data = res.map((item) => createData(item.createdAt.substr(0, 10), item.gameType, item.betType, item.createdAt.substr(5, 21), item.numbers.substr(0, 20) + '...', item.numbers.split(';').length - 1, item.multiple, item.betAmount, item.status));
+                    setRows(data);
+                }
+            });
+    }, []);
+
+    useEffect(() => {
+        console.log(currentGameType.value);
+        socket.emit('subscribe_timer', currentGameType.value);
+          socket.on("new game start", () => {
+              console.log('=========>')
+            dispatch(getAllOrders(user?._id))
+            .then(res => {
+                if (res) {
+                    const data = res.map((item) => createData(item.createdAt.substr(0, 10), item.gameType, item.betType, item.createdAt.substr(5, 21), item.numbers.substr(0, 20) + '...', item.numbers.split(';').length - 1, item.multiple, item.betAmount, item.status));
+                    setRows(data);
+                }
+            });
+          });
+    }, []);
+
+
     return (
         <div style={{marginTop: 50, marginBottom: 50,}}>
             <div className="row_flex" style={{justifyContent: 'space-between'}}>
                 <p className="bet_content">{t("bet_history_table.bet_history")}</p>
-                <Button type='outlined' icon={<Refresh className="icon" />} onClick={() => {}} />
+                <Button type='outlined' icon={<Refresh className="icon" />} onClick={() => {
+                    onRefresh();
+                }} />
             </div>
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
@@ -107,8 +142,7 @@ const BetHistoryTable = props => {
                         {
                             rows.length !== 0 ? (
                                 <TableBody className={classes.body}>
-                                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                                        return (
+                                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.buyTime}>
                                                 {columns.map((column) => {
                                                     const value = row[column.id];
@@ -119,13 +153,12 @@ const BetHistoryTable = props => {
                                                     );
                                                 })}
                                             </TableRow>
-                                        );
-                                    })}
+                                        ))}
                                 </TableBody>
                             ) : (
                                 <TableBody className={classes.body}>
                                     <TableRow hover role="checkbox" tabIndex={-1}>
-                                        <TableCell align="center" style={{backgroundColor: 'black', color: '#999', borderColor: '#564729', borderWidth: 0.1}}>{"There is no Data"}</TableCell>
+                                        <TableCell align="center" style={{backgroundColor: 'transparent', color: '#999', borderColor: '#564729', borderWidth: 0.1}}>There is no Data</TableCell>
                                     </TableRow>
                                 </TableBody>
                             )

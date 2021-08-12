@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
@@ -67,14 +67,12 @@ TabPanel.protoTypes = {
     value: PropTypes.any.isRequired,
     };
 
-    const allyProps = index => {
-    return {
+    const allyProps = index => ({
         id: `scrollable-auto-tab-${index}`,
         'aria-controls': `scrollable-auto-tabpanel-${index}`,
-    };
-}
+    })
 
-const HanoiVIP = props => {
+const HanoiVIP = () => {
     const {t} = useTranslation();
     const [value, setValue] = useState(0);
     const bettingTypes = [
@@ -91,7 +89,7 @@ const HanoiVIP = props => {
           component: <Score />,
       },
       {
-          label: t("bet_types.head_and_tail"),
+          label: t("bet_types.headandtail"),
           component: <HeadAndTail />,
       },
       {
@@ -103,12 +101,12 @@ const HanoiVIP = props => {
           component: <FourMore />,
       },
       {
-          label: t("bet_types.sliding_lot"),
+          label: t("bet_types.slide"),
           component: <SlidingLot />,
       },
     ];
 
-    const [totalState, setTotalState] = useState(0);
+    // const [totalState, setTotalState] = useState(0);
     
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -123,13 +121,13 @@ const HanoiVIP = props => {
                 >
                 {
                     bettingTypes.map((item, index) => (
-                        <StyledTab label={item.label} key={'TAB_KEY_' + index} {...allyProps(index)} />
+                        <StyledTab label={item.label} key={`TAB_KEY_${  index}`} {...allyProps(index)} />
                     ))
                 }
             </StyledTabs>
             {
                 bettingTypes.map((item, index) => (
-                    <TabPanel value={value} index={index} key={'TAB_PANEL_' + index}>
+                    <TabPanel value={value} index={index} key={`TAB_PANEL_${  index}`}>
                         {item.component}
                     </TabPanel>
                 ))

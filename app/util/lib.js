@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 import client from 'axios';
 import {API_URL} from '../constants/config';
 
@@ -7,10 +8,10 @@ const check = (val = 0) => {
 };
 
 export const setDate = (date) => {
-    date = new Date(date);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+    const new_date = new Date(date);
+    const year = new_date.getFullYear();
+    const month = new_date.getMonth() + 1;
+    const day = new_date.getDate();
     return `${check(month)}-${check(day)}-${year}`;
 };
 
@@ -25,6 +26,11 @@ const getAuthorizationHeader = () =>
             resolve(null);
         }
     });
+export const formatValue = (value) => {
+    if (!value) return "";
+    const pattern = /(\d)(?=(\d\d\d)+(?!\d))/g; // Separate variable every for 3 digits with comma
+    return value.replace(pattern, "$1,");
+  };
 
 export const CreateAxios = () =>
     new Promise(resolve => {
@@ -44,32 +50,22 @@ export const CreateAxios = () =>
                     return config;
                 },
                 error => {
-                    throw {boundaryId: 'API_REQUEST', details: error};
+                    console.log(error);
                 }
             );
 
             axios.interceptors.response.use(
                 response => {
-                  console.log(response);
                   if (!response.data || typeof response.data === 'string') {
-                    throw {boundaryId: 'fetchResponse', details: response};
+                    // throw {boundaryId: 'fetchResponse', details: response};
                   } else {
                     return response;
                   }
                 },
                 error => {
-                  if (err.response && error.response.status === 401) {
-                    console.log('=============');
+                  if (error.response && error.response.status === 401) {
+                    console.log('[ERROR]:[CREATE_AXIOS]');
                   }
-                  // if (error.response ? error.response.status === 401 : false) {
-                  //   return;
-                  // }
-                  // if (
-                  //   !error.response
-                  //   || !error.response.status
-                  //   || !(error.response.status >= 400 && error.response.status <= 403)
-                  // )
-                  // throw {boundaryId: 'fetchResponse', details: error};
                 }
               );
             resolve(axios);

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
 
 import Dropdown from "../../components/Dropdown";
 import { getGameHistory } from "../../redux/actions/game";
 import { API_URL } from "../../constants/config";
 import { setDate } from "../../util/lib";
+
 
 const socket = io.connect(API_URL);
 
@@ -15,6 +16,7 @@ const ResultTable = (props) => {
   const [history, setHistory] = useState([]);
   const [selectedHistory, setSelectedHistory] = useState({});
   const dispatch = useDispatch();
+  const {gameResults} = useSelector(state => state.game); 
 
   const onChangeProcess = (val) => {
     setSelectedHistory(val);
@@ -35,11 +37,6 @@ const ResultTable = (props) => {
     getHistory();
   }, []);
 
-  useEffect(() => {
-    socket.on("new result", (data) => {
-      getGameHistory();
-    });
-  }, [socket]);
 
   return (
     <div className="betting_table">
@@ -48,13 +45,13 @@ const ResultTable = (props) => {
           {props.title} {t("lottery_result")}
         </h5>
         <Dropdown
-          data={history}
+          data={gameResults}
           onChange={(target) => {
             onChangeProcess(target);
           }}
         />
         <p className="result_title">
-          {t("result_table.result")} : {setDate(selectedHistory.endTime)}
+          {t("result_table.result")} : {setDate(selectedHistory?.endTime)}
         </p>
         <table className="table_section">
           <tbody>

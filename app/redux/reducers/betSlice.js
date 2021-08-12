@@ -1,4 +1,4 @@
-import {FETCH_BET_HISTORY, SAVE_BET_INFO} from '../../constants/actions';
+import {FETCH_BET_HISTORY} from '../../constants/actions';
 
 const initialState = {
     fetching: false,
@@ -31,8 +31,9 @@ const reducer = (state = initialState, action) => {
                 error: action.payload
             };
         }
+        default:
+           return state; 
     }
-    return state;
 };
 
 export default reducer;

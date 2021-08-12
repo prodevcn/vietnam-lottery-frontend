@@ -17,6 +17,7 @@
         "login": "login",
         "signup": "sign up",
         "logout": "logout",
+        "bet_err_msg": "Invalid bet numbers",
         "select_num": {
             "all": "All",
             "erase": "Erase",
@@ -35,10 +36,10 @@
         },
         "help": {
             "backpack": {
-                "lot2": "Roll the last 2 digits of the 18 lots of the winning results. Just pay 18,000 VND for each hit point, the winnings for each point is 99,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot2_1K": "Roll the last 2 digits of the 18 lots of the winning results. Just pay 1,000 VND for each hit point, the winning for each point is 5,445 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot3": "Roll the last 3 digits of the 17 lots of the winning results. Just pay 17,000 VND for each hit point, the winning for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot4": "Roll the last 4 digits of the 16 lots of the winning results. Just pay 16,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
+                "lot2": "Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 27,000 VND for each hit point, the winning for each point is 98,500 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot2_1K": "Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 1,000 VND for each hit point, the winning for each point is 3,649 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot3": "Hit the last 3 digits of the 23 lots of the Northern radio results. Just pay 23,000 VND for each hit point, the winnings for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+                "lot4": "Hit the last 4 digits of the 20 lotteries of the Northern radio lottery results. Just pay 20,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
             },
             "loxien": {
                 "xien2": "Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
@@ -86,10 +87,10 @@
             "backpack": "Backpack",
             "loxien": "Lo Xien",
             "score": "Score",
-            "head_and_tail": "Head and Tail",
+            "headandtail": "Head and Tail",
             "3more": "3 More",
             "4more": "4More",
-            "sliding_lot": "Sliding Lot",
+            "slide": "Sliding Lot",
             "sub": {
                 "select": "Select Number",
                 "enter": "Enter Number",

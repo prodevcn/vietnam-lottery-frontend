@@ -1,18 +1,17 @@
 import Link from "next/link";
 import { IoCaretDown } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import {useRouter} from 'next/router';
-
-import { logout } from "../../redux/actions/auth";
-import { COUNTRIES } from "../../constants/countries";
 import { Button } from "@material-ui/core";
-
+import { logout } from "../../redux/actions/auth";
+import COUNTRIES from "../../constants/countries";
 import LoginIcon from '../../../public/images/svg/login.svg';
 import LogoutIcon from '../../../public/images/svg/logout.svg';
 import UserIcon from '../../../public/images/svg/user.svg';
+import { formatValue } from "../../util/lib";
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
@@ -26,20 +25,6 @@ const Navigation = () => {
   };
 
   const { authenticated } = useSelector((state) => state.auth);
-
-  const getSlug = () => {
-    if (user) {
-      return (
-        user.firstName.slice(0, 1) + user.lastName.slice(0, 1)
-      );
-    } else {
-      return "user";
-    }
-  };
-
-  useEffect(() => {
-    console.log(user);
-  }, []);
 
   return (
     <nav className="mainmenu__nav">
@@ -62,7 +47,7 @@ const Navigation = () => {
                             <Link href='/vip-lottery/hochiminh-vip'><a>{t("game_types.vip.hochiminh")}</a></Link>
                         </li> */}
             <li>
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -81,7 +66,7 @@ const Navigation = () => {
                             <Link href='/mega/1second'><a>{t("game_types.mega.one_minute")}</a></Link>
                         </li> */}
             <li>
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -100,7 +85,7 @@ const Navigation = () => {
                             <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
                         </li> */}
             <li>
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -119,7 +104,7 @@ const Navigation = () => {
                             <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
                         </li> */}
             <li>
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -138,7 +123,7 @@ const Navigation = () => {
                             <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
                         </li> */}
             <li>
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -157,12 +142,12 @@ const Navigation = () => {
             </li>
             <li>
               {/* <Link href='/northern/special-18h25'><a>{t("game_types.northern.special")}</a></Link> */}
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
             <li>
               {/* <Link href='/northern/scratch-lottery'><a>{t("game_types.northern.scratch")}</a></Link> */}
-              <img src="/images/working.gif" className="coming_soon_icon" />
+              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
@@ -182,7 +167,7 @@ const Navigation = () => {
                   key={`SELECTED_LANGUAGE_ENTRY_${index}`}
                 />
               );
-            }
+            } return null;
           })}
           <IoCaretDown color="red" />
           <ul className="dropdown">
@@ -222,7 +207,7 @@ const Navigation = () => {
           <div style={{ display: "flex" }}>
             {/* <img src="/images/user.png" style={{ width: 20, height: 20 }} /> */}
             <UserIcon />
-            <p className="date_text">{user?.balance}</p>
+            <p className="date_text">{formatValue(user?.balance?.toString())}</p>
             <Button onClick={() => {dispatch(logout(router))}}>
               <LogoutIcon />
             </Button>

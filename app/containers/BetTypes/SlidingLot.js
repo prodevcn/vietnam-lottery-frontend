@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import _ from 'lodash';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentBetType, setCurrentDigitType } from '../../redux/actions/game';
 import Button from "../../components/Button";
 import OddsTheme from '../../components/OddsTheme';
 
@@ -14,83 +15,93 @@ const buttonStyle = {
 }
 
 const SlidingLot = props => {
-
-    const [digitType, setDigitType] = useState('4slide');
+    const dispatch = useDispatch();
+    const [digitType, setDigitType] = useState('slide4');
     const [inputType, setInputType] = useState('enter');
-    const [script, setScript] = useState('');
     const {t} = useTranslation();
     const digitTypes = [
         {
-            key: '4slide',
-            title: t("bet_types.sub.4slide"),
+            value: 'slide4',
+            label: t("bet_types.sub.4slide"),
             help: t("help.slide.4slide"),
             odds: '2.3',
         },
         {
-            key: '8slide',
-            title: t("bet_types.sub.8slide"),
+            value: 'slide8',
+            label: t("bet_types.sub.8slide"),
             help: t("help.slide:8slide"),
             odds: '8',
         },
         {
-            key: '10slide',
-            title: t("bet_types.sub.10slide"),
+            value: 'slide10',
+            label: t("bet_types.sub.10slide"),
             help: t("help.slide:10slide"),
             odds: '12',
         },
     ];
     const inputTypes = [
         {
-            key: 'enter',
-            title: t("bet_types.sub.enter")
+            value: 'enter',
+            label: t("bet_types.sub.enter")
         },
     ];
 
     const createRndScript = digits => {
         let phrase = '';
-        for (let i = 0; i < digits; i ++) {
-            if (digitType === '4slide') {
-                for (let j = 0; j < 4; j++) {
-                    let rand = Math.floor(Math.random() * 100);
-                    if(j < 3) {
-                        if(rand < 10) rand = '0' + rand + '&';
-                        else rand = rand + '&';
-                    } else {
-                        if(rand < 10) rand = '0' + rand;
-                        else rand = rand + ';';
+        switch(digitType) {
+            case 'slide4':
+                for(let i = 0; i < digits; i += 1 ) {
+                    let medium = '';
+                    for(let j = 0; j < 4; j+=1) {
+                        let rand = Math.floor(Math.random() * 100);
+                        if (rand < 10) rand = '0'+rand;
+                        if (j < 3) rand += '&';
+                        else rand += ';'
+                        medium += rand;
                     }
-                    phrase = phrase + rand;
+                    phrase += medium;
                 }
-            }
-            if (digitType === '8slide') {
-                for (let j = 0; j < 8; j++) {
-                    let rand = Math.floor(Math.random() * 100);
-                    if(j < 7) {
-                        if(rand < 10) rand = '0' + rand + '&';
-                        else rand = rand + '&';
-                    } else {
-                        if(rand < 10) rand = '0' + rand;
-                        else rand = rand + ';';
+                break;
+            case 'slide8':
+                for(let i = 0; i < digits; i += 1 ) {
+                    let medium = '';
+                    for(let j = 0; j < 8; j+=1) {
+                        let rand = Math.floor(Math.random() * 100);
+                        if (rand < 10) rand = '0'+rand;
+                        if (j < 7) rand += '&';
+                        else rand += ';'
+                        medium += rand;
                     }
-                    phrase = phrase + rand;
+                    phrase += medium;
                 }
-            }
-            if (digitType === '10slide') {
-                for (let j = 0; j < 10; j++) {
-                    let rand = Math.floor(Math.random() * 100);
-                    if(j < 9) {
-                        if(rand < 10) rand = '0' + rand + '&';
-                        else rand = rand + '&';
-                    } else {
-                        if(rand < 10) rand = '0' + rand;
-                        else rand = rand + ';';
+                break;
+            case 'slide10':
+                for(let i = 0; i < digits; i += 1 ) {
+                    let medium = '';
+                    for(let j = 0; j < 10; j+=1) {
+                        let rand = Math.floor(Math.random() * 100);
+                        if (rand < 10) rand = '0'+rand;
+                        if (j < 9) rand += '&';
+                        else rand += ';'
+                        medium += rand;
                     }
-                    phrase = phrase + rand;
+                    phrase += medium;
                 }
-            }
+                break;
+            default:
+                break;
         }
-        setScript(phrase);
+        props.setScript(phrase);
     };
+
+    useEffect(() => {
+        props.clearAll();
+        dispatch(setCurrentBetType({
+          value: 'slide',
+          label: t("bet_types.slide"),
+        }));
+        dispatch(setCurrentDigitType(digitTypes[0]));
+      }, []);
 
     return(
         <div>
@@ -100,10 +111,14 @@ const SlidingLot = props => {
                         {
                             digitTypes.map((element, index) => (
                                 <Button 
-                                    type={digitType === element.key ? 'selected' : 'outlined'} 
-                                    title={element.title} 
-                                    innerStyle={digitType !== element.key ? buttonStyle : null} 
-                                    onClick={() => {setDigitType(element.key)}}
+                                    type={digitType === element.value ? 'selected' : 'outlined'} 
+                                    title={element.label} 
+                                    innerStyle={digitType !== element.value ? buttonStyle : null} 
+                                    onClick={() => {
+                                        setDigitType(element.value);
+                                        dispatch(setCurrentDigitType(element))
+                                        props.clearAll();
+                                    }}
                                     key={`LOT_TYPE_${index}`}    
                                     />
                             ))
@@ -113,10 +128,10 @@ const SlidingLot = props => {
                         {
                             inputTypes.map((element, index) => (
                                 <Button 
-                                    type={inputType === element.key ? 'selected' : 'outlined'} 
-                                    title={element.title} 
-                                    innerStyle={inputType !== element.key ? buttonStyle : null} 
-                                    onClick={() => {setInputType(element.key)}}
+                                    type={inputType === element.value ? 'selected' : 'outlined'} 
+                                    title={element.label} 
+                                    innerStyle={inputType !== element.value ? buttonStyle : null} 
+                                    onClick={() => {setInputType(element.value)}}
                                     key={`INPUT_TYPES_${index}`}
                                     />
                             ))
@@ -125,14 +140,14 @@ const SlidingLot = props => {
                     <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                         {
                             digitTypes.map((element, index) => (
-                                digitType===element.key && <p className="date_text" key={`LOT_HELP_${index}`}>{element.help}</p>
+                                digitType===element.value && <p className="date_text" key={`LOT_HELP_${index}`}>{element.help}</p>
                             ))
                         }
                     </Grid>
                     <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
                         {
                             digitTypes.map((element, index) => (
-                                digitType===element.key && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} /> 
+                                digitType===element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} /> 
                             ))
                         }         
                     </Grid>
@@ -140,14 +155,14 @@ const SlidingLot = props => {
             </div>
             <div className="set_number_area">
                 { 
-                    inputType=='enter' && (
+                    inputType==='enter' && (
                         <Grid container spacing={2}>
                             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                 <textarea
                                     placeholder={t("select_num.set_script")} 
                                     className="script_area"
-                                    onChange={(e) => {setScript(e.target.value)}}
-                                    value={script}
+                                    onChange={(e) => {props.setScript(e.target.value)}}
+                                    value={props.script}
                                     />
                             </Grid>
                             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
@@ -165,7 +180,7 @@ const SlidingLot = props => {
                                 </Grid>
                                 <div className="row_flex" style={{justifyContent: "space-around"}}>
                                     {/* <Button title={t("download")}  type="success" /> */}
-                                    <Button title={t("select_num.erase")} onClick={() => {setScript('');}}  type="disabled" />
+                                    <Button title={t("select_num.erase")} onClick={() => {props.clearAll()}}  type="disabled" />
                                 </div>
                             </Grid>
                         </Grid>

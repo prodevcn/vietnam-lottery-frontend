@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,14 +11,14 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { DeleteOutlined } from '@material-ui/icons';
-
 import Button from '../../components/Button';
+import WIN_RATES from '../../constants/winRates';
 
-const createData = (no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time) => {
-    return {no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time};
-}
+import {saveBetInfos} from '../../redux/actions/game';
 
-const StyledTableCell = withStyles((theme) => ({
+const createData = (no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time) => ({no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time})
+
+const StyledTableCell = withStyles(() => ({
     head: {
         background: 'linear-gradient(to bottom, #430089, #82ffa1',
         color: '#ddd',
@@ -59,6 +60,8 @@ const BetContentTable = props => {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const {betInfos, betTableInfos} = useSelector(state => state.game);
+    const dispatch = useDispatch();
     
     const columns = [
         {id: 'no', label: t("bet_content_table.no"), minWidth: 170, align: 'center' },
@@ -70,23 +73,7 @@ const BetContentTable = props => {
         {id: 'moneyWon1Time', label: t("bet_content_table.money_won_time"), minWidth: 100, align: 'center'}
     ];
 
-    const [rows, setRows] = useState([
-        createData('India', 'IN', 1324171354, 3287263, 10, 20, 2),
-        createData('China', 'CN', 1403500365, 9596961, 10, 20, 2),
-        createData('Italy', 'IT', 60483973, 301340, 10, 20, 2),
-        createData('United States', 'US', 327167434, 9833520, 10, 20, 2),
-        createData('Canada', 'CA', 37602103, 9984670, 10, 20, 2),
-        createData('Australia', 'AU', 25475400, 7692024, 10, 20, 2),
-        createData('Germany', 'DE', 83019200, 357578, 10, 20, 2),
-        createData('Ireland', 'IE', 4857000, 70273, 10, 20, 2),
-        createData('Mexico', 'MX', 126577691, 1972550, 10, 20, 2),
-        createData('Japan', 'JP', 126317000, 377973, 10, 20, 2),
-        createData('France', 'FR', 67022000, 640679, 10, 20, 2),
-        createData('United Kingdom', 'GB', 67545757, 242495, 10, 20, 2),
-        createData('Russia', 'RU', 146793744, 17098246, 10, 20, 2),
-        createData('Nigeria', 'NG', 200962417, 923768, 10, 20, 2),
-        createData('Brazil', 'BR', 210147125, 8515767, 10, 20, 2),
-      ]);
+   
     
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -98,7 +85,9 @@ const BetContentTable = props => {
     };
 
     const resetBetContent = () => {
-        setRows([]);
+        // setRows([]);
+        props.clearAll();
+        dispatch(saveBetInfos([]));
     }
 
     return (
@@ -120,10 +109,9 @@ const BetContentTable = props => {
                             </TableRow>
                         </TableHead>
                         {
-                            rows.length !== 0 ? (
+                            betTableInfos.length !== 0 ? (
                                 <TableBody className={classes.body}>
-                                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                                        return (
+                                    {betTableInfos.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.no}>
                                                 {columns.map((column) => {
                                                     const value = row[column.id];
@@ -134,13 +122,12 @@ const BetContentTable = props => {
                                                     );
                                                 })}
                                             </TableRow>
-                                        );
-                                    })}
+                                        ))}
                                 </TableBody>
                             ) : (
                                 <TableBody className={classes.body}>
                                     <TableRow hover role="checkbox" tabIndex={-1}>
-                                        <TableCell align="center" style={{backgroundColor: 'black', color: '#999', borderColor: '#564729', borderWidth: 0.1}}>{"There is no Data"}</TableCell>
+                                        <TableCell align="center" style={{backgroundColor: 'transparent', color: '#999', borderColor: '#564729', borderWidth: 0.1}}>There is no Data</TableCell>
                                     </TableRow>
                                 </TableBody>
                             )
@@ -148,12 +135,12 @@ const BetContentTable = props => {
                     </Table>
                 </TableContainer>
                 {
-                    rows.length !== 0 && (
+                    betTableInfos.length !== 0 && (
                         <TablePagination
                             className={classes.table_row}
                             rowsPerPageOptions={[10, 25, 100]}
                             component="div"
-                            count={rows.length}
+                            count={betTableInfos.length}
                             rowsPerPage={rowsPerPage}
                             style={{color: '#ddd'}}
                             page={page}

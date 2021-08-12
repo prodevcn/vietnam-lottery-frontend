@@ -1,8 +1,8 @@
-import { API_URL } from '../../constants/config';
-import { AUTH, LOGOUT, SET_USER, REMOVE_USER } from '../../constants/actions';
+// import { API_URL } from '../../constants/config';
+import { AUTH, LOGOUT, SET_USER, REMOVE_USER, SET_ONLY_USER } from '../../constants/actions';
 import { CreateAxios } from "../../util/lib";
 
-export const login = (userData, router) => async dispatch => {
+export const login = (userData) => async dispatch => {
     dispatch({type: AUTH.REQUEST});
     return CreateAxios().then(axios => 
         axios.post('/auth/login', userData)
@@ -17,14 +17,12 @@ export const login = (userData, router) => async dispatch => {
                 }
             })
             .catch(err => {
-                if (err.response) {
-
-                }
+                console.error(err);
             })
     );
 };
 
-export const register = (userData, router) => dispatch => {
+export const register = (userData) => dispatch => {
     dispatch({type: AUTH.REQUEST});
     return CreateAxios().then(axios => 
         axios.post('/auth/register', userData)
@@ -61,12 +59,14 @@ export const checkAuth = () => async dispatch => {
     if (token && userPhrase) {
         dispatch({type: SET_USER, payload: {
             user: JSON.parse(userPhrase),
-            token: token,
+            token,
         }});
         dispatch({type: AUTH.SUCCESS});
-    } else {
+        return true;
+    } 
         dispatch({type:AUTH.FAILURE});
-    }
+        return false;
+    
     
 };
 
@@ -77,3 +77,16 @@ export const logout = router => dispatch => {
     dispatch({type: REMOVE_USER});
     dispatch({type: LOGOUT});
 }
+
+export const getUserInfo = userId => dispatch => CreateAxios().then(axios => 
+        axios
+            .get(`/auth/get-user-info/${userId}`)
+            .then(async res => {
+                await localStorage.setItem('user', JSON.stringify(res.data));
+                dispatch({type: SET_ONLY_USER, payload: res.data});
+                
+            })
+            .catch(err => {
+                console.log('[ERROR]:[GET_USER_INFO]');
+            })
+    )

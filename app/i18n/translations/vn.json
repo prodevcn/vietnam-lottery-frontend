@@ -17,6 +17,7 @@
         "login": "đăng nhập",
         "logout": "đăng xuất",
         "signup": "đăng ký",
+        "bet_err_msg": "Số đặt cược không hợp lệ",
         "select_num": {
             "all": "Tất cả",
             "erase": "Xóa",
@@ -35,10 +36,10 @@
         },
         "help": {
             "backpack": {
-                "lot2": " Đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Chỉ cần thanh toán 18,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 99,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
-                "lot2_1K": "Đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 5,445 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
-                "lot3": "Đánh bao lô 3 chữ số cuối trong 17 lô của kết quả mở thưởng. Chỉ cần thanh toán 17,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
-                "lot4": "Đánh bao lô 4 chữ số cuối trong 16 lô của kết quả mở thưởng. Chỉ cần thanh toán 16,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
+                "lot2": "Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 27,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 98,500 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+                "lot2_1K": "Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 3,649 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần",
+                "lot3": "Đánh bao lô 3 chữ số cuối trong 23 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 23,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+                "lot4": "Đánh bao lô 4 chữ số cuối trong 20 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 20,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
             },
             "loxien": {
                 "xien2": "Chọn 2 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 2 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 16,000 VND.",
@@ -86,10 +87,10 @@
             "backpack": "Bao Lô",
             "loxien": "Lô Xiên",
             "score": "Đánh Đề",
-            "head_and_tail": "Đầu Đuôi",
+            "headandtail": "Đầu Đuôi",
             "3more": "3 Càng",
             "4more": "4 Càng",
-            "sliding_lot": "Lô Trượt",
+            "slide": "Lô Trượt",
             "sub": {
                 "select": "Chọn Số",
                 "enter": "Nhập Số",

@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
 import _ from 'lodash';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setCurrentBetType, setCurrentDigitType } from '../../redux/actions/game';
 
 import Button from "../../components/Button";
 import OddsTheme from '../../components/OddsTheme';
@@ -17,43 +20,43 @@ const LotXien = props => {
 
     const [digitType, setDigitType] = useState('xien2');
     const [inputType, setInputType] = useState('enter');
-    const [script, setScript] = useState('');
     const {t} = useTranslation();
+    const dispatch = useDispatch();
     const digitTypes = [
         {
-            key: 'xien2',
-            title: t("bet_types.sub.xien2"),
+            value: 'xien2',
+            label: t("bet_types.sub.xien2"),
             help: t("help.loxien.xien2"),
             odds: '16',
         },
         {
-            key: 'xien3',
-            title: t("bet_types.sub.xien3"),
+            value: 'xien3',
+            label: t("bet_types.sub.xien3"),
             help: t("help.loxien.xien3"),
             odds: '65',
         },
         {
-            key: 'xien4',
-            title: t("bet_types.sub.xien4"),
+            value: 'xien4',
+            label: t("bet_types.sub.xien4"),
             help: t("help.loxien.xien4"),
             odds: '180',
         },
     ];
     const inputTypes = [
         {
-            key: 'enter',
-            title: t("bet_types.sub.enter")
+            value: 'enter',
+            label: t("bet_types.sub.enter")
         },
     ];
 
     const createRndScript = digits => {
         let phrase = '';
-        for (let i = 0; i < digits; i ++) {
+        for (let i = 0; i < digits; i += 1) {
             if (digitType === 'xien2') {
-                let rand1 = (Math.randoMath.floorm() * 100);
+                let rand1 = Math.floor(Math.random() * 100);
                 let rand2 = Math.floor(Math.random() * 100);
                 if (rand1 < 10)  rand1 = '0' + rand1 + "&";
-                else rand1 = rand1+"&";
+                else rand1 +="&";
                 if (rand2 < 10) rand2 = '0' + rand2;
                 phrase =phrase + rand1 + rand2+';';
             }
@@ -62,9 +65,9 @@ const LotXien = props => {
                 let rand2 = Math.floor(Math.random() * 100);
                 let rand3 = Math.floor(Math.random() * 100);
                 if (rand1 < 10)  rand1 = '0' + rand1 + "&";
-                else rand1 = rand1+"&";
+                else rand1 +="&";
                 if (rand2 < 10)  rand2 = '0' + rand2 + "&";
-                else rand2 = rand2+"&";
+                else rand2 +="&";
                 if (rand3 < 10) rand3 = '0' + rand3;
                 phrase =phrase + rand1 + rand2+ rand3 + ';';
             }
@@ -74,18 +77,26 @@ const LotXien = props => {
                 let rand3 = Math.floor(Math.random() * 100);
                 let rand4 = Math.floor(Math.random() * 100);
                 if (rand1 < 10)  rand1 = '0' + rand1 + "&";
-                else rand1 = rand1+"&";
+                else rand1 +="&";
                 if (rand2 < 10)  rand2 = '0' + rand2 + "&";
-                else rand2 = rand2+"&";
+                else rand2 +="&";
                 if (rand3 < 10)  rand3 = '0' + rand3 + "&";
-                else rand3 = rand3+"&";
+                else rand3 +="&";
                 if (rand4 < 10) rand4 = '0' + rand4;
                 phrase =phrase + rand1 + rand2+ rand3 + rand4 + ';';
             }
         }
-        setScript(phrase);
+        props.setScript(phrase);
     };
-
+    useEffect(() => {
+        props.clearAll();
+        dispatch(setCurrentBetType({
+            value: 'loxien',
+            label: t("bet_types.loxien"),
+          },
+        ));
+        dispatch(setCurrentDigitType(digitTypes[0]));
+    }, []);
     return(
         <div>
             <div className="bet_types_area">
@@ -94,10 +105,14 @@ const LotXien = props => {
                         {
                             digitTypes.map((element, index) => (
                                 <Button 
-                                    type={digitType === element.key ? 'selected' : 'outlined'} 
-                                    title={element.title} 
-                                    innerStyle={digitType !== element.key ? buttonStyle : null} 
-                                    onClick={() => {setDigitType(element.key)}}
+                                    type={digitType === element.value ? 'selected' : 'outlined'} 
+                                    title={element.label} 
+                                    innerStyle={digitType !== element.value ? buttonStyle : null} 
+                                    onClick={() => {
+                                        setDigitType(element.value);
+                                        dispatch(setCurrentDigitType(element))
+                                        props.clearAll();
+                                    }}
                                     key={`LOT_TYPE_${index}`}    
                                     />
                             ))
@@ -107,10 +122,10 @@ const LotXien = props => {
                         {
                             inputTypes.map((element, index) => (
                                 <Button 
-                                    type={inputType === element.key ? 'selected' : 'outlined'} 
-                                    title={element.title} 
-                                    innerStyle={inputType !== element.key ? buttonStyle : null} 
-                                    onClick={() => {setInputType(element.key)}}
+                                    type={inputType === element.value ? 'selected' : 'outlined'} 
+                                    title={element.label} 
+                                    innerStyle={inputType !== element.value ? buttonStyle : null} 
+                                    onClick={() => {setInputType(element.value)}}
                                     key={`INPUT_TYPES_${index}`}
                                     />
                             ))
@@ -119,14 +134,14 @@ const LotXien = props => {
                     <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                         {
                             digitTypes.map((element, index) => (
-                                digitType===element.key && <p className="date_text" key={`LOT_HELP_${index}`}>{element.help}</p>
+                                digitType===element.value && <p className="date_text" key={`LOT_HELP_${index}`}>{element.help}</p>
                             ))
                         }
                     </Grid>
                     <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
                         {
                             digitTypes.map((element, index) => (
-                                digitType===element.key && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} /> 
+                                digitType===element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} /> 
                             ))
                         }         
                     </Grid>
@@ -134,14 +149,14 @@ const LotXien = props => {
             </div>
             <div className="set_number_area">
                 { 
-                    inputType=='enter' && (
+                    inputType==='enter' && (
                         <Grid container spacing={2}>
                             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                                 <textarea
                                     placeholder={t("select_num.set_script")} 
                                     className="script_area"
-                                    onChange={(e) => {setScript(e.target.value)}}
-                                    value={script}
+                                    onChange={(e) => {props.setScript(e.target.value)}}
+                                    value={props.script}
                                     />
                             </Grid>
                             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
@@ -159,7 +174,7 @@ const LotXien = props => {
                                 </Grid>
                                 <div className="row_flex" style={{justifyContent: "space-around"}}>
                                     {/* <Button title={t("download")}  type="success" /> */}
-                                    <Button title={t("select_num.erase")} onClick={() => {setScript('');}}  type="disabled" />
+                                    <Button title={t("select_num.erase")} onClick={() => props.clearAll()}  type="disabled" />
                                 </div>
                             </Grid>
                         </Grid>

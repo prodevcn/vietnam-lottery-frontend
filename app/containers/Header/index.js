@@ -6,9 +6,13 @@ import MobileMenu from '../../components/Header/MobileMenu';
 import HeaderBtn from '../../components/Header/HeaderBtn';
 
 
-const Header = props => {
+const Header = () => {
     const [scroll, setScroll] = useState(0);
     const [headerTop, setHeaderTop] = useState(0);
+
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
 
     useEffect(() => {
         const header = document.querySelector("header");
@@ -19,9 +23,7 @@ const Header = props => {
         };
     }, []);
     
-    const handleScroll = () => {
-        setScroll(window.scrollY);
-    };
+    
 
     return (
         <header

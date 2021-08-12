@@ -1,5 +1,6 @@
-const ResultTitleBox = props => {
-    return(
+import React from 'react';
+
+const ResultTitleBox = props => (
         <div className="title__container">
             <div className="title__box">
                 <div className="title__name">{props.name}</div>
@@ -14,6 +15,5 @@ const ResultTitleBox = props => {
             </div>
         </div>
     );
-};
 
 export default ResultTitleBox;

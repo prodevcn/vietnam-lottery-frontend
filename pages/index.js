@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import {Grid, Container, Dialog, DialogContent, useMediaQuery} from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
@@ -15,15 +15,15 @@ import Header from "../app/containers/Header";
 import Button from "../app/components/Button";
 import Slider from "../app/containers/Slider";
 import { checkAuth } from "../app/redux/actions/auth";
-import { getLatestGameData } from "../app/redux/actions/auth";
+
 const socket = io.connect(API_URL);
 
 const App = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  const {authenticated} = useSelector(state => state.auth);
+  // const {authenticated} = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false); //for alert
+  const [open, setOpen] = useState(false); // for alert
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const default_results = {
@@ -56,8 +56,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    socket.on("new result", (data) => {
-      console.log(data);
+    socket.on("new result", () => {
       getNewResults();
     });
   }, []);
@@ -162,7 +161,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.vip.caption")}</p>
               </div>
               <div className="description__section">
@@ -171,7 +170,7 @@ const App = () => {
               <div className="button__section" onClick={() => {}}>
                 {/* <Button title={t("play_now")}/> */}
                 <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" />
+                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
                 </div>
               </div>
@@ -180,7 +179,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.mega.caption")}</p>
               </div>
               <div className="description__section">
@@ -189,7 +188,7 @@ const App = () => {
               <div className="button__section">
                 {/* <Button title={t("play_now")}/> */}
                 <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" />
+                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
                 </div>
               </div>
@@ -198,7 +197,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.super_speed.caption")}</p>
               </div>
               <div className="description__section">
@@ -209,7 +208,7 @@ const App = () => {
               <div className="button__section">
                 {/* <Button title={t("play_now")}/> */}
                 <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" />
+                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
                 </div>
               </div>
@@ -218,7 +217,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.south.caption")}</p>
               </div>
               <div className="description__section">
@@ -226,7 +225,7 @@ const App = () => {
               </div>
               <div className="button__section">
                 <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" />
+                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
                 </div>
               </div>
@@ -235,7 +234,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.central.caption")}</p>
               </div>
               <div className="description__section">
@@ -245,7 +244,7 @@ const App = () => {
               </div>
               <div className="button__section">
                 <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" />
+                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
                 </div>
               </div>
@@ -254,7 +253,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="game_selection_box">
               <div className="title__section">
-                <img src="/images/lottery.png" className="icon" />
+                <img src="/images/lottery.png" className="icon" alt="lottery" />
                 <p>{t("game_types.northern.caption")}</p>
               </div>
               <div className="description__section">

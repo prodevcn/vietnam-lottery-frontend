@@ -20,9 +20,7 @@ const Dropdown = (props) => {
       <div
         className="date_area"
         onClick={() => {
-          setOpen((prevState) => {
-            return !prevState;
-          });
+          setOpen((prevState) => !prevState);
         }}
       >
         <h5 className="date_text">{setDate(value?.endTime)}</h5>

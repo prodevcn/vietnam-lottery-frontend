@@ -7,13 +7,13 @@ import {useRouter} from 'next/router';
 import { Button } from "@material-ui/core";
 
 import { logout } from "../../../redux/actions/auth";
-import {COUNTRIES} from '../../../constants/countries';
+import COUNTRIES from '../../../constants/countries';
 
 import LoginIcon from '../../../../public/images/svg/login.svg';
 import LogoutIcon from '../../../../public/images/svg/logout.svg';
 import UserIcon from '../../../../public/images/svg/user.svg';
 
-const MobileNavMenu = () => {
+const MobileNavMenu = props => {
     const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
     const {user} = useSelector(state => state.user);
@@ -42,7 +42,7 @@ const MobileNavMenu = () => {
                                 <a>{t("game_types.vip.hochiminh")}</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -56,7 +56,7 @@ const MobileNavMenu = () => {
                                 <a>{t("game_types.mega.one_minute")}</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -70,7 +70,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -84,7 +84,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -98,7 +98,7 @@ const MobileNavMenu = () => {
                                 <a>Hồ Chí Minh VIP</a>
                             </Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                     </ul>
                 </li>
                 <li className="menuItemHasChildren">
@@ -107,11 +107,11 @@ const MobileNavMenu = () => {
                         <li>
                             <Link href='/northern/northern-lottery' onClick={() => {props.closeMenu()}}><a>{t("game_types.northern.northern")}</a></Link>
                         </li>
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                         {/* <li>
                             <Link href='/northern/special-18h25'><a>{t("game_types.northern.special")}</a></Link>
                         </li> */}
-                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" /><a>{t("coming_soon")}</a></div></li>
+                        <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li>
                         {/* <li>
                             <Link href='/northern/scratch-lottery'><a>{t("game_types.northern.scratch")}</a></Link>
                         </li> */}
@@ -132,7 +132,9 @@ const MobileNavMenu = () => {
                                         title={element.iconName}
                                     /> {element.name}
                                 </div>
-                            }
+                            } 
+                            return null;
+                            
                         })
                     }
                     <ul className="subMenu">

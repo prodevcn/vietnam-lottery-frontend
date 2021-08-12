@@ -7,7 +7,8 @@ import TimerIcon from "@material-ui/icons/Timer";
 import io from "socket.io-client";
 import _ from "lodash";
 
-import { getGameLatestResult, getNewGameInfo } from "../../redux/actions/game";
+import { getUserInfo } from "../../redux/actions/auth";
+import { getGameLatestResult, getNewGameInfo, getGameHistory } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
 import { API_URL } from "../../constants/config";
 
@@ -17,6 +18,7 @@ const ResultBoard = (props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const {authenticated} = useSelector(state => state.auth);
+  const {user} = useSelector(state => state.user);
   const [result, setResult] = useState({});
   const [gameInfo, setGameInfo] = useState({});
   const [duration, setDuration] = useState({
@@ -24,7 +26,8 @@ const ResultBoard = (props) => {
       minutes: '...',
       seconds: '...'
   });
-  let interval = null;
+  // let interval = null;
+  const {currentGameType, currentBetType, currentDigitType} = useSelector(state => state.game);
   const getNewResult = () => {
     dispatch(getGameLatestResult())
       .then((res) => {
@@ -50,12 +53,12 @@ const ResultBoard = (props) => {
   };
   useEffect(() => {
     socket.emit('subscribe_timer', props.gameType);
-    socket.on("new result", (data) => {
-      getNewResult();
-    });
-    socket.on("new game start", (data) => {
+    socket.on("new game start", () => {
       if (authenticated) {
         getNewGame();
+        dispatch(getUserInfo(user._id));
+        dispatch(getGameHistory(currentGameType.value));
+        getNewResult();
       }
       console.log("New game start");
     });
@@ -86,9 +89,9 @@ const ResultBoard = (props) => {
     <div className="__result_board_main">
       <Grid container spacing={1}>
         <Grid item lg={4} md={4} sm={12} xs={12} className="title__area">
-          <p className="game__title">{props.gameTitle}</p>
+          <p className="game__title">{currentGameType.label}</p>
           <p className="betting__type">
-            {props.bettingType?.type} {">"} {props.bettingType?.digitType}
+            {currentBetType.label} {">"} {currentDigitType.label}
           </p>
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12} className="timer__area">
@@ -105,8 +108,8 @@ const ResultBoard = (props) => {
             </p>
           </div>
           <div className="number_area" style={{ marginTop: 15 }}>
-            <div className="duration__circle" key={`DURATION_HOURS`}>
-              <h6 style={{ color: "white" }}>{duration.hours}</h6>
+            <div className="duration__circle" key="DURATION_HOURS">
+              <h6 style={{ color: "white" }}>{duration.hours < 0 ? "..." : duration.hours}</h6>
             </div>
             <h6
               className="date_text"
@@ -114,8 +117,8 @@ const ResultBoard = (props) => {
             >
               :
             </h6>
-            <div className="duration__circle" key={`DURATION_MINUTES`}>
-              <h6 style={{ color: "white" }}>{duration.minutes}</h6>
+            <div className="duration__circle" key="DURATION_MINUTES">
+              <h6 style={{ color: "white" }}>{duration.minutes < 0 ? "..." : duration.minutes}</h6>
             </div>
             <h6
               className="date_text"
@@ -123,8 +126,8 @@ const ResultBoard = (props) => {
             >
               :
             </h6>
-            <div className="duration__circle" key={`DURATION_SECONDS`}>
-              <h6 style={{ color: "white" }}>{duration.seconds}</h6>
+            <div className="duration__circle" key="DURATION_SECONDS">
+              <h6 style={{ color: "white" }}>{duration.seconds < 0 ? "..." : duration.seconds}</h6>
             </div>
           </div>
         </Grid>

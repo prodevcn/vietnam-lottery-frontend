@@ -1,4 +1,4 @@
-import {SET_USER, REMOVE_USER} from '../../constants/actions';
+import {SET_USER, REMOVE_USER, SET_ONLY_USER} from '../../constants/actions';
 
 const INITIAL_STATE = {
     token: null,
@@ -13,6 +13,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 token: action.payload.token,
                 user: action.payload.user
             };
+        case SET_ONLY_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
         case REMOVE_USER:
             return {
                 ...state,

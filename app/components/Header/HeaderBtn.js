@@ -1,7 +1,5 @@
-import Link from 'next/link';
+import React from 'react';
 import { IoIosMenu } from "react-icons/io";
-import {AiFillDashboard} from 'react-icons/ai';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const HeaderBtn = () => {
     const triggerMobileMenu = () => {
@@ -12,6 +10,7 @@ const HeaderBtn = () => {
         <div className="header-btn-wrapper">
             <div className="mobile-button-wrapper d-block d-lg-none text-right">
                 <button
+                    type="button"
                     className="mobile-aside-button"
                     onClick={() => triggerMobileMenu()}
                 >

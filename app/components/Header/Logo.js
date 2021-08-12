@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import Link from 'next/link';
 
-const Logo = ({ image }) => {
-    return (
+const Logo = ({ image }) => (
         <div className="logo">
             <Link href='/'>
                 <a>
@@ -11,10 +10,5 @@ const Logo = ({ image }) => {
             </Link>
         </div>
     );
-};
-
-Logo.propTypes = {
-    image: PropTypes.string
-};
 
 export default Logo;

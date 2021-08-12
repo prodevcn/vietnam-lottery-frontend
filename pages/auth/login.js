@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
-import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import {Card, CardContent} from '@material-ui/core';
@@ -34,7 +33,6 @@ const Login = props => {
     const classes = useStyles();
     const router = useRouter();
     const {t} = useTranslation();
-    const [cookies, ] = useCookies();
     const { handleSubmit } = props;
     const { authenticated } = useSelector(state => state.auth);
 
@@ -78,7 +76,7 @@ const Login = props => {
                             <button type="submit" className="btn__contained">
                                 {t("login")}
                             </button> &nbsp;
-                            <button className="btn__outlined" onClick={(e) => { e.preventDefault(); router.push('/auth/register')}}>{t("signup")}</button>
+                            <button type="button" className="btn__outlined" onClick={(e) => { e.preventDefault(); router.push('/auth/register')}}>{t("signup")}</button>
                         </div>
                     </form>
 
