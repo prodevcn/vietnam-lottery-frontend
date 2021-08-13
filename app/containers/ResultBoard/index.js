@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import Grid from "@material-ui/core/Grid";
-import StarIcon from "@material-ui/icons/Star";
-import TimerIcon from "@material-ui/icons/Timer";
+/** material ui */
+import { Grid } from "@material-ui/core";
+import { Star, Timer } from "@material-ui/icons";
+/** common lib */
 import io from "socket.io-client";
 import _ from "lodash";
-
+/** utils & constants */
 import { getUserInfo } from "../../redux/actions/auth";
 import { getGameLatestResult, getNewGameInfo, getGameHistory } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
@@ -15,35 +16,33 @@ import { API_URL } from "../../constants/config";
 const socket = io.connect(API_URL);
 
 const ResultBoard = (props) => {
-  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const {authenticated} = useSelector(state => state.auth);
-  const {user} = useSelector(state => state.user);
+  const { t } = useTranslation();
+  const { authenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
+  const { currentGameType, currentBetType, currentDigitType } = useSelector((state) => state.game);
   const [result, setResult] = useState({});
   const [gameInfo, setGameInfo] = useState({});
   const [duration, setDuration] = useState({
-      hours: '...',
-      minutes: '...',
-      seconds: '...'
+    hours: "...",
+    minutes: "...",
+    seconds: "...",
   });
-  // let interval = null;
-  const {currentGameType, currentBetType, currentDigitType} = useSelector(state => state.game);
+  
   const getNewResult = () => {
-    dispatch(getGameLatestResult())
+    dispatch(getGameLatestResult(currentGameType.value))
       .then((res) => {
-        if (res.length !== 0) {
-          const northern_result = res.map((e) => {
-            if (e.gameType === props.gameType) return e;
-          });
-          setResult(northern_result[0]);
+        if (res) {
+          setResult(res);
         }
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
   const getNewGame = () => {
-    dispatch(getNewGameInfo(props.gameType))
+    dispatch(getNewGameInfo(currentGameType.value))
       .then((res) => {
         setGameInfo(res);
       })
@@ -51,8 +50,9 @@ const ResultBoard = (props) => {
         console.error(err);
       });
   };
+  
   useEffect(() => {
-    socket.emit('subscribe_timer', props.gameType);
+    socket.emit("subscribe_timer", currentGameType.value);
     socket.on("new game start", () => {
       if (authenticated) {
         getNewGame();
@@ -62,19 +62,22 @@ const ResultBoard = (props) => {
       }
       console.log("New game start");
     });
-    
   }, []);
 
   useEffect(() => {
     getNewResult();
     getNewGame();
-    socket.on("timer", (distance) => {
+    socket.on(
+      "timer",
+      (distance) => {
         setDuration({
-            hours: Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)),
-            minutes: Math.floor(distance % (1000 * 60 * 60) / (1000 * 60 )),
-            seconds: Math.floor((distance % (1000 * 60)) / 1000) 
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
-    }, []); 
+      },
+      []
+    );
     return () => {
       setDuration({
         days: "...",
@@ -96,34 +99,24 @@ const ResultBoard = (props) => {
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12} className="timer__area">
           <div className="item_row">
-            <TimerIcon style={{ color: "white" }} />
+            <Timer style={{ color: "white" }} />
             <p style={{ color: "white" }}>{t("result_board.bet_time")}</p>
           </div>
           <div className="item_row">
-            <p style={{ color: "white" }}>
-              {t("result_board.lottery_draw")}&nbsp;
-            </p>
-            <p style={{ color: "rgb(255, 136, 1)" }}>
-              {setDate(gameInfo.endTime)}
-            </p>
+            <p style={{ color: "white" }}>{t("result_board.lottery_draw")}&nbsp;</p>
+            <p style={{ color: "rgb(255, 136, 1)" }}>{setDate(gameInfo.endTime)}</p>
           </div>
           <div className="number_area" style={{ marginTop: 15 }}>
             <div className="duration__circle" key="DURATION_HOURS">
               <h6 style={{ color: "white" }}>{duration.hours < 0 ? "..." : duration.hours}</h6>
             </div>
-            <h6
-              className="date_text"
-              style={{ padding: 0, display: "flex", alignItems: "center" }}
-            >
+            <h6 className="date_text" style={{ padding: 0, display: "flex", alignItems: "center" }}>
               :
             </h6>
             <div className="duration__circle" key="DURATION_MINUTES">
               <h6 style={{ color: "white" }}>{duration.minutes < 0 ? "..." : duration.minutes}</h6>
             </div>
-            <h6
-              className="date_text"
-              style={{ padding: 0, display: "flex", alignItems: "center" }}
-            >
+            <h6 className="date_text" style={{ padding: 0, display: "flex", alignItems: "center" }}>
               :
             </h6>
             <div className="duration__circle" key="DURATION_SECONDS">
@@ -133,12 +126,10 @@ const ResultBoard = (props) => {
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12} className="result_area">
           <div className="item_row">
-            <StarIcon style={{ color: "white" }} />
+            <Star style={{ color: "white" }} />
             <p style={{ color: "white" }}>{t("result_board.lottery_result")}</p>
           </div>
-          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>
-            {setDate(result.endTime)}
-          </p>
+          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>{setDate(result.endTime)}</p>
           <div className="number_area">
             {result.numbers
               ? result.numbers.redAward.split("").map((item, index) => (

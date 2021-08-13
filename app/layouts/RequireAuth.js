@@ -9,23 +9,15 @@ const RequireAuth = (ComposedPage) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    useEffect(async() => {
-      dispatch(checkAuth()).then(status => 
-        {
-          if (!status) {
-            router.push({ pathname: "/", query: { message: "unAuthorized" } });
-          }
+    useEffect(async () => {
+      dispatch(checkAuth()).then((status) => {
+        if (!status) {
+          router.push({ pathname: "/", query: { message: "unAuthorized" } });
         }
-      );
+      });
     }, []);
 
-    return (
-      <>
-        {authenticated && (
-          <ComposedPage />
-        )}
-      </>
-    );
+    return <>{authenticated && <ComposedPage />}</>;
   };
   return Authentication;
 };

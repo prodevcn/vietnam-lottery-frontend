@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Grid from "@material-ui/core/Grid";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
 import { setCurrentBetType, setCurrentDigitType } from "../../redux/actions/game";
@@ -19,7 +19,7 @@ const Backpack = (props) => {
   const dispatch = useDispatch();
   const [digitType, setDigitType] = useState("lot2");
   const [inputType, setInputType] = useState("select");
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const digitTypes = [
     {
       value: "lot2",
@@ -63,22 +63,58 @@ const Backpack = (props) => {
 
   const createRndScript = (digits) => {
     let phrase = "";
-    for (let i = 0; i < digits; i+= 1) {
-      const rand = Math.floor(Math.random() * 100);
-      if (rand < 10) phrase = phrase + 0 + rand + ";";
-      else phrase = phrase + rand + ";";
+    switch(digitType) {
+      case 'lot2':
+      case 'lot2_1K':
+        for (let i = 0; i < digits; i += 1) {
+          const rand = Math.floor(Math.random() * 100);
+          if (rand < 10) phrase = phrase + 0 + rand + ";";
+          else phrase = phrase + rand + ";";
+        }
+        break;
+      case 'lot3':
+        for (let i = 0; i < digits; i += 1) {
+          const rand = Math.floor(Math.random() * 1000);
+          if (rand < 10) {
+            phrase = phrase + "00" + rand + ";";
+          } else if (rand < 100) {
+            phrase = phrase + "0" + rand + ";";
+          } else {
+            phrase = phrase + rand + ";";
+          }
+        }
+        break;
+      case 'lot4':
+        for (let i = 0; i < digits; i += 1) {
+          const rand = Math.floor(Math.random() * 10000);
+          if (rand < 10) {
+            phrase = phrase + "000" + rand + ";";
+          } else if (rand < 100) {
+            phrase = phrase + "00" + rand + ";";
+          } else if (rand < 1000) {
+            phrase = phrase + "0" + rand + ";";
+          } else {
+            phrase = phrase + rand + ";";
+          }
+        }
+        break;
+      default:
+        break;
     }
+   
     props.setScript(phrase);
   };
 
   useEffect(() => {
     dispatch(setCurrentDigitType(digitTypes[0]));
-    dispatch(setCurrentBetType({
-      value: 'backpack',
-      label: t("bet_types.backpack"),
-    }))
+    dispatch(
+      setCurrentBetType({
+        value: "backpack",
+        label: t("bet_types.backpack"),
+      })
+    );
     props.clearAll();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -92,7 +128,7 @@ const Backpack = (props) => {
                 innerStyle={digitType !== element.value ? buttonStyle : null}
                 onClick={() => {
                   setDigitType(element.value);
-                  dispatch(setCurrentDigitType(element))
+                  dispatch(setCurrentDigitType(element));
                   props.clearAll();
                 }}
                 key={`LOT_TYPE_${index}`}
@@ -124,7 +160,9 @@ const Backpack = (props) => {
             )}
           </Grid>
           <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-            {digitTypes.map((element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />)}
+            {digitTypes.map(
+              (element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />
+            )}
           </Grid>
         </Grid>
       </div>
@@ -144,7 +182,7 @@ const Backpack = (props) => {
                           type="button"
                           className={props.thousands[index] ? "number_button active" : "number_button"}
                           onClick={() => {
-                            props.updateDigits('thousand', index);
+                            props.updateDigits("thousand", index);
                           }}
                         >
                           {index}
@@ -158,12 +196,26 @@ const Backpack = (props) => {
                     title={t("select_num.all")}
                     type="contained"
                     onClick={() => {
-                      props.setDigitAll('thousand');
+                      props.setDigitAll("thousand");
                     }}
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                   />
-                  <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+                  <Button
+                    title={t("select_num.finance")} 
+                    type="contained"
+                    onClick={() => {
+                      props.setFirstHalf("thousand")
+                    }}  
+                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                  />
+                  <Button 
+                    title={t("select_num.faint")} 
+                    type="contained" 
+                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                    onClick={() => {
+                      props.setLastHalf("thousand")
+                    }}
+                  />
                   {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                                     <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
                   <Button
@@ -171,7 +223,7 @@ const Backpack = (props) => {
                     type="contained"
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     onClick={() => {
-                      props.clearDigitAll('thousand');
+                      props.clearDigitAll("thousand");
                     }}
                   />
                 </Grid>
@@ -190,7 +242,7 @@ const Backpack = (props) => {
                           type="button"
                           className={props.hundreds[index] ? "number_button active" : "number_button"}
                           onClick={() => {
-                            props.updateDigits('hundred', index);
+                            props.updateDigits("hundred", index);
                           }}
                         >
                           {index}
@@ -204,12 +256,26 @@ const Backpack = (props) => {
                     title={t("select_num.all")}
                     type="contained"
                     onClick={() => {
-                      props.setDigitAll('hundred');
+                      props.setDigitAll("hundred");
                     }}
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                   />
-                  <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-                  <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+                  <Button
+                    title={t("select_num.finance")} 
+                    type="contained"
+                    onClick={() => {
+                      props.setFirstHalf("hundred")
+                    }}  
+                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                  />
+                  <Button 
+                    title={t("select_num.faint")} 
+                    type="contained" 
+                    innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                    onClick={() => {
+                      props.setLastHalf("hundred")
+                    }}
+                  />
                   {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                                     <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
                   <Button
@@ -217,7 +283,7 @@ const Backpack = (props) => {
                     type="contained"
                     innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                     onClick={() => {
-                      props.clearDigitAll('hundred');
+                      props.clearDigitAll("hundred");
                     }}
                   />
                 </Grid>
@@ -234,7 +300,7 @@ const Backpack = (props) => {
                       type="button"
                       className={props.tens[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        props.updateDigits('ten', index);
+                        props.updateDigits("ten", index);
                       }}
                     >
                       {index}
@@ -248,19 +314,33 @@ const Backpack = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  props.setDigitAll('ten');
+                  props.setDigitAll("ten");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
-              <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-              <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+              <Button
+                title={t("select_num.finance")} 
+                type="contained"
+                onClick={() => {
+                  props.setFirstHalf("ten")
+                }}  
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+              />
+              <Button 
+                title={t("select_num.faint")} 
+                type="contained" 
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                onClick={() => {
+                  props.setLastHalf("ten")
+                }}
+              />
               {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                         <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
               <Button
                 title={t("select_num.erase")}
                 type="contained"
                 onClick={() => {
-                  props.clearDigitAll('ten');
+                  props.clearDigitAll("ten");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
@@ -276,7 +356,7 @@ const Backpack = (props) => {
                       type="button"
                       className={props.units[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        props.updateDigits('unit', index);
+                        props.updateDigits("unit", index);
                       }}
                     >
                       {index}
@@ -290,12 +370,26 @@ const Backpack = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  props.setDigitAll('unit');
+                  props.setDigitAll("unit");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
-              <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-              <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+              <Button
+                title={t("select_num.finance")} 
+                type="contained"
+                onClick={() => {
+                  props.setFirstHalf("unit")
+                }}  
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+              />
+              <Button 
+                title={t("select_num.faint")} 
+                type="contained" 
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                onClick={() => {
+                  props.setLastHalf("unit")
+                }}
+              />
               {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                         <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
               <Button
@@ -303,7 +397,7 @@ const Backpack = (props) => {
                 type="contained"
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                 onClick={() => {
-                  props.clearDigitAll('unit');
+                  props.clearDigitAll("unit");
                 }}
               />
             </Grid>
@@ -312,7 +406,14 @@ const Backpack = (props) => {
         {inputType === "enter" && (
           <Grid container spacing={2}>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-              <textarea placeholder={t("select_num.set_script")} className="script_area" value={props.script} onChange={(e) => {props.setScript(e.target.value)}} />
+              <textarea
+                placeholder={t("select_num.set_script")}
+                className="script_area"
+                value={props.script}
+                onChange={(e) => {
+                  props.setScript(e.target.value);
+                }}
+              />
             </Grid>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
               <Grid container spacing={1}>

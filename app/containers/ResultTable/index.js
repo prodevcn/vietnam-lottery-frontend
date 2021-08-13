@@ -2,28 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
-
 import Dropdown from "../../components/Dropdown";
 import { getGameHistory } from "../../redux/actions/game";
 import { API_URL } from "../../constants/config";
 import { setDate } from "../../util/lib";
 
-
 const socket = io.connect(API_URL);
 
 const ResultTable = (props) => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { currentGameType } = useSelector((state) => state.game);
+  const { gameResults } = useSelector((state) => state.game);
   const [history, setHistory] = useState([]);
   const [selectedHistory, setSelectedHistory] = useState({});
-  const dispatch = useDispatch();
-  const {gameResults} = useSelector(state => state.game); 
 
-  const onChangeProcess = (val) => {
+  const onChangeItem = (val) => {
     setSelectedHistory(val);
   };
 
   const getHistory = () => {
-    dispatch(getGameHistory(props.gameType))
+    dispatch(getGameHistory(currentGameType.value))
       .then((res) => {
         setHistory(res);
         setSelectedHistory(res[0]);
@@ -37,7 +36,6 @@ const ResultTable = (props) => {
     getHistory();
   }, []);
 
-
   return (
     <div className="betting_table">
       <div className="table_container">
@@ -47,7 +45,7 @@ const ResultTable = (props) => {
         <Dropdown
           data={gameResults}
           onChange={(target) => {
-            onChangeProcess(target);
+            onChangeItem(target);
           }}
         />
         <p className="result_title">
@@ -57,35 +55,35 @@ const ResultTable = (props) => {
           <tbody>
             <tr className="table_row">
               <td style={{ color: "red" }}>{t("result_table.red_award")}</td>
-              <td>{selectedHistory.numbers?.redAward}</td>
+              <td>{selectedHistory?.numbers?.redAward}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.first_prize")}</td>
-              <td>{selectedHistory.numbers?.first}</td>
+              <td>{selectedHistory?.numbers?.first}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.second_prize")}</td>
-              <td>{selectedHistory.numbers?.second}</td>
+              <td>{selectedHistory?.numbers?.second}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.third_prize")}</td>
-              <td>{selectedHistory.numbers?.third}</td>
+              <td>{selectedHistory?.numbers?.third}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.fourth_prize")}</td>
-              <td>{selectedHistory.numbers?.fourth}</td>
+              <td>{selectedHistory?.numbers?.fourth}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.fifth_prize")}</td>
-              <td>{selectedHistory.numbers?.fifth}</td>
+              <td>{selectedHistory?.numbers?.fifth}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.sixth_prize")}</td>
-              <td>{selectedHistory.numbers?.sixth}</td>
+              <td>{selectedHistory?.numbers?.sixth}</td>
             </tr>
             <tr className="table_row">
               <td>{t("result_table.seventh_prize")}</td>
-              <td>{selectedHistory.numbers?.seventh}</td>
+              <td>{selectedHistory?.numbers?.seventh}</td>
             </tr>
           </tbody>
         </table>

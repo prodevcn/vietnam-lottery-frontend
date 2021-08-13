@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const OneMinute = () => (
-        <div>
-            <p>One Min</p>
-        </div>
-    );
+  <div>
+    <p>One Min</p>
+  </div>
+);
 
 export default OneMinute;

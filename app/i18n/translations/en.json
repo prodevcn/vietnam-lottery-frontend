@@ -1,197 +1,197 @@
 {
-    "translation": {
-        "play_now": "Play now",
-        "coming_soon": "Coming soon",
-        "total_state": "Total state is",
-        "lottery_result": "Lottery Results",
-        "time_remaining": "Time remaining",
-        "odds": "Odds",
-        "to": "to",
-        "multiple": "Multiple",
-        "selected": "Selected",
-        "payout": "Payout",
-        "numbers": "numbers",
-        "vnd": "VND",
-        "download": "Download",
-        "auth_message": "Please login or register !",
-        "login": "login",
-        "signup": "sign up",
-        "logout": "logout",
-        "bet_err_msg": "Invalid bet numbers",
-        "select_num": {
-            "all": "All",
-            "erase": "Erase",
-            "finance": "Finance",
-            "odd": "Odd",
-            "faint": "Faint",
-            "even": "Even",
-            "dozen": "Dozen",
-            "unit": "Unit",
-            "hundred": "Hundred",
-            "thousand": "Thousand",
-            "set_script": "numbers must be separated by semi colon - e.g, 12;13 or 12&13;15&16",
-            "random": "Random",
-            "suggestions": "Suggestions",
-            "rarely_appear": "Rarely Appears"
+    "translation":{
+      "play_now":"Play now",
+      "coming_soon":"Coming soon",
+      "total_state":"Total state is",
+      "lottery_result":"Lottery Results",
+      "time_remaining":"Time remaining",
+      "odds":"Odds",
+      "to":"to",
+      "multiple":"Multiple",
+      "selected":"Selected",
+      "payout":"Payout",
+      "numbers":"numbers",
+      "vnd":"VND",
+      "download":"Download",
+      "auth_message":"Please login or register !",
+      "login":"login",
+      "signup":"sign up",
+      "logout":"logout",
+      "bet_err_msg":"Invalid bet numbers",
+      "select_num":{
+        "all":"All",
+        "erase":"Erase",
+        "finance":"Finance",
+        "odd":"Odd",
+        "faint":"Faint",
+        "even":"Even",
+        "dozen":"Dozen",
+        "unit":"Unit",
+        "hundred":"Hundred",
+        "thousand":"Thousand",
+        "set_script":"numbers must be separated by semi colon - e.g, 12;13 or 12&13;15&16",
+        "random":"Random",
+        "suggestions":"Suggestions",
+        "rarely_appear":"Rarely Appears"
+      },
+      "help":{
+        "backpack":{
+          "lot2":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 27,000 VND for each hit point, the winning for each point is 98,500 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+          "lot2_1K":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 1,000 VND for each hit point, the winning for each point is 3,649 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+          "lot3":"Hit the last 3 digits of the 23 lots of the Northern radio results. Just pay 23,000 VND for each hit point, the winnings for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+          "lot4":"Hit the last 4 digits of the 20 lotteries of the Northern radio lottery results. Just pay 20,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
         },
-        "help": {
-            "backpack": {
-                "lot2": "Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 27,000 VND for each hit point, the winning for each point is 98,500 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot2_1K": "Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 1,000 VND for each hit point, the winning for each point is 3,649 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot3": "Hit the last 3 digits of the 23 lots of the Northern radio results. Just pay 23,000 VND for each hit point, the winnings for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-                "lot4": "Hit the last 4 digits of the 20 lotteries of the Northern radio lottery results. Just pay 20,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
-            },
-            "loxien": {
-                "xien2": "Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
-                "xien3": "Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 150,000 VND.",
-                "xien4": "Choose 4 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
-            },
-            "score": {
-                "first": "Enter the first 2 digits of the first prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND.",
-                "special_topics": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings per point are 99,000 VND.",
-                "special_headline": "Enter the first 2 digits in the special prize.. Pay 1,000 VND for each point. The winnings per point are 99,000 VND.",
-                "problem": "Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 4,000 VND for each point. The winning amount per point is 98,000 VND.",
-                "first_de":"Enter the last 2 digits of the First Prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND."
-            },
-            "headandtail": {
-                "head": "Type 1 tens digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND.",
-                "tail": "Enter the last 1 digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND."
-            },
-            "3more": {
-                "3pin": "Type 3 digits of the 3 prizes 6. Pay 3,000 VND for each point. The winnings for each point are 960,000 VND.",
-                "3pin_headandtail": "Enter the last 3 digits of the 3 6th and jackpot prizes. Pay 4,000 VND per point. Just 1 of 2 : the 6th prize or the special prize with the last 3 digits of the number chosen by the player is won. The winnings for each point are 960,000 VND.",
-                "3_special_pins": "Enter the last 3 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 960,000 VND."  
-            },
-            "4more": {
-                "4_special_pins": "Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
-            },
-            "slide": {
-                "4slide": "Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 1,000 VND for each hit point, winning for each point is 2,300 VND.",
-                "8slide": "Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 8,000 VND.",
-                "10slide": "Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 12,000 VND."
-            }
+        "loxien":{
+          "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
+          "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 150,000 VND.",
+          "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
         },
-        "result_board": {
-            "bet_time": "Bet time",
-            "lottery_draw": "Lottery draw",
-            "lottery_result": "Lottery results"
+        "score":{
+          "first":"Enter the first 2 digits of the first prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND.",
+          "special_topics":"Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings per point are 99,000 VND.",
+          "special_headline":"Enter the first 2 digits in the special prize.. Pay 1,000 VND for each point. The winnings per point are 99,000 VND.",
+          "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 4,000 VND for each point. The winning amount per point is 98,000 VND.",
+          "first_de":"Enter the last 2 digits of the First Prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND."
         },
-        "buttons": {
-            "reset": "Reset",
-            "quick_bet": "Quick Bet",
-            "more_bet": "More Bet",
-            "feed": "Feed",
-            "place_bet": "Place bet"
+        "headandtail":{
+          "head":"Type 1 tens digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND.",
+          "tail":"Enter the last 1 digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND."
         },
-        "bet_types": {
-            "backpack": "Backpack",
-            "loxien": "Lo Xien",
-            "score": "Score",
-            "headandtail": "Head and Tail",
-            "3more": "3 More",
-            "4more": "4More",
-            "slide": "Sliding Lot",
-            "sub": {
-                "select": "Select Number",
-                "enter": "Enter Number",
-                "quick": "Quick number pick",
-                "odds": "Odds",
-                "lot2": "Lot2 No.",
-                "lot2_1K": "Lot2 No. 1K",
-                "lot3": "Lot3 No.",
-                "lot4": "Lot4 No.",
-                "xien2": "2 skewers",
-                "xien3": "3 skewers",
-                "xien4": "4 skewers",
-                "head": "head",
-                "tail": "tail",
-                "first": "First Prize",
-                "special_topics": "Special Topics",
-                "special_headline": "Special headlines",
-                "problem": "Problem 7",
-                "first_de": "First Prize De",                
-                "3pin": "3 Pincers",
-                "3pin_headandtail": "3 Pincers and Head and Tail",
-                "3_special_pins": "3 Special Pins",
-                "4_special_pins": "4 Special Pins",
-                "4slide": "4 Slide",
-                "8slide": "8 Slide",
-                "10slide": "10 Slide"
-            }
+        "3more":{
+          "3pin":"Type 3 digits of the 3 prizes 6. Pay 3,000 VND for each point. The winnings for each point are 960,000 VND.",
+          "3pin_headandtail":"Enter the last 3 digits of the 3 6th and jackpot prizes. Pay 4,000 VND per point. Just 1 of 2 : the 6th prize or the special prize with the last 3 digits of the number chosen by the player is won. The winnings for each point are 960,000 VND.",
+          "3_special_pins":"Enter the last 3 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 960,000 VND."
         },
-        "result_table":{
-            "result":"Result",
-            "red_award": "Red Award",
-            "first_prize": "First prize",
-            "second_prize": "Second prize",
-            "third_prize": "Third prize",
-            "fourth_prize": "Fourth prize",
-            "fifth_prize": "Fifth prize",
-            "sixth_prize": "Sixth prize",
-            "seventh_prize": "Seventh prize",
-            "head": "Head",
-            "tail": "Tail"
+        "4more":{
+          "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
         },
-        "bet_content_table":{
-            "bet_content": "Bet Content",
-            "no": "No",
-            "bet_name": "Bet Name",
-            "number_of_bets": "Number of Bets",
-            "total_bet": "Total Bet",
-            "multiple": "Multiple",
-            "stakes": "Stakes",
-            "money_won_time": "Money won / 1 time"
-        },
-        "bet_history_table": {
-            "bet_history": "Bet History",
-            "draw_title": "Drawsuot",
-            "lottery_title": "lottery",
-            "bet_type": "Bet Type",
-            "buy_time": "time to buy",
-            "number_of_bets": "Number of Bets",
-            "total_bet": "Total bet",
-            "multiple": "Multiple",
-            "bets": "bets",
-            "status": "status"
-        },
-        "game_types": {
-            "live_stream": "LiveStream",
-            "vip": {
-                "caption": "VIP Lottery",
-                "saigon": "Saigon VIP",
-                "hanoi": "Hanoi VIP",
-                "hochiminh": "Ho Chi Minh VIP",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            },
-            "mega": {
-                "caption": "Mega 6/45",
-                "one_second": "1 Second",
-                "one_minute": "1 Minute",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            },
-            "northern": {
-                "caption": "Northern",
-                "northern": "Northern Lottery",
-                "special": "Special 18h25",
-                "scratch": "Scratch Lottery",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            },
-            "super_speed": {
-                "caption": "Super speed",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            },
-            "south": {
-                "caption": "South",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            },
-            "central": {
-                "caption": "Central",
-                "description": "Super speed lottery is a very new style of playing cards in Vietnam."
-            }
-        },
-        "countries": {
-            "united_states": "United States",
-            "vietnam": "Vietnam"
+        "slide":{
+          "4slide":"Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 1,000 VND for each hit point, winning for each point is 2,300 VND.",
+          "8slide":"Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 8,000 VND.",
+          "10slide":"Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 12,000 VND."
         }
+      },
+      "result_board":{
+        "bet_time":"Bet time",
+        "lottery_draw":"Lottery draw",
+        "lottery_result":"Lottery results"
+      },
+      "buttons":{
+        "reset":"Reset",
+        "quick_bet":"Quick Bet",
+        "more_bet":"More Bet",
+        "feed":"Feed",
+        "place_bet":"Place bet"
+      },
+      "bet_types":{
+        "backpack":"Backpack",
+        "loxien":"Lo Xien",
+        "score":"Score",
+        "headandtail":"Head and Tail",
+        "3more":"3 More",
+        "4more":"4More",
+        "slide":"Sliding Lot",
+        "sub":{
+          "select":"Select Number",
+          "enter":"Enter Number",
+          "quick":"Quick number pick",
+          "odds":"Odds",
+          "lot2":"Lot2 No.",
+          "lot2_1K":"Lot2 No. 1K",
+          "lot3":"Lot3 No.",
+          "lot4":"Lot4 No.",
+          "xien2":"2 skewers",
+          "xien3":"3 skewers",
+          "xien4":"4 skewers",
+          "head":"head",
+          "tail":"tail",
+          "first":"First Prize",
+          "special_topics":"Special Topics",
+          "special_headline":"Special headlines",
+          "problem":"Problem 7",
+          "first_de":"First Prize De",
+          "3pin":"3 Pincers",
+          "3pin_headandtail":"3 Pincers and Head and Tail",
+          "3_special_pins":"3 Special Pins",
+          "4_special_pins":"4 Special Pins",
+          "4slide":"4 Slide",
+          "8slide":"8 Slide",
+          "10slide":"10 Slide"
+        }
+      },
+      "result_table":{
+        "result":"Result",
+        "red_award":"Red Award",
+        "first_prize":"First prize",
+        "second_prize":"Second prize",
+        "third_prize":"Third prize",
+        "fourth_prize":"Fourth prize",
+        "fifth_prize":"Fifth prize",
+        "sixth_prize":"Sixth prize",
+        "seventh_prize":"Seventh prize",
+        "head":"Head",
+        "tail":"Tail"
+      },
+      "bet_content_table":{
+        "bet_content":"Bet Content",
+        "no":"No",
+        "bet_name":"Bet Name",
+        "number_of_bets":"Number of Bets",
+        "total_bet":"Total Bet",
+        "multiple":"Multiple",
+        "stakes":"Stakes",
+        "money_won_time":"Money won / 1 time"
+      },
+      "bet_history_table":{
+        "bet_history":"Bet History",
+        "draw_title":"Drawsuot",
+        "lottery_title":"lottery",
+        "bet_type":"Bet Type",
+        "buy_time":"time to buy",
+        "number_of_bets":"Number of Bets",
+        "total_bet":"Total bet",
+        "multiple":"Multiple",
+        "bets":"bets",
+        "status":"status"
+      },
+      "game_types":{
+        "live_stream":"LiveStream",
+        "vip":{
+          "caption":"VIP Lottery",
+          "saigon":"Saigon VIP",
+          "hanoi":"Hanoi VIP",
+          "hochiminh":"Ho Chi Minh VIP",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        },
+        "mega":{
+          "caption":"Mega 6/45",
+          "one_second":"1 Second",
+          "one_minute":"1 Minute",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        },
+        "northern":{
+          "caption":"Northern",
+          "northern":"Northern Lottery",
+          "special":"JackPot",
+          "scratch":"Scratch Lottery",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        },
+        "super_speed":{
+          "caption":"Super speed",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        },
+        "south":{
+          "caption":"South",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        },
+        "central":{
+          "caption":"Central",
+          "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        }
+      },
+      "countries":{
+        "united_states":"United States",
+        "vietnam":"Vietnam"
+      }
     }
-}
+  }

@@ -1,198 +1,197 @@
 {
-    "translation": {
-        "play_now": "Bắt đầu chơi",
-        "coming_soon": "Sắp có",
-        "total_state": "Tổng tiền cược ",
-        "lottery_result": "Kết quả xổ số ",
-        "time_remaining": "Thời gian còn lại",
-        "odds": "Tỉ lệ cược",
-        "to": "ăn",
-        "multiple": "Cấp Số Nhân",
-        "selected": "Đã chọn",
-        "payout": "Tiền đánh",
-        "numbers": "số",
-        "vnd": "VNĐ",
-        "download": " Tải tập tin",
-        "auth_message": "Vui lòng đăng nhập hoặc đăng ký !",
-        "login": "đăng nhập",
-        "logout": "đăng xuất",
-        "signup": "đăng ký",
-        "bet_err_msg": "Số đặt cược không hợp lệ",
-        "select_num": {
-            "all": "Tất cả",
-            "erase": "Xóa",
-            "finance": "Tài",
-            "odd": "Lẻ",
-            "faint": "Xỉu",
-            "even": "Chẵn",
-            "dozen": "Chục",
-            "unit": "Đơn vị",
-            "hundred": "Trăm",
-            "thousand": "Nghìn",
-            "set_script": "các số phải được phân tách bằng dấu chấm phẩy - ví dụ: 12;13 hoặc 12&13; 15&16",
-            "random": "Ngẫu Nhiên",
-            "suggestions": "Gợi Ý",
-            "rarely_appear": "Ít Xuất Hiện"
+    "translation":{
+      "play_now":"Bắt đầu chơi",
+      "coming_soon":"Sắp có",
+      "total_state":"Tổng tiền cược ",
+      "lottery_result":"Kết quả xổ số ",
+      "time_remaining":"Thời gian còn lại",
+      "odds":"Tỉ lệ cược",
+      "to":"ăn",
+      "multiple":"Cấp Số Nhân",
+      "selected":"Đã chọn",
+      "payout":"Tiền đánh",
+      "numbers":"số",
+      "vnd":"VNĐ",
+      "download":" Tải tập tin",
+      "auth_message":"Vui lòng đăng nhập hoặc đăng ký !",
+      "login":"đăng nhập",
+      "logout":"đăng xuất",
+      "signup":"đăng ký",
+      "bet_err_msg":"Số đặt cược không hợp lệ",
+      "select_num":{
+        "all":"Tất cả",
+        "erase":"Xóa",
+        "finance":"Tài",
+        "odd":"Lẻ",
+        "faint":"Xỉu",
+        "even":"Chẵn",
+        "dozen":"Chục",
+        "unit":"Đơn vị",
+        "hundred":"Trăm",
+        "thousand":"Nghìn",
+        "set_script":"các số phải được phân tách bằng dấu chấm phẩy - ví dụ: 12;13 hoặc 12&13; 15&16",
+        "random":"Ngẫu Nhiên",
+        "suggestions":"Gợi Ý",
+        "rarely_appear":"Ít Xuất Hiện"
+      },
+      "help":{
+        "backpack":{
+          "lot2":"Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 27,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 98,500 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+          "lot2_1K":"Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 3,649 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần",
+          "lot3":"Đánh bao lô 3 chữ số cuối trong 23 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 23,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
+          "lot4":"Đánh bao lô 4 chữ số cuối trong 20 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 20,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
         },
-        "help": {
-            "backpack": {
-                "lot2": "Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 27,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 98,500 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
-                "lot2_1K": "Đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 3,649 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần",
-                "lot3": "Đánh bao lô 3 chữ số cuối trong 23 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 23,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 960,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần.",
-                "lot4": "Đánh bao lô 4 chữ số cuối trong 20 lô của kết quả mở thưởng đài miền Bắc. Chỉ cần thanh toán 20,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,880,000 VND. Trong trường hợp thắng từ 2 lô trở lên thì số tiền thắng sẽ được nhân lên tương ứng bấy nhiêu lần."
-            },
-            "loxien": {
-                "xien2": "Chọn 2 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 2 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 16,000 VND.",
-                "xien3": "Chọn 3 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 3 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 65,000 VND.",
-                "xien4": "Chọn 4 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 180,000 VND."
-            },
-            "score": {
-                "first": "Đánh 2 chữ số đầu trong giải nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
-                "special_topics": "Đánh 2 chữ số cuối trong giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
-                "special_headline": "Đánh 2 chữ số đầu trong giải đặc biệt.. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
-                "problem": "Đánh 2 chữ số cuối trong 4 giải của Giải 7. Thanh toán 4,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
-                "first_de":"Đánh 2 chữ số cuối trong Giải Nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND."
-            },
-            "headandtail": {
-                "head": "Đánh 1 chữ số hàng chục của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND.",
-                "tail": "Đánh 1 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND."
-            },
-            "3more": {
-                "3pin": "Đánh 3 chữ số của 3 giải 6. Thanh toán 3,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND.",
-                "3pin_headandtail": "Đánh 3 chữ số cuối của 3 giải 6 và giải đặc biệt. Thanh toán 4,000 VND cho mỗi điểm. Chỉ cần 1 trong 2 : giải 6 hoặc giải đặc biệt có 3 chữ số cuối trùng với số người chơi đã chọn là thắng. Tiền thắng cho mỗi điểm là 960,000 VND.",
-                "3_special_pins": "Đánh 3 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND."
-            },
-            "4more": {
-                "4_special_pins": "Đánh 4 chữ số của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 8,880,000 VND."
-            },
-            "slide": {
-                "4slide": "Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 2,300 VND.",
-                "8slide": "Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,000 VND.",
-                "10slide": "Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 12,000 VND."
-            }
+        "loxien":{
+          "xien2":"Chọn 2 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 2 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 16,000 VND.",
+          "xien3":"Chọn 3 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 3 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 65,000 VND.",
+          "xien4":"Chọn 4 chữ số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc, nếu trong lô xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 180,000 VND."
         },
-        "result_board": {
-            "bet_time": "Thời gian đặt cược",
-            "lottery_draw": "Lượt xổ ",
-            "lottery_result": "Kết quả xổ số "
-        },        
-        "buttons": {
-            "reset": "Đặt lại",
-            "quick_bet": "Cược nhanh",
-            "more_bet": "Thêm cược",
-            "feed": "Nuôi",
-            "place_bet": "Đặt Cược"
+        "score":{
+          "first":"Đánh 2 chữ số đầu trong giải nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
+          "special_topics":"Đánh 2 chữ số cuối trong giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
+          "special_headline":"Đánh 2 chữ số đầu trong giải đặc biệt.. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 99,000 VND.",
+          "problem":"Đánh 2 chữ số cuối trong 4 giải của Giải 7. Thanh toán 4,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND.",
+          "first_de":"Đánh 2 chữ số cuối trong Giải Nhất. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng mỗi điểm là 98,000 VND."
         },
-        "bet_types": {
-            "backpack": "Bao Lô",
-            "loxien": "Lô Xiên",
-            "score": "Đánh Đề",
-            "headandtail": "Đầu Đuôi",
-            "3more": "3 Càng",
-            "4more": "4 Càng",
-            "slide": "Lô Trượt",
-            "sub": {
-                "select": "Chọn Số",
-                "enter": "Nhập Số",
-                "quick": "Chọn số nhanh",
-                "odds": "Tỉ lệ cược",
-                "lot2": "Lô 2 Số",
-                "lot2_1K": "Lô 2 Số 1K",
-                "lot3": "Lô 3 Số",
-                "lot4": "Lô 4 Số",
-                "xien2": "Xiên 2",
-                "xien3": "Xiên 3",
-                "xien4": "Xiên 4",
-                "head": "Đầu",
-                "tail": "Đuôi",
-                "first": "Đề đầu giải nhất",
-                "special_topics": "Đề đặc biệt",
-                "special_headline": "Đề đầu đặc biệt",
-                "problem": "Đề Giải 7",
-                "first_de": "Đề Giải Nhất",
-                "3pin": "3 Càng Đầu",
-                "3pin_headandtail": "3 Càng Đầu Đuôi",
-                "3_special_pins": "3 Càng Đặc Biệt",
-                "4_special_pins": "4 Càng Đặc Biệt",
-                "4slide": "Trượt Xiên 4",
-                "8slide": "Trượt Xiên 8",
-                "10slide": "Trượt Xiên 10"
-            }
+        "headandtail":{
+          "head":"Đánh 1 chữ số hàng chục của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND.",
+          "tail":"Đánh 1 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 9,800 VND."
         },
-        "result_table":{
-            "result":"Kết quả",
-            "red_award": "Giải ĐB",
-            "first_prize": "Giải nhất",
-            "second_prize": "Giải nhì",
-            "third_prize": "Giải ba",
-            "fourth_prize": "Giải tư",
-            "fifth_prize": "Giải năm",
-            "sixth_prize": "Giải sáu",
-            "seventh_prize": "Giải bảy",
-            "head": "Đầu",
-            "tail": "Đuôi"
+        "3more":{
+          "3pin":"Đánh 3 chữ số của 3 giải 6. Thanh toán 3,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND.",
+          "3pin_headandtail":"Đánh 3 chữ số cuối của 3 giải 6 và giải đặc biệt. Thanh toán 4,000 VND cho mỗi điểm. Chỉ cần 1 trong 2 : giải 6 hoặc giải đặc biệt có 3 chữ số cuối trùng với số người chơi đã chọn là thắng. Tiền thắng cho mỗi điểm là 960,000 VND.",
+          "3_special_pins":"Đánh 3 chữ số cuối của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 960,000 VND."
         },
-        "bet_content_table":{
-            "bet_content": "Nội dung cược",
-            "no": "Stt",
-            "bet_name": "Tên cược",
-            "number_of_bets": "Số cược",
-            "total_bet": "Tổng cược",
-            "multiple": "Cấp số nhân",
-            "stakes": "Tiền cược",
-            "money_won_time": "Tiền thắng / 1 lần"
+        "4more":{
+          "4_special_pins":"Đánh 4 chữ số của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 8,880,000 VND."
         },
-        "bet_history_table": {
-            "bet_history": "Lịch sử cược",
-            "draw_title": "Lượt xổ",
-            "lottery_title": "Xổ số",
-            "bet_type": "Kiểu cược",
-            "buy_time": "Thời gian mua",
-            "number_of_bets": "Số cược",
-            "total_bet": "Tổng cược",
-            "multiple": "Cấp số nhân",
-            "bets": "Tiền cược",
-            "status": "Trạng thái"
-        },
-        "game_types": {
-            "live_stream": "Xổ số Livestream 2 phút",
-            "vip": {
-                "caption": "Xổ Số VIP",
-                "saigon": "Sài Gòn VIP",
-                "hanoi": "Hà Nội VIP",
-                "hochiminh": "Hồ Chí Minh VIP",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            },
-            "mega": {
-                "caption": "Mega 6/45",
-                "one_second": "1 giây",
-                "one_minute": "1 phút",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            },
-            
-            "northern": {
-                "caption": "Miền Bắc",
-                "northern": "Xổ Số Miền Bắc",
-                "special": "Đặc Biệt 18h25",
-                "scratch": "Xổ số cào",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            },
-            "super_speed": {
-                "caption": "Siêu Tốc",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            },
-            "south": {
-                "caption": "Miền Nam",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            },
-            "central": {
-                "caption": "Miền Trung",
-                "description": "Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
-            }
-        },
-        "countries": {
-            "united_states": "Hoa Kỳ",
-            "vietnam": "Việt Nam"
+        "slide":{
+          "4slide":"Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 2,300 VND.",
+          "8slide":"Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,000 VND.",
+          "10slide":"Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 12,000 VND."
         }
+      },
+      "result_board":{
+        "bet_time":"Thời gian đặt cược",
+        "lottery_draw":"Lượt xổ ",
+        "lottery_result":"Kết quả xổ số "
+      },
+      "buttons":{
+        "reset":"Đặt lại",
+        "quick_bet":"Cược nhanh",
+        "more_bet":"Thêm cược",
+        "feed":"Nuôi",
+        "place_bet":"Đặt Cược"
+      },
+      "bet_types":{
+        "backpack":"Bao Lô",
+        "loxien":"Lô Xiên",
+        "score":"Đánh Đề",
+        "headandtail":"Đầu Đuôi",
+        "3more":"3 Càng",
+        "4more":"4 Càng",
+        "slide":"Lô Trượt",
+        "sub":{
+          "select":"Chọn Số",
+          "enter":"Nhập Số",
+          "quick":"Chọn số nhanh",
+          "odds":"Tỉ lệ cược",
+          "lot2":"Lô 2 Số",
+          "lot2_1K":"Lô 2 Số 1K",
+          "lot3":"Lô 3 Số",
+          "lot4":"Lô 4 Số",
+          "xien2":"Xiên 2",
+          "xien3":"Xiên 3",
+          "xien4":"Xiên 4",
+          "head":"Đầu",
+          "tail":"Đuôi",
+          "first":"Đề đầu giải nhất",
+          "special_topics":"Đề đặc biệt",
+          "special_headline":"Đề đầu đặc biệt",
+          "problem":"Đề Giải 7",
+          "first_de":"Đề Giải Nhất",
+          "3pin":"3 Càng Đầu",
+          "3pin_headandtail":"3 Càng Đầu Đuôi",
+          "3_special_pins":"3 Càng Đặc Biệt",
+          "4_special_pins":"4 Càng Đặc Biệt",
+          "4slide":"Trượt Xiên 4",
+          "8slide":"Trượt Xiên 8",
+          "10slide":"Trượt Xiên 10"
+        }
+      },
+      "result_table":{
+        "result":"Kết quả",
+        "red_award":"Giải ĐB",
+        "first_prize":"Giải nhất",
+        "second_prize":"Giải nhì",
+        "third_prize":"Giải ba",
+        "fourth_prize":"Giải tư",
+        "fifth_prize":"Giải năm",
+        "sixth_prize":"Giải sáu",
+        "seventh_prize":"Giải bảy",
+        "head":"Đầu",
+        "tail":"Đuôi"
+      },
+      "bet_content_table":{
+        "bet_content":"Nội dung cược",
+        "no":"Stt",
+        "bet_name":"Tên cược",
+        "number_of_bets":"Số cược",
+        "total_bet":"Tổng cược",
+        "multiple":"Cấp số nhân",
+        "stakes":"Tiền cược",
+        "money_won_time":"Tiền thắng / 1 lần"
+      },
+      "bet_history_table":{
+        "bet_history":"Lịch sử cược",
+        "draw_title":"Lượt xổ",
+        "lottery_title":"Xổ số",
+        "bet_type":"Kiểu cược",
+        "buy_time":"Thời gian mua",
+        "number_of_bets":"Số cược",
+        "total_bet":"Tổng cược",
+        "multiple":"Cấp số nhân",
+        "bets":"Tiền cược",
+        "status":"Trạng thái"
+      },
+      "game_types":{
+        "live_stream":"Xổ số Livestream 2 phút",
+        "vip":{
+          "caption":"Xổ Số VIP",
+          "saigon":"Sài Gòn VIP",
+          "hanoi":"Hà Nội VIP",
+          "hochiminh":"Hồ Chí Minh VIP",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        },
+        "mega":{
+          "caption":"Mega 6/45",
+          "one_second":"1 giây",
+          "one_minute":"1 phút",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        },
+        "northern":{
+          "caption":"Miền Bắc",
+          "northern":"Xổ Số Miền Bắc",
+          "special":"Đặc Biệt",
+          "scratch":"Xổ số cào",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        },
+        "super_speed":{
+          "caption":"Siêu Tốc",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        },
+        "south":{
+          "caption":"Miền Nam",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        },
+        "central":{
+          "caption":"Miền Trung",
+          "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        }
+      },
+      "countries":{
+        "united_states":"Hoa Kỳ",
+        "vietnam":"Việt Nam"
+      }
     }
-}
+  }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Grid from "@material-ui/core/Grid";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 import _ from "lodash";
 
@@ -72,7 +72,7 @@ const Score = (props) => {
 
   const createRndScript = (digits) => {
     let phrase = "";
-    for (let i = 0; i < digits; i+= 1) {
+    for (let i = 0; i < digits; i += 1) {
       const rand = Math.floor(Math.random() * 100);
       if (rand < 10) phrase = phrase + 0 + rand + ";";
       else phrase = phrase + rand + ";";
@@ -81,12 +81,14 @@ const Score = (props) => {
   };
   useEffect(() => {
     props.clearAll();
-    dispatch(setCurrentBetType({
-      value: 'score',
-      label: t("bet_types.score"),
-    }, ));
+    dispatch(
+      setCurrentBetType({
+        value: "score",
+        label: t("bet_types.score"),
+      })
+    );
     dispatch(setCurrentDigitType(digitTypes[0]));
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -100,7 +102,7 @@ const Score = (props) => {
                 innerStyle={digitType !== element.value ? buttonStyle : null}
                 onClick={() => {
                   setDigitType(element.value);
-                  dispatch(setCurrentDigitType(element))
+                  dispatch(setCurrentDigitType(element));
                   props.clearAll();
                 }}
                 key={`LOT_TYPE_${index}`}
@@ -132,7 +134,9 @@ const Score = (props) => {
             )}
           </Grid>
           <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-            {digitTypes.map((element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />)}
+            {digitTypes.map(
+              (element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />
+            )}
           </Grid>
         </Grid>
       </div>
@@ -150,7 +154,7 @@ const Score = (props) => {
                       type="button"
                       className={props.tens[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        props.updateDigits('ten', index);
+                        props.updateDigits("ten", index);
                       }}
                     >
                       {index}
@@ -164,19 +168,33 @@ const Score = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  props.setDigitAll('ten');
+                  props.setDigitAll("ten");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
-              <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-              <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+              <Button
+                title={t("select_num.finance")} 
+                type="contained"
+                onClick={() => {
+                  props.setFirstHalf("ten")
+                }}  
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+              />
+              <Button 
+                title={t("select_num.faint")} 
+                type="contained" 
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                onClick={() => {
+                  props.setLastHalf("ten")
+                }}
+              />
               {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                         <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
               <Button
                 title={t("select_num.erase")}
                 type="contained"
                 onClick={() => {
-                  props.clearDigitAll('ten');
+                  props.clearDigitAll("ten");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
@@ -192,7 +210,7 @@ const Score = (props) => {
                       type="button"
                       className={props.units[index] ? "number_button active" : "number_button"}
                       onClick={() => {
-                        props.updateDigits('unit', index);
+                        props.updateDigits("unit", index);
                       }}
                     >
                       {index}
@@ -206,12 +224,26 @@ const Score = (props) => {
                 title={t("select_num.all")}
                 type="contained"
                 onClick={() => {
-                  props.setDigitAll('unit');
+                  props.setDigitAll("unit");
                 }}
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
               />
-              <Button title={t("select_num.finance")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
-              <Button title={t("select_num.faint")} type="contained" innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }} />
+              <Button
+                title={t("select_num.finance")} 
+                type="contained"
+                onClick={() => {
+                  props.setFirstHalf("unit")
+                }}  
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+              />
+              <Button 
+                title={t("select_num.faint")} 
+                type="contained" 
+                innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
+                onClick={() => {
+                  props.setLastHalf("unit")
+                }}
+              />
               {/* <Button title={t("select_num.odd")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} />
                         <Button title={t("select_num.even")} type='contained' innerStyle={{marginLeft: '0.5rem', marginRight: '0.5rem'}} /> */}
               <Button
@@ -219,7 +251,7 @@ const Score = (props) => {
                 type="contained"
                 innerStyle={{ marginLeft: "0.5rem", marginRight: "0.5rem" }}
                 onClick={() => {
-                  props.clearDigitAll('unit');
+                  props.clearDigitAll("unit");
                 }}
               />
             </Grid>
@@ -228,7 +260,14 @@ const Score = (props) => {
         {inputType === "enter" && (
           <Grid container spacing={2}>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-              <textarea placeholder={t("select_num.set_script")} className="script_area" value={props.script} onChange={(e) => {props.setScript(e.target.value)}} />
+              <textarea
+                placeholder={t("select_num.set_script")}
+                className="script_area"
+                value={props.script}
+                onChange={(e) => {
+                  props.setScript(e.target.value);
+                }}
+              />
             </Grid>
             <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
               <Grid container spacing={1}>

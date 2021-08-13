@@ -8,7 +8,7 @@ import io from "socket.io-client";
 import _ from "lodash";
 
 import { API_URL } from "../app/constants/config";
-import { getGameLatestResult } from "../app/redux/actions/game";
+import { getGameAllLatestResults } from "../app/redux/actions/game";
 import { setDate } from "../app/util/lib";
 
 import Header from "../app/containers/Header";
@@ -41,7 +41,7 @@ const App = () => {
   };
 
   const getNewResults = () => {
-    dispatch(getGameLatestResult())
+    dispatch(getGameAllLatestResults())
       .then((res) => {
         if (res.length !== 0) {
           const northern_result = res.map((e) => {

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const LiveStreamLottery2Min = () => (
-        <div>
-            <p>Live Stream</p>
-        </div>
-    );
+  <div>
+    <p>Live Stream</p>
+  </div>
+);
 
 export default LiveStreamLottery2Min;
