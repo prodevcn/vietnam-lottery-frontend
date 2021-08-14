@@ -53,18 +53,18 @@ const MobileNavMenu = (props) => {
           </ul>
         </li>
         <li className="menuItemHasChildren">
-          <Link href="/service">
+          <Link href="/mega/one-minute">
             <a>{t("game_types.mega.caption")}</a>
           </Link>
           <ul className="subMenu">
+            <li>
+                <Link href='/mega/one-minute'><a>{t("game_types.mega.one_second")}</a></Link>
+            </li>
             {/* <li>
-                            <Link href='/service'><a>{t("game_types.mega.one_second")}</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/service-details'>
-                                <a>{t("game_types.mega.one_minute")}</a>
-                            </Link>
-                        </li> */}
+                <Link href='/mega/one-second'>
+                    <a>{t("game_types.mega.one_minute")}</a>
+                </Link>
+            </li> */}
             <li>
               <div className="coming_soon_mobile">
                 <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
@@ -148,7 +148,7 @@ const MobileNavMenu = (props) => {
             {/* <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li> */}
             <li>
               <Link href="/northern/jackpot">
-                <a>{t("game_types.northern.special")}</a>
+                <a>{t("game_types.northern.jackpot")}</a>
               </Link>
             </li>
             <li>

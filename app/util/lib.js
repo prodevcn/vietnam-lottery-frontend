@@ -16,6 +16,17 @@ export const setDate = (date) => {
   return `${check(month)}-${check(day)}-${year}`;
 };
 
+
+
+/** format number for balance each 3 digits comma */
+export const formatValue = (value) => {
+  if (!value) return "";
+  const pattern = /(\d)(?=(\d\d\d)+(?!\d))/g; // Separate variable every for 3 digits with comma
+  return value.replace(pattern, "$1,");
+};
+
+/** create  axios instance */
+
 /** api call */
 const getAuthorizationHeader = () =>
   new Promise(async (resolve) => {
@@ -26,12 +37,8 @@ const getAuthorizationHeader = () =>
       resolve(null);
     }
   });
-export const formatValue = (value) => {
-  if (!value) return "";
-  const pattern = /(\d)(?=(\d\d\d)+(?!\d))/g; // Separate variable every for 3 digits with comma
-  return value.replace(pattern, "$1,");
-};
 
+/** create axios instance */
 export const CreateAxios = () =>
   new Promise((resolve) => {
     getAuthorizationHeader().then(async (authHeader) => {
@@ -55,17 +62,22 @@ export const CreateAxios = () =>
       );
 
       axios.interceptors.response.use(
-        (response) => {
-          if (!response.data || typeof response.data === "string") {
-            // throw {boundaryId: 'fetchResponse', details: response};
-          } else {
-            return response;
-          }
-        },
+        (response) => 
+           response
+          // if (!response.data || typeof response.data === "string") {
+          //   // throw {boundaryId: 'fetchResponse', details: response};
+          // } else {
+          //   return response;
+          // }
+          // console.log('[SUCCESS]:[RESPONSE]:[AXIOS_MIDDLEWARE]', response);
+        ,
         (error) => {
-          if (error.response && error.response.status === 401) {
-            console.log("[ERROR]:[CREATE_AXIOS]");
-          }
+          if(error.response.status === 401)
+            return {status: false, msg: "not authenticated"}  
+          // if (error.response && error.response.status === 401) {
+          //   console.log("[ERROR]:[CREATE_AXIOS]");
+          // }
+          console.log('[FAILURE]:[ERROR]:[AXIOS_MIDDLEWARE]', error);
         }
       );
       resolve(axios);
@@ -74,9 +86,6 @@ export const CreateAxios = () =>
 
 
 export const validateScript = (script, betType, digitType) => {
-  console.log(script);
-  console.log(betType);
-  console.log(digitType);
   if (script[script.length - 1] !== ';')
     return false;
   const pattern = new RegExp(REGEX_PHRASES[digitType]);

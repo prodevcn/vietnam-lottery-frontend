@@ -13,7 +13,7 @@ import { register } from "../../app/redux/actions/auth";
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-    width: "50%",
+    width: "30%",
     margin: "auto",
   },
   bullet: {

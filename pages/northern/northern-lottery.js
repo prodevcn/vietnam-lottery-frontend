@@ -574,6 +574,15 @@ const NorthernLottery = (props) => {
   }, []);
 
   useEffect(() => {
+    dispatch(
+      setCurrentGameType({
+        label: t("game_types.northern.northern"),
+        value: "northern",
+      })
+    );
+  }, [t])
+
+  useEffect(() => {
     checkBetInfo();
   }, [units, tens, hundreds, thousands, script]);
 

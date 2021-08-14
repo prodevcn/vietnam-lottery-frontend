@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Block from "@material-ui/icons/Block";
@@ -6,18 +6,21 @@ import Speed from "@material-ui/icons/Speed";
 import AddCircleOutlined from "@material-ui/icons/AddCircleOutline";
 import { Grid, Dialog, DialogContent, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { formatValue } from "../../app/util/lib";
+import { formatValue, validateScript } from "../../app/util/lib";
 import Layout from "../../app/layouts/Layout";
 import RequireAuth from "../../app/layouts/RequireAuth";
 import InputWithButton from "../../app/components/InputWithButton";
 import Button from "../../app/components/Button";
-
-import { setCurrentGameType, setCurrentBetType, saveBetInfos, betGame } from "../../app/redux/actions/game";
+import JackPotPanel from "../../app/containers/BetTypes/jackpot";
+import { setCurrentGameType, setCurrentBetType, setCurrentDigitType, saveBetInfos, betGame } from "../../app/redux/actions/game";
 import { getUserInfo } from "../../app/redux/actions/auth";
+import BET_RATES from "../../app/constants/betRates";
+
 
 const JackPot = (props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const {currentBetType, betInfos, currentGameType, currentDigitType} = useSelector(state => state.game);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -83,6 +86,31 @@ const JackPot = (props) => {
         break;
     }
   };
+  const setFirstHalf = digit => {
+    switch (digit) {
+      case "unit":
+        setUnits([true, true, true, true, true, false, false, false, false, false]);
+        break;
+      case "ten":
+        setTens([true, true, true, true, true, false, false, false, false, false]);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const setLastHalf = digit => {
+    switch (digit) {
+      case "unit":
+        setUnits([false, false, false, false, false, true, true, true, true, true]);
+        break;
+      case "ten":
+        setTens([false, false, false, false, false, true, true, true, true, true]);
+        break;
+      default:
+        break;
+    }
+  };
 
   const clearDigitAll = (digit) => {
     switch (digit) {
@@ -96,6 +124,148 @@ const JackPot = (props) => {
         break;
     }
   };
+
+  const checkBetInfo = () => {
+    let unit_count = 0;
+    const selectedUnit = [];
+    let ten_count = 0;
+    const selectedTen = [];
+    for (let index = 0; index < 10; index += 1) {
+      if (units[index] === true) {
+        unit_count += 1;
+        selectedUnit.push(index.toString());
+      }
+    }
+    for (let index = 0; index < 10; index += 1) {
+      if (tens[index] === true) {
+        ten_count += 1;
+        selectedTen.push(index.toString());
+      }
+    }
+    let phrase = "";
+    let amount = 0;
+    if (script !== "") {
+      if(!validateScript(script, currentBetType.value, currentDigitType.value))
+        return {status: false, phrase: null};
+      setBetNumbers(script);
+      const counts = script.split(";").length - 1;
+      amount = BET_RATES.jackpot * counts * multiple;
+      setBetAmount(amount);
+      setCount(counts);
+      return { status: true, phrase: script };
+    }
+    if (unit_count === 0 || ten_count === 0) {
+      return { status: false, phrase: null };
+    }
+    const formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
+    for (const item_1 of formattedNumbers) {
+      for (const item_2 of item_1) {
+        phrase = phrase.concat(item_2);
+      }
+    }
+    amount = BET_RATES.jackpot * (phrase.split(";").length - 1) * multiple;
+    setBetNumbers(phrase);
+    setBetAmount(amount);
+    setCount(phrase.split(";").length - 1);
+    return { status: true, phrase };
+  }
+
+  const onQuickBet = () => {
+    const savedOrders = betInfos;
+    const checkResult = checkBetInfo();
+    if (!checkResult.status || betAmount > user.balance) {
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2000);
+    } else {
+      savedOrders.push({
+        userId: user._id,
+        gameType: currentGameType.value,
+        betType: currentBetType.value,
+        digitType: currentDigitType.value,
+        multiple,
+        betAmount,
+        numbers: betNumbers,
+      });
+      dispatch(betGame(savedOrders));
+      clearAll();
+      setTimeout(() => {
+        dispatch(getUserInfo(user._id));
+      }, 2000);
+    }
+  };
+
+  const onMoreBet = () => {
+    const checkResult = checkBetInfo();
+    if (!checkResult.status || betAmount > user.balance) {
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 2000);
+    } else {
+      const savedInfos = betInfos;
+      savedInfos.push({
+        userId: user._id,
+        gameType: currentGameType.value,
+        betType: currentBetType.value,
+        digitType: currentDigitType.value,
+        multiple,
+        betAmount,
+        numbers: betNumbers,
+      });
+      setAllBetAmount((prev) => prev + betAmount);
+      dispatch(saveBetInfos(betInfos));
+      clearAll();
+    }
+  };
+
+  useMemo(() => {
+    dispatch(
+      setCurrentGameType({
+        value: 'northern',
+        label: t("game_types.northern.northern")
+      })
+    );
+    dispatch(setCurrentBetType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+    dispatch(setCurrentDigitType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+  }, []);
+
+  useEffect(() => {
+    dispatch(
+      setCurrentGameType({
+        value: 'northern',
+        label: t("game_types.northern.northern")
+      })
+    );
+    dispatch(setCurrentBetType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+    dispatch(setCurrentDigitType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+  }, [t]);
+
+  useEffect(() => {
+    checkBetInfo();
+  }, [units, tens, script]);
+
+  useEffect(() => {
+    if (multiple > 1000000) {
+      setMultiple(1000000);
+    }
+    checkBetInfo();
+  }, [multiple]);
+
+
 
   return (
     <Layout
@@ -111,10 +281,36 @@ const JackPot = (props) => {
       <div>
         <div className="bread_crumb">
           <div className="bread_crumb_item">
-            <p className="active_text">{t("")}</p>
+            <p className="active_text">{t("game_types.northern.jackpot")}</p>
           </div>
         </div>
-        <div className="bet_button_area">
+        <div>
+          <JackPotPanel 
+            script={script}
+            setScript={(value) => setScript(value)}
+            units={units}
+            tens={tens}
+            clearAll={() => {
+              clearAll();
+            }}
+            updateDigits={(digit, index) => {
+              updateDigits(digit, index);
+            }}
+            setDigitAll={(digit) => {
+              setDigitAll(digit);
+            }}
+            clearDigitAll={(digit) => {
+              clearDigitAll(digit);
+            }}
+            setFirstHalf={(digit) => {
+              setFirstHalf(digit);
+            }}
+            setLastHalf={(digit) => {
+              setLastHalf(digit);
+            }}
+            gameType={props.gameType}
+            key="score"
+          />
           <div className="bet_button_area">
             <Grid container spacing={0}>
               <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
@@ -159,18 +355,27 @@ const JackPot = (props) => {
                 <Button
                   title={t("buttons.quick_bet")}
                   icon={<Speed className="icon" style={{ color: "white" }} />}
-                  onClick={() => {}}
+                  onClick={() => {onQuickBet()}}
                 />
                 <Button
                   title={t("buttons.more_bet")}
                   icon={<AddCircleOutlined className="icon" style={{ color: "white" }} />}
-                  onClick={() => {}}
+                  onClick={() => {onMoreBet()}}
                 />
               </Grid>
             </Grid>
           </div>
         </div>
       </div>
+      <Dialog fullScreen={fullScreen} open={open} aria-labelledby="responsive-dialog-title">
+        <DialogContent className="game_selection_box">
+          <DialogContent>
+            <div style={{ display: "flex" }}>
+              <p className="date_text">{t("bet_err_msg")}</p>
+            </div>
+          </DialogContent>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

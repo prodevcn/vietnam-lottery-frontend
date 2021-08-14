@@ -25,7 +25,7 @@ export const getGameLatestResult = (gameType) => (dispatch) =>
     axios
       .get(`/game/get-latest-result/${gameType}`)
       .then((res) => {
-        if (res.data) {
+        if (res && res.data) {
           return res.data;
         }
       })
@@ -39,7 +39,7 @@ export const getGameAllLatestResults = () => dispatch =>
     axios
       .get("/game/get-all-latest-results")
       .then((res) => {
-        if (res.data) {
+        if (res && res.data) {
           return res?.data;
         }
       })

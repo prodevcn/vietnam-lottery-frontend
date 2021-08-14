@@ -53,18 +53,18 @@ const Navigation = () => {
           </ul>
         </li>
         <li className="drop">
-          <Link href="/">
+          <Link href="/mega/one-minute">
             <a>
               {t("game_types.mega.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
+            <li>
+                <Link href='/mega/one-minute'><a>{t("game_types.mega.one_minute")}</a></Link>
+            </li>
             {/* <li>
-                            <Link href='/mega/1minute'><a>{t("game_types.mega.one_second")}</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/mega/1second'><a>{t("game_types.mega.one_minute")}</a></Link>
-                        </li> */}
+                <Link href='/mega/one-second'><a>{t("game_types.mega.one_second")}</a></Link>
+            </li> */}
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
@@ -129,7 +129,7 @@ const Navigation = () => {
           </ul>
         </li>
         <li className="drop">
-          <Link href="/">
+          <Link href="/northern/northern-lottery">
             <a>
               {t("game_types.northern.caption")} <IoCaretDown color="red" />
             </a>
@@ -142,7 +142,7 @@ const Navigation = () => {
             </li>
             <li>
               <Link href="/northern/jackpot">
-                <a>{t("game_types.northern.special")}</a>
+                <a>{t("game_types.northern.jackpot")}</a>
               </Link>
               {/* <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a> */}

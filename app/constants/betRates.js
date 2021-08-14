@@ -34,6 +34,7 @@ const BET_RATES = {
     slide8: 1000,
     slide10: 1000,
   },
+  jackpot: 1000,
 };
   
   export default BET_RATES;

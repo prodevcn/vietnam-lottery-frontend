@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import {Grid, Container, Dialog, DialogContent, useMediaQuery} from "@material-ui/core";
+import {Grid, Container, Dialog, DialogContent } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import io from "socket.io-client";
 import _ from "lodash";
-
 import { API_URL } from "../app/constants/config";
-import { getGameAllLatestResults } from "../app/redux/actions/game";
 import { setDate } from "../app/util/lib";
-
 import Header from "../app/containers/Header";
 import Button from "../app/components/Button";
 import Slider from "../app/containers/Slider";
+import { getGameAllLatestResults } from "../app/redux/actions/game";
 import { checkAuth } from "../app/redux/actions/auth";
 
 const socket = io.connect(API_URL);
@@ -21,11 +19,9 @@ const socket = io.connect(API_URL);
 const App = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  // const {authenticated} = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false); // for alert
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const default_results = {
     northern: {},
     vip: {},
@@ -43,7 +39,7 @@ const App = () => {
   const getNewResults = () => {
     dispatch(getGameAllLatestResults())
       .then((res) => {
-        if (res.length !== 0) {
+        if (res && res.length !== 0) {
           const northern_result = res.map((e) => {
             if (e.gameType === "northern") return e;
           });
@@ -274,7 +270,6 @@ const App = () => {
         </Grid>
       </Container>
       <Dialog
-        fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"

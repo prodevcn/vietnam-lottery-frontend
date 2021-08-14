@@ -33,6 +33,9 @@ const WIN_RATES = {
       slide8: 8000,
       slide10: 12000,
     },
+    jackpot: {
+      jackpot: 85000,
+    }
   },
 };
   

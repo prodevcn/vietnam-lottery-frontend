@@ -5,6 +5,7 @@ import betReducer from "./betSlice";
 import authReducer from "./authSlice";
 import userReducer from "./userSlice";
 import gameReducer from "./gameSlice";
+import commonReducer from "./commonSlice";
 
 export default combineReducers({
   form: formReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
   auth: authReducer,
   bet: betReducer,
   game: gameReducer,
+  common: commonReducer,
 });
