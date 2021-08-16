@@ -29,7 +29,7 @@
       "unit":"Unit",
       "hundred":"Hundred",
       "thousand":"Thousand",
-      "set_script":"numbers must be separated by semi colon - e.g, 12;13 or 12&13;15&16",
+      "set_script":"numbers must be separated by semi colon - e.g, 12;13; or 12&13;15&16;",
       "random":"Random",
       "suggestions":"Suggestions",
       "rarely_appear":"Rarely Appears"

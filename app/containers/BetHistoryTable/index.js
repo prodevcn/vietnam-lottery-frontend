@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -91,10 +91,10 @@ const BetHistoryTable = (props) => {
     setPage(0);
   };
 
-  const onRefresh = () => {
+  const getAllHistories = () => {
     dispatch(getAllOrders(user?._id)).then((res) => {
       if (res) {
-        const data = res.map((item) =>
+        const data = res.map((item) => 
           createData(
             item.createdAt.substr(0, 10),
             item.gameType,
@@ -112,49 +112,23 @@ const BetHistoryTable = (props) => {
     });
   };
 
-  useEffect(() => {
-    dispatch(getAllOrders(user?._id)).then((res) => {
-      if (res) {
-        const data = res.map((item) =>
-          createData(
-            item.createdAt.substr(0, 10),
-            item.gameType,
-            item.betType,
-            item.createdAt.substr(5, 21),
-            item.numbers.substr(0, 20) + "...",
-            item.numbers.split(";").length - 1,
-            item.multiple,
-            item.betAmount,
-            item.status
-          )
-        );
-        setRows(data);
-      }
-    });
-  }, []);
+  const onRefresh = () => {
+    getAllHistories();
+  };
+
+  const handleNewGame = useCallback((game) => {
+    if (game === currentGameType.value) {
+      getAllHistories();
+    }
+  });
 
   useEffect(() => {
+    getAllHistories();
     socket.emit("subscribe_timer", currentGameType.value);
-    socket.on("new game start", () => {
-      dispatch(getAllOrders(user?._id)).then((res) => {
-        if (res) {
-          const data = res.map((item) =>
-            createData(
-              item.createdAt.substr(0, 10),
-              item.gameType,
-              item.betType,
-              item.createdAt.substr(5, 21),
-              item.numbers.substr(0, 20) + "...",
-              item.numbers.split(";").length - 1,
-              item.multiple,
-              item.betAmount,
-              item.status
-            )
-          );
-          setRows(data);
-        }
-      });
-    });
+    socket.on("new game start", handleNewGame);
+    return () => {
+      socket.removeAllListeners("new game start");
+    }
   }, []);
 
   return (

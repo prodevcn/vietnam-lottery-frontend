@@ -52,11 +52,9 @@ const Layout = (props) => {
           <Grid item xl={9} lg={9} md={8} sm={12} xs={12}>
             {/* <Slider /> */}
             <ResultBoard
-              gameTitle={t("game_types.northern.northern")}
-              bettingType={{ type: "backpack", digitType: "1more" }}
-              estimatedDate="2021-06-22"
-              resultDate="2021-06-23"
-              resultNumber="542111"
+              gameInfo={props.gameInfo}
+              duration={props.duration}
+              result={props.result}
             />
             <Container maxWidth="xl" className="control__panel">
               {props.children}

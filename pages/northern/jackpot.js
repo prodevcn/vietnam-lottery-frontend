@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import io from "socket.io-client";
 import Block from "@material-ui/icons/Block";
 import Speed from "@material-ui/icons/Speed";
 import AddCircleOutlined from "@material-ui/icons/AddCircleOutline";
@@ -12,10 +13,21 @@ import RequireAuth from "../../app/layouts/RequireAuth";
 import InputWithButton from "../../app/components/InputWithButton";
 import Button from "../../app/components/Button";
 import JackPotPanel from "../../app/containers/BetTypes/jackpot";
-import { setCurrentGameType, setCurrentBetType, setCurrentDigitType, saveBetInfos, betGame } from "../../app/redux/actions/game";
+import { 
+  setCurrentGameType, 
+  setCurrentBetType, 
+  setCurrentDigitType, 
+  saveBetInfos, 
+  betGame,
+  getGameLatestResult,
+  getNewGameInfo,
+  getGameHistory, 
+} from "../../app/redux/actions/game";
 import { getUserInfo } from "../../app/redux/actions/auth";
+import { API_URL } from "../../app/constants/config";
 import BET_RATES from "../../app/constants/betRates";
 
+const socket = io.connect(API_URL);
 
 const JackPot = (props) => {
   const { t } = useTranslation();
@@ -40,6 +52,16 @@ const JackPot = (props) => {
   const [betNumbers, setBetNumbers] = useState("");
   const [units, setUnits] = useState([false, false, false, false, false, false, false, false, false, false]);
   const [tens, setTens] = useState([false, false, false, false, false, false, false, false, false, false]);
+
+  /** */
+  const [result, setResult] = useState({});
+  const [gameInfo, setGameInfo] = useState({});
+  const [duration, setDuration] = useState({
+    hours: "...",
+    minutes: "...",
+    seconds: "...",
+  });
+  /** */
 
   const clearAll = () => {
     setUnits([false, false, false, false, false, false, false, false, false, false]);
@@ -220,23 +242,49 @@ const JackPot = (props) => {
     }
   };
 
-  useMemo(() => {
-    dispatch(
-      setCurrentGameType({
-        value: 'northern',
-        label: t("game_types.northern.northern")
+  /** socket process */
+  const getNewResult = () => {
+    dispatch(getGameLatestResult('northern'))
+      .then((res) => {
+        if (res) {
+          setResult(res);
+        }
       })
-    );
-    dispatch(setCurrentBetType({
-      label: t("game_types.northern.jackpot"),
-      value: 'jackpot'
-    }));
-    dispatch(setCurrentDigitType({
-      label: t("game_types.northern.jackpot"),
-      value: 'jackpot'
-    }));
-  }, []);
+      .catch((err) => {
+        console.error('[ERROR]:[GET_LATEST_GAME_RESULT]', err);
+      });
+  };
 
+  const getNewGame = () => {
+    dispatch(getNewGameInfo('northern'))
+      .then((res) => {
+        setGameInfo(res);
+      })
+      .catch((err) => {
+        console.error('[ERROR]:[GET_NEW_GAME_INFO]', err);
+      });
+  };
+
+  const handleNewGame = useCallback((game) => {
+    getNewGame();
+    dispatch(getUserInfo(user._id));
+    dispatch(getGameHistory('northern'));
+    getNewResult();
+    console.log('[START]:[NEW_GAME]');
+  });
+
+  const handleTimer = useCallback((info) => {
+    setDuration({
+      hours: Math.floor((info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((info.duration % (1000 * 60)) / 1000),
+    });
+  });
+
+  /** */
+  useMemo(() => {
+    socket.emit("subscribe_timer", 'northern');
+  }, []);
   useEffect(() => {
     dispatch(
       setCurrentGameType({
@@ -265,11 +313,38 @@ const JackPot = (props) => {
     checkBetInfo();
   }, [multiple]);
 
-
+  /** handle socket process */
+  useEffect(() => {
+    dispatch(
+      setCurrentGameType({
+        value: 'northern',
+        label: t("game_types.northern.northern")
+      })
+    );
+    dispatch(setCurrentBetType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+    dispatch(setCurrentDigitType({
+      label: t("game_types.northern.jackpot"),
+      value: 'jackpot'
+    }));
+    getNewResult();
+    getNewGame();
+    socket.emit("subscribe_timer", 'northern');
+    socket.on("new game start", handleNewGame);
+    socket.on("timer", handleTimer);
+    return () => {
+      socket.removeAllListeners("timer");
+      socket.removeAllListeners("new game start");
+    }
+  }, []);
 
   return (
     <Layout
-      gameType="northern"
+      gameInfo={gameInfo}
+      duration={duration}
+      result={result}
       allBetAmount={allBetAmount}
       clearAllAmount={() => {
         setAllBetAmount(0);

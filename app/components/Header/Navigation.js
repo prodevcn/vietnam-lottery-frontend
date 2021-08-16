@@ -30,26 +30,25 @@ const Navigation = () => {
     <nav className="mainmenu__nav">
       <ul className="mainmenu">
         <li className="drop">
-          <Link href="/vip-lottery/hochiminh-vip">
+          <Link href="/vip/hanoi">
             <a>
-              {" "}
               {t("game_types.vip.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
             {/* <li>
-                            <Link href='/vip-lottery/saigon-vip'><a>{t("game_types.vip.saigon")}</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/vip-lottery/hanoi-vip'><a>{t("game_types.vip.hanoi")}</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/vip-lottery/hochiminh-vip'><a>{t("game_types.vip.hochiminh")}</a></Link>
-                        </li> */}
+                <Link href='/vip/saigon'><a>{t("game_types.vip.saigon")}</a></Link>
+            </li> */}
             <li>
+                <Link href='/vip/hanoi'><a>{t("game_types.vip.hanoi")}</a></Link>
+            </li>
+            {/* <li>
+                <Link href='/vip/hochiminh'><a>{t("game_types.vip.hochiminh")}</a></Link>
+            </li> */}
+            {/* <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
-            </li>
+            </li> */}
           </ul>
         </li>
         <li className="drop">

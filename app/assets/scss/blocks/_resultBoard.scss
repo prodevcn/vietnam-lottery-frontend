@@ -52,6 +52,19 @@
     }
 }
 
+.number__circle_6 {
+  padding: 0.3rem 0.6rem;
+  background-color: rgb(255, 136, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 0.2rem;
+  h6 {
+      margin: 0;
+  }
+}
+
 .duration__circle {
     padding: 0.5rem 1rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -80,6 +93,9 @@
     .number__circle {
         padding: 0.5rem 0.6rem;
     }
+    .number__circle_6 {
+      padding: 0.3rem 0.6rem;
+  }
     .duration__circle {
         padding: 0.5rem 0.6rem;
     }

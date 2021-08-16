@@ -41,6 +41,7 @@ const Login = (props) => {
   };
 
   useEffect(() => {
+    console.log(authenticated);
     if (authenticated) {
       router.push("/");
     }

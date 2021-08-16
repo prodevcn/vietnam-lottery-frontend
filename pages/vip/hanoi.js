@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 /** material */
@@ -24,8 +24,6 @@ import Layout from "../../app/layouts/Layout";
 import RequireAuth from "../../app/layouts/RequireAuth";
 import InputWithButton from "../../app/components/InputWithButton";
 import Button from "../../app/components/Button";
-/** for socket */
-import { API_URL } from "../../app/constants/config";
 /** betType contents */
 import Score from "../../app/containers/BetTypes/Score";
 import ThreeMore from "../../app/containers/BetTypes/3More";
@@ -34,10 +32,12 @@ import Backpack from "../../app/containers/BetTypes/Backpack";
 import LotXien from "../../app/containers/BetTypes/LotXien";
 import HeadAndTail from "../../app/containers/BetTypes/HeadAndTail";
 import SlidingLot from "../../app/containers/BetTypes/SlidingLot";
+/** for socket */
+import { API_URL } from "../../app/constants/config";
 
 const socket = io.connect(API_URL);
-
-const NorthernLottery = (props) => {
+  
+const HanoiVIP = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const theme = useTheme();
@@ -76,6 +76,7 @@ const NorthernLottery = (props) => {
       label: t("bet_types.slide"),
     },
   ];
+
   /** state for bet details */
   const [script, setScript] = useState("");
   const [allBetAmount, setAllBetAmount] = useState(0);
@@ -584,10 +585,9 @@ const NorthernLottery = (props) => {
     }
   };
   /** end */
-
   /** socket process */
   const getNewResult = () => {
-    dispatch(getGameLatestResult('northern'))
+    dispatch(getGameLatestResult('hanoi'))
       .then((res) => {
         if (res) {
           setResult(res);
@@ -599,7 +599,7 @@ const NorthernLottery = (props) => {
   };
 
   const getNewGame = () => {
-    dispatch(getNewGameInfo('northern'))
+    dispatch(getNewGameInfo('hanoi'))
       .then((res) => {
         setGameInfo(res);
       })
@@ -609,10 +609,9 @@ const NorthernLottery = (props) => {
   };
 
   const handleNewGame = useCallback((game) => {
-    console.log(game);
     getNewGame();
     dispatch(getUserInfo(user._id));
-    dispatch(getGameHistory('northern'));
+    dispatch(getGameHistory('hanoi'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
@@ -628,14 +627,14 @@ const NorthernLottery = (props) => {
   /** */
 
   useMemo(() => {
-    socket.emit("subscribe_timer", 'northern');
+    socket.emit("subscribe_timer", 'hanoi');
   }, [])
 
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.northern.northern"),
-        value: "northern",
+        label: t("game_types.vip.hanoi"),
+        value: "hanoi",
       })
     );
   }, [t])
@@ -655,8 +654,8 @@ const NorthernLottery = (props) => {
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.northern.northern"),
-        value: "northern",
+        label: t("game_types.vip.hanoi"),
+        value: "hanoi",
       })
     );
     dispatch(setCurrentBetType(BET_TYPES[0]));
@@ -669,8 +668,6 @@ const NorthernLottery = (props) => {
       socket.removeAllListeners("new game start");
     }
   }, []);
-
-
   return (
     <Layout
       gameInfo={gameInfo}
@@ -941,4 +938,4 @@ const NorthernLottery = (props) => {
   );
 };
 
-export default RequireAuth(NorthernLottery);
+export default RequireAuth(HanoiVIP);

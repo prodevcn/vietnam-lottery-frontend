@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import io from "socket.io-client";
 import Dropdown from "../../components/Dropdown";
 import { getGameHistory } from "../../redux/actions/game";
 import { API_URL } from "../../constants/config";
 import { setDate } from "../../util/lib";
-
-const socket = io.connect(API_URL);
 
 const ResultTable = (props) => {
   const dispatch = useDispatch();

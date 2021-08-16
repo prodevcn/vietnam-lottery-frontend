@@ -54,7 +54,7 @@ export const CreateAxios = () =>
           if (authHeader) {
             config.headers.Authorization = authHeader;
           }
-          return config;
+          return config
         },
         (error) => {
           console.log(error);
