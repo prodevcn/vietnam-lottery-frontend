@@ -16,7 +16,7 @@ import {
   betGame,
   getGameLatestResult,
   getNewGameInfo,
-  getGameHistory,
+  getGameHistoriesForGameType,
 } from "../../app/redux/actions/game";
 import { getUserInfo } from "../../app/redux/actions/auth";
 /** custom components */
@@ -272,7 +272,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot2 * counts * multiple;
+          amount = BET_RATES.lot18.backpack.lot2 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -286,7 +286,7 @@ const SaigonVIP = (props) => {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.backpack.lot2 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18.backpack.lot2 * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -297,7 +297,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot2_1K * counts * multiple;
+          amount = BET_RATES.lot18.backpack.lot2_1K * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -311,7 +311,7 @@ const SaigonVIP = (props) => {
             phrase += item_2;
           }
         }
-        amount = BET_RATES.backpack.lot2_1K * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18.backpack.lot2_1K * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -322,7 +322,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot3 * counts * multiple;
+          amount = BET_RATES.lot18.backpack.lot3 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -341,7 +341,7 @@ const SaigonVIP = (props) => {
             }
           }
         }
-        amount = BET_RATES.backpack.lot3 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18.backpack.lot3 * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -352,7 +352,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot4 * counts * multiple;
+          amount = BET_RATES.lot18.backpack.lot4 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -375,7 +375,7 @@ const SaigonVIP = (props) => {
             }
           }
         }
-        amount = BET_RATES.backpack.lot4 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18.backpack.lot4 * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -388,7 +388,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -404,7 +404,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.score[currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot18.score[currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -418,7 +418,7 @@ const SaigonVIP = (props) => {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.score[currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18.score[currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -431,7 +431,7 @@ const SaigonVIP = (props) => {
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -444,7 +444,7 @@ const SaigonVIP = (props) => {
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -457,7 +457,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -476,7 +476,7 @@ const SaigonVIP = (props) => {
             }
           }
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -487,7 +487,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -510,7 +510,7 @@ const SaigonVIP = (props) => {
             }
           }
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -523,7 +523,7 @@ const SaigonVIP = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot18[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -545,6 +545,7 @@ const SaigonVIP = (props) => {
       }, 2000);
     } else {
       savedOrders.push({
+        type: 'lot18',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -571,6 +572,7 @@ const SaigonVIP = (props) => {
     } else {
       const savedInfos = betInfos;
       savedInfos.push({
+        type: 'lot18',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -609,16 +611,14 @@ const SaigonVIP = (props) => {
   };
 
   const handleNewGame = useCallback((game) => {
-    console.log(game);
     getNewGame();
     dispatch(getUserInfo(user._id));
-    dispatch(getGameHistory('saigon'));
+    dispatch(getGameHistoriesForGameType('saigon'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
 
   const handleTimer = useCallback((info) => {
-    console.log(info);
     setDuration({
       hours: Math.floor((info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
       minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
@@ -672,6 +672,7 @@ const SaigonVIP = (props) => {
   }, []);
   return (
     <Layout
+      gameType="saigon"
       gameInfo={gameInfo}
       duration={duration}
       result={result}
@@ -702,6 +703,7 @@ const SaigonVIP = (props) => {
           {[
             selectedBetTypeIndex === 0 && (
               <Backpack
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -731,6 +733,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 1 && (
               <LotXien
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 clearAll={() => {
@@ -742,6 +745,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 2 && (
               <Score
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -770,6 +774,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 3 && (
               <HeadAndTail
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -798,6 +803,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 4 && (
               <ThreeMore
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -827,6 +833,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 5 && (
               <FourMore
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -857,6 +864,7 @@ const SaigonVIP = (props) => {
             ),
             selectedBetTypeIndex === 6 && (
               <SlidingLot
+                type="lot18"
                 script={script}
                 setScript={(value) => setScript(value)}
                 clearAll={() => {

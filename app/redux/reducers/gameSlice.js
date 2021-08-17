@@ -5,16 +5,19 @@ import {
     SET_CURRENT_BET_TYPE,
     SET_CURRENT_DIGIT_TYPE,
     SET_BET_INFOS,
+    SET_LATEST_GAME_RESULTS,
+    SET_GAME_ORDER_INFOS
   } from "../../constants/actions";
   
   const INITIAL_STATE = {
-    latestResults: [],
+    latestResults: {},
     currentGameType: {},
     currentBetType: {},
     currentDigitType: {},
     betInfos: [],
     betTableInfos: [],
     gameResults: [],
+    gameOrderInfos: [],
   };
   
   const reducer = (state = INITIAL_STATE, action) => {
@@ -49,6 +52,16 @@ import {
           ...state,
           gameResults: action.payload,
         };
+      case SET_LATEST_GAME_RESULTS: 
+        return {
+          ...state,
+          latestResults: action.payload,
+        }
+      case SET_GAME_ORDER_INFOS:
+        return {
+          ...state,
+          gameOrderInfos: action.payload,
+        }
       default:
         return state;
     }

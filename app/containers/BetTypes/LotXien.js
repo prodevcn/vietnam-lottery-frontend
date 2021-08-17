@@ -25,19 +25,19 @@ const LotXien = (props) => {
     {
       value: "xien2",
       label: t("bet_types.sub.xien2"),
-      help: t("help.loxien.xien2"),
+      help: props.type === "lot18" ? t("help18.loxien.xien2") : t("help.loxien.xien2"),
       odds: "16",
     },
     {
       value: "xien3",
       label: t("bet_types.sub.xien3"),
-      help: t("help.loxien.xien3"),
+      help: props.type === "lot18" ? t("help18.loxien.xien3") : t("help.loxien.xien3"),
       odds: "65",
     },
     {
       value: "xien4",
       label: t("bet_types.sub.xien4"),
-      help: t("help.loxien.xien4"),
+      help: props.type === "lot18" ? t("help18.loxien.xien4") : t("help.loxien.xien4"),
       odds: "180",
     },
   ];

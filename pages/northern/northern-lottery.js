@@ -16,7 +16,7 @@ import {
   betGame,
   getGameLatestResult,
   getNewGameInfo,
-  getGameHistory,
+  getGameHistoriesForGameType,
 } from "../../app/redux/actions/game";
 import { getUserInfo } from "../../app/redux/actions/auth";
 /** custom components */
@@ -271,7 +271,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot2 * counts * multiple;
+          amount = BET_RATES.lot27.backpack.lot2 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -285,7 +285,7 @@ const NorthernLottery = (props) => {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.backpack.lot2 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27.backpack.lot2 * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -296,7 +296,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot2_1K * counts * multiple;
+          amount = BET_RATES.lot27.backpack.lot2_1K * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -310,7 +310,7 @@ const NorthernLottery = (props) => {
             phrase += item_2;
           }
         }
-        amount = BET_RATES.backpack.lot2_1K * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27.backpack.lot2_1K * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -321,7 +321,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot3 * counts * multiple;
+          amount = BET_RATES.lot27.backpack.lot3 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -340,7 +340,7 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.backpack.lot3 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27.backpack.lot3 * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -351,7 +351,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.backpack.lot4 * counts * multiple;
+          amount = BET_RATES.lot27.backpack.lot4 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -374,7 +374,7 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.backpack.lot4 * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27.backpack.lot4 * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -387,7 +387,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -403,7 +403,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES.score[currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot27.score[currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -417,7 +417,7 @@ const NorthernLottery = (props) => {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.score[currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27.score[currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -430,7 +430,7 @@ const NorthernLottery = (props) => {
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -443,7 +443,7 @@ const NorthernLottery = (props) => {
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
@@ -456,7 +456,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -475,7 +475,7 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -486,7 +486,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -509,7 +509,7 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
         setBetNumbers(phrase);
@@ -522,7 +522,7 @@ const NorthernLottery = (props) => {
             return {status: false, phrase: null};
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
-          amount = BET_RATES[currentBetType.value][currentDigitType.value] * counts * multiple;
+          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
@@ -544,6 +544,7 @@ const NorthernLottery = (props) => {
       }, 2000);
     } else {
       savedOrders.push({
+        type: 'lot27',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -570,6 +571,7 @@ const NorthernLottery = (props) => {
     } else {
       const savedInfos = betInfos;
       savedInfos.push({
+        type: 'lot27',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -612,7 +614,7 @@ const NorthernLottery = (props) => {
     console.log(game);
     getNewGame();
     dispatch(getUserInfo(user._id));
-    dispatch(getGameHistory('northern'));
+    dispatch(getGameHistoriesForGameType('northern'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
@@ -673,6 +675,7 @@ const NorthernLottery = (props) => {
 
   return (
     <Layout
+      gameType="northern"
       gameInfo={gameInfo}
       duration={duration}
       result={result}

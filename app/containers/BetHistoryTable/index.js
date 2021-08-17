@@ -69,7 +69,6 @@ const BetHistoryTable = (props) => {
   // const {authenticated} = useSelector(state => state.auth);
   const [rows, setRows] = useState([]);
   const dispatch = useDispatch();
-  const { currentGameType, gameResults } = useSelector((state) => state.game);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -117,14 +116,14 @@ const BetHistoryTable = (props) => {
   };
 
   const handleNewGame = useCallback((game) => {
-    if (game === currentGameType.value) {
+    if (game === props.gameType) {
       getAllHistories();
     }
   });
 
   useEffect(() => {
     getAllHistories();
-    socket.emit("subscribe_timer", currentGameType.value);
+    socket.emit("subscribe_timer", props.gameType);
     socket.on("new game start", handleNewGame);
     return () => {
       socket.removeAllListeners("new game start");

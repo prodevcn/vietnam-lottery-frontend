@@ -21,7 +21,7 @@ import {
   betGame,
   getGameLatestResult,
   getNewGameInfo,
-  getGameHistory, 
+  getGameHistoriesForGameType, 
 } from "../../app/redux/actions/game";
 import { getUserInfo } from "../../app/redux/actions/auth";
 import { API_URL } from "../../app/constants/config";
@@ -171,7 +171,7 @@ const JackPot = (props) => {
         return {status: false, phrase: null};
       setBetNumbers(script);
       const counts = script.split(";").length - 1;
-      amount = BET_RATES.jackpot * counts * multiple;
+      amount = BET_RATES.lot27.jackpot * counts * multiple;
       setBetAmount(amount);
       setCount(counts);
       return { status: true, phrase: script };
@@ -185,7 +185,7 @@ const JackPot = (props) => {
         phrase = phrase.concat(item_2);
       }
     }
-    amount = BET_RATES.jackpot * (phrase.split(";").length - 1) * multiple;
+    amount = BET_RATES.lot27.jackpot * (phrase.split(";").length - 1) * multiple;
     setBetNumbers(phrase);
     setBetAmount(amount);
     setCount(phrase.split(";").length - 1);
@@ -202,6 +202,7 @@ const JackPot = (props) => {
       }, 2000);
     } else {
       savedOrders.push({
+        type: 'lot27',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -228,6 +229,7 @@ const JackPot = (props) => {
     } else {
       const savedInfos = betInfos;
       savedInfos.push({
+        type: 'lot27',
         userId: user._id,
         gameType: currentGameType.value,
         betType: currentBetType.value,
@@ -268,7 +270,7 @@ const JackPot = (props) => {
   const handleNewGame = useCallback((game) => {
     getNewGame();
     dispatch(getUserInfo(user._id));
-    dispatch(getGameHistory('northern'));
+    dispatch(getGameHistoriesForGameType('northern'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
@@ -342,6 +344,7 @@ const JackPot = (props) => {
 
   return (
     <Layout
+      gameType="northern"
       gameInfo={gameInfo}
       duration={duration}
       result={result}

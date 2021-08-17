@@ -24,19 +24,19 @@ const ThreeMore = (props) => {
     {
       value: "pin3",
       label: t("bet_types.sub.3pin"),
-      help: t("help.3more.3pin"),
+      help: props.type === "lot18" ? t("help18.3more.3pin") : t("help.3more.3pin"),
       odds: "960",
     },
     {
       value: "pin3_headandtail",
       label: t("bet_types.sub.3pin_headandtail"),
-      help: t("help.3more.3pin_headandtail"),
+      help: props.type === "lot18" ? t("help18.3more.3pin_headandtail") : t("help.3more.3pin_headandtail"),
       odds: "960",
     },
     {
       value: "special_pin3",
       label: t("bet_types.sub.3_special_pins"),
-      help: t("help.3more.3_special_pins"),
+      help: props.type === "lot18" ? t("help18.3more.3_special_pins") : t("help.3more.3_special_pins"),
       odds: "960",
     },
   ];

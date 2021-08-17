@@ -6,6 +6,7 @@ import {
   SET_GAME_RESULTS,
   SET_BET_INFOS,
   SET_BET_TABLE_INFOS,
+  SET_LATEST_GAME_RESULTS
   
 } from "../../constants/actions";
 import WIN_RATES from "../../constants/winRates";
@@ -40,6 +41,11 @@ export const getGameAllLatestResults = () => dispatch =>
       .get("/game/get-all-latest-results")
       .then((res) => {
         if (res && res.data) {
+          const data = {};
+          for (const item of res.data) {
+            data[item.gameType] = item;
+          }
+          dispatch({type: SET_LATEST_GAME_RESULTS, payload: data});
           return res?.data;
         }
       })
@@ -48,7 +54,7 @@ export const getGameAllLatestResults = () => dispatch =>
       })
   )
 
-export const getGameHistory = (gameType) => (dispatch) =>
+export const getGameHistoriesForGameType = (gameType) => (dispatch) =>
   CreateAxios().then((axios) =>
     axios
       .get(`/game/get-all-results/${gameType}`)
@@ -71,6 +77,17 @@ export const getAllOrders = (userId) => (dispatch) =>
   CreateAxios().then((axios) =>
     axios
       .get(`/game/get-all-order/${userId}`)
+      .then((res) => res.data)
+      .catch((err) => ({ message: "something went wrong" }))
+  );
+
+export const getAllOrdersForGame = (userId, gameType) => (dispatch) =>
+  CreateAxios().then((axios) =>
+    axios
+      .post('/game/get-all-order', {
+        userId,
+        gameType
+      })
       .then((res) => res.data)
       .catch((err) => ({ message: "something went wrong" }))
   );
@@ -107,7 +124,7 @@ export const saveBetInfos = (infos) => (dispatch) => {
         item.numbers.split(";").length - 1,
         item.multiple,
         item.betAmount,
-        WIN_RATES[item.gameType][item.betType][item.digitType]
+        WIN_RATES[item.type][item.betType][item.digitType]
       )
     );
     dispatch({ type: SET_BET_TABLE_INFOS, payload: data });

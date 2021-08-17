@@ -24,25 +24,25 @@ const Backpack = (props) => {
     {
       value: "lot2",
       label: t("bet_types.sub.lot2"),
-      help: t("help.backpack.lot2"),
+      help: props.type === "lot18" ? t("help18.backpack.lot2") : t("help.backpack.lot2"),
       odds: "99",
     },
     {
       value: "lot2_1K",
       label: t("bet_types.sub.lot2_1K"),
-      help: t("help.backpack.lot2_1K"),
+      help: props.type === "lot18" ? t("help18.backpack.lot2_1K") : t("help.backpack.lot2_1K"),
       odds: "5.445",
     },
     {
       value: "lot3",
       label: t("bet_types.sub.lot3"),
-      help: t("help.backpack.lot3"),
+      help: props.type === "lot18" ? t("help18.backpack.lot2") : t("help.backpack.lot2"),
       odds: "960",
     },
     {
       value: "lot4",
       label: t("bet_types.sub.lot4"),
-      help: t("help.backpack.lot4"),
+      help: props.type === "lot18" ? t("help18.backpack.lot2") : t("help.backpack.lot2"),
       odds: "8,880",
     },
   ];

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import {Grid, Container, Dialog, DialogContent } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 import io from "socket.io-client";
 import _ from "lodash";
 import { API_URL } from "../app/constants/config";
@@ -20,8 +19,8 @@ const App = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const {latestResults} = useSelector(state => state.game); 
   const [open, setOpen] = useState(false); // for alert
-  const theme = useTheme();
   const default_results = {
     northern: {},
     vip: {},
@@ -30,32 +29,29 @@ const App = () => {
     central: {},
     super: {},
   };
-  const [results, setResults] = useState(default_results);
+  // const [results, setResults] = useState(default_results);
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const getNewResults = () => {
-    dispatch(getGameAllLatestResults())
-      .then((res) => {
-        if (res && res.length !== 0) {
-          const northern_result = res.map((e) => {
-            if (e.gameType === "northern") return e;
-          });
-          setResults((state) => ({ ...state, northern: northern_result[0] }));
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    dispatch(getGameAllLatestResults());
+      // .then((res) => {
+      //   if (res && res.length !== 0) {
+      //     const northern_result = res.map((e) => {
+      //       if (e.gameType === "northern") return e;
+      //     });
+      //     const hochiminh_result = res.map((e) => {
+      //       if (e.gameType === "hochiminh") return e;
+      //     })
+      //     setResults((state) => ({ ...state, hochiminh: hochiminh_result, northern: northern_result[0] }));
+      //   }
+      // })
+      // .catch((err) => {
+      //   console.error(err);
+      // });
   };
-
-  useEffect(() => {
-    socket.on("new result", () => {
-      getNewResults();
-    });
-  }, []);
 
   useEffect(() => {
     getNewResults();
@@ -88,20 +84,29 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="betting_result_element">
               <div className="text_area">
-                <p>{setDate(new Date().toString())}</p>
+                <p>
+                  {setDate(
+                    latestResults.northern?.endTime
+                      ? latestResults.northern.endTime
+                      : new Date().toString()
+                  )}
+                </p>
                 <p>{t("game_types.vip.hochiminh")}</p>
               </div>
               <div className="number_area">
-                {/* {
-                  resultNumber.split('').map((item, index) => (
-                      <div className="number__circle" key={`RESULT_${index}`}><h6 style={{color: "white"}}>{item}</h6></div>
-                  ))
-                } */}
-                {_.range(0, 6).map((item, index) => (
-                  <div className="number__circle" key={`RESULT_${index}`}>
-                    <h6 style={{ color: "white" }}>_</h6>
-                  </div>
-                ))}
+                {latestResults.hochiminh?.numbers
+                  ? latestResults.hochiminh.numbers.redAward
+                      .split("")
+                      .map((item, index) => (
+                        <div className="number__circle" key={`RESULT_${index}`}>
+                          <h6 style={{ color: "white" }}>{item}</h6>
+                        </div>
+                      ))
+                  : _.range(0, 6).map((item, index) => (
+                      <div className="number__circle" key={`RESULT_${index}`}>
+                        <h6 style={{ color: "white" }}>_</h6>
+                      </div>
+                    ))}
               </div>
             </div>
           </Grid>
@@ -110,23 +115,23 @@ const App = () => {
               <div className="text_area">
                 <p>
                   {setDate(
-                    results.northern.endTime
-                      ? results.northern.endTime
+                    latestResults.northern?.endTime
+                      ? latestResults.northern.endTime
                       : new Date().toString()
                   )}
                 </p>
                 <p>{t("game_types.northern.northern")}</p>
               </div>
               <div className="number_area">
-                {results.northern.numbers
-                  ? results.northern.numbers.redAward
+                {latestResults.northern?.numbers
+                  ? latestResults.northern.numbers.redAward
                       .split("")
                       .map((item, index) => (
                         <div className="number__circle" key={`RESULT_${index}`}>
                           <h6 style={{ color: "white" }}>{item}</h6>
                         </div>
                       ))
-                  : _.range(0, 6).map((item, index) => (
+                  : _.range(0, 5).map((item, index) => (
                       <div className="number__circle" key={`RESULT_${index}`}>
                         <h6 style={{ color: "white" }}>_</h6>
                       </div>
@@ -163,12 +168,18 @@ const App = () => {
               <div className="description__section">
                 <p className="date_text">{t("game_types.vip.description")}</p>
               </div>
-              <div className="button__section" onClick={() => {}}>
+              <div className="button__section">
                 {/* <Button title={t("play_now")}/> */}
-                <div style={{ marginBottom: 20 }}>
+                {/* <div style={{ marginBottom: 20 }}>
                   <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
-                </div>
+                </div> */}
+                <Button
+                  title={t("play_now")}
+                  onClick={() => {
+                    router.push("/vip/hochiminh");
+                  }}
+                />
               </div>
             </div>
           </Grid>

@@ -23,19 +23,19 @@ const SlidingLot = (props) => {
     {
       value: "slide4",
       label: t("bet_types.sub.4slide"),
-      help: t("help.slide.4slide"),
+      help: props.type === "lot18" ? t("help18.slide.4slide") : t("help.slide.4slide"),
       odds: "2.3",
     },
     {
       value: "slide8",
       label: t("bet_types.sub.8slide"),
-      help: t("help.slide:8slide"),
+      help: props.type === "lot18" ? t("help18.slide.8slide") : t("help.slide.8slide"),
       odds: "8",
     },
     {
       value: "slide10",
       label: t("bet_types.sub.10slide"),
-      help: t("help.slide:10slide"),
+      help: props.type === "lot18" ? t("help18.slide.10slide") : t("help.slide.10slide"),
       odds: "12",
     },
   ];

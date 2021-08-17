@@ -72,6 +72,46 @@
       },
       "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
     },
+    "help18":{
+      "backpack":{
+        "lot2":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 18,000 VND for each hit point, the winnings for each point is 99,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot2_1K":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 1,000 VND for each hit point, the winning for each point is 5,445 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot3":"Roll the last 3 digits of the 17 lots of the winning results. Just pay 17,000 VND for each hit point, the winning for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot4":"Roll the last 4 digits of the 16 lots of the winning results. Just pay 16,000 VND for each hit point, the winnings for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
+      },
+      "loxien":{
+        "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
+        "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 150,000 VND.",
+        "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the winning results, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
+      },
+      "score":{
+        "first":"Enter the first 2 digits of the first prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND.",
+        "special_topics":"Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings per point are 99,000 VND.",
+        "special_headline":"Enter the first 2 digits in the special prize.. Pay 1,000 VND for each point. The winnings per point are 99,000 VND.",
+        "special_heading": "Enter 2 digits of 8th prize. Pay 1,000 VND for each point. The winnings for each point are 98,000 VND.",
+        "special_headandtail": "Enter the last 2 digits of the 8th prize and the special prize. Pay 2,000 VND per point. Just 1 of 2 prizes of 8 or a special prize with the last 2 digits of the number chosen by the player is to win. The winnings for each point are 98,000 VND.",
+        "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 4,000 VND for each point. The winning amount per point is 98,000 VND.",
+        "first_de":"Enter the last 2 digits of the First Prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND."
+      },
+      "headandtail":{
+        "head":"Type 1 tens digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND.",
+        "tail":"Enter the last 1 digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND."
+      },
+      "3more":{
+        "3pin":"Enter 3 digits of 7th prize. Pay 1,000 VND for each point. The winnings for each point are 960,000 VND.",
+        "3pin_headandtail":"Enter the last 3 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 960,000 VND.",
+        "3_special_pins":"Enter the last 3 digits of the 7th prize and the special prize. Pay 2,000 VND per point. Just 1 of 2 7 prizes or special prizes with the last 3 digits matching the number of players selected to win. The winnings for each point are 960,000 VND."
+      },
+      "4more":{
+        "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
+      },
+      "slide":{
+        "4slide":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 1,800 VND.",
+        "8slide":"Choose 8 different numbers to roll the last 2 digits of the 18 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Paying 1,000 VND for each hit point, winning for each point is 3,300 VND.",
+        "10slide":"Choose 10 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 4,300 VND."
+      },
+      "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
+    },
     "result_board":{
       "bet_time":"Bet time",
       "lottery_draw":"Lottery draw",
@@ -112,6 +152,8 @@
         "first":"First Prize",
         "special_topics":"Special Topics",
         "special_headline":"Special headlines",
+        "special_heading": "Special Headings",
+        "special_headandtail": "Special Head and Tail",
         "problem":"Problem 7",
         "first_de":"First Prize De",
         "3pin":"3 Pincers",
@@ -133,6 +175,7 @@
       "fifth_prize":"Fifth prize",
       "sixth_prize":"Sixth prize",
       "seventh_prize":"Seventh prize",
+      "eighth_prize": "Eighth prize",
       "head":"Head",
       "tail":"Tail"
     },

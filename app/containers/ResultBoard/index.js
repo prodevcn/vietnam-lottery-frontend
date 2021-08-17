@@ -9,7 +9,7 @@ import { Star, Timer } from "@material-ui/icons";
 import _ from "lodash";
 /** utils & constants */
 import { getUserInfo } from "../../redux/actions/auth";
-// import { getGameLatestResult, getNewGameInfo, getGameHistory } from "../../redux/actions/game";
+// import { getGameLatestResult, getNewGameInfo, getGameHistoriesForGameType } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
 // import { API_URL } from "../../constants/config";
 
@@ -54,7 +54,7 @@ const ResultBoard = props => {
   //   if (game === currentGameType.value) {
   //     getNewGame();
   //     dispatch(getUserInfo(user._id));
-  //     dispatch(getGameHistory(currentGameType.value));
+  //     dispatch(getGameHistoriesForGameType(currentGameType.value));
   //     getNewResult();
   //     console.log('[START]:[NEW_GAME]');
   //   }
@@ -111,7 +111,7 @@ const ResultBoard = props => {
           </div>
           <div className="number_area" style={{ marginTop: 15 }}>
             <div className="duration__circle" key="DURATION_HOURS">
-              <h6 style={{ color: "white" }}>{props.duration.hours < 0 ? "..." : props.duration.hours}</h6>
+             <h6 style={{ color: "white" }}>{props.duration.hours < 0 ? "..." : props.duration.hours}</h6>
             </div>
             <h6 className="date_text" style={{ padding: 0, display: "flex", alignItems: "center" }}>
               :
@@ -137,7 +137,7 @@ const ResultBoard = props => {
             (
               currentGameType.value === 'northern' || 
               currentGameType.value === 'hanoi' ||
-              currentGameType.value === 'hanoi' ||
+              currentGameType.value === 'hochiminh' ||
               currentGameType.value === 'saigon'
             ) && (
               <div className="number_area">

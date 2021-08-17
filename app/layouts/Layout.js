@@ -95,15 +95,13 @@ const Layout = (props) => {
             </Container>
           </Grid>
           <Grid item xl={3} lg={3} md={4} sm={12} xs={12}>
-            <ResultTable
-              title={t("game_types.northern.northern")}
-            />
+            <ResultTable gameType={props.gameType} />
             <Advertiser />
           </Grid>
         </Grid>
       </Container>
       <Container maxWidth="xl" className="game_panel_container">
-        <BetHistoryTable />
+        <BetHistoryTable gameType={props.gameType} />
       </Container>
       <Dialog
         fullScreen={fullScreen}

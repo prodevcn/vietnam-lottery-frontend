@@ -36,15 +36,15 @@ const Navigation = () => {
             </a>
           </Link>
           <ul className="dropdown">
-            {/* <li>
+            <li>
                 <Link href='/vip/saigon'><a>{t("game_types.vip.saigon")}</a></Link>
-            </li> */}
+            </li>
             <li>
                 <Link href='/vip/hanoi'><a>{t("game_types.vip.hanoi")}</a></Link>
             </li>
-            {/* <li>
+            <li>
                 <Link href='/vip/hochiminh'><a>{t("game_types.vip.hochiminh")}</a></Link>
-            </li> */}
+            </li>
             {/* <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>

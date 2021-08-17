@@ -12,7 +12,7 @@ import BET_RATES from "../../app/constants/betRates";
 import {
   getGameLatestResult,
   getNewGameInfo,
-  getGameHistory,
+  getGameHistoriesForGameType,
   setCurrentGameType,
   setCurrentBetType,
   saveBetInfos,
@@ -106,7 +106,7 @@ const OneMinute = (props) => {
   const handleNewGame = useCallback((game) => {
     getNewGame();
     dispatch(getUserInfo(user._id));
-    dispatch(getGameHistory('mega'));
+    dispatch(getGameHistoriesForGameType('mega'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
@@ -153,6 +153,7 @@ const OneMinute = (props) => {
 
   return (
     <Layout
+      gameType="mega"
       gameInfo={gameInfo}
       duration={duration}
       result={result}

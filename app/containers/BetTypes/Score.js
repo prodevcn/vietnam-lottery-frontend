@@ -55,6 +55,44 @@ const Score = (props) => {
       odds: "98",
     },
   ];
+  const digitTypes_18 = [
+    {
+      value: "first",
+      label: t("bet_types.sub.first"),
+      help: t("help18.score.first"),
+      odds: "98",
+    },
+    {
+      value: "special_topics",
+      label: t("bet_types.sub.special_topics"),
+      help: t("help18.score.special_topics"),
+      odds: "99",
+    },
+    {
+      value: "special_headline",
+      label: t("bet_types.sub.special_headline"),
+      help: t("help18.score.special_headline"),
+      odds: "99",
+    },
+    {
+      value: "special_heading",
+      label: t("bet_types.sub.special_heading"),
+      help: t("help18.score.special_heading"),
+      odds: "99",
+    },
+    {
+      value: "special_headandtail",
+      label: t("bet_types.sub.special_headandtail"),
+      help: t("help18.score.special_headandtail"),
+      odds: "99",
+    },
+    {
+      value: "first_de",
+      label: t("bet_types.sub.first_de"),
+      help: t("help18.score.first_de"),
+      odds: "98",
+    },
+  ];
   const inputTypes = [
     {
       value: "select",
@@ -95,7 +133,22 @@ const Score = (props) => {
       <div className="bet_types_area">
         <Grid container spacing={0}>
           <Grid item xl={7} lg={7} md={7} sm={12} xs={12} style={{ textAlign: "center" }}>
-            {digitTypes.map((element, index) => (
+            {props.type === "lot18" ? (
+              digitTypes_18.map((element, index) => (
+              <Button
+                type={digitType === element.value ? "selected" : "outlined"}
+                title={element.label}
+                innerStyle={digitType !== element.value ? buttonStyle : null}
+                onClick={() => {
+                  setDigitType(element.value);
+                  dispatch(setCurrentDigitType(element));
+                  props.clearAll();
+                }}
+                key={`LOT_TYPE_18_${index}`}
+              />
+            ))
+            ) :(
+              digitTypes.map((element, index) => (
               <Button
                 type={digitType === element.value ? "selected" : "outlined"}
                 title={element.label}
@@ -107,7 +160,8 @@ const Score = (props) => {
                 }}
                 key={`LOT_TYPE_${index}`}
               />
-            ))}
+            ))
+            ) }
           </Grid>
           <Grid item xl={5} lg={5} md={5} sm={12} xs={12} style={{ textAlign: "center" }}>
             {inputTypes.map((element, index) => (
@@ -124,13 +178,24 @@ const Score = (props) => {
             ))}
           </Grid>
           <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-            {digitTypes.map(
+            {props.type === "lot18" ? (
+              digitTypes_18.map(
+              (element, index) =>
+                digitType === element.value && (
+                  <p className="date_text" key={`LOT_HELP_18_${index}`}>
+                    {element.help}
+                  </p>
+                )
+            )
+            ) : (
+              digitTypes.map(
               (element, index) =>
                 digitType === element.value && (
                   <p className="date_text" key={`LOT_HELP_${index}`}>
                     {element.help}
                   </p>
                 )
+            )
             )}
           </Grid>
           <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>

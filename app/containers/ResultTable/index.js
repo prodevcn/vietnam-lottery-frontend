@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../../components/Dropdown";
-import { getGameHistory } from "../../redux/actions/game";
-import { API_URL } from "../../constants/config";
+import { getGameHistoriesForGameType } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
 
 const ResultTable = (props) => {
@@ -11,21 +10,19 @@ const ResultTable = (props) => {
   const { t } = useTranslation();
   const { currentGameType } = useSelector((state) => state.game);
   const { gameResults } = useSelector((state) => state.game);
-  const [history, setHistory] = useState([]);
-  const [selectedHistory, setSelectedHistory] = useState({});
+  const [selectedHistory, setSelectedHistory] = useState(gameResults[0]);
 
   const onChangeItem = (val) => {
     setSelectedHistory(val);
   };
 
   const getHistory = () => {
-    dispatch(getGameHistory(currentGameType.value))
+    dispatch(getGameHistoriesForGameType(props.gameType))
       .then((res) => {
-        setHistory(res);
         setSelectedHistory(res[0]);
       })
       .catch((err) => {
-        console.error(err);
+        console.error('[ERROR]:[GET_ALL_HISTORY]', err);
       });
   };
 
@@ -33,11 +30,15 @@ const ResultTable = (props) => {
     getHistory();
   }, []);
 
+  useEffect(() => {
+    setSelectedHistory(gameResults[0]);
+  }, [gameResults]);
+
   return (
     <div className="betting_table">
       <div className="table_container">
         <h5 className="result_text">
-          {props.title} {t("lottery_result")}
+          {currentGameType.label} {t("lottery_result")}
         </h5>
         <Dropdown
           data={gameResults}
@@ -49,40 +50,92 @@ const ResultTable = (props) => {
           {t("result_table.result")} : {setDate(selectedHistory?.endTime)}
         </p>
         <table className="table_section">
-          <tbody>
-            <tr className="table_row">
-              <td style={{ color: "red" }}>{t("result_table.red_award")}</td>
-              <td>{selectedHistory?.numbers?.redAward}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.first_prize")}</td>
-              <td>{selectedHistory?.numbers?.first}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.second_prize")}</td>
-              <td>{selectedHistory?.numbers?.second}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.third_prize")}</td>
-              <td>{selectedHistory?.numbers?.third}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.fourth_prize")}</td>
-              <td>{selectedHistory?.numbers?.fourth}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.fifth_prize")}</td>
-              <td>{selectedHistory?.numbers?.fifth}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.sixth_prize")}</td>
-              <td>{selectedHistory?.numbers?.sixth}</td>
-            </tr>
-            <tr className="table_row">
-              <td>{t("result_table.seventh_prize")}</td>
-              <td>{selectedHistory?.numbers?.seventh}</td>
-            </tr>
-          </tbody>
+          {
+            (
+              currentGameType.value === 'northern' ||
+              currentGameType.value === 'hanoi'
+            ) && (
+              <tbody>
+                <tr className="table_row">
+                  <td style={{ color: "red" }}>{t("result_table.red_award")}</td>
+                  <td>{selectedHistory?.numbers?.redAward}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.first_prize")}</td>
+                  <td>{selectedHistory?.numbers?.first}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.second_prize")}</td>
+                  <td>{selectedHistory?.numbers?.second}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.third_prize")}</td>
+                  <td>{selectedHistory?.numbers?.third}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.fourth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.fourth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.fifth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.fifth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.sixth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.sixth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.seventh_prize")}</td>
+                  <td>{selectedHistory?.numbers?.seventh}</td>
+                </tr>
+              </tbody>
+            )
+          }
+          {
+            (
+              currentGameType.value === 'hochiminh' ||
+              currentGameType.value === 'saigon'
+            ) && (
+              <tbody>
+                <tr className="table_row">
+                  <td style={{ color: "red" }}>{t("result_table.red_award")}</td>
+                  <td>{selectedHistory?.numbers?.redAward}</td>
+                </tr>
+                <tr className="table_row">
+                  <td className="state_text">{t("result_table.first_prize")}</td>
+                  <td>{selectedHistory?.numbers?.first}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.second_prize")}</td>
+                  <td>{selectedHistory?.numbers?.second}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.third_prize")}</td>
+                  <td>{selectedHistory?.numbers?.third}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.fourth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.fourth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.fifth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.fifth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.sixth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.sixth}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.seventh_prize")}</td>
+                  <td>{selectedHistory?.numbers?.seventh}</td>
+                </tr>
+                <tr className="table_row">
+                  <td>{t("result_table.eighth_prize")}</td>
+                  <td>{selectedHistory?.numbers?.eighth}</td>
+                </tr>
+              </tbody>
+            )
+          }
         </table>
 
         <table className="table_section">
