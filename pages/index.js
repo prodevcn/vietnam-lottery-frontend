@@ -193,11 +193,16 @@ const App = () => {
                 <p className="date_text">{t("game_types.mega.description")}</p>
               </div>
               <div className="button__section">
-                {/* <Button title={t("play_now")}/> */}
-                <div style={{ marginBottom: 20 }}>
+                <Button
+                  title={t("play_now")}
+                  onClick={() => {
+                    router.push("/mega/one-minute");
+                  }}
+                />
+                {/* <div style={{ marginBottom: 20 }}>
                   <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
-                </div>
+                </div> */}
               </div>
             </div>
           </Grid>

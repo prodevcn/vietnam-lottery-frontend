@@ -51,7 +51,7 @@ const ResultTable = (props) => {
           )
         }
         <p className="result_title">
-          {t("result_table.result")} : {setDate(selectedHistory?.endTime)}
+          {t("result_table.result")} : {selectedHistory ? setDate(selectedHistory?.endTime) : setDate(Date.now())}
         </p>
         <table className="table_section">
           {

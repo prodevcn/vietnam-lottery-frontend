@@ -54,7 +54,7 @@ const ResultBoard = props => {
             <Star style={{ color: "white" }} />
             <p style={{ color: "white" }}>{t("result_board.lottery_result")}</p>
           </div>
-          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>{setDate(props.result.endTime)}</p>
+          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>{props.result.endTime ? setDate(props.result.endTime) : setDate(Date.now())}</p>
           {
             (
               currentGameType.value === 'northern' || 
