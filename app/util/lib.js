@@ -53,7 +53,11 @@ export const CreateAxios = () =>
       const axios = client.create({
         baseURL: API_URL,
         validateStatus: (status) => status >= 200 && status < 300,
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',  
+        },
         timeout: 1000 * 5,
       });
 
