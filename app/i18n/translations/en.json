@@ -66,9 +66,9 @@
         "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
       },
       "slide":{
-        "4slide":"Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 1,000 VND for each hit point, winning for each point is 2,300 VND.",
-        "8slide":"Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 8,000 VND.",
-        "10slide":"Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 12,000 VND."
+        "slide4":"Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 1,000 VND for each hit point, winning for each point is 2,300 VND.",
+        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 8,000 VND.",
+        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 12,000 VND."
       },
       "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
     },
@@ -106,11 +106,38 @@
         "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
       },
       "slide":{
-        "4slide":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 1,800 VND.",
-        "8slide":"Choose 8 different numbers to roll the last 2 digits of the 18 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Paying 1,000 VND for each hit point, winning for each point is 3,300 VND.",
-        "10slide":"Choose 10 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 4,300 VND."
+        "slide4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 1,800 VND.",
+        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 18 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Paying 1,000 VND for each hit point, winning for each point is 3,300 VND.",
+        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 4,300 VND."
       },
       "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
+    },
+    "help6": {
+      "normal": {
+        "normal": "The player wins if in the numbers the player chooses, there is a number that matches 1 of the 6 numbers of the vietlott lottery results in the betting opening cycle."
+      },
+      "multiple": {
+        "multiple4": "Win 4 numbers if in the numbers the player chooses, there are 4 numbers that match 4 of the 6 numbers of the vietlott lottery results in the betting opening cycle.",
+        "multiple3": "Win 3 numbers if among the numbers the player chooses, there are 3 numbers that match 3 of the 6 numbers of the vietlott lottery results in the betting opening cycle.",
+        "multiple3_2": "Winning 2: The player wins if in the numbers the player chooses, there are 2 numbers that match 2 of the 6 numbers of the vietlott lottery results in the betting opening cycle. Winning 3: The player wins if in the numbers the player chooses, there are 3 numbers that match 3 of the 6 numbers of the vietlott lottery results in the betting opening cycle.",
+        "multiple2": "Win 2 numbers if in the numbers the player chooses, there are 2 pairs of numbers that match 2 of the 6 numbers of the vietlott lottery results in the betting opening cycle."
+      },
+      "slide": {
+        "slide5": "The player chooses 5 numbers, if out of the 5 numbers the player chooses there is no result that matches the vietllot lottery result, the player wins.",
+        "slide6": "The player chooses 6 numbers, if in the 6 numbers the player chooses there is no result that matches the vietllot lottery result, the player wins.",
+        "slide7": "The player chooses 7 numbers, if out of 7 numbers the player chooses, none of the results match the vietllot lottery results, the player wins.",
+        "slide8": "The player chooses 8 numbers, if in the 8 numbers the player chooses there is no result that matches the vietllot lottery result, the player wins.",
+        "slide9": "The player chooses 9 numbers, if in the 9 numbers the player chooses there is no result that matches the vietllot lottery result, the player wins.",
+        "slide10": "The player chooses 10 numbers, if in the 10 numbers the player chooses there is no match with the vietllot lottery result, the player wins."
+      },
+      "select": {
+        "choose5": "Player chooses 5 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws.",
+        "choose6": "Player chooses 6 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws.",
+        "choose7": "Player chooses 7 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws.",
+        "choose8": "Player chooses 8 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws.",
+        "choose9": "Player chooses 9 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws.",
+        "choose10": "Player chooses 10 numbers to bet. The player wins if there is only 1 number in the selected sequence that matches 1 of the 6 draws."
+      }
     },
     "result_board":{
       "bet_time":"Bet time",
@@ -134,7 +161,7 @@
       "slide":"Sliding Lot",
       "normal": "Normal numbers",
       "multiple": "Multiple numbers",
-      "select1": "Select 1",
+      "select": "Select 1",
       "sub":{
         "select":"Select Number",
         "enter":"Enter Number",
@@ -160,9 +187,23 @@
         "3pin_headandtail":"3 Pincers and Head and Tail",
         "3_special_pins":"3 Special Pins",
         "4_special_pins":"4 Special Pins",
-        "4slide":"4 Slide",
-        "8slide":"8 Slide",
-        "10slide":"10 Slide"
+        "slide4":"4 Slide",
+        "slide10":"10 Slide",
+        "multiple4": "Hit 4 numbers",
+        "multiple3": "Hit 3 numbers",
+        "multiple3_2": "3 hit 2",
+        "multiple2": "Hit 2 numbers",
+        "slide5": "Slide 5",
+        "slide6": "Slide 6",
+        "slide7": "Slide 7",
+        "slide8": "Slide 8",
+        "slide9": "Slide 9",
+        "choose5": "Choose 5",
+        "choose6": "Choose 6",
+        "choose7": "Choose 7",
+        "choose8": "Choose 8",
+        "choose9": "Choose 9",
+        "choose10": "Choose 10"
       }
     },
     "result_table":{
@@ -218,9 +259,9 @@
       },
       "northern":{
         "caption":"Northern",
-        "northern":"Northern Lottery",
+        "northern":"Northern",
         "jackpot":"JackPot",
-        "scratch":"Scratch Lottery",
+        "scratch":"Scratch",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "super_speed":{

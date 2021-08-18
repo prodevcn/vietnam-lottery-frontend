@@ -22,21 +22,21 @@ const SlidingLot = (props) => {
   const digitTypes = [
     {
       value: "slide4",
-      label: t("bet_types.sub.4slide"),
-      help: props.type === "lot18" ? t("help18.slide.4slide") : t("help.slide.4slide"),
-      odds: "2.3",
+      label: t("bet_types.sub.slide4"),
+      help: props.type === "lot18" ? t("help18.slide.slide4") : t("help.slide.slide4"),
+      odds: props.type === "lot18" ? "1.3" : "2.3",
     },
     {
       value: "slide8",
-      label: t("bet_types.sub.8slide"),
-      help: props.type === "lot18" ? t("help18.slide.8slide") : t("help.slide.8slide"),
-      odds: "8",
+      label: t("bet_types.sub.slide10"),
+      help: props.type === "lot18" ? t("help18.slide.slide8") : t("help.slide.slide8"),
+      odds: props.type === "lot18" ? "3.3" : "8",
     },
     {
       value: "slide10",
-      label: t("bet_types.sub.10slide"),
-      help: props.type === "lot18" ? t("help18.slide.10slide") : t("help.slide.10slide"),
-      odds: "12",
+      label: t("bet_types.sub.slide10"),
+      help: props.type === "lot18" ? t("help18.slide.slide10") : t("help.slide.slide10"),
+      odds: props.type === "lot18" ? "4.3" : "12",
     },
   ];
   const inputTypes = [

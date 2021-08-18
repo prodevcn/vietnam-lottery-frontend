@@ -703,6 +703,7 @@ const HanoiVIP = (props) => {
           {[
             selectedBetTypeIndex === 0 && (
               <Backpack
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -743,6 +744,7 @@ const HanoiVIP = (props) => {
             ),
             selectedBetTypeIndex === 2 && (
               <Score
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -771,6 +773,7 @@ const HanoiVIP = (props) => {
             ),
             selectedBetTypeIndex === 3 && (
               <HeadAndTail
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -799,6 +802,7 @@ const HanoiVIP = (props) => {
             ),
             selectedBetTypeIndex === 4 && (
               <ThreeMore
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -828,6 +832,7 @@ const HanoiVIP = (props) => {
             ),
             selectedBetTypeIndex === 5 && (
               <FourMore
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -858,6 +863,7 @@ const HanoiVIP = (props) => {
             ),
             selectedBetTypeIndex === 6 && (
               <SlidingLot
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 clearAll={() => {

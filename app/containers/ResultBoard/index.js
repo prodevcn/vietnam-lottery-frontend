@@ -1,96 +1,18 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 /** material ui */
 import { Grid } from "@material-ui/core";
 import { Star, Timer } from "@material-ui/icons";
-/** common lib */
-// import io from "socket.io-client";
 import _ from "lodash";
 /** utils & constants */
-import { getUserInfo } from "../../redux/actions/auth";
-// import { getGameLatestResult, getNewGameInfo, getGameHistoriesForGameType } from "../../redux/actions/game";
 import { setDate } from "../../util/lib";
-// import { API_URL } from "../../constants/config";
-
-// const socket = io.connect(API_URL);
 
 const ResultBoard = props => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { user } = useSelector((state) => state.user);
   const { currentGameType, currentBetType, currentDigitType } = useSelector((state) => state.game);
-  // const [result, setResult] = useState({});
-  // const [gameInfo, setGameInfo] = useState({});
-  // const [duration, setDuration] = useState({
-    // hours: "...",
-    // minutes: "...",
-    // seconds: "...",
-  // });
-  
-  // const getNewResult = () => {
-  //   dispatch(getGameLatestResult(currentGameType.value))
-  //     .then((res) => {
-  //       if (res) {
-  //         setResult(res);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error('[ERROR]:[GET_LATEST_GAME_RESULT]', err);
-  //     });
-  // };
-
-  // const getNewGame = () => {
-  //   dispatch(getNewGameInfo(currentGameType.value))
-  //     .then((res) => {
-  //       setGameInfo(res);
-  //     })
-  //     .catch((err) => {
-  //       console.error('[ERROR]:[GET_NEW_GAME_INFO]', err);
-  //     });
-  // };
-
-  // const handleNewGame = useCallback((game) => {
-  //   if (game === currentGameType.value) {
-  //     getNewGame();
-  //     dispatch(getUserInfo(user._id));
-  //     dispatch(getGameHistoriesForGameType(currentGameType.value));
-  //     getNewResult();
-  //     console.log('[START]:[NEW_GAME]');
-  //   }
-  // });
-
-  // const handleTimer = useCallback((info) => {
-  //   console.log(info);
-  //   if (info.game === currentGameType.value) {
-  //     setDuration({
-  //       hours: Math.floor((info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-  //       minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
-  //       seconds: Math.floor((info.duration % (1000 * 60)) / 1000),
-  //     });
-  //   }
-  // });
-
-  // const stopTimer = () => {
-  //   socket.removeAllListeners("timer");
-  //   socket.removeAllListeners("new game start");
-  // }
-  
-  // useEffect(() => {
-  //   getNewResult();
-  //   getNewGame();
-  //   socket.emit("subscribe_timer", currentGameType.value);
-  //   socket.on("new game start", handleNewGame);
-  //   socket.on("timer", handleTimer);
-  //   return () => {
-  //     socket.removeAllListeners("timer");
-  //     socket.removeAllListeners("new game start");
-  //   }
-  // }, []);
-  useEffect(() => {
-    console.log('+++++', props.result);
-  }, []);
-
   return (
     <div className="__result_board_main">
       <Grid container spacing={1}>

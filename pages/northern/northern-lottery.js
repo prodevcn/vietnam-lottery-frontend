@@ -706,6 +706,7 @@ const NorthernLottery = (props) => {
           {[
             selectedBetTypeIndex === 0 && (
               <Backpack
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -735,6 +736,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 1 && (
               <LotXien
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 clearAll={() => {
@@ -746,6 +748,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 2 && (
               <Score
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -774,6 +777,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 3 && (
               <HeadAndTail
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -802,6 +806,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 4 && (
               <ThreeMore
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -831,6 +836,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 5 && (
               <FourMore
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 units={units}
@@ -861,6 +867,7 @@ const NorthernLottery = (props) => {
             ),
             selectedBetTypeIndex === 6 && (
               <SlidingLot
+                type="lot27"
                 script={script}
                 setScript={(value) => setScript(value)}
                 clearAll={() => {

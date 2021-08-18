@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import Grid from "@material-ui/core/Grid";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
-
 import { setCurrentBetType, setCurrentDigitType } from "../../redux/actions/game";
 
 import Button from "../../components/Button";
@@ -16,7 +15,7 @@ const buttonStyle = {
   marginRight: "1rem",
 };
 
-const LotXien = (props) => {
+const Mega = (props) => {
   const [digitType, setDigitType] = useState("xien2");
   const [inputType, setInputType] = useState("enter");
   const { t } = useTranslation();
@@ -26,21 +25,22 @@ const LotXien = (props) => {
       value: "xien2",
       label: t("bet_types.sub.xien2"),
       help: props.type === "lot18" ? t("help18.loxien.xien2") : t("help.loxien.xien2"),
-      odds: props.type === "lot18" ? "26" : "16",
+      odds: "16",
     },
     {
       value: "xien3",
       label: t("bet_types.sub.xien3"),
       help: props.type === "lot18" ? t("help18.loxien.xien3") : t("help.loxien.xien3"),
-      odds: props.type === "lot18" ? "150" : "65",
+      odds: "65",
     },
     {
       value: "xien4",
       label: t("bet_types.sub.xien4"),
       help: props.type === "lot18" ? t("help18.loxien.xien4") : t("help.loxien.xien4"),
-      odds: props.type === "lot18" ? "750" : "180",
+      odds: "180",
     },
   ];
+
   const inputTypes = [
     {
       value: "enter",
@@ -51,42 +51,13 @@ const LotXien = (props) => {
   const createRndScript = (digits) => {
     let phrase = "";
     for (let i = 0; i < digits; i += 1) {
-      if (digitType === "xien2") {
-        let rand1 = Math.floor(Math.random() * 100);
-        let rand2 = Math.floor(Math.random() * 100);
-        if (rand1 < 10) rand1 = "0" + rand1 + "&";
-        else rand1 += "&";
-        if (rand2 < 10) rand2 = "0" + rand2;
-        phrase = phrase + rand1 + rand2 + ";";
-      }
-      if (digitType === "xien3") {
-        let rand1 = Math.floor(Math.random() * 100);
-        let rand2 = Math.floor(Math.random() * 100);
-        let rand3 = Math.floor(Math.random() * 100);
-        if (rand1 < 10) rand1 = "0" + rand1 + "&";
-        else rand1 += "&";
-        if (rand2 < 10) rand2 = "0" + rand2 + "&";
-        else rand2 += "&";
-        if (rand3 < 10) rand3 = "0" + rand3;
-        phrase = phrase + rand1 + rand2 + rand3 + ";";
-      }
-      if (digitType === "xien4") {
-        let rand1 = Math.floor(Math.random() * 100);
-        let rand2 = Math.floor(Math.random() * 100);
-        let rand3 = Math.floor(Math.random() * 100);
-        let rand4 = Math.floor(Math.random() * 100);
-        if (rand1 < 10) rand1 = "0" + rand1 + "&";
-        else rand1 += "&";
-        if (rand2 < 10) rand2 = "0" + rand2 + "&";
-        else rand2 += "&";
-        if (rand3 < 10) rand3 = "0" + rand3 + "&";
-        else rand3 += "&";
-        if (rand4 < 10) rand4 = "0" + rand4;
-        phrase = phrase + rand1 + rand2 + rand3 + rand4 + ";";
-      }
+      const rand = Math.floor(Math.random() * 100);
+      if (rand < 10) phrase = phrase + 0 + rand + ";";
+      else phrase = phrase + rand + ";";
     }
     props.setScript(phrase);
   };
+
   useEffect(() => {
     props.clearAll();
     dispatch(
@@ -97,6 +68,7 @@ const LotXien = (props) => {
     );
     dispatch(setCurrentDigitType(digitTypes[0]));
   }, []);
+
   return (
     <div>
       <div className="bet_types_area">
@@ -212,6 +184,6 @@ const LotXien = (props) => {
       </div>
     </div>
   );
-};
+}
 
-export default LotXien;
+export default Mega;

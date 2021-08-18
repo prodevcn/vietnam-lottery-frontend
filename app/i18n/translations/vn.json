@@ -66,9 +66,9 @@
         "4_special_pins":"Đánh 4 chữ số của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 8,880,000 VND."
       },
       "slide":{
-        "4slide":"Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 2,300 VND.",
-        "8slide":"Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,000 VND.",
-        "10slide":"Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 12,000 VND."
+        "slide4":"Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng đài miền Bắc. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 2,300 VND.",
+        "slide8":"Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 8,000 VND.",
+        "slide10":"Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 27 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 12,000 VND."
       },
       "jackpot": "Đánh 2 chữ số cuối trong giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 85,000 VND."
     },
@@ -106,11 +106,38 @@
         "4_special_pins":"Đánh 4 chữ số của giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 8,880,000 VND."
       },
       "slide":{
-        "4slide":"Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 1,800 VND.",
-        "8slide":"Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 3,300 VND.",
-        "10slide":"Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 4,300 VND."
+        "slide4":"Chọn 4 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 4 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 1,800 VND.",
+        "slide8":"Chọn 8 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 8 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 3,300 VND.",
+        "slide10":"Chọn 10 số khác nhau để đánh bao lô 2 chữ số cuối trong 18 lô của kết quả mở thưởng. Nếu trong lô không xuất hiện cả 10 số mà người chơi đã chọn thì thắng. Thanh toán 1,000 VND cho mỗi điểm đánh, tiền thắng cho mỗi điểm là 4,300 VND."
       },
       "jackpot": "Đánh 2 chữ số cuối trong giải đặc biệt. Thanh toán 1,000 VND cho mỗi điểm. Tiền thắng cho mỗi điểm là 85,000 VND."
+    },
+    "help6": {
+      "normal": {
+        "normal": "Người chơi thắng nếu trong các số người chơi chọn có 1 số trùng với 1 trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược."
+      },
+      "multiple": {
+        "multiple4": "Trúng 4 số nếu trong các số người chơi chọn có 4 số trùng với 4 số trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược.",
+        "multiple3": "Trúng 3 số nếu trong các số người chơi chọn có 3 số trùng với 3 số trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược.",
+        "multiple3_2": "Trúng 2 : Người chơi thắng nếu trong các số người chơi chọn có 2 số trùng với 2 số trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược. Trúng 3 : Người chơi thắng nếu trong các số người chơi chọn có 3 số trùng với 3 số trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược.",
+        "multiple2": "Trúng 2 số nếu trong các số người chơi chọn có 2 cặp số trùng với 2 số trong 6 số của kết quả xổ số vietlott trong chu kỳ mở thưởng khách đặt cược."
+      },
+      "slide": {
+        "slide5": "Người chơi chọn 5 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng.",
+        "slide6": "Người chơi chọn 6 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng.",
+        "slide7": "Người chơi chọn 7 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng.",
+        "slide8": "Người chơi chọn 8 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng.",
+        "slide9": "Người chơi chọn 9 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng.",
+        "slide10": "Người chơi chọn 10 số, nếu trong 5 số người chơi chọn không có kết quả nào trùng với kết quả xổ số vietllot thì người chơi thắng."
+      },
+      "select": {
+        "choose5": "Người chơi lựa chọn 5 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra.",
+        "choose6": "Người chơi lựa chọn 6 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra.",
+        "choose7": "Người chơi lựa chọn 7 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra.",
+        "choose8": "Người chơi lựa chọn 8 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra.",
+        "choose9": "Người chơi lựa chọn 9 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra.",
+        "choose10": "Người chơi lựa chọn 10 con số để đặt cược. Người chơi thắng nếu có duy nhất 1 con số trong dãy số đã chọn trùng với 1 trong số 6 kết quả xổ ra."
+      }
     },
     "result_board":{
       "bet_time":"Thời gian đặt cược",
@@ -134,7 +161,7 @@
       "slide":"Lô Trượt",
       "normal": "Số Thường",
       "multiple": "Nhiều Số",
-      "select1": "Chọn 1",
+      "select": "Chọn 1",
       "sub":{
         "select":"Chọn Số",
         "enter":"Nhập Số",
@@ -160,9 +187,23 @@
         "3pin_headandtail":"3 Càng Đầu Đuôi",
         "3_special_pins":"3 Càng Đặc Biệt",
         "4_special_pins":"4 Càng Đặc Biệt",
-        "4slide":"Trượt Xiên 4",
-        "8slide":"Trượt Xiên 8",
-        "10slide":"Trượt Xiên 10"
+        "slide4":"Trượt Xiên 4",
+        "multiple4": "Trúng 4 số",
+        "multiple3": "Trúng 3 số",
+        "multiple3_2": "3 trúng 2",
+        "multiple2": "Trúng 2 số",
+        "slide5": "Trượt Xiên 5",
+        "slide6": "Trượt Xiên 6",
+        "slide7": "Trượt Xiên 7",
+        "slide8": "Trượt Xiên 8",
+        "slide9": "Trượt Xiên 9",
+        "slide10": "Trượt Xiên 10",
+        "choose5": "Chọn 5 ăn 1",
+        "choose6": "Chọn 6 ăn 1",
+        "choose7": "Chọn 7 ăn 1",
+        "choose8": "Chọn 8 ăn 1",
+        "choose9": "Chọn 9 ăn 1",
+        "choose10": "Chọn 10 ăn 1"
       }
     },
     "result_table":{

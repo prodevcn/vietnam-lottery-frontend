@@ -12,7 +12,7 @@ import Layout from "../../app/layouts/Layout";
 import RequireAuth from "../../app/layouts/RequireAuth";
 import InputWithButton from "../../app/components/InputWithButton";
 import Button from "../../app/components/Button";
-import JackPotPanel from "../../app/containers/BetTypes/jackpot";
+import JackPotPanel from "../../app/containers/BetTypes/Jackpot";
 import { 
   setCurrentGameType, 
   setCurrentBetType, 

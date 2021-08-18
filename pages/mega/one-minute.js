@@ -23,8 +23,14 @@ import { getUserInfo } from "../../app/redux/actions/auth";
 import Layout from "../../app/layouts/Layout";
 import RequireAuth from "../../app/layouts/RequireAuth";
 import InputWithButton from "../../app/components/InputWithButton";
+import Mega from "../../app/containers/BetTypes/Mega";
 import Button from "../../app/components/Button";
 import { API_URL } from "../../app/constants/config";
+
+import Slide from "../../app/containers/BetTypes/Slide";
+import Normal from "../../app/containers/BetTypes/Normal";
+import Multiple from "../../app/containers/BetTypes/Multiple";
+import Select from "../../app/containers/BetTypes/Select";
 
 const socket = io.connect(API_URL);
 
@@ -50,8 +56,8 @@ const OneMinute = (props) => {
       label: t("bet_types.slide")
     },
     {
-      value: "select1",
-      label: t("bet_types.select1")
+      value: "select",
+      label: t("bet_types.select")
     }
   ];
 
@@ -136,7 +142,7 @@ const OneMinute = (props) => {
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.mega.one_minute"),
+        label: t("game_types.mega.caption"),
         value: 'mega'
       })
     )
@@ -180,6 +186,107 @@ const OneMinute = (props) => {
             </div>
           ))}
         </div>
+        {[
+          selectedBetTypeIndex === 0 && (
+            <Normal 
+              script={script}
+              setScript={(value) => setScript(value)}
+              clearAll={() => {
+                clearAll();
+              }}
+              key="slide"
+            />
+          ),
+          selectedBetTypeIndex === 1 && (
+            <Multiple 
+              script={script}
+              setScript={(value) => setScript(value)}
+              clearAll={() => {
+                clearAll();
+              }}
+              key="select"
+            />
+          ),
+          selectedBetTypeIndex === 2 && (
+            <Slide 
+              script={script}
+              setScript={(value) => setScript(value)}
+              clearAll={() => {
+                clearAll();
+              }}
+              key="normal"
+            />
+          ),
+          selectedBetTypeIndex === 3 && (
+            <Select 
+              script={script}
+              setScript={(value) => setScript(value)}
+              clearAll={() => {
+                clearAll();
+              }}
+              key="normal"
+            />
+          ),
+        ]}
+        <div className="bet_button_area">
+            <Grid container spacing={0}>
+              <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+                <div className="_number__area">
+                  <p style={{ marginRight: "1rem" }}>{t("multiple")}</p>
+                  <InputWithButton
+                    onChange={(e) => {
+                      setMultiple(e);
+                    }}
+                    value={multiple}
+                  />
+                </div>
+              </Grid>
+              <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+                <div className="_info__area">
+                  <p>
+                    {t("select")} {countOfNumbers} {t("numbers")}
+                  </p>
+                  <p>
+                    {t("payout")} {formatValue(betAmount.toString())} {t("vnd")}
+                  </p>
+                </div>
+              </Grid>
+              <Grid
+                item
+                xl={12}
+                lg={12}
+                md={12}
+                sm={12}
+                xs={12}
+                style={{ display: "flex", marginTop: "1rem", justifyContent: "space-around", alignItems: "center" }}
+              >
+                <Button
+                  title={t("buttons.reset")}
+                  onClick={() => {
+                    clearAll();
+                  }}
+                  type="outlined"
+                  icon={<Block className="icon" />}
+                  innerStyle={{ backgroundColor: "#131313f0" }}
+                />
+                <Button
+                  title={t("buttons.quick_bet")}
+                  icon={<Speed className="icon" style={{ color: "white" }} />}
+                  onClick={() => {
+                    // onQuickBet();
+                  }}
+                />
+                <Button
+                  title={t("buttons.more_bet")}
+                  icon={<AddCircleOutline className="icon" style={{ color: "white" }} />}
+                  onClick={() => {
+                    // onMoreBet();
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </div>
+        
       </div>
     </Layout>
   );

@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import Grid from "@material-ui/core/Grid";
-import { useSelector, useDispatch } from "react-redux";
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import {Grid} from '@material-ui/core';
 import _ from "lodash";
-
 import Button from "../../components/Button";
-
-import OddsTheme from "../../components/OddsTheme";
-import { setCurrentDigitType, setCurrentBetType } from "../../redux/actions/game";
+import OddsTheme from '../../components/OddsTheme';
+import { setCurrentBetType } from '../../redux/actions/game';
 
 const buttonStyle = {
   borderColor: "#646464",
@@ -17,82 +14,11 @@ const buttonStyle = {
   marginRight: "1rem",
 };
 
-const Score = (props) => {
+const JackPotPanel = props => {
   const dispatch = useDispatch();
-  const [digitType, setDigitType] = useState("first");
-  const [inputType, setInputType] = useState("select");
-
   const { t } = useTranslation();
-  const digitTypes = [
-    {
-      value: "first",
-      label: t("bet_types.sub.first"),
-      help: t("help.score.first"),
-      odds: "98",
-    },
-    {
-      value: "special_topics",
-      label: t("bet_types.sub.special_topics"),
-      help: t("help.score.special_topics"),
-      odds: "99",
-    },
-    {
-      value: "special_headline",
-      label: t("bet_types.sub.special_headline"),
-      help: t("help.score.special_headline"),
-      odds: "99",
-    },
-    {
-      value: "problem",
-      label: t("bet_types.sub.problem"),
-      help: t("help.score.problem"),
-      odds: "98",
-    },
-    {
-      value: "first_de",
-      label: t("bet_types.sub.first_de"),
-      help: t("help.score.first_de"),
-      odds: "98",
-    },
-  ];
-  const digitTypes_18 = [
-    {
-      value: "first",
-      label: t("bet_types.sub.first"),
-      help: t("help18.score.first"),
-      odds: "98",
-    },
-    {
-      value: "special_topics",
-      label: t("bet_types.sub.special_topics"),
-      help: t("help18.score.special_topics"),
-      odds: "99",
-    },
-    {
-      value: "special_headline",
-      label: t("bet_types.sub.special_headline"),
-      help: t("help18.score.special_headline"),
-      odds: "99",
-    },
-    {
-      value: "special_heading",
-      label: t("bet_types.sub.special_heading"),
-      help: t("help18.score.special_heading"),
-      odds: "99",
-    },
-    {
-      value: "special_headandtail",
-      label: t("bet_types.sub.special_headandtail"),
-      help: t("help18.score.special_headandtail"),
-      odds: "98",
-    },
-    {
-      value: "first_de",
-      label: t("bet_types.sub.first_de"),
-      help: t("help18.score.first_de"),
-      odds: "98",
-    },
-  ];
+  const {currentBetType, currentDigitType, } = useSelector(state => state.game);
+  const [inputType, setInputType] = useState("select");
   const inputTypes = [
     {
       value: "select",
@@ -117,51 +43,17 @@ const Score = (props) => {
     }
     props.setScript(phrase);
   };
+
   useEffect(() => {
     props.clearAll();
-    dispatch(
-      setCurrentBetType({
-        value: "score",
-        label: t("bet_types.score"),
-      })
-    );
-    dispatch(setCurrentDigitType(digitTypes[0]));
   }, []);
 
-  return (
+  return(
     <div>
       <div className="bet_types_area">
         <Grid container spacing={0}>
           <Grid item xl={7} lg={7} md={7} sm={12} xs={12} style={{ textAlign: "center" }}>
-            {props.type === "lot18" ? (
-              digitTypes_18.map((element, index) => (
-              <Button
-                type={digitType === element.value ? "selected" : "outlined"}
-                title={element.label}
-                innerStyle={digitType !== element.value ? buttonStyle : null}
-                onClick={() => {
-                  setDigitType(element.value);
-                  dispatch(setCurrentDigitType(element));
-                  props.clearAll();
-                }}
-                key={`LOT_TYPE_18_${index}`}
-              />
-            ))
-            ) :(
-              digitTypes.map((element, index) => (
-              <Button
-                type={digitType === element.value ? "selected" : "outlined"}
-                title={element.label}
-                innerStyle={digitType !== element.value ? buttonStyle : null}
-                onClick={() => {
-                  setDigitType(element.value);
-                  dispatch(setCurrentDigitType(element));
-                  props.clearAll();
-                }}
-                key={`LOT_TYPE_${index}`}
-              />
-            ))
-            ) }
+            <Button type="selected" title={currentBetType.label}/>
           </Grid>
           <Grid item xl={5} lg={5} md={5} sm={12} xs={12} style={{ textAlign: "center" }}>
             {inputTypes.map((element, index) => (
@@ -178,35 +70,17 @@ const Score = (props) => {
             ))}
           </Grid>
           <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-            {props.type === "lot18" ? (
-              digitTypes_18.map(
-              (element, index) =>
-                digitType === element.value && (
-                  <p className="date_text" key={`LOT_HELP_18_${index}`}>
-                    {element.help}
-                  </p>
-                )
-            )
-            ) : (
-              digitTypes.map(
-              (element, index) =>
-                digitType === element.value && (
-                  <p className="date_text" key={`LOT_HELP_${index}`}>
-                    {element.help}
-                  </p>
-                )
-            )
-            )}
+            <p className="date_text">
+              {t("help.jackpot")}
+            </p>
           </Grid>
           <Grid item xl={3} lg={3} md={3} sm={12} xs={12}>
-            {digitTypes.map(
-              (element, index) => digitType === element.value && <OddsTheme key={`ODDS_DESC_${index}`} description={"1  " + t("to") + "  " + element.odds} />
-            )}
+            <OddsTheme description="1  to 85" />
           </Grid>
         </Grid>
       </div>
       <div className="set_number_area">
-        {inputType === "select" && (
+      {inputType === "select" && (
           <Grid container spacing={2}>
             <Grid item xl={7} lg={7} md={12} sm={12} xs={12}>
               <Grid container spacing={0} style={{ marginTop: "1rem" }}>
@@ -399,4 +273,4 @@ const Score = (props) => {
   );
 };
 
-export default Score;
+export default JackPotPanel;

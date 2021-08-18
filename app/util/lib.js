@@ -16,6 +16,14 @@ export const setDate = (date) => {
   return `${check(month)}-${check(day)}-${year}`;
 };
 
+export const createDate = (date) => {
+  const year = date.substr(0, 4);
+  const month = date.substr(5, 2);
+  const day = date.substr(8, 2);
+  const identity = date.substr(11, 2) + date.substr(14, 2);
+  return day + month + year + '-' + identity;
+}
+
 
 
 /** format number for balance each 3 digits comma */

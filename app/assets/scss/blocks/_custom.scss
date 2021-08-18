@@ -232,8 +232,50 @@ input {
     margin: 1rem 2rem,
 }
 
+.date_section {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 100px;
+  text-align: center;
+  background-color: rgb(255, 136, 1);
+  color: white;
+}
 
+.td_section {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 100px;
+  text-align: center;
+  color: white;
+}
 
+.mega_section {
+  max-height: 600px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+      background-color: #333;
+      border-radius: 100px;
+      width: 10px;
+  }
+}
+
+.number_small {
+  padding: 0.1rem;
+  background-color: rgba(226, 50, 50, 0.9);
+  margin: 0.1rem;
+  color: white;
+  border-radius: 100%;
+}
+
+.table_area {
+  display: block;
+}
 
 
 

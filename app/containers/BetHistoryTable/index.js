@@ -8,7 +8,7 @@ import { Refresh } from "@material-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
 import { API_URL } from "../../constants/config";
-import { getAllOrders } from "../../redux/actions/game";
+import { getAllOrders, getAllOrdersForGame } from "../../redux/actions/game";
 import Button from "../../components/Button";
 
 const socket = io.connect(API_URL);
@@ -91,8 +91,8 @@ const BetHistoryTable = (props) => {
   };
 
   const getAllHistories = () => {
-    dispatch(getAllOrders(user?._id)).then((res) => {
-      if (res) {
+    dispatch(getAllOrdersForGame(user?._id, props.gameType)).then((res) => {
+      if (res && res.length > 0) {
         const data = res.map((item) => 
           createData(
             item.createdAt.substr(0, 10),
