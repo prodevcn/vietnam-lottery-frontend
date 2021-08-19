@@ -39,7 +39,7 @@ const Normal = (props) => {
   const createRndScript = (digits) => {
     let phrase = "";
     for (let i = 0; i < digits; i += 1) {
-      const rand = Math.floor(Math.random() * 100);
+      const rand = Math.floor(Math.random() * 45) + 1;
       if (rand < 10) phrase = phrase + 0 + rand + ";";
       else phrase = phrase + rand + ";";
     }

@@ -741,7 +741,6 @@ const HochiminhVIP = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="loxien"
               />
             ),
@@ -770,7 +769,6 @@ const HochiminhVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="score"
               />
             ),
@@ -799,7 +797,6 @@ const HochiminhVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="hadandtail"
               />
             ),
@@ -829,7 +826,6 @@ const HochiminhVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="threemore"
               />
             ),
@@ -860,7 +856,6 @@ const HochiminhVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="fourmore"
               />
             ),
@@ -872,7 +867,6 @@ const HochiminhVIP = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="slidinglot"
               />
             ),

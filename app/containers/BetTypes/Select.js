@@ -69,7 +69,7 @@ const Select = (props) => {
   const createRndScript = (digits) => {
     let phrase = "";
     for (let i = 0; i < digits; i += 1) {
-      const rand = Math.floor(Math.random() * 100);
+      const rand = Math.floor(Math.random() * 45) + 1;
       if (rand < 10) phrase = phrase + 0 + rand + ";";
       else phrase = phrase + rand + ";";
     }
@@ -156,27 +156,6 @@ const Select = (props) => {
                 </Grid>
                 <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                   <Button
-                    title={"1 " + t("numbers")}
-                    type="outlined"
-                    onClick={() => {
-                      createRndScript(1);
-                    }}
-                  />
-                  <Button
-                    title={"2 " + t("numbers")}
-                    type="outlined"
-                    onClick={() => {
-                      createRndScript(2);
-                    }}
-                  />
-                  <Button
-                    title={"3 " + t("numbers")}
-                    type="outlined"
-                    onClick={() => {
-                      createRndScript(3);
-                    }}
-                  />
-                  <Button
                     title={"5 " + t("numbers")}
                     type="outlined"
                     onClick={() => {
@@ -184,10 +163,24 @@ const Select = (props) => {
                     }}
                   />
                   <Button
-                    title={"10 " + t("numbers")}
+                    title={"6 " + t("numbers")}
                     type="outlined"
                     onClick={() => {
-                      createRndScript(10);
+                      createRndScript(6);
+                    }}
+                  />
+                  <Button
+                    title={"7 " + t("numbers")}
+                    type="outlined"
+                    onClick={() => {
+                      createRndScript(7);
+                    }}
+                  />
+                  <Button
+                    title={"8 " + t("numbers")}
+                    type="outlined"
+                    onClick={() => {
+                      createRndScript(8);
                     }}
                   />
                 </Grid>

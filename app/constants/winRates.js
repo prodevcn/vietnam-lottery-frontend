@@ -75,6 +75,33 @@ const WIN_RATES = {
       jackpot: 85000,
     }
   },
+  lot6: {
+    normal: {
+      normal: 30000
+    },
+    multiple: {
+      multiple4: 30000,
+      multiple3: 30000,
+      multiple3_2: 30000,
+      multiple2: 30000,
+    },
+    slide: {
+      slide5: 30000,
+      slide6: 30000,
+      slide7: 30000,
+      slide8: 30000,
+      slide9: 30000,
+      slide10: 30000,
+    },
+    select: {
+      choose5: 30000,
+      choose6: 30000,
+      choose7: 30000,
+      choose8: 30000,
+      choose9: 30000,
+      choose10: 30000
+    }
+  }
 };
   
 export default WIN_RATES;

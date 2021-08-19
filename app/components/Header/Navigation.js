@@ -73,20 +73,20 @@ const Navigation = () => {
         <li className="drop">
           <Link href="/">
             <a>
-              {t("game_types.super_speed.caption")} <IoCaretDown color="red" />
+              {t("game_types.superspeed.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
-            {/* <li>
-                            <Link href='/'><a>Hà Nội VIP</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-                        </li> */}
             <li>
+              <Link href='/superspeed/superspeed'><a>super speed</a></Link>
+            </li>
+              {/* <li>
+                  <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
+              </li> */}
+            {/* <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
-            </li>
+            </li> */}
           </ul>
         </li>
         <li className="drop">
@@ -97,11 +97,11 @@ const Navigation = () => {
           </Link>
           <ul className="dropdown">
             {/* <li>
-                            <Link href='/home-one'><a>Hà Nội VIP</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-                        </li> */}
+              <Link href='/south/'><a>Hà Nội VIP</a></Link>
+            </li> */}
+            {/* <li>
+              <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
+            </li> */}
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
@@ -116,11 +116,11 @@ const Navigation = () => {
           </Link>
           <ul className="dropdown">
             {/* <li>
-                            <Link href='/home-one'><a>Hà Nội VIP</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-                        </li> */}
+                <Link href='/home-one'><a>Hà Nội VIP</a></Link>
+              </li>
+              <li>
+                <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
+              </li> */}
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>

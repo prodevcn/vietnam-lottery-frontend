@@ -739,7 +739,6 @@ const SaigonVIP = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="loxien"
               />
             ),
@@ -768,7 +767,6 @@ const SaigonVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="score"
               />
             ),
@@ -797,7 +795,6 @@ const SaigonVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="hadandtail"
               />
             ),
@@ -827,7 +824,6 @@ const SaigonVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="threemore"
               />
             ),
@@ -858,7 +854,6 @@ const SaigonVIP = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="fourmore"
               />
             ),
@@ -870,7 +865,6 @@ const SaigonVIP = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="slidinglot"
               />
             ),

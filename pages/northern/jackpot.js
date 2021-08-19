@@ -386,7 +386,6 @@ const JackPot = (props) => {
             setLastHalf={(digit) => {
               setLastHalf(digit);
             }}
-            gameType={props.gameType}
             key="score"
           />
           <div className="bet_button_area">

@@ -98,12 +98,35 @@ export const CreateAxios = () =>
 export const validateScript = (script, betType, digitType) => {
   if (script[script.length - 1] !== ';')
     return false;
-  const pattern = new RegExp(REGEX_PHRASES[digitType]);
+
+  let pattern;  
+  if (betType === 'mega' && (digitType === 'slide8' || digitType === 'slide10'))
+    pattern = new RegExp(REGEX_PHRASES.slide5);
+  else 
+    pattern = new RegExp(REGEX_PHRASES[digitType]);
   const phrases = script.split(';');
   phrases.pop();
   for (const phrase of phrases) {
     if (!pattern.test(phrase))
       return false;
+    if (betType === "mega") {
+      if (Number(phrase) > 45 || Number(phrase) < 1)
+        return false;
+    }
   }
   return true;
+};
+
+export const getCombinations = (arr, selectNumber) => {
+  const results = [];
+  if (selectNumber === 1) return arr.map((value) => [value]);
+
+  arr.forEach((fixed, index, origin) => {
+    const rest = origin.slice(index + 1);
+    const combinations = getCombinations(rest, selectNumber - 1);
+    const attached = combinations.map((combination) => [fixed, ...combination]);
+    results.push(...attached);
+  });
+
+  return results;
 };

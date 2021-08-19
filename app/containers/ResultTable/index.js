@@ -98,7 +98,8 @@ const ResultTable = (props) => {
           {
             (
               currentGameType.value === 'hochiminh' ||
-              currentGameType.value === 'saigon'
+              currentGameType.value === 'saigon' ||
+              currentGameType.value === 'superspeed'
             ) && (
               <tbody>
                 <tr className="table_row">

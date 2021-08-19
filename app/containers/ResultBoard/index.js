@@ -60,7 +60,8 @@ const ResultBoard = props => {
               currentGameType.value === 'northern' || 
               currentGameType.value === 'hanoi' ||
               currentGameType.value === 'hochiminh' ||
-              currentGameType.value === 'saigon'
+              currentGameType.value === 'saigon' ||
+              currentGameType.value === 'superspeed'
             ) && (
               <div className="number_area">
                 {props.result.numbers

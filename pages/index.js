@@ -210,19 +210,25 @@ const App = () => {
             <div className="game_selection_box">
               <div className="title__section">
                 <img src="/images/lottery.png" className="icon" alt="lottery" />
-                <p>{t("game_types.super_speed.caption")}</p>
+                <p>{t("game_types.superspeed.caption")}</p>
               </div>
               <div className="description__section">
                 <p className="date_text">
-                  {t("game_types.super_speed.description")}
+                  {t("game_types.superspeed.description")}
                 </p>
               </div>
               <div className="button__section">
+                <Button
+                  title={t("play_now")}
+                  onClick={() => {
+                    router.push("/superspeed/superspeed");
+                  }}
+                />
                 {/* <Button title={t("play_now")}/> */}
-                <div style={{ marginBottom: 20 }}>
+                {/* <div style={{ marginBottom: 20 }}>
                   <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
-                </div>
+                </div> */}
               </div>
             </div>
           </Grid>

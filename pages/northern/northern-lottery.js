@@ -611,7 +611,6 @@ const NorthernLottery = (props) => {
   };
 
   const handleNewGame = useCallback((game) => {
-    console.log(game);
     getNewGame();
     dispatch(getUserInfo(user._id));
     dispatch(getGameHistoriesForGameType('northern'));
@@ -742,7 +741,6 @@ const NorthernLottery = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="loxien"
               />
             ),
@@ -771,7 +769,6 @@ const NorthernLottery = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="score"
               />
             ),
@@ -800,7 +797,6 @@ const NorthernLottery = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="hadandtail"
               />
             ),
@@ -830,7 +826,6 @@ const NorthernLottery = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="threemore"
               />
             ),
@@ -861,7 +856,6 @@ const NorthernLottery = (props) => {
                 setLastHalf={(digit) => {
                   setLastHalf(digit);
                 }}
-                gameType={props.gameType}
                 key="fourmore"
               />
             ),
@@ -873,7 +867,6 @@ const NorthernLottery = (props) => {
                 clearAll={() => {
                   clearAll();
                 }}
-                gameType={props.gameType}
                 key="slidinglot"
               />
             ),

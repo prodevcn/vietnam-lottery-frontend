@@ -13,7 +13,7 @@ import {
       axios
         .post("/auth/login", userData)
         .then(async (res) => {
-          if (res.msg) {
+          if (res && res.msg) {
             dispatch({ type: AUTH.FAILURE, payload: res.data.message });
           } else {
             await localStorage.setItem("token", res.data.token);

@@ -74,7 +74,9 @@ const MobileNavMenu = (props) => {
           </ul>
         </li>
         <li className="menuItemHasChildren">
-          <Link href="/blog">{t("game_types.super_speed.caption")}</Link>
+          <Link href="/superspeed/superspeed">
+            <a>{t("game_types.superspeed.caption")}</a>
+          </Link>
           <ul className="subMenu">
             {/* <li>
                     <Link href='/blog'><a>Hà Nội VIP</a></Link>
