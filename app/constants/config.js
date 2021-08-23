@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 /** for local server */
-export const API_URL = 'http://192.168.1.110:4332/api';
+// export const API_URL = 'http://192.168.1.110:4332/api';
 
 /** for live server */
 
@@ -8,4 +8,4 @@ export const API_URL = 'http://192.168.1.110:4332/api';
 
 /** for ssl config */
 
-// export const API_URL = 'https://lotopoka.com/api';
+export const API_URL = 'https://lotopoka.com/api';
