@@ -8,4 +8,4 @@
 
 /** for ssl config */
 
-export const API_URL = 'https://lotopoka.com/api';
+export const API_URL = 'https://lotopoka.com:4332';
