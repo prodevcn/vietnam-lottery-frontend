@@ -44,12 +44,6 @@ const MobileNavMenu = (props) => {
                 <a>{t("game_types.vip.hochiminh")}</a>
               </Link>
             </li>
-            {/* <li>
-              <div className="coming_soon_mobile">
-                <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-                <a>{t("coming_soon")}</a>
-              </div>
-            </li> */}
           </ul>
         </li>
         <li className="menuItemHasChildren">
@@ -61,16 +55,11 @@ const MobileNavMenu = (props) => {
                 <Link href='/mega/one-minute'><a>{t("game_types.mega.one_second")}</a></Link>
             </li>
             {/* <li>
-                <Link href='/mega/one-second'>
-                    <a>{t("game_types.mega.one_minute")}</a>
-                </Link>
-            </li> */}
-            <li>
               <div className="coming_soon_mobile">
                 <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
                 <a>{t("coming_soon")}</a>
               </div>
-            </li>
+            </li> */}
           </ul>
         </li>
         <li className="menuItemHasChildren">
@@ -94,17 +83,17 @@ const MobileNavMenu = (props) => {
             </li>
           </ul>
         </li>
-        <li className="menuItemHasChildren">
+        {/* <li className="menuItemHasChildren">
           <Link href="/blog">{t("game_types.south.caption")}</Link>
           <ul className="subMenu">
-            {/* <li>
-                    <Link href='/blog'><a>Hà Nội VIP</a></Link>
-                </li>
-                <li>
-                    <Link href='/blog-right-sidebar'>
-                        <a>Hồ Chí Minh VIP</a>
-                    </Link>
-                </li> */}
+            <li>
+              <Link href='/blog'><a>Hà Nội VIP</a></Link>
+            </li>
+            <li>
+              <Link href='/blog-right-sidebar'>
+                <a>Hồ Chí Minh VIP</a>
+              </Link>
+            </li>
             <li>
               <div className="coming_soon_mobile">
                 <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
@@ -112,18 +101,18 @@ const MobileNavMenu = (props) => {
               </div>
             </li>
           </ul>
-        </li>
-        <li className="menuItemHasChildren">
+        </li> */}
+        {/* <li className="menuItemHasChildren">
           <Link href="/blog">{t("game_types.central.caption")}</Link>
           <ul className="subMenu">
-            {/* <li>
-                            <Link href='/blog'><a>Hà Nội VIP</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/blog-right-sidebar'>
-                                <a>Hồ Chí Minh VIP</a>
-                            </Link>
-                        </li> */}
+            <li>
+              <Link href='/blog'><a>Hà Nội VIP</a></Link>
+            </li>
+            <li>
+              <Link href='/blog-right-sidebar'>
+                <a>Hồ Chí Minh VIP</a>
+              </Link>
+            </li>
             <li>
               <div className="coming_soon_mobile">
                 <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
@@ -131,7 +120,7 @@ const MobileNavMenu = (props) => {
               </div>
             </li>
           </ul>
-        </li>
+        </li> */}
         <li className="menuItemHasChildren">
           <Link href="/northern/northern-lottery">
             <a>{t("game_types.northern.caption")}</a>
@@ -147,7 +136,6 @@ const MobileNavMenu = (props) => {
                 <a>{t("game_types.northern.northern")}</a>
               </Link>
             </li>
-            {/* <li><div className="coming_soon_mobile"><img src="/images/working.gif" className="coming_soon_icon" alt="working" /><a>{t("coming_soon")}</a></div></li> */}
             <li>
               <Link href="/northern/jackpot">
                 <a>{t("game_types.northern.jackpot")}</a>
@@ -159,9 +147,6 @@ const MobileNavMenu = (props) => {
                 <a>{t("coming_soon")}</a>
               </div>
             </li>
-            {/* <li>
-                            <Link href='/northern/scratch-lottery'><a>{t("game_types.northern.scratch")}</a></Link>
-                        </li> */}
           </ul>
         </li>
         <li className="menuItemHasChildren">

@@ -89,44 +89,44 @@ const Navigation = () => {
             </li> */}
           </ul>
         </li>
-        <li className="drop">
+        {/* <li className="drop">
           <Link href="/">
             <a>
               {t("game_types.south.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
-            {/* <li>
+            <li>
               <Link href='/south/'><a>Hà Nội VIP</a></Link>
-            </li> */}
-            {/* <li>
+            </li>
+            <li>
               <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-            </li> */}
+            </li>
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
-        </li>
-        <li className="drop">
+        </li> */}
+        {/* <li className="drop">
           <Link href="/">
             <a>
               {t("game_types.central.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
-            {/* <li>
+            <li>
                 <Link href='/home-one'><a>Hà Nội VIP</a></Link>
               </li>
               <li>
                 <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-              </li> */}
+              </li>
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
-        </li>
+        </li> */}
         <li className="drop">
           <Link href="/northern/northern-lottery">
             <a>
