@@ -6,9 +6,10 @@ html {
     background-position: right bottom, left bottom;
 }
 body {
-    background-image: linear-gradient(180deg, #161611, #0f0f0d);
-    background-repeat: no-repeat;
+    // background-image: linear-gradient(180deg, #161611, #0f0f0d);
+    // background-repeat: no-repeat;
     cursor:  default !important;
+    background: transparent !important;
 }
 
 .result_text {

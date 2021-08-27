@@ -143,19 +143,22 @@ const App = () => {
             <div className="betting_result_element">
               <div className="text_area">
                 <p>{setDate(new Date().toString())}</p>
-                <p>{t("game_types.vip.hochiminh")}</p>
+                <p>{t("game_types.mega.caption")}</p>
               </div>
               <div className="number_area">
-                {/* {
-                  resultNumber.split('').map((item, index) => (
-                      <div className="number__circle" key={`RESULT_${index}`}><h6 style={{color: "white"}}>{item}</h6></div>
-                  ))
-                } */}
-                {_.range(0, 6).map((item, index) => (
+                {
+                  latestResults.mega?.numbers ? 
+                    Object.keys(latestResults.mega.numbers).map((item, index) => (
+                      <div className="number__circle" key={`RESULT_MEGA_${index}`}>
+                        <h6 style={{ color: "white" }}>{latestResults.mega.numbers[item]}</h6>
+                      </div>
+                    ))
+                   : _.range(0, 6).map((item, index) => (
                   <div className="number__circle" key={`RESULT_${index}`}>
                     <h6 style={{ color: "white" }}>_</h6>
                   </div>
-                ))}
+                ))
+                }
               </div>
             </div>
           </Grid>
