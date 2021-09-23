@@ -18,18 +18,18 @@ const Header = () => {
   };
 
   useEffect(() => {
-    let interval = null;
+    // let interval = null;
     const header = document.querySelector("header");
     setHeaderTop(header.offsetTop);
     window.addEventListener("scroll", handleScroll);
-    if (authenticated) {
-      interval = setInterval(() => {
-        dispatch(getUserInfo(user._id));
-      }, 30000);
-    }
+    // if (authenticated) {
+    //   interval = setInterval(() => {
+    //     dispatch(getUserInfo(user._id));
+    //   }, 30000);
+    // }
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (interval) clearInterval(interval);
+      // window.removeEventListener("scroll", handleScroll);
+      // if (interval) clearInterval(interval);
     };
   }, []);
 

@@ -4,13 +4,8 @@ import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { Button } from "@material-ui/core";
 
-import { logout } from "../../../redux/actions/auth";
 import COUNTRIES from "../../../constants/countries";
-
-import LoginIcon from "../../../../public/images/svg/login.svg";
-import LogoutIcon from "../../../../public/images/svg/logout.svg";
 import UserIcon from "../../../../public/images/svg/user.svg";
 
 const MobileNavMenu = (props) => {
@@ -195,24 +190,11 @@ const MobileNavMenu = (props) => {
           </ul>
         </li>
         <li>
-          {!authenticated ? (
-            <Link href="/auth/login" className="date_text">
-              <a className="date_text">
-                <LoginIcon />
-              </a>
-            </Link>
-          ) : (
+          {authenticated &&(
             <div style={{ display: "flex" }}>
               {/* <img src="/images/user.png" style={{ width: 20, height: 20 }} /> */}
               <UserIcon />
               <p className="date_text">{user?.balance}</p>
-              <Button
-                onClick={() => {
-                  dispatch(logout(router));
-                }}
-              >
-                <LogoutIcon />
-              </Button>
             </div>
           )}
         </li>

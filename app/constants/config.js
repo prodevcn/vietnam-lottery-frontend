@@ -9,3 +9,4 @@
 /** for ssl config */
 
 export const API_URL = 'https://lotopoka.com:4332';
+export const SECRET = 'A2a2Fb$(mHaOk7F';
