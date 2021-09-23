@@ -9,4 +9,5 @@
 /** for ssl config */
 
 export const API_URL = 'https://lotopoka.com:4332';
+export const SERVICE_URL = 'https://sonicxgame.com/api/v1/sonicx/lotopoka/';
 export const SECRET = 'A2a2Fb$(mHaOk7F';
