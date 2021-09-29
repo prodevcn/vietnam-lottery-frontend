@@ -23,8 +23,7 @@ const Frame = props => {
         throw err;
       } else {
         // TODO: get balance from main service.
-        const balance = await dispatch(getBalance(tokenPhrase, decoded.userId));
-        console.log(balance);
+        await dispatch(getBalance(tokenPhrase, decoded.userId));
         await localStorage.setItem('token', tokenPhrase);
         await localStorage.setItem('user', JSON.stringify(decoded));     
         console.log(decoded);   

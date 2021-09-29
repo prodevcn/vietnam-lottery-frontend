@@ -2,7 +2,7 @@ import { SET_USER, REMOVE_USER, SET_ONLY_USER, SET_BALANCE } from "../../constan
 
 const INITIAL_STATE = {
   token: null,
-  balance: 0,
+  balance: null,
   user: null,
 };
 
@@ -26,7 +26,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         user: null,
       };
     case SET_BALANCE:
-      console.log(action.payload);
       return {
         ...state,
         balance: action.payload
