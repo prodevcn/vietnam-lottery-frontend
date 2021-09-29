@@ -95,7 +95,6 @@ const OneMinute = (props) => {
         if (script !== "") {
           if(!validateScript(script, "mega", "normal"))
             return {status: false, phrase: null};
-          console.log('++++++++');
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
           amount = 1000 * counts * multiple;
