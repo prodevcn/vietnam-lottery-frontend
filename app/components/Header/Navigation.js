@@ -24,9 +24,9 @@ const Navigation = () => {
   useEffect(() => {
     const interval = setInterval(async () => {
       const token = await localStorage.getItem('token');
-      const newBalance = await dispatch(getBalance(user.userId, token));
+      const newBalance = await dispatch(getBalance(token, user.userId));
       console.log('[NEW_BALANCE]:', newBalance);
-    }, 120000);
+    }, 2000);
     return () => {
       clearInterval(interval);
     }
