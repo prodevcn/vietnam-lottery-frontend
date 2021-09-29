@@ -22,10 +22,12 @@ const createData = (
   moneyWon1Time
 ) => ({ no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time });
 
-export const getBalance = () => (dispatch) => 
+export const getBalance = (token, userId) => (dispatch) => 
   CreateAxios().then(axios => 
       axios
-        .get(`/get-balance`)
+        .post('/get-balance', {
+          token, userId
+        })
         .then(res => {
           if (res && res.data) {
             dispatch({
