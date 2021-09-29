@@ -2,12 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Dialog, DialogContent } from "@material-ui/core";
-import axios from 'axios';
 
 // import jwt from 'jsonwebtoken';
-import {SECRET, SERVICE_URL} from '../app/constants/config';
+import {SECRET} from '../app/constants/config';
 import { SET_USER, AUTH } from '../app/constants/actions';
-
+import { getBalance } from '../app/redux/actions/game';
 
 const jwt = require('jsonwebtoken');
 
@@ -24,7 +23,7 @@ const Frame = props => {
         throw err;
       } else {
         // TODO: get balance from main service.
-        const balance = await axios.get(SERVICE_URL + 'get-balance', {headers: {Authorization: tokenPhrase, crossdomain: true}}).then(res => res.data);
+        const balance = await getBalance({token: tokenPhrase});
         console.log(balance);
         await localStorage.setItem('token', tokenPhrase);
         await localStorage.setItem('user', JSON.stringify(decoded));     

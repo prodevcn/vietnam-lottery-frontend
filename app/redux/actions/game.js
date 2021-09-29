@@ -6,7 +6,8 @@ import {
   SET_GAME_RESULTS,
   SET_BET_INFOS,
   SET_BET_TABLE_INFOS,
-  SET_LATEST_GAME_RESULTS
+  SET_LATEST_GAME_RESULTS,
+  SET_BALANCE,
   
 } from "../../constants/actions";
 import WIN_RATES from "../../constants/winRates";
@@ -20,6 +21,24 @@ const createData = (
   stakes,
   moneyWon1Time
 ) => ({ no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time });
+
+export const getBalance = () => (dispatch) => 
+  CreateAxios().then(axios => 
+      axios
+        .get(`/get-balance`)
+        .then(res => {
+          if (res && res.data) {
+            dispatch({
+              type: SET_BALANCE,
+              payload: res.data.balance
+            });
+            return res.data;
+          }
+        })
+        .catch(err => {
+          console.log('[ERROR]:[GET_BALANCE]', err);
+        })
+    );
 
 export const getGameLatestResult = (gameType) => (dispatch) =>
   CreateAxios().then((axios) =>

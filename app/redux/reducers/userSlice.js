@@ -1,7 +1,8 @@
-import { SET_USER, REMOVE_USER, SET_ONLY_USER } from "../../constants/actions";
+import { SET_USER, REMOVE_USER, SET_ONLY_USER, SET_BALANCE } from "../../constants/actions";
 
 const INITIAL_STATE = {
   token: null,
+  balance: null,
   user: null,
 };
 
@@ -23,6 +24,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         token: null,
         user: null,
+      };
+    case SET_BALANCE:
+      return {
+        ...state,
+        balance: action.payload
       };
     default:
       return state;

@@ -18,6 +18,7 @@ export const LOGOUT = 'LOGOUT';
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
 export const SET_ONLY_USER = 'SET_ONLY_USER';
+export const SET_BALANCE = 'SET_BALANCE';
 
 /** game actions */
 export const SET_CURRENT_GAME_TYPE = 'SET_CURRENT_GAME';

@@ -11,6 +11,9 @@ block-hac
   yarn dev
   yarn build
   yarn start
+
+  yarn build
+  pm2 yarn 
 ```
 
 ## Screenshots
