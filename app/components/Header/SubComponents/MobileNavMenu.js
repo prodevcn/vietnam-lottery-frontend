@@ -1,24 +1,33 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
 
+import { getBalance } from "../../../redux/actions/game";
 import COUNTRIES from "../../../constants/countries";
 import UserIcon from "../../../../public/images/svg/user.svg";
 
 const MobileNavMenu = (props) => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const { user, balance } = useSelector((state) => state.user);
   const { authenticated } = useSelector((state) => state.auth);
-  const router = useRouter();
 
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
   };
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const token = await localStorage.getItem('token');
+      dispatch(getBalance(user.userId, token));  
+    }, 120000);
+    return () => {
+      clearInterval(interval);
+    }
+  }, []);
 
   return (
     <nav className="offcanvasNavigation" id="offcanvas-navigation">

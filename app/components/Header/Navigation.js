@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { IoCaretDown } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+
+import { getBalance } from "../../redux/actions/game";
 import COUNTRIES from "../../constants/countries";
 import UserIcon from "../../../public/images/svg/user.svg";
 import { formatValue } from "../../util/lib";
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
   const { user, balance  } = useSelector((state) => state.user);
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -17,6 +20,17 @@ const Navigation = () => {
   };
 
   const { authenticated } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const token = await localStorage.getItem('token');
+      const newBalance = await dispatch(getBalance(user.userId, token));
+      console.log('[NEW_BALANCE]:', newBalance);
+    }, 120000);
+    return () => {
+      clearInterval(interval);
+    }
+  }, []);
 
   return (
     <nav className="mainmenu__nav">
