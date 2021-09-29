@@ -2,19 +2,15 @@ import Link from "next/link";
 import { IoCaretDown } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/router";
 import COUNTRIES from "../../constants/countries";
 import UserIcon from "../../../public/images/svg/user.svg";
 import { formatValue } from "../../util/lib";
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
-  const router = useRouter();
-
+  const { user, balance  } = useSelector((state) => state.user);
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
@@ -41,10 +37,6 @@ const Navigation = () => {
             <li>
                 <Link href='/vip/hochiminh'><a>{t("game_types.vip.hochiminh")}</a></Link>
             </li>
-            {/* <li>
-              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-              <a>{t("coming_soon")}</a>
-            </li> */}
           </ul>
         </li>
         <li className="drop">
@@ -195,10 +187,8 @@ const Navigation = () => {
         </li>
         {authenticated &&(
           <div style={{ display: "flex" }}>
-            {/* <img src="/images/user.png" style={{ width: 20, height: 20 }} /> */}
             <UserIcon />
-            <p className="date_text">{formatValue(user?.balance?.toString())}</p>
-            <p className="data_text">{user?.userName}</p>
+            <p className="date_text">{balance}</p>
           </div>
         )}
       </ul>
