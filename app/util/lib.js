@@ -62,7 +62,7 @@ export const CreateAxios = () =>
       axios.interceptors.request.use(
         (config) => {
           if (authHeader) {
-            config.headers.Authorization = authHeader;
+            config.headers.Authorization = 'JWT ' + authHeader;
           }
           return config
         },
