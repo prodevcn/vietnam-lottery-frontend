@@ -8,7 +8,7 @@ const check = (val = 0) => {
   return val;
 };
 
-export const setDate = (date) => {
+export const formatDate = (date) => {
   const new_date = new Date(date);
   const year = new_date.getFullYear();
   const month = new_date.getMonth() + 1;

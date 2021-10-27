@@ -6,7 +6,7 @@ import { Grid } from "@material-ui/core";
 import { Star, Timer } from "@material-ui/icons";
 import _ from "lodash";
 /** utils & constants */
-import { setDate } from "../../util/lib";
+import { formatDate } from "../../util/lib";
 
 const ResultBoard = props => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ResultBoard = props => {
           </div>
           <div className="item_row">
             <p style={{ color: "white" }}>{t("result_board.lottery_draw")}&nbsp;</p>
-            <p style={{ color: "rgb(255, 136, 1)" }}>{setDate(props.gameInfo?.endTime)}</p>
+            <p style={{ color: "rgb(255, 136, 1)" }}>{formatDate(props.gameInfo?.endTime)}</p>
           </div>
           <div className="number_area" style={{ marginTop: 15 }}>
             <div className="duration__circle" key="DURATION_HOURS">
@@ -54,14 +54,16 @@ const ResultBoard = props => {
             <Star style={{ color: "white" }} />
             <p style={{ color: "white" }}>{t("result_board.lottery_result")}</p>
           </div>
-          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>{props.result.endTime ? setDate(props.result.endTime) : setDate(Date.now())}</p>
+          <p style={{ color: "rgb(255, 136, 1)", alignItems: "center" }}>{props.result.endTime ? formatDate(props.result.endTime) : formatDate(Date.now())}</p>
           {
             (
               currentGameType.value === 'northern' || 
               currentGameType.value === 'hanoi' ||
               currentGameType.value === 'hochiminh' ||
               currentGameType.value === 'saigon' ||
-              currentGameType.value === 'superspeed'
+              currentGameType.value === 'superspeed' ||
+              currentGameType.value === 'southern-hochiminh' ||
+              currentGameType.value === 'central-quangnam'
             ) && (
               <div className="number_area">
                 {props.result.numbers

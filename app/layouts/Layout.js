@@ -39,7 +39,7 @@ const Layout = (props) => {
       props.clearAll();
       props.clearAllAmount();
       setTimeout(() => {
-        dispatch(getUserInfo(user._id));
+        dispatch(getUserInfo(user.userId));
       }, 2000);
     }
   };

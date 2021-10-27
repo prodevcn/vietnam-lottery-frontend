@@ -18,6 +18,7 @@
     "signup":"sign up",
     "logout":"logout",
     "bet_err_msg":"Invalid bet numbers",
+    "bet_restricted": "Betting restricted",
     "select_num":{
       "all":"All",
       "erase":"Erase",
@@ -258,7 +259,7 @@
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "northern":{
-        "caption":"Northern",
+        "caption":"Northern Lottery",
         "northern":"Northern",
         "jackpot":"JackPot",
         "scratch":"Scratch",
@@ -268,13 +269,15 @@
         "caption":"Super speed",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
-      "south":{
-        "caption":"South",
-        "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+      "southern":{
+        "caption":"Southern Lottery",
+        "description":"Super speed lottery is a very new style of playing cards in Vietnam.",
+        "hochiminh":"Ho Chi Minh"
       },
       "central":{
-        "caption":"Central",
-        "description":"Super speed lottery is a very new style of playing cards in Vietnam."
+        "caption":"Central Lottery",
+        "description":"Super speed lottery is a very new style of playing cards in Vietnam.",
+        "quangnam": "Quang Nam"
       }
     },
     "countries":{

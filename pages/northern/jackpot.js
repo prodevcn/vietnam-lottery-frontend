@@ -43,7 +43,7 @@ const JackPot = (props) => {
     },
   ];
   /** state for bet details */
-  const { user } = useSelector((state) => state.user);
+  const { user, balance } = useSelector((state) => state.user);
   const [script, setScript] = useState("");
   const [allBetAmount, setAllBetAmount] = useState(0);
   const [countOfNumbers, setCount] = useState(0);
@@ -195,7 +195,7 @@ const JackPot = (props) => {
   const onQuickBet = () => {
     const savedOrders = betInfos;
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -203,7 +203,7 @@ const JackPot = (props) => {
     } else {
       savedOrders.push({
         type: 'lot27',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -214,14 +214,14 @@ const JackPot = (props) => {
       dispatch(betGame(savedOrders));
       clearAll();
       setTimeout(() => {
-        dispatch(getUserInfo(user._id));
+        dispatch(getUserInfo(user.userId));
       }, 2000);
     }
   };
 
   const onMoreBet = () => {
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -230,7 +230,7 @@ const JackPot = (props) => {
       const savedInfos = betInfos;
       savedInfos.push({
         type: 'lot27',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -269,7 +269,7 @@ const JackPot = (props) => {
 
   const handleNewGame = useCallback((game) => {
     getNewGame();
-    dispatch(getUserInfo(user._id));
+    dispatch(getUserInfo(user.userId));
     dispatch(getGameHistoriesForGameType('northern'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
@@ -334,11 +334,11 @@ const JackPot = (props) => {
     getNewResult();
     getNewGame();
     socket.emit("subscribe_timer", 'northern');
-    socket.on("new game start", handleNewGame);
-    socket.on("timer", handleTimer);
+    socket.on("START_NEW_GAME", handleNewGame);
+    socket.on("TIMER", handleTimer);
     return () => {
-      socket.removeAllListeners("timer");
-      socket.removeAllListeners("new game start");
+      socket.removeAllListeners("TIMER");
+      socket.removeAllListeners("START_NEW_GAME");
     }
   }, []);
 

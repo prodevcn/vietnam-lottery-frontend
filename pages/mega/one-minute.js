@@ -4,10 +4,9 @@ import { useTranslation } from "react-i18next";
 import io from "socket.io-client";
 /** material */
 import { Block, Speed, AddCircleOutline } from "@material-ui/icons";
-import { Grid, Dialog, DialogContent, useMediaQuery } from "@material-ui/core";
+import { Grid, Dialog, DialogContent } from "@material-ui/core";
 /** utils & constants */
 import { formatValue, validateScript, getCombinations } from "../../app/util/lib";
-import BET_RATES from "../../app/constants/betRates";
 import {
   getGameLatestResult,
   getNewGameInfo,
@@ -35,7 +34,7 @@ const socket = io.connect(API_URL);
 const OneMinute = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { user } = useSelector((state) => state.user);
+  const { user, balance } = useSelector((state) => state.user);
   const { betInfos, currentGameType, currentBetType, currentDigitType } =
     useSelector((state) => state.game);
   const [open, setOpen] = useState(false);
@@ -368,7 +367,7 @@ const OneMinute = (props) => {
   const onQuickBet = () => {
     const savedOrders = betInfos;
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -376,7 +375,7 @@ const OneMinute = (props) => {
     } else {
       savedOrders.push({
         type: 'lot6',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -387,14 +386,14 @@ const OneMinute = (props) => {
       dispatch(betGame(savedOrders));
       clearAll();
       setTimeout(() => {
-        dispatch(getUserInfo(user._id));
+        dispatch(getUserInfo(user.userId));
       }, 2000);
     }
   };
 
   const onMoreBet = () => {
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -403,7 +402,7 @@ const OneMinute = (props) => {
       const savedInfos = betInfos;
       savedInfos.push({
         type: 'lot6',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -444,7 +443,7 @@ const OneMinute = (props) => {
 
   const handleNewGame = useCallback((game) => {
     getNewGame();
-    dispatch(getUserInfo(user._id));
+    dispatch(getUserInfo(user.userId));
     dispatch(getGameHistoriesForGameType('mega'));
     getNewResult();
     console.log('[START]:[NEW_GAME]');
@@ -495,11 +494,11 @@ const OneMinute = (props) => {
     dispatch(setCurrentBetType(BET_TYPES[0]));
     getNewResult();
     getNewGame();
-    socket.on("new game start", handleNewGame);
-    socket.on("timer", handleTimer);
+    socket.on("START_NEW_GAME", handleNewGame);
+    socket.on("TIMER", handleTimer);
     return () => {
-      socket.removeAllListeners("timer");
-      socket.removeAllListeners("new game start");
+      socket.removeAllListeners("TIMER");
+      socket.removeAllListeners("START_NEW_GAME");
     }
   }, []);
 

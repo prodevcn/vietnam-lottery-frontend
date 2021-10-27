@@ -91,7 +91,7 @@ const BetHistoryTable = (props) => {
   };
 
   const getAllHistories = () => {
-    dispatch(getAllOrdersForGame(user?._id, props.gameType)).then((res) => {
+    dispatch(getAllOrdersForGame(user?.userId, props.gameType)).then((res) => {
       if (res && res.length > 0) {
         const data = res.map((item) => 
           createData(
@@ -124,9 +124,9 @@ const BetHistoryTable = (props) => {
   useEffect(() => {
     getAllHistories();
     socket.emit("subscribe_timer", props.gameType);
-    socket.on("new game start", handleNewGame);
+    socket.on("START_NEW_GAME", handleNewGame);
     return () => {
-      socket.removeAllListeners("new game start");
+      socket.removeAllListeners("START_NEW_GAME");
     }
   }, []);
 

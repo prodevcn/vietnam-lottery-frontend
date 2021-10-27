@@ -13,7 +13,7 @@ import { formatValue } from "../../util/lib";
 const Navigation = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { user, balance  } = useSelector((state) => state.user);
+  const { user, balance, token  } = useSelector((state) => state.user);
   const setLanguage = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
@@ -23,10 +23,8 @@ const Navigation = () => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const token = await localStorage.getItem('token');
-      const newBalance = await dispatch(getBalance(token, user.userId));
-      console.log('[NEW_BALANCE]:', newBalance);
-    }, 2000);
+      await dispatch(getBalance(token, user.userId,));   
+    }, 5000);
     return () => {
       clearInterval(interval);
     }
@@ -63,9 +61,30 @@ const Navigation = () => {
             <li>
                 <Link href='/mega/one-minute'><a>{t("game_types.mega.one_minute")}</a></Link>
             </li>
-            {/* <li>
-                <Link href='/mega/one-second'><a>{t("game_types.mega.one_second")}</a></Link>
-            </li> */}
+          </ul>
+        </li>
+        <li className="drop">
+          <Link href="/superspeed/superspeed">
+            <a>
+              {t("game_types.superspeed.caption")} <IoCaretDown color="red" />
+            </a>
+          </Link>
+          <ul className="dropdown">
+            <li>
+              <Link href='/superspeed/superspeed'><a>{t("game_types.superspeed.caption")}</a></Link>
+            </li>
+          </ul>
+        </li>
+        <li className="drop">
+          <Link href="/southern/hochiminh">
+            <a>
+              {t("game_types.southern.caption")} <IoCaretDown color="red" />
+            </a>
+          </Link>
+          <ul className="dropdown">
+            <li>
+              <Link href='/southern/hochiminh'><a>{t("game_types.southern.hochiminh")}</a></Link>
+            </li>
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
@@ -73,62 +92,21 @@ const Navigation = () => {
           </ul>
         </li>
         <li className="drop">
-          <Link href="/">
-            <a>
-              {t("game_types.superspeed.caption")} <IoCaretDown color="red" />
-            </a>
-          </Link>
-          <ul className="dropdown">
-            <li>
-              <Link href='/superspeed/superspeed'><a>super speed</a></Link>
-            </li>
-              {/* <li>
-                  <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-              </li> */}
-            {/* <li>
-              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-              <a>{t("coming_soon")}</a>
-            </li> */}
-          </ul>
-        </li>
-        {/* <li className="drop">
-          <Link href="/">
-            <a>
-              {t("game_types.south.caption")} <IoCaretDown color="red" />
-            </a>
-          </Link>
-          <ul className="dropdown">
-            <li>
-              <Link href='/south/'><a>Hà Nội VIP</a></Link>
-            </li>
-            <li>
-              <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-            </li>
-            <li>
-              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-              <a>{t("coming_soon")}</a>
-            </li>
-          </ul>
-        </li> */}
-        {/* <li className="drop">
-          <Link href="/">
+          <Link href="/central/quangnam">
             <a>
               {t("game_types.central.caption")} <IoCaretDown color="red" />
             </a>
           </Link>
           <ul className="dropdown">
             <li>
-                <Link href='/home-one'><a>Hà Nội VIP</a></Link>
-              </li>
-              <li>
-                <Link href='/home-two'><a>Hồ Chí Minh VIP</a></Link>
-              </li>
+              <Link href='/central/quangnam'><a>{t("game_types.central.quangnam")}</a></Link>
+            </li>
             <li>
               <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
               <a>{t("coming_soon")}</a>
             </li>
           </ul>
-        </li> */}
+        </li>
         <li className="drop">
           <Link href="/northern/northern-lottery">
             <a>
@@ -145,13 +123,6 @@ const Navigation = () => {
               <Link href="/northern/jackpot">
                 <a>{t("game_types.northern.jackpot")}</a>
               </Link>
-              {/* <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-              <a>{t("coming_soon")}</a> */}
-            </li>
-            <li>
-              {/* <Link href='/northern/scratch-lottery'><a>{t("game_types.northern.scratch")}</a></Link> */}
-              <img src="/images/working.gif" className="coming_soon_icon" alt="working" />
-              <a>{t("coming_soon")}</a>
             </li>
           </ul>
         </li>
@@ -201,7 +172,7 @@ const Navigation = () => {
         </li>
         {authenticated &&(
           <div style={{ display: "flex" }}>
-            <UserIcon />
+            <UserIcon /> &nbsp;&nbsp;&nbsp;
             <p className="date_text">{balance}</p>
           </div>
         )}

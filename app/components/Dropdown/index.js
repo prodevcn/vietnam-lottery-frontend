@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import Checked from "@material-ui/icons/Check";
 
-import { setDate } from "../../util/lib";
+import { formatDate } from "../../util/lib";
 
 const Dropdown = (props) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const Dropdown = (props) => {
           setOpen((prevState) => !prevState);
         }}
       >
-        <h5 className="date_text">{setDate(value?.endTime)}</h5>
+        <h5 className="date_text">{formatDate(value?.endTime)}</h5>
         <ArrowDropDown className="icon" />
       </div>
       {open && (
@@ -36,7 +36,7 @@ const Dropdown = (props) => {
                 onClickProcess(item);
               }}
             >
-              <p className="date_text">{setDate(item.endTime)}</p>
+              <p className="date_text">{formatDate(item.endTime)}</p>
               {value === item && <Checked className="icon" />}
             </div>
           ))}

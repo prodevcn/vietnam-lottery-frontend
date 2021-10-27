@@ -24,11 +24,11 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     // if (authenticated) {
     //   interval = setInterval(() => {
-    //     dispatch(getUserInfo(user._id));
+    //     dispatch(getUserInfo(user.userId));
     //   }, 30000);
     // }
     return () => {
-      // window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       // if (interval) clearInterval(interval);
     };
   }, []);

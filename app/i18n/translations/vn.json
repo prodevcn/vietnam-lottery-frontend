@@ -18,6 +18,7 @@
     "logout":"đăng xuất",
     "signup":"đăng ký",
     "bet_err_msg":"Số đặt cược không hợp lệ",
+    "bet_restricted": "Cá cược bị hạn chế",
     "select_num":{
       "all":"Tất cả",
       "erase":"Xóa",
@@ -268,13 +269,15 @@
         "caption":"Siêu Tốc",
         "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
       },
-      "south":{
+      "southern":{
         "caption":"Miền Nam",
-        "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam.",
+        "hochiminh":"Hồ Chí Minh"
       },
       "central":{
         "caption":"Miền Trung",
-        "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam."
+        "description":"Xổ số siêu tốc là một kiểu chơi đánh bài rất mới ở Việt Nam.",
+        "quangnam": "Quảng Nam"
       }
     },
     "countries":{

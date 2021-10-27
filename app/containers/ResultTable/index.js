@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../../components/Dropdown";
 import { getGameHistoriesForGameType } from "../../redux/actions/game";
-import { setDate, createDate } from "../../util/lib";
+import { formatDate, createDate } from "../../util/lib";
 
 const ResultTable = (props) => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const ResultTable = (props) => {
           )
         }
         <p className="result_title">
-          {t("result_table.result")} : {selectedHistory ? setDate(selectedHistory?.endTime) : setDate(Date.now())}
+          {t("result_table.result")} : {selectedHistory ? formatDate(selectedHistory?.endTime) : formatDate(Date.now())}
         </p>
         <table className="table_section">
           {
@@ -99,7 +99,9 @@ const ResultTable = (props) => {
             (
               currentGameType.value === 'hochiminh' ||
               currentGameType.value === 'saigon' ||
-              currentGameType.value === 'superspeed'
+              currentGameType.value === 'superspeed' ||
+              currentGameType.value === 'southern-hochiminh' ||
+              currentGameType.value === 'central-quangnam'
             ) && (
               <tbody>
                 <tr className="table_row">

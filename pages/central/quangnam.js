@@ -37,14 +37,16 @@ import { API_URL } from "../../app/constants/config";
 
 const socket = io.connect(API_URL);
   
-const HochiminhVIP = (props) => {
+const CentralQuangNam = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { user, balance } = useSelector((state) => state.user);
+  const { restrictList } = useSelector((state) => state.common);
   const { betInfos, currentGameType, currentBetType, currentDigitType } = useSelector((state) => state.game);
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
   const [selectedBetTypeIndex, setBetTypeIndex] = useState(0);
   const BET_TYPES = [
     {
@@ -265,11 +267,17 @@ const HochiminhVIP = (props) => {
     let formattedNumbers;
     let phrase = "";
     let amount = 0;
+    if (restrictList.central_quangname) {
+      setMessage(t("bet_restricted"));
+      return { status: false, phrase: null };
+    }
     switch (currentDigitType.value) {
       case "lot2":
         if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+          if(!validateScript(script, currentBetType.value, currentDigitType.value)){
+            setMessage(t("bet_err_msg"));
+            return { status: false, phrase: null};
+          }
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
           amount = BET_RATES.lot18.backpack.lot2 * counts * multiple;
@@ -278,6 +286,7 @@ const HochiminhVIP = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -303,6 +312,7 @@ const HochiminhVIP = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -329,6 +339,7 @@ const HochiminhVIP = (props) => {
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -358,6 +369,7 @@ const HochiminhVIP = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -393,6 +405,7 @@ const HochiminhVIP = (props) => {
           setCount(counts);
           return { status: true, phrase: script };
         }
+        setMessage(t("bet_err_msg"));
         return { status: false, phrase: null };
       case "first":
       case "special_topics":
@@ -412,6 +425,7 @@ const HochiminhVIP = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -427,6 +441,7 @@ const HochiminhVIP = (props) => {
         return { status: true, phrase };
       case "head":
         if (ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedTen.map((index_ten) => `${index_ten};`);
@@ -440,6 +455,7 @@ const HochiminhVIP = (props) => {
         return { status: true, phrase };
       case "tail":
         if (unit_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => `${index_unit};`);
@@ -466,6 +482,7 @@ const HochiminhVIP = (props) => {
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -495,6 +512,7 @@ const HochiminhVIP = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -530,6 +548,7 @@ const HochiminhVIP = (props) => {
           setCount(counts);
           return { status: true, phrase: script };
         }
+        setMessage(t("bet_err_msg"));
         return { status: false, phrase: null };
       default:
         return false;
@@ -570,6 +589,7 @@ const HochiminhVIP = (props) => {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
+        setMessage('');
       }, 2000);
     } else {
       const savedInfos = betInfos;
@@ -591,7 +611,7 @@ const HochiminhVIP = (props) => {
   /** end */
   /** socket process */
   const getNewResult = () => {
-    dispatch(getGameLatestResult('hochiminh'))
+    dispatch(getGameLatestResult('central-quangnam'))
       .then((res) => {
         if (res) {
           setResult(res);
@@ -603,7 +623,7 @@ const HochiminhVIP = (props) => {
   };
 
   const getNewGame = () => {
-    dispatch(getNewGameInfo('hochiminh'))
+    dispatch(getNewGameInfo('central-quangnam'))
       .then((res) => {
         setGameInfo(res);
       })
@@ -615,30 +635,51 @@ const HochiminhVIP = (props) => {
   const handleNewGame = useCallback((game) => {
     getNewGame();
     dispatch(getUserInfo(user.userId));
-    dispatch(getGameHistoriesForGameType('hochiminh'));
+    dispatch(getGameHistoriesForGameType('central-quangnam'));
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'ENABLE_CENTRAL_QUANGNAM',
+      })  
+    );
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
 
   const handleTimer = useCallback((info) => {
     setDuration({
-      hours: Math.floor((info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      hours: Math.floor(info.duration / (1000 * 60 * 60)),
       minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
       seconds: Math.floor((info.duration % (1000 * 60)) / 1000),
     });
   });
 
+  const handleRestrict = useCallback(() => {
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'RESTRICT_CENTRAL_QUANGNAM',
+      })  
+    );
+  });
+
+  const handleEnable = useCallback(() => {
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'ENABLE_CENTRAL_QUANGNAM',
+      })  
+    );
+  });
+
   /** */
 
   useMemo(() => {
-    socket.emit("subscribe_timer", 'hochiminh');
+    socket.emit("subscribe_timer", 'central-quangnam');
   }, [])
 
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.vip.hochiminh"),
-        value: "hochiminh",
+        label: t("game_types.central.quangnam"),
+        value: "central-quangnam",
       })
     );
   }, [t])
@@ -658,8 +699,8 @@ const HochiminhVIP = (props) => {
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.vip.hochiminh"),
-        value: "hochiminh",
+        label: t("game_types.central.quangnam"),
+        value: "central-quangnam",
       })
     );
     dispatch(setCurrentBetType(BET_TYPES[0]));
@@ -667,14 +708,18 @@ const HochiminhVIP = (props) => {
     getNewGame();
     socket.on("START_NEW_GAME", handleNewGame);
     socket.on("TIMER", handleTimer);
+    socket.on("RESTRICT_BET_CENTRAL_QUANGNAM", handleRestrict);
+    socket.on("ENABLE_CENTRAL_QUANGNAM", handleEnable);
     return () => {
       socket.removeAllListeners("TIMER");
       socket.removeAllListeners("START_NEW_GAME");
+      socket.removeAllListeners("RESTRICT_BET_CENTRAL_QUANGNAM");
+      socket.removeAllListeners("ENABLE_BET_CENTRAL_QUANGNAM");
     }
   }, []);
   return (
     <Layout 
-      gameType="hochiminh"
+      gameType="central-quangnam"
       gameInfo={gameInfo}
       duration={duration}
       result={result}
@@ -935,7 +980,7 @@ const HochiminhVIP = (props) => {
         <DialogContent className="game_selection_box">
           <DialogContent>
             <div style={{ display: "flex" }}>
-              <p className="date_text">{t("bet_err_msg")}</p>
+              <p className="date_text">{message}</p>
             </div>
           </DialogContent>
         </DialogContent>
@@ -944,4 +989,4 @@ const HochiminhVIP = (props) => {
   );
 };
 
-export default RequireAuth(HochiminhVIP);
+export default RequireAuth(CentralQuangNam);

@@ -6,10 +6,11 @@ import {Grid, Container, Dialog, DialogContent } from "@material-ui/core";
 import io from "socket.io-client";
 import _ from "lodash";
 import { API_URL } from "../app/constants/config";
-import { setDate } from "../app/util/lib";
+import { formatDate } from "../app/util/lib";
 import Header from "../app/containers/Header";
 import Button from "../app/components/Button";
 import Slider from "../app/containers/Slider";
+import RequireAuth from "../app/layouts/RequireAuth";
 import { getGameAllLatestResults } from "../app/redux/actions/game";
 import { checkAuth } from "../app/redux/actions/auth";
 
@@ -37,20 +38,6 @@ const App = () => {
 
   const getNewResults = () => {
     dispatch(getGameAllLatestResults());
-      // .then((res) => {
-      //   if (res && res.length !== 0) {
-      //     const northern_result = res.map((e) => {
-      //       if (e.gameType === "northern") return e;
-      //     });
-      //     const hochiminh_result = res.map((e) => {
-      //       if (e.gameType === "hochiminh") return e;
-      //     })
-      //     setResults((state) => ({ ...state, hochiminh: hochiminh_result, northern: northern_result[0] }));
-      //   }
-      // })
-      // .catch((err) => {
-      //   console.error(err);
-      // });
   };
 
   useEffect(() => {
@@ -85,7 +72,7 @@ const App = () => {
             <div className="betting_result_element">
               <div className="text_area">
                 <p>
-                  {setDate(
+                  {formatDate(
                     latestResults.northern?.endTime
                       ? latestResults.northern.endTime
                       : new Date().toString()
@@ -114,7 +101,7 @@ const App = () => {
             <div className="betting_result_element">
               <div className="text_area">
                 <p>
-                  {setDate(
+                  {formatDate(
                     latestResults.northern?.endTime
                       ? latestResults.northern.endTime
                       : new Date().toString()
@@ -142,7 +129,7 @@ const App = () => {
           <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
             <div className="betting_result_element">
               <div className="text_area">
-                <p>{setDate(new Date().toString())}</p>
+                <p>{formatDate(new Date().toString())}</p>
                 <p>{t("game_types.mega.caption")}</p>
               </div>
               <div className="number_area">
@@ -172,11 +159,6 @@ const App = () => {
                 <p className="date_text">{t("game_types.vip.description")}</p>
               </div>
               <div className="button__section">
-                {/* <Button title={t("play_now")}/> */}
-                {/* <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
-                  <a className="date_text">{t("coming_soon")}</a>
-                </div> */}
                 <Button
                   title={t("play_now")}
                   onClick={() => {
@@ -202,10 +184,6 @@ const App = () => {
                     router.push("/mega/one-minute");
                   }}
                 />
-                {/* <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
-                  <a className="date_text">{t("coming_soon")}</a>
-                </div> */}
               </div>
             </div>
           </Grid>
@@ -227,11 +205,6 @@ const App = () => {
                     router.push("/superspeed/superspeed");
                   }}
                 />
-                {/* <Button title={t("play_now")}/> */}
-                {/* <div style={{ marginBottom: 20 }}>
-                  <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
-                  <a className="date_text">{t("coming_soon")}</a>
-                </div> */}
               </div>
             </div>
           </Grid>
@@ -239,16 +212,22 @@ const App = () => {
             <div className="game_selection_box">
               <div className="title__section">
                 <img src="/images/lottery.png" className="icon" alt="lottery" />
-                <p>{t("game_types.south.caption")}</p>
+                <p>{t("game_types.southern.caption")}</p>
               </div>
               <div className="description__section">
-                <p className="date_text">{t("game_types.south.description")}</p>
+                <p className="date_text">{t("game_types.southern.description")}</p>
               </div>
               <div className="button__section">
-                <div style={{ marginBottom: 20 }}>
+                {/* <div style={{ marginBottom: 20 }}>
                   <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
-                </div>
+                </div> */}
+                <Button
+                  title={t("play_now")}
+                  onClick={() => {
+                    router.push("/northern/northern-lottery");
+                  }}
+                />
               </div>
             </div>
           </Grid>
@@ -264,10 +243,16 @@ const App = () => {
                 </p>
               </div>
               <div className="button__section">
-                <div style={{ marginBottom: 20 }}>
+                {/* <div style={{ marginBottom: 20 }}>
                   <img src="/images/working.gif" className="coming_soon_icon" alt="lottery" />
                   <a className="date_text">{t("coming_soon")}</a>
-                </div>
+                </div> */}
+                <Button
+                  title={t("play_now")}
+                  onClick={() => {
+                    router.push("/northern/northern-lottery");
+                  }}
+                />
               </div>
             </div>
           </Grid>
@@ -311,4 +296,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default RequireAuth(App);

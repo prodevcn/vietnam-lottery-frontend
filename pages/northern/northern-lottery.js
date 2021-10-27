@@ -42,9 +42,11 @@ const NorthernLottery = (props) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const { user } = useSelector((state) => state.user);
+  const { user, balance } = useSelector((state) => state.user);
+  const { restrictList } = useSelector((state) => state.common);
   const { betInfos, currentGameType, currentBetType, currentDigitType } = useSelector((state) => state.game);
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
   const [selectedBetTypeIndex, setBetTypeIndex] = useState(0);
   const BET_TYPES = [
     {
@@ -237,6 +239,7 @@ const NorthernLottery = (props) => {
     const selectedHundred = [];
     let thousand_count = 0;
     const selectedThousand = [];
+    console.log('[START]:[CHECK_BET_INFO]');
     for (let index = 0; index < 10; index += 1) {
       if (units[index] === true) {
         unit_count += 1;
@@ -264,11 +267,20 @@ const NorthernLottery = (props) => {
     let formattedNumbers;
     let phrase = "";
     let amount = 0;
+    if (restrictList.northern) {
+      setMessage(t("bet_restricted"));
+      return { status: false, phrase: null };
+    }
     switch (currentDigitType.value) {
       case "lot2":
+        console.log('[CHECK]:[LOT2]');
         if (script !== "") {
+          console.log('[SCRIPT]:[EXIST]');
           if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+          {
+            setMessage(t("bet_err_msg"));
+            return { status: false, phrase: null };
+          }
           setBetNumbers(script);
           const counts = script.split(";").length - 1;
           amount = BET_RATES.lot27.backpack.lot2 * counts * multiple;
@@ -277,6 +289,8 @@ const NorthernLottery = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          console.log('[FALSE]:[NUMBER_NOT_SELECT]');
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -289,6 +303,7 @@ const NorthernLottery = (props) => {
         setBetNumbers(phrase);
         setBetAmount(amount);
         setCount(phrase.split(";").length - 1);
+        console.log('[TRUE]:[SUCCESS]');
         return { status: true, phrase };
       case "lot2_1K":
         if (script !== "") {
@@ -302,6 +317,7 @@ const NorthernLottery = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -328,6 +344,7 @@ const NorthernLottery = (props) => {
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -357,6 +374,7 @@ const NorthernLottery = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -392,6 +410,7 @@ const NorthernLottery = (props) => {
           setCount(counts);
           return { status: true, phrase: script };
         }
+        setMessage(t("bet_err_msg"));
         return { status: false, phrase: null };
       case "first":
       case "special_topics":
@@ -409,6 +428,7 @@ const NorthernLottery = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
@@ -424,6 +444,7 @@ const NorthernLottery = (props) => {
         return { status: true, phrase };
       case "head":
         if (ten_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedTen.map((index_ten) => `${index_ten};`);
@@ -437,6 +458,7 @@ const NorthernLottery = (props) => {
         return { status: true, phrase };
       case "tail":
         if (unit_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => `${index_unit};`);
@@ -463,6 +485,7 @@ const NorthernLottery = (props) => {
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -492,6 +515,7 @@ const NorthernLottery = (props) => {
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
+          setMessage(t("bet_err_msg"));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
@@ -527,6 +551,7 @@ const NorthernLottery = (props) => {
           setCount(counts);
           return { status: true, phrase: script };
         }
+        setMessage(t("bet_err_msg"));
         return { status: false, phrase: null };
       default:
         return false;
@@ -537,15 +562,16 @@ const NorthernLottery = (props) => {
   const onQuickBet = () => {
     const savedOrders = betInfos;
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
+        setMessage('');
       }, 2000);
     } else {
       savedOrders.push({
         type: 'lot27',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -556,14 +582,14 @@ const NorthernLottery = (props) => {
       dispatch(betGame(savedOrders));
       clearAll();
       setTimeout(() => {
-        dispatch(getUserInfo(user._id));
+        dispatch(getUserInfo(user.userId));
       }, 2000);
     }
   };
 
   const onMoreBet = () => {
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > user.balance) {
+    if (!checkResult.status || betAmount > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -572,7 +598,7 @@ const NorthernLottery = (props) => {
       const savedInfos = betInfos;
       savedInfos.push({
         type: 'lot27',
-        userId: user._id,
+        userId: user.userId,
         gameType: currentGameType.value,
         betType: currentBetType.value,
         digitType: currentDigitType.value,
@@ -612,8 +638,13 @@ const NorthernLottery = (props) => {
 
   const handleNewGame = useCallback((game) => {
     getNewGame();
-    dispatch(getUserInfo(user._id));
+    dispatch(getUserInfo(user.userId));
     dispatch(getGameHistoriesForGameType('northern'));
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'ENABLE_NORTHERN',
+      })  
+    );
     getNewResult();
     console.log('[START]:[NEW_GAME]');
   });
@@ -624,6 +655,22 @@ const NorthernLottery = (props) => {
       minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
       seconds: Math.floor((info.duration % (1000 * 60)) / 1000),
     });
+  });
+
+  const handleRestrict = useCallback(() => {
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'RESTRICT_NORTHERN',
+      })  
+    );
+  });
+
+  const handleEnable = useCallback(() => {
+    dispatch(dispatchController => 
+      dispatchController({
+        type: 'ENABLE_NORTHERN',
+      })  
+    );
   });
 
   /** */
@@ -663,11 +710,15 @@ const NorthernLottery = (props) => {
     dispatch(setCurrentBetType(BET_TYPES[0]));
     getNewResult();
     getNewGame();
-    socket.on("new game start", handleNewGame);
-    socket.on("timer", handleTimer);
+    socket.on("START_NEW_GAME", handleNewGame);
+    socket.on("TIMER", handleTimer);
+    socket.on("RESTRICT_BET_NORTHERN", handleRestrict);
+    socket.on("ENABLE_BET_NORTHERN", handleEnable);
     return () => {
-      socket.removeAllListeners("timer");
-      socket.removeAllListeners("new game start");
+      socket.removeAllListeners("TIMER");
+      socket.removeAllListeners("START_NEW_GAME");
+      socket.removeAllListeners("RESTRICT_BET_NORTHERN");
+      socket.removeAllListeners("ENABLE_BET_NORTHERN");
     }
   }, []);
 
@@ -935,7 +986,7 @@ const NorthernLottery = (props) => {
         <DialogContent className="game_selection_box">
           <DialogContent>
             <div style={{ display: "flex" }}>
-              <p className="date_text">{t("bet_err_msg")}</p>
+              <p className="date_text">{message}</p>
             </div>
           </DialogContent>
         </DialogContent>
