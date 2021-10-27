@@ -30,6 +30,7 @@ export const getBalance = (token, userId) => (dispatch) =>
         })
         .then(res => {
           if (res && res.data) {
+            console.log('[SUCCESS]:[GET_BALANCE]', res.data);
             dispatch({
               type: SET_BALANCE,
               payload: res.data.balance

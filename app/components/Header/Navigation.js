@@ -23,6 +23,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const interval = setInterval(async () => {
+      console.log('[GET_BALANCE]:[5s]');
       await dispatch(getBalance(token, user.userId,));   
     }, 5000);
     return () => {
