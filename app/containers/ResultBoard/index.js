@@ -6,7 +6,7 @@ import { Grid } from "@material-ui/core";
 import { Star, Timer } from "@material-ui/icons";
 import _ from "lodash";
 /** utils & constants */
-import { formatDate } from "../../util/lib";
+import { formatDate, formatTimerNumber } from "../../util/lib";
 
 const ResultBoard = props => {
   const dispatch = useDispatch();
@@ -33,19 +33,19 @@ const ResultBoard = props => {
           </div>
           <div className="number_area" style={{ marginTop: 15 }}>
             <div className="duration__circle" key="DURATION_HOURS">
-             <h6 style={{ color: "white" }}>{props.duration.hours < 0 ? "..." : props.duration.hours}</h6>
+             <h6 style={{ color: "white" }}>{formatTimerNumber(props.duration.hours)}</h6>
             </div>
             <h6 className="date_text" style={{ padding: 0, display: "flex", alignItems: "center" }}>
               :
             </h6>
             <div className="duration__circle" key="DURATION_MINUTES">
-              <h6 style={{ color: "white" }}>{props.duration.minutes < 0 ? "..." : props.duration.minutes}</h6>
+              <h6 style={{ color: "white" }}>{formatTimerNumber(props.duration.minutes)}</h6>
             </div>
             <h6 className="date_text" style={{ padding: 0, display: "flex", alignItems: "center" }}>
               :
             </h6>
             <div className="duration__circle" key="DURATION_SECONDS">
-              <h6 style={{ color: "white" }}>{props.duration.seconds < 0 ? "..." : props.duration.seconds}</h6>
+              <h6 style={{ color: "white" }}>{formatTimerNumber(props.duration.seconds)}</h6>
             </div>
           </div>
         </Grid>

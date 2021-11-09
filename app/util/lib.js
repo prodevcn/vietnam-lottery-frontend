@@ -24,6 +24,12 @@ export const createDate = (date) => {
   return day + month + year + '-' + identity;
 }
 
+export const formatTimerNumber = (value) => {
+  if (value < 0) return '...';
+  if (value < 10) return '0' + value;
+  if (value > 9) return value;
+}
+
 
 
 /** format number for balance each 3 digits comma */
