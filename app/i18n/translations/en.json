@@ -11,7 +11,7 @@
     "selected":"Selected",
     "payout":"Payout",
     "numbers":"numbers",
-    "vnd":"VND",
+    "vnd":"USDT",
     "download":"Download",
     "auth_message":"Please login or register !",
     "login":"login",
@@ -37,81 +37,81 @@
     },
     "help":{
       "backpack":{
-        "lot2":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 27,000 VND for each hit point, the winning for each point is 98,500 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot2_1K":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 1,000 VND for each hit point, the winning for each point is 3,649 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot3":"Hit the last 3 digits of the 23 lots of the Northern radio results. Just pay 23,000 VND for each hit point, the winnings for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot4":"Hit the last 4 digits of the 20 lotteries of the Northern radio lottery results. Just pay 20,000 VND for each hit point, the winning for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
+        "lot2":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 1.18 USDT for each hit point, the winning for each point is 4.31 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot2_1K":"Hit the last 2 digits of the 27 lotteries of the Northern radio lottery results. Just pay 0.04 USDT for each hit point, the winning for each point is 0.16 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot3":"Hit the last 3 digits of the 23 lots of the Northern radio results. Just pay 1.00 USDT for each hit point, the winnings for each point is 42.03 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot4":"Hit the last 4 digits of the 20 lotteries of the Northern radio lottery results. Just pay 0.88 USDT for each hit point, the winning for each point is 388.79 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
       },
       "loxien":{
-        "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
-        "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 150,000 VND.",
-        "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
+        "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 0.04 USDT for each hit point, the winnings for each point is 1.23 USDT.",
+        "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 0.04 USDT for each hit point, winning for each point is 6.57 USDT.",
+        "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 0.04 USDT for each hit point, winning for each point is 32.84 USDT."
       },
       "score":{
-        "first":"Enter the first 2 digits of the first prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND.",
-        "special_topics":"Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings per point are 99,000 VND.",
-        "special_headline":"Enter the first 2 digits in the special prize.. Pay 1,000 VND for each point. The winnings per point are 99,000 VND.",
-        "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 4,000 VND for each point. The winning amount per point is 98,000 VND.",
-        "first_de":"Enter the last 2 digits of the First Prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND."
+        "first":"Enter the first 2 digits of the first prize. Payment of 0.04 USDT per point. The winning amount per point is 4.29 USDT.",
+        "special_topics":"Hit the last 2 digits of the jackpot. Payment of 0.04 USDT per point. The winnings per point are 4.33 USDT.",
+        "special_headline":"Enter the first 2 digits in the special prize.. Pay 0.04 USDT for each point. The winnings per point are 4.33 USDT.",
+        "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 0.18 USDT for each point. The winning amount per point is 4.29 USDT.",
+        "first_de":"Enter the last 2 digits of the First Prize. Payment of 0.04 USDT per point. The winning amount per point is 4.29 USDT."
       },
       "headandtail":{
-        "head":"Type 1 tens digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND.",
-        "tail":"Enter the last 1 digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND."
+        "head":"Type 1 tens digit of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 0.43 USDT.",
+        "tail":"Enter the last 1 digit of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 0.43 USDT."
       },
       "3more":{
-        "3pin":"Type 3 digits of the 3 prizes 6. Pay 3,000 VND for each point. The winnings for each point are 960,000 VND.",
-        "3pin_headandtail":"Enter the last 3 digits of the 3 6th and jackpot prizes. Pay 4,000 VND per point. Just 1 of 2 : the 6th prize or the special prize with the last 3 digits of the number chosen by the player is won. The winnings for each point are 960,000 VND.",
-        "3_special_pins":"Enter the last 3 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 960,000 VND."
+        "3pin":"Type 3 digits of the 3 prizes 6. Pay 0.13 USDT for each point. The winnings for each point are 42.03 USDT.",
+        "3pin_headandtail":"Enter the last 3 digits of the 3 6th and jackpot prizes. Pay 0.18 USDT per point. Just 1 of 2 : the 6th prize or the special prize with the last 3 digits of the number chosen by the player is won. The winnings for each point are 42.03 USDT.",
+        "3_special_pins":"Enter the last 3 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 42.03 USDT."
       },
       "4more":{
-        "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
+        "4_special_pins":"Type 4 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 388.79 USDT."
       },
       "slide":{
-        "slide4":"Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 1,000 VND for each hit point, winning for each point is 2,300 VND.",
-        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 8,000 VND.",
-        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 12,000 VND."
+        "slide4":"Choose 4 different numbers to play the last 2 digits of the 27 lots of the Northern radio lottery results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Paying 0.04 USDT for each hit point, winning for each point is 0.10 USDT.",
+        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Payout 0.04 USDT for each hit point, the winnings for each point is 8,000 USDT.",
+        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 27 lots of the draw results. If the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 0.04 USDT for each hit point, the winnings for each point is 10.09 USDT."
       },
-      "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
+      "jackpot": "Hit the last 2 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 3.72 USDT."
     },
     "help18":{
       "backpack":{
-        "lot2":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 18,000 VND for each hit point, the winnings for each point is 99,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot2_1K":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 1,000 VND for each hit point, the winning for each point is 5,445 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot3":"Roll the last 3 digits of the 17 lots of the winning results. Just pay 17,000 VND for each hit point, the winning for each point is 960,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
-        "lot4":"Roll the last 4 digits of the 16 lots of the winning results. Just pay 16,000 VND for each hit point, the winnings for each point is 8,880,000 VND. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
+        "lot2":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 0.79 USDT for each hit point, the winnings for each point is 4.33 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot2_1K":"Roll the last 2 digits of the 18 lots of the winning results. Just pay 0.04 USDT for each hit point, the winning for each point is 5,445 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot3":"Roll the last 3 digits of the 17 lots of the winning results. Just pay 0.74 USDT for each hit point, the winning for each point is 42.03 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly.",
+        "lot4":"Roll the last 4 digits of the 16 lots of the winning results. Just pay 0.70 USDT for each hit point, the winnings for each point is 388.79 USDT. In case of winning 2 lots or more, the winning amount will be multiplied accordingly."
       },
       "loxien":{
-        "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 28,000 VND.",
-        "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, the winnings for each point is 150,000 VND.",
-        "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the winning results, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 1,000 VND for each hit point, winning for each point is 750,000 VND."
+        "xien2":"Choose 2 different numbers to roll the last 2 digits of the 18 lots of the prize, if in the lot appear both numbers that the player has chosen, then win. Payout 0.04 USDT for each hit point, the winnings for each point is 1.23 USDT.",
+        "xien3":"Choose 3 different numbers to roll the last 2 digits of the 18 lots of the prize, if all 3 numbers appear in the lot that the player has chosen, then win. Payout 0.04 USDT for each hit point, the winnings for each point is 6.57 USDT.",
+        "xien4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the winning results, if all 4 numbers appear in the lot that the player has chosen, then win. Payout 0.04 USDT for each hit point, winning for each point is 32.84 USDT."
       },
       "score":{
-        "first":"Enter the first 2 digits of the first prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND.",
-        "special_topics":"Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings per point are 99,000 VND.",
-        "special_headline":"Enter the first 2 digits in the special prize.. Pay 1,000 VND for each point. The winnings per point are 99,000 VND.",
-        "special_heading": "Enter 2 digits of 8th prize. Pay 1,000 VND for each point. The winnings for each point are 98,000 VND.",
-        "special_headandtail": "Enter the last 2 digits of the 8th prize and the special prize. Pay 2,000 VND per point. Just 1 of 2 prizes of 8 or a special prize with the last 2 digits of the number chosen by the player is to win. The winnings for each point are 98,000 VND.",
-        "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 4,000 VND for each point. The winning amount per point is 98,000 VND.",
-        "first_de":"Enter the last 2 digits of the First Prize. Payment of 1,000 VND per point. The winning amount per point is 98,000 VND."
+        "first":"Enter the first 2 digits of the first prize. Payment of 0.04 USDT per point. The winning amount per point is 4.29 USDT.",
+        "special_topics":"Hit the last 2 digits of the jackpot. Payment of 0.04 USDT per point. The winnings per point are 4.33 USDT.",
+        "special_headline":"Enter the first 2 digits in the special prize.. Pay 0.04 USDT for each point. The winnings per point are 4.33 USDT.",
+        "special_heading": "Enter 2 digits of 8th prize. Pay 0.04 USDT for each point. The winnings for each point are 4.29 USDT.",
+        "special_headandtail": "Enter the last 2 digits of the 8th prize and the special prize. Pay 0.09 USDT per point. Just 1 of 2 prizes of 8 or a special prize with the last 2 digits of the number chosen by the player is to win. The winnings for each point are 4.29 USDT.",
+        "problem":"Enter the last 2 digits of the 4 prizes of 7th Prize. Pay 0.18 USDT for each point. The winning amount per point is 4.29 USDT.",
+        "first_de":"Enter the last 2 digits of the First Prize. Payment of 0.04 USDT per point. The winning amount per point is 4.29 USDT."
       },
       "headandtail":{
-        "head":"Type 1 tens digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND.",
-        "tail":"Enter the last 1 digit of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 9,800 VND."
+        "head":"Type 1 tens digit of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 0.43 USDT.",
+        "tail":"Enter the last 1 digit of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 0.43 USDT."
       },
       "3more":{
-        "3pin":"Enter 3 digits of 7th prize. Pay 1,000 VND for each point. The winnings for each point are 960,000 VND.",
-        "3pin_headandtail":"Enter the last 3 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 960,000 VND.",
-        "3_special_pins":"Enter the last 3 digits of the 7th prize and the special prize. Pay 2,000 VND per point. Just 1 of 2 7 prizes or special prizes with the last 3 digits matching the number of players selected to win. The winnings for each point are 960,000 VND."
+        "3pin":"Enter 3 digits of 7th prize. Pay 0.04 USDT for each point. The winnings for each point are 42.03 USDT.",
+        "3pin_headandtail":"Enter the last 3 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 42.03 USDT.",
+        "3_special_pins":"Enter the last 3 digits of the 7th prize and the special prize. Pay 0.09 USDT per point. Just 1 of 2 7 prizes or special prizes with the last 3 digits matching the number of players selected to win. The winnings for each point are 42.03 USDT."
       },
       "4more":{
-        "4_special_pins":"Type 4 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 8,880,000 VND."
+        "4_special_pins":"Type 4 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 388.79 USDT."
       },
       "slide":{
-        "slide4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 1,800 VND.",
-        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 18 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Paying 1,000 VND for each hit point, winning for each point is 3,300 VND.",
-        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 1,000 VND for each hit point, the winnings for each point is 4,300 VND."
+        "slide4":"Choose 4 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 4 numbers that the player has chosen, the player wins. Payout 0.04 USDT for each hit point, the winnings for each point is 0.08 USDT.",
+        "slide8":"Choose 8 different numbers to roll the last 2 digits of the 18 lots of the draw results. If the lot does not appear all 8 numbers that the player selected, the player wins. Paying 0.04 USDT for each hit point, winning for each point is 0.14 USDT.",
+        "slide10":"Choose 10 different numbers to roll the last 2 digits of the 18 lots of the draw results. If in the lot does not appear all 10 numbers that the player has selected, the player wins. Payout 0.04 USDT for each hit point, the winnings for each point is 0.19 USDT."
       },
-      "jackpot": "Hit the last 2 digits of the jackpot. Payment of 1,000 VND per point. The winnings for each point are 85,000 VND."
+      "jackpot": "Hit the last 2 digits of the jackpot. Payment of 0.04 USDT per point. The winnings for each point are 3.72 USDT."
     },
     "help6": {
       "normal": {

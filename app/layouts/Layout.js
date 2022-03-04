@@ -16,7 +16,7 @@ import Button from "../components/Button";
 /** utils & constants */
 import { betGame } from "../redux/actions/game";
 import { getUserInfo } from "../redux/actions/auth";
-import { formatValue } from "../util/lib";
+import { formatValue, rateConvertor } from "../util/lib";
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ const Layout = (props) => {
                   >
                     <p className="date_text">{t("total_state")}</p>
                     <p className="state_text">
-                      {formatValue(props.allBetAmount.toString())}
+                      {rateConvertor(props.allBetAmount)}
                     </p>
                     {/* <Button title={t("buttons.feed")} type='outlined' /> */}
                   </div>

@@ -7,7 +7,7 @@ import { Grid, Dialog, DialogContent, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import io from "socket.io-client";
 /** utils & constants */
-import { formatValue, validateScript } from "../../app/util/lib";
+import { formatValue, validateScript, rateConvertor } from "../../app/util/lib";
 import BET_RATES from "../../app/constants/betRates";
 import {
   setCurrentGameType,
@@ -559,7 +559,7 @@ const CentralQuangNam = (props) => {
   const onQuickBet = () => {
     const savedOrders = betInfos;
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > balance) {
+    if (!checkResult.status || (betAmount / 22840).toFixed(2) > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -585,7 +585,7 @@ const CentralQuangNam = (props) => {
 
   const onMoreBet = () => {
     const checkResult = checkBetInfo();
-    if (!checkResult.status || betAmount > balance) {
+    if (!checkResult.status || (betAmount / 22840).toFixed(2) > balance) {
       setOpen(true);
       setTimeout(() => {
         setOpen(false);
@@ -935,7 +935,7 @@ const CentralQuangNam = (props) => {
                     {t("select")} {countOfNumbers} {t("numbers")}
                   </p>
                   <p>
-                    {t("payout")} {formatValue(betAmount.toString())} {t("vnd")}
+                    {t("payout")} {rateConvertor(betAmount)} {t("vnd")}
                   </p>
                 </div>
               </Grid>
