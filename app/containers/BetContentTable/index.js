@@ -7,8 +7,8 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { DeleteOutlined } from "@material-ui/icons";
 /** custom components */
 import Button from "../../components/Button";
-
 import { saveBetInfos } from "../../redux/actions/game";
+import { rateConvertor } from "../../util/lib";
 
 const createData = (no, betName, numberOfBets, totalBet, multiple, stakes, moneyWon1Time) => ({
   no,
@@ -123,7 +123,7 @@ const BetContentTable = (props) => {
                 {betTableInfos.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.no}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = (column.id === 'stakes' || column.id === 'moneyWon1Time') ? rateConvertor(row[column.id]) : row[column.id];
                       return (
                         <TableCell
                           key={column.id}

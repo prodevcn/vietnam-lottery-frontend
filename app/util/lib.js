@@ -137,6 +137,4 @@ export const getCombinations = (arr, selectNumber) => {
   return results;
 };
 
-export const rateConvertor = (value) => {
-  return (value / 22840).toFixed(2).toString();
-}
+export const rateConvertor = (value) => (value / 22840).toFixed(2).toString()
