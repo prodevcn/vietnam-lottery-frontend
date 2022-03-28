@@ -1,37 +1,37 @@
 .betting_table {
-    width: 100%;
-    height: auto;
-    text-align: -webkit-center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background: #0f0f0e url('/images/dot.png') repeat fixed;
-    margin-bottom: 2rem;
+  width: 100%;
+  height: auto;
+  text-align: -webkit-center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #0f0f0e url('/images/dot.png') repeat fixed;
+  margin-bottom: 2rem;
 }
 .table_container {
-    width: 90%;
-    text-align: -webkit-center;
+  width: 90%;
+  text-align: -webkit-center;
 }
 
 .result_title {
-    color:rgb(255, 136, 1);
-    text-align: left;
-    margin-top: 2rem;
-    font-size: 1rem;
+  color: rgb(255, 136, 1);
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 1rem;
 }
 .table_section {
-    border: none;
-    margin-top: 2rem;
-    tbody {
-        .table_row {
-            border: none;
-            td {
-                color: #ddd;
-                border: none;
-                border-bottom: 1px solid #555;
-            }
-            th {
-                color:rgb(255, 136, 1);
-            }
-        }
+  border: none;
+  margin-top: 2rem;
+  tbody {
+    .table_row {
+      border: none;
+      td {
+        color: #ddd;
+        border: none;
+        border-bottom: 1px solid #555;
+      }
+      th {
+        color: rgb(255, 136, 1);
+      }
     }
+  }
 }

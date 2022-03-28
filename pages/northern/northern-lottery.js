@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 /** material */
-import { Block, Speed, AddCircleOutline } from "@material-ui/icons";
-import { Grid, Dialog, DialogContent, useMediaQuery } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
-import io from "socket.io-client";
+import { Block, Speed, AddCircleOutline } from '@material-ui/icons';
+import { Grid, Dialog, DialogContent, useMediaQuery } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import io from 'socket.io-client';
 /** utils & constants */
-import { formatValue, validateScript, rateConvertor } from "../../app/util/lib";
-import BET_RATES from "../../app/constants/betRates";
+import { formatValue, validateScript, rateConvertor } from '../../app/util/lib';
+import BET_RATES from '../../app/constants/betRates';
 import {
   setCurrentGameType,
   setCurrentBetType,
@@ -17,23 +17,23 @@ import {
   getGameLatestResult,
   getNewGameInfo,
   getGameHistoriesForGameType,
-} from "../../app/redux/actions/game";
-import { getUserInfo } from "../../app/redux/actions/auth";
+} from '../../app/redux/actions/game';
+import { getUserInfo } from '../../app/redux/actions/auth';
 /** custom components */
-import Layout from "../../app/layouts/Layout";
-import RequireAuth from "../../app/layouts/RequireAuth";
-import InputWithButton from "../../app/components/InputWithButton";
-import Button from "../../app/components/Button";
+import Layout from '../../app/layouts/Layout';
+import RequireAuth from '../../app/layouts/RequireAuth';
+import InputWithButton from '../../app/components/InputWithButton';
+import Button from '../../app/components/Button';
 /** for socket */
-import { API_URL } from "../../app/constants/config";
+import { API_URL } from '../../app/constants/config';
 /** betType contents */
-import Score from "../../app/containers/BetTypes/Score";
-import ThreeMore from "../../app/containers/BetTypes/3More";
-import FourMore from "../../app/containers/BetTypes/4More";
-import Backpack from "../../app/containers/BetTypes/Backpack";
-import LotXien from "../../app/containers/BetTypes/LotXien";
-import HeadAndTail from "../../app/containers/BetTypes/HeadAndTail";
-import SlidingLot from "../../app/containers/BetTypes/SlidingLot";
+import Score from '../../app/containers/BetTypes/Score';
+import ThreeMore from '../../app/containers/BetTypes/3More';
+import FourMore from '../../app/containers/BetTypes/4More';
+import Backpack from '../../app/containers/BetTypes/Backpack';
+import LotXien from '../../app/containers/BetTypes/LotXien';
+import HeadAndTail from '../../app/containers/BetTypes/HeadAndTail';
+import SlidingLot from '../../app/containers/BetTypes/SlidingLot';
 
 const socket = io.connect(API_URL);
 
@@ -41,70 +41,159 @@ const NorthernLottery = (props) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const { user, balance } = useSelector((state) => state.user);
   const { restrictList } = useSelector((state) => state.common);
-  const { betInfos, currentGameType, currentBetType, currentDigitType } = useSelector((state) => state.game);
+  const { betInfos, currentGameType, currentBetType, currentDigitType } =
+    useSelector((state) => state.game);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [selectedBetTypeIndex, setBetTypeIndex] = useState(0);
   const BET_TYPES = [
     {
-      value: "backpack",
-      label: t("bet_types.backpack"),
+      value: 'backpack',
+      label: t('bet_types.backpack'),
     },
     {
-      value: "loxien",
-      label: t("bet_types.loxien"),
+      value: 'loxien',
+      label: t('bet_types.loxien'),
     },
     {
-      value: "score",
-      label: t("bet_types.score"),
+      value: 'score',
+      label: t('bet_types.score'),
     },
     {
-      value: "headandtail",
-      label: t("bet_types.headandtail"),
+      value: 'headandtail',
+      label: t('bet_types.headandtail'),
     },
     {
-      value: "threeMore",
-      label: t("bet_types.3more"),
+      value: 'threeMore',
+      label: t('bet_types.3more'),
     },
     {
-      value: "fourMore",
-      label: t("bet_types.4more"),
+      value: 'fourMore',
+      label: t('bet_types.4more'),
     },
     {
-      value: "slide",
-      label: t("bet_types.slide"),
+      value: 'slide',
+      label: t('bet_types.slide'),
     },
   ];
   /** state for bet details */
-  const [script, setScript] = useState("");
+  const [script, setScript] = useState('');
   const [allBetAmount, setAllBetAmount] = useState(0);
   const [countOfNumbers, setCount] = useState(0);
   const [betAmount, setBetAmount] = useState(0);
   const [multiple, setMultiple] = useState(1);
-  const [betNumbers, setBetNumbers] = useState("");
-  const [units, setUnits] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [tens, setTens] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [hundreds, setHundreds] = useState([false, false, false, false, false, false, false, false, false, false]);
-  const [thousands, setThousands] = useState([false, false, false, false, false, false, false, false, false, false]);
+  const [betNumbers, setBetNumbers] = useState('');
+  const [units, setUnits] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [tens, setTens] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [hundreds, setHundreds] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const [thousands, setThousands] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   /** */
   const [result, setResult] = useState({});
   const [gameInfo, setGameInfo] = useState({});
   const [duration, setDuration] = useState({
-    hours: "...",
-    minutes: "...",
-    seconds: "...",
+    hours: '...',
+    minutes: '...',
+    seconds: '...',
   });
   /** */
   const clearAll = () => {
-    setUnits([false, false, false, false, false, false, false, false, false, false]);
-    setTens([false, false, false, false, false, false, false, false, false, false]);
-    setHundreds([false, false, false, false, false, false, false, false, false, false]);
-    setThousands([false, false, false, false, false, false, false, false, false, false]);
-    setScript("");
+    setUnits([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ]);
+    setTens([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ]);
+    setHundreds([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ]);
+    setThousands([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ]);
+    setScript('');
     setBetAmount(0);
     setCount(0);
     setMultiple(1);
@@ -112,7 +201,7 @@ const NorthernLottery = (props) => {
 
   const updateDigits = (digit, index) => {
     switch (digit) {
-      case "unit":
+      case 'unit':
         setUnits((prevUnits) => {
           const list = prevUnits.map((e, i) => {
             if (i === index) return !e;
@@ -121,7 +210,7 @@ const NorthernLottery = (props) => {
           return list;
         });
         break;
-      case "ten":
+      case 'ten':
         setTens((prevTens) => {
           const list = prevTens.map((e, i) => {
             if (i === index) return !e;
@@ -130,7 +219,7 @@ const NorthernLottery = (props) => {
           return list;
         });
         break;
-      case "hundred":
+      case 'hundred':
         setHundreds((prevHundreds) => {
           const list = prevHundreds.map((e, i) => {
             if (i === index) return !e;
@@ -139,7 +228,7 @@ const NorthernLottery = (props) => {
           return list;
         });
         break;
-      case "thousand":
+      case 'thousand':
         setThousands((prevThousands) => {
           const list = prevThousands.map((e, i) => {
             if (i === index) return !e;
@@ -155,55 +244,165 @@ const NorthernLottery = (props) => {
 
   const setDigitAll = (digit) => {
     switch (digit) {
-      case "unit":
+      case 'unit':
         setUnits([true, true, true, true, true, true, true, true, true, true]);
         break;
-      case "ten":
+      case 'ten':
         setTens([true, true, true, true, true, true, true, true, true, true]);
         break;
-      case "hundred":
-        setHundreds([true, true, true, true, true, true, true, true, true, true]);
+      case 'hundred':
+        setHundreds([
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
-      case "thousand":
-        setThousands([true, true, true, true, true, true, true, true, true, true]);
+      case 'thousand':
+        setThousands([
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
       default:
         break;
     }
   };
 
-  const setFirstHalf = digit => {
+  const setFirstHalf = (digit) => {
     switch (digit) {
-      case "unit":
-        setUnits([true, true, true, true, true, false, false, false, false, false]);
+      case 'unit':
+        setUnits([
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "ten":
-        setTens([true, true, true, true, true, false, false, false, false, false]);
+      case 'ten':
+        setTens([
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "hundred":
-        setHundreds([true, true, true, true, true, false, false, false, false, false]);
+      case 'hundred':
+        setHundreds([
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "thousand":
-        setThousands([true, true, true, true, true, false, false, false, false, false]);
+      case 'thousand':
+        setThousands([
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
       default:
         break;
     }
   };
 
-  const setLastHalf = digit => {
+  const setLastHalf = (digit) => {
     switch (digit) {
-      case "unit":
-        setUnits([false, false, false, false, false, true, true, true, true, true]);
+      case 'unit':
+        setUnits([
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
-      case "ten":
-        setTens([false, false, false, false, false, true, true, true, true, true]);
+      case 'ten':
+        setTens([
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
-      case "hundred":
-        setHundreds([false, false, false, false, false, true, true, true, true, true]);
+      case 'hundred':
+        setHundreds([
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
-      case "thousand":
-        setThousands([false, false, false, false, false, true, true, true, true, true]);
+      case 'thousand':
+        setThousands([
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]);
         break;
       default:
         break;
@@ -212,17 +411,61 @@ const NorthernLottery = (props) => {
 
   const clearDigitAll = (digit) => {
     switch (digit) {
-      case "unit":
-        setUnits([false, false, false, false, false, false, false, false, false, false]);
+      case 'unit':
+        setUnits([
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "ten":
-        setTens([false, false, false, false, false, false, false, false, false, false]);
+      case 'ten':
+        setTens([
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "hundred":
-        setHundreds([false, false, false, false, false, false, false, false, false, false]);
+      case 'hundred':
+        setHundreds([
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
-      case "thousand":
-        setThousands([false, false, false, false, false, false, false, false, false, false]);
+      case 'thousand':
+        setThousands([
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        ]);
         break;
       default:
         break;
@@ -265,24 +508,29 @@ const NorthernLottery = (props) => {
       }
     }
     let formattedNumbers;
-    let phrase = "";
+    let phrase = '';
     let amount = 0;
     if (restrictList.northern) {
-      setMessage(t("bet_restricted"));
+      setMessage(t('bet_restricted'));
       return { status: false, phrase: null };
     }
     switch (currentDigitType.value) {
-      case "lot2":
+      case 'lot2':
         console.log('[CHECK]:[LOT2]');
-        if (script !== "") {
+        if (script !== '') {
           console.log('[SCRIPT]:[EXIST]');
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-          {
-            setMessage(t("bet_err_msg"));
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          ) {
+            setMessage(t('bet_err_msg'));
             return { status: false, phrase: null };
           }
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
+          const counts = script.split(';').length - 1;
           amount = BET_RATES.lot27.backpack.lot2 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
@@ -290,53 +538,75 @@ const NorthernLottery = (props) => {
         }
         if (unit_count === 0 || ten_count === 0) {
           console.log('[FALSE]:[NUMBER_NOT_SELECT]');
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
-        formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
+        formattedNumbers = selectedUnit.map((index_unit) =>
+          selectedTen.map((index_ten) => `${index_ten}${index_unit};`)
+        );
         for (const item_1 of formattedNumbers) {
           for (const item_2 of item_1) {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.lot27.backpack.lot2 * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27.backpack.lot2 *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         console.log('[TRUE]:[SUCCESS]');
         return { status: true, phrase };
-      case "lot2_1K":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'lot2_1K':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
+          const counts = script.split(';').length - 1;
           amount = BET_RATES.lot27.backpack.lot2_1K * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
-        formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
+        formattedNumbers = selectedUnit.map((index_unit) =>
+          selectedTen.map((index_ten) => `${index_ten}${index_unit};`)
+        );
         for (const item_1 of formattedNumbers) {
           for (const item_2 of item_1) {
             phrase += item_2;
           }
         }
-        amount = BET_RATES.lot27.backpack.lot2_1K * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27.backpack.lot2_1K *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         setBetNumbers(phrase);
         return { status: true, phrase };
-      case "lot3":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'lot3':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
+          const counts = script.split(';').length - 1;
           amount = BET_RATES.lot27.backpack.lot3 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
@@ -344,11 +614,15 @@ const NorthernLottery = (props) => {
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
-          selectedTen.map((index_ten) => selectedHundred.map((index_hundred) => `${index_hundred}${index_ten}${index_unit};`))
+          selectedTen.map((index_ten) =>
+            selectedHundred.map(
+              (index_hundred) => `${index_hundred}${index_ten}${index_unit};`
+            )
+          )
         );
         for (const item_1 of formattedNumbers) {
           for (const item_2 of item_1) {
@@ -357,29 +631,48 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.lot27.backpack.lot3 * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27.backpack.lot3 *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         setBetNumbers(phrase);
         return { status: true, phrase };
-      case "lot4":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'lot4':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
+          const counts = script.split(';').length - 1;
           amount = BET_RATES.lot27.backpack.lot4 * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
-        if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
-          setMessage(t("bet_err_msg"));
+        if (
+          unit_count === 0 ||
+          ten_count === 0 ||
+          hundred_count === 0 ||
+          thousand_count === 0
+        ) {
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
           selectedTen.map((index_ten) =>
-            selectedHundred.map((index_hundred) => selectedThousand.map((index_thousand) => `${index_thousand}${index_hundred}${index_ten}${index_unit};`))
+            selectedHundred.map((index_hundred) =>
+              selectedThousand.map(
+                (index_thousand) =>
+                  `${index_thousand}${index_hundred}${index_ten}${index_unit};`
+              )
+            )
           )
         );
 
@@ -392,104 +685,147 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.lot27.backpack.lot4 * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27.backpack.lot4 *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         setBetNumbers(phrase);
         return { status: true, phrase };
-      case "xien2":
-      case "xien3":
-      case "xien4":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'xien2':
+      case 'xien3':
+      case 'xien4':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
-          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
+          const counts = script.split(';').length - 1;
+          amount =
+            BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+            counts *
+            multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
-        setMessage(t("bet_err_msg"));
+        setMessage(t('bet_err_msg'));
         return { status: false, phrase: null };
-      case "first":
-      case "special_topics":
-      case "special_headline":
-      case "problem":
-      case "first_de":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'first':
+      case 'special_topics':
+      case 'special_headline':
+      case 'problem':
+      case 'first_de':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
-          amount = BET_RATES.lot27.score[currentDigitType.value] * counts * multiple;
+          const counts = script.split(';').length - 1;
+          amount =
+            BET_RATES.lot27.score[currentDigitType.value] * counts * multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
         if (unit_count === 0 || ten_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
-        formattedNumbers = selectedUnit.map((index_unit) => selectedTen.map((index_ten) => `${index_ten}${index_unit};`));
+        formattedNumbers = selectedUnit.map((index_unit) =>
+          selectedTen.map((index_ten) => `${index_ten}${index_unit};`)
+        );
         for (const item_1 of formattedNumbers) {
           for (const item_2 of item_1) {
             phrase = phrase.concat(item_2);
           }
         }
-        amount = BET_RATES.lot27.score[currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27.score[currentDigitType.value] *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         return { status: true, phrase };
-      case "head":
+      case 'head':
         if (ten_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedTen.map((index_ten) => `${index_ten};`);
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         return { status: true, phrase };
-      case "tail":
+      case 'tail':
         if (unit_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) => `${index_unit};`);
         for (const item_1 of formattedNumbers) {
           phrase = phrase.concat(item_1);
         }
-        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetNumbers(phrase);
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         return { status: true, phrase };
-      case "pin3":
-      case "pin3_headandtail":
-      case "special_pin3":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'pin3':
+      case 'pin3_headandtail':
+      case 'special_pin3':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
-          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
+          const counts = script.split(';').length - 1;
+          amount =
+            BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+            counts *
+            multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
 
         if (unit_count === 0 || ten_count === 0 || hundred_count === 0) {
-          setMessage(t("bet_err_msg"));
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
-          selectedTen.map((index_ten) => selectedHundred.map((index_hundred) => `${index_hundred}${index_ten}${index_unit};`))
+          selectedTen.map((index_ten) =>
+            selectedHundred.map(
+              (index_hundred) => `${index_hundred}${index_ten}${index_unit};`
+            )
+          )
         );
         for (const item_1 of formattedNumbers) {
           for (const item_2 of item_1) {
@@ -498,29 +834,51 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         setBetNumbers(phrase);
         return { status: true, phrase };
-      case "special_pin4":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'special_pin4':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
-          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
+          const counts = script.split(';').length - 1;
+          amount =
+            BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+            counts *
+            multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
-        if (unit_count === 0 || ten_count === 0 || hundred_count === 0 || thousand_count === 0) {
-          setMessage(t("bet_err_msg"));
+        if (
+          unit_count === 0 ||
+          ten_count === 0 ||
+          hundred_count === 0 ||
+          thousand_count === 0
+        ) {
+          setMessage(t('bet_err_msg'));
           return { status: false, phrase: null };
         }
         formattedNumbers = selectedUnit.map((index_unit) =>
           selectedTen.map((index_ten) =>
-            selectedHundred.map((index_hundred) => selectedThousand.map((index_thousand) => `${index_thousand}${index_hundred}${index_ten}${index_unit};`))
+            selectedHundred.map((index_hundred) =>
+              selectedThousand.map(
+                (index_thousand) =>
+                  `${index_thousand}${index_hundred}${index_ten}${index_unit};`
+              )
+            )
           )
         );
 
@@ -533,25 +891,37 @@ const NorthernLottery = (props) => {
             }
           }
         }
-        amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * (phrase.split(";").length - 1) * multiple;
+        amount =
+          BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+          (phrase.split(';').length - 1) *
+          multiple;
         setBetAmount(amount);
-        setCount(phrase.split(";").length - 1);
+        setCount(phrase.split(';').length - 1);
         setBetNumbers(phrase);
         return { status: true, phrase };
-      case "slide4":
-      case "slide8":
-      case "slide10":
-        if (script !== "") {
-          if(!validateScript(script, currentBetType.value, currentDigitType.value))
-            return {status: false, phrase: null};
+      case 'slide4':
+      case 'slide8':
+      case 'slide10':
+        if (script !== '') {
+          if (
+            !validateScript(
+              script,
+              currentBetType.value,
+              currentDigitType.value
+            )
+          )
+            return { status: false, phrase: null };
           setBetNumbers(script);
-          const counts = script.split(";").length - 1;
-          amount = BET_RATES.lot27[currentBetType.value][currentDigitType.value] * counts * multiple;
+          const counts = script.split(';').length - 1;
+          amount =
+            BET_RATES.lot27[currentBetType.value][currentDigitType.value] *
+            counts *
+            multiple;
           setBetAmount(amount);
           setCount(counts);
           return { status: true, phrase: script };
         }
-        setMessage(t("bet_err_msg"));
+        setMessage(t('bet_err_msg'));
         return { status: false, phrase: null };
       default:
         return false;
@@ -640,10 +1010,10 @@ const NorthernLottery = (props) => {
     getNewGame();
     dispatch(getUserInfo(user.userId));
     dispatch(getGameHistoriesForGameType('northern'));
-    dispatch(dispatchController => 
+    dispatch((dispatchController) =>
       dispatchController({
         type: 'ENABLE_NORTHERN',
-      })  
+      })
     );
     getNewResult();
     console.log('[START]:[NEW_GAME]');
@@ -651,42 +1021,44 @@ const NorthernLottery = (props) => {
 
   const handleTimer = useCallback((info) => {
     setDuration({
-      hours: Math.floor((info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      hours: Math.floor(
+        (info.duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      ),
       minutes: Math.floor((info.duration % (1000 * 60 * 60)) / (1000 * 60)),
       seconds: Math.floor((info.duration % (1000 * 60)) / 1000),
     });
   });
 
   const handleRestrict = useCallback(() => {
-    dispatch(dispatchController => 
+    dispatch((dispatchController) =>
       dispatchController({
         type: 'RESTRICT_NORTHERN',
-      })  
+      })
     );
   });
 
   const handleEnable = useCallback(() => {
-    dispatch(dispatchController => 
+    dispatch((dispatchController) =>
       dispatchController({
         type: 'ENABLE_NORTHERN',
-      })  
+      })
     );
   });
 
   /** */
 
   useMemo(() => {
-    socket.emit("subscribe_timer", 'northern');
-  }, [])
+    socket.emit('subscribe_timer', 'northern');
+  }, []);
 
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.northern.northern"),
-        value: "northern",
+        label: t('game_types.northern.northern'),
+        value: 'northern',
       })
     );
-  }, [t])
+  }, [t]);
 
   useEffect(() => {
     checkBetInfo();
@@ -703,25 +1075,24 @@ const NorthernLottery = (props) => {
   useEffect(() => {
     dispatch(
       setCurrentGameType({
-        label: t("game_types.northern.northern"),
-        value: "northern",
+        label: t('game_types.northern.northern'),
+        value: 'northern',
       })
     );
     dispatch(setCurrentBetType(BET_TYPES[0]));
     getNewResult();
     getNewGame();
-    socket.on("START_NEW_GAME", handleNewGame);
-    socket.on("TIMER", handleTimer);
-    socket.on("RESTRICT_BET_NORTHERN", handleRestrict);
-    socket.on("ENABLE_BET_NORTHERN", handleEnable);
+    socket.on('START_NEW_GAME', handleNewGame);
+    socket.on('TIMER', handleTimer);
+    socket.on('RESTRICT_BET_NORTHERN', handleRestrict);
+    socket.on('ENABLE_BET_NORTHERN', handleEnable);
     return () => {
-      socket.removeAllListeners("TIMER");
-      socket.removeAllListeners("START_NEW_GAME");
-      socket.removeAllListeners("RESTRICT_BET_NORTHERN");
-      socket.removeAllListeners("ENABLE_BET_NORTHERN");
-    }
+      socket.removeAllListeners('TIMER');
+      socket.removeAllListeners('START_NEW_GAME');
+      socket.removeAllListeners('RESTRICT_BET_NORTHERN');
+      socket.removeAllListeners('ENABLE_BET_NORTHERN');
+    };
   }, []);
-
 
   return (
     <Layout
@@ -748,7 +1119,13 @@ const NorthernLottery = (props) => {
               }}
               key={`BREAD_CRUMB_KEY_${index}`}
             >
-              <p className={selectedBetTypeIndex === index ? "active_text" : "date_text"}>{item.label}</p>
+              <p
+                className={
+                  selectedBetTypeIndex === index ? 'active_text' : 'date_text'
+                }
+              >
+                {item.label}
+              </p>
             </div>
           ))}
         </div>
@@ -926,7 +1303,7 @@ const NorthernLottery = (props) => {
             <Grid container spacing={0}>
               <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                 <div className="_number__area">
-                  <p style={{ marginRight: "1rem" }}>{t("multiple")}</p>
+                  <p style={{ marginRight: '1rem' }}>{t('multiple')}</p>
                   <InputWithButton
                     onChange={(e) => {
                       setMultiple(e);
@@ -938,10 +1315,10 @@ const NorthernLottery = (props) => {
               <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                 <div className="_info__area">
                   <p>
-                    {t("select")} {countOfNumbers} {t("numbers")}
+                    {t('select')} {countOfNumbers} {t('numbers')}
                   </p>
                   <p>
-                    {t("payout")} {rateConvertor(betAmount)} {t("vnd")}
+                    {t('payout')} {rateConvertor(betAmount)} {t('vnd')}
                   </p>
                 </div>
               </Grid>
@@ -952,27 +1329,37 @@ const NorthernLottery = (props) => {
                 md={12}
                 sm={12}
                 xs={12}
-                style={{ display: "flex", marginTop: "1rem", justifyContent: "space-around", alignItems: "center" }}
+                style={{
+                  display: 'flex',
+                  marginTop: '1rem',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                }}
               >
                 <Button
-                  title={t("buttons.reset")}
+                  title={t('buttons.reset')}
                   onClick={() => {
                     clearAll();
                   }}
                   type="outlined"
                   icon={<Block className="icon" />}
-                  innerStyle={{ backgroundColor: "#131313f0" }}
+                  innerStyle={{ backgroundColor: '#131313f0' }}
                 />
                 <Button
-                  title={t("buttons.quick_bet")}
-                  icon={<Speed className="icon" style={{ color: "white" }} />}
+                  title={t('buttons.quick_bet')}
+                  icon={<Speed className="icon" style={{ color: 'white' }} />}
                   onClick={() => {
                     onQuickBet();
                   }}
                 />
                 <Button
-                  title={t("buttons.more_bet")}
-                  icon={<AddCircleOutline className="icon" style={{ color: "white" }} />}
+                  title={t('buttons.more_bet')}
+                  icon={
+                    <AddCircleOutline
+                      className="icon"
+                      style={{ color: 'white' }}
+                    />
+                  }
                   onClick={() => {
                     onMoreBet();
                   }}
@@ -982,10 +1369,14 @@ const NorthernLottery = (props) => {
           </div>
         </div>
       </div>
-      <Dialog fullScreen={fullScreen} open={open} aria-labelledby="responsive-dialog-title">
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        aria-labelledby="responsive-dialog-title"
+      >
         <DialogContent className="game_selection_box">
           <DialogContent>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: 'flex' }}>
               <p className="date_text">{message}</p>
             </div>
           </DialogContent>

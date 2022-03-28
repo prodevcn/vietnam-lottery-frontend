@@ -23,7 +23,7 @@ const MobileNavMenu = (props) => {
     const interval = setInterval(async () => {
       const token = await localStorage.getItem('token');
       dispatch(getBalance(token, user.userId));  
-    }, 120000);
+    }, 3 * 60 * 1000);
     return () => {
       clearInterval(interval);
     }

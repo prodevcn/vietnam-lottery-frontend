@@ -1,109 +1,112 @@
 .btn__outlined {
-    color: #ddd;
-    display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: transparent;
-    transition: all 0.3s ease 0s;
-    border: 1px solid rgb(255, 136, 1);
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2), 0 6px 20px 0 rgba(255, 136, 1, 0.19);
-    }
+  color: #ddd;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  background-color: transparent;
+  transition: all 0.3s ease 0s;
+  border: 1px solid rgb(255, 136, 1);
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2),
+      0 6px 20px 0 rgba(255, 136, 1, 0.19);
+  }
 }
 .btn__selected {
-    color: rgb(255, 136, 1);
-    display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: transparent;
-    transition: all 0.3s ease 0s;
-    border: 1px solid rgb(255, 136, 1);
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2), 0 6px 20px 0 rgba(255, 136, 1, 0.19);
-    }
+  color: rgb(255, 136, 1);
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  background-color: transparent;
+  transition: all 0.3s ease 0s;
+  border: 1px solid rgb(255, 136, 1);
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2),
+      0 6px 20px 0 rgba(255, 136, 1, 0.19);
+  }
 }
 .btn__contained {
-    color: #ddd;
-    display: inline-block;
-    padding: 0.2rem 1rem;
-    background-image: linear-gradient(rgb(255, 136, 1), rgb(107, 57, 0) );
-    transition: all 0.3s ease 0s;
-    border: none;
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2), 0 6px 20px 0 rgba(255, 136, 1, 0.19);
-    }
+  color: #ddd;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  background-image: linear-gradient(rgb(255, 136, 1), rgb(107, 57, 0));
+  transition: all 0.3s ease 0s;
+  border: none;
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(255, 136, 1, 0.2),
+      0 6px 20px 0 rgba(255, 136, 1, 0.19);
+  }
 }
 .btn__disabled {
-    color: #ddd;
-    display: inline-block;
-    padding: 0.2rem 1rem;
-    background-image: linear-gradient(rgb(66, 66, 66), rgb(46, 46, 46) );
-    transition: all 0.3s ease 0s;
-    border: none;
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(156, 156, 156, 0.2);
-    }
+  color: #ddd;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  background-image: linear-gradient(rgb(66, 66, 66), rgb(46, 46, 46));
+  transition: all 0.3s ease 0s;
+  border: none;
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(156, 156, 156, 0.2);
+  }
 }
 .btn__success {
-    color: #ddd;
-    display: inline-block;
-    padding: 0.2rem 1rem;
-    background-image: linear-gradient(rgb(79, 153, 79), rgb(29, 70, 43) );
-    transition: all 0.3s ease 0s;
-    border: none;
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        box-shadow: 0 4px 8px 0 rgba(119, 255, 165, 0.2);
-    }
+  color: #ddd;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  background-image: linear-gradient(rgb(79, 153, 79), rgb(29, 70, 43));
+  transition: all 0.3s ease 0s;
+  border: none;
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(119, 255, 165, 0.2);
+  }
 }
 .btn__transparent {
-    color: #ddd;
-    display: inline-block;
-    // padding: 0.2rem 1rem;
-    background:transparent;
-    transition: all 0.3s ease 0s;
-    border: none;
-    border-radius: 100px;
-    margin: 1rem 0;
-    &:hover {
-        color:rgb(255, 136, 1);
-    }
-    p {
-        color: rgb(255, 136, 1);
-    }
+  color: #ddd;
+  display: inline-block;
+  // padding: 0.2rem 1rem;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+  border: none;
+  border-radius: 100px;
+  margin: 1rem 0;
+  &:hover {
+    color: rgb(255, 136, 1);
+  }
+  p {
+    color: rgb(255, 136, 1);
+  }
 }
 .number_button {
-    border: 1px solid #555;
-    width: 100%;
-    padding: 0.5rem;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 5px;
-    text-align: -webkit-center;
-    color: #ddd;
-    &.active {
-        background-color: #ff8801;
-        border-color: #ff8801;
-    }
+  border: 1px solid #555;
+  width: 100%;
+  padding: 0.5rem;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 5px;
+  text-align: -webkit-center;
+  color: #ddd;
+  &.active {
+    background-color: #ff8801;
+    border-color: #ff8801;
+  }
 }
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 .btn__full {
-    padding: 0.2rem 0;
-    width: 100%;
-    text-align: center;
+  padding: 0.2rem 0;
+  width: 100%;
+  text-align: center;
 }
 .btn_title {
-    color:white;
-    margin: 0;
-    text-align: center;
+  color: white;
+  margin: 0;
+  text-align: center;
 }

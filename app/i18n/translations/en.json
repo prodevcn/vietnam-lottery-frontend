@@ -246,36 +246,36 @@
     "game_types":{
       "live_stream":"LiveStream",
       "vip":{
-        "caption":"VIP Lottery",
+        "caption":"VIP",
         "saigon":"Saigon VIP",
         "hanoi":"Hanoi VIP",
         "hochiminh":"Ho Chi Minh VIP",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "mega":{
-        "caption":"Mega 6/45",
+        "caption":"Mega",
         "one_second":"1 Second",
         "one_minute":"1 Minute",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "northern":{
-        "caption":"Northern Lottery",
+        "caption":"Northern",
         "northern":"Northern",
         "jackpot":"JackPot",
         "scratch":"Scratch",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "superspeed":{
-        "caption":"Super speed",
+        "caption":"Superspeed",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam."
       },
       "southern":{
-        "caption":"Southern Lottery",
+        "caption":"Southern",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam.",
         "hochiminh":"Ho Chi Minh"
       },
       "central":{
-        "caption":"Central Lottery",
+        "caption":"Central",
         "description":"Super speed lottery is a very new style of playing cards in Vietnam.",
         "quangnam": "Quang Nam"
       }

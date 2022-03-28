@@ -23,8 +23,7 @@ const Frame = () => {
       } else {
         await dispatch(getBalance(tokenPhrase, decoded.userId));
         await localStorage.setItem('token', tokenPhrase);
-        await localStorage.setItem('user', JSON.stringify(decoded));
-        console.log(decoded);  
+        await localStorage.setItem('user', JSON.stringify(decoded)); 
         await dispatch(dispatchController => 
           dispatchController({
             type: SET_USER,
