@@ -51,7 +51,7 @@
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
     "styled-jsx": "^3.4.4",
-    "swiper": "5.3.0",
+    "swiper": "6.5.1",
     "swr": "^0.5.6"
   },
   "devDependencies": {
