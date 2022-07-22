@@ -14,7 +14,7 @@
     "@material-ui/styles": "^4.11.3",
     "@zeit/next-sass": "^1.0.1",
     "animate.css": "^4.1.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.6.0",
     "dotenv": "^10.0.0",
     "font-awesome": "^4.7.0",
